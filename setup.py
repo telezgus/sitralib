@@ -1,0 +1,36 @@
+from distutils.core import setup
+
+setup(
+    name='sitra',
+    version='1.0.4',
+    py_modules=[
+        'sitralib.validators.bcc',
+        'sitralib.helpers.fecha',
+        'sitralib.helpers.byte',
+        'sitralib.helpers.funciones',
+        'sitralib.helpers.ordenartrama',
+        'sitralib.bitsdealarma',
+        'sitralib.bitsdestatusi',
+        'sitralib.bitsdestatusii',
+        'sitralib.bitsdestatusiii',
+        'sitralib.bytedefuncion',
+        'sitralib.bytedelamparas',
+        'sitralib.bytedestatus',
+        'sitralib.consultaestadoenviocomando',
+        'sitralib.consultaestadoextendido',
+        'sitralib.consultapuestoconteo',
+        'sitralib.enviocomando',
+        'sitralib.imposicionfechahora',
+        'sitralib.reportedestatus',
+        'sitralib.respuesta',
+        'sitralib.respuestaconsultagurpoextendido',
+        'sitralib.respuestaconsultapuestoconteo',
+        'sitralib.respuestaenviocomando',
+        'sitralib.respuestaenvioestructurapartealta',
+    ],
+    author='Agustin Bouillet',
+    author_email='agustin.bouillet@gmail.com',
+    url='http://www.bouillet.com.ar/',
+    description='Libreria SITRA',
+    # long_description = """Really long text here."""
+)
