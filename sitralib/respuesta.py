@@ -2,6 +2,8 @@ from sitralib.helpers.funciones import *
 
 from sitralib.helpers.ordenartrama import *
 from sitralib.respuestaconsultagurpoextendido import *
+from sitralib.respuestaestadoenviocomando import *
+
 from sitralib.respuestaenviocomando import *
 from sitralib.enviocomando import *
 
@@ -22,6 +24,9 @@ class Respuesta(object):
             elif dec == 200:
                 tacongrpext = RespuestaConsultaGrupoExtendido()
                 return tacongrpext.respuestaConsultaGrupoExtendido(trm)
+            elif dec == 197:
+                rtaestadoenviocomando = RespuestaEstadoEnvioComando()
+                return rtaestadoenviocomando.respuestaEstadoEnvioComando(trm)
             else:
                 return None
 
