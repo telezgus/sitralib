@@ -51,18 +51,14 @@ class RespuestaEstadoEnvioComando(object):
             res.update({'tiempoReal2': self._joinNibblesCuad(trm[44], trm[45])})
             res.update({'tiempoPrescripto2': self._joinNibblesCuad(trm[48], trm[49])})
 
-            res.update({35: self.helpers.hexToDec(trm[35])})
-            res.update({36: self.helpers.hexToDec(trm[36])})
-            res.update({37: self.bytSta.byteDeStatus(trm[37])})
-            res.update({38: self.helpers.hexToDec(trm[38])})
-            res.update({39: self.helpers.hexToDec(trm[39])})
-
-            res.update({42: self.bytSta.byteDeStatus(trm[42])})
-
-            res.update({43: self.helpers.hexToDec(trm[43])})
-
-            res.update({54: self.bytFun.byteDeFuncion(trm[54])})
-
+            res.update({'estructura': self.helpers.hexToDec(trm[35])})
+            res.update({'programaDeTiempos': self.helpers.hexToDec(trm[36])})
+            res.update({'byteDeStatusA': self.bytSta.byteDeStatus(trm[37])})
+            res.update({'numeroDePaso': self.helpers.hexToDec(trm[38])})
+            res.update({'segundoPaso': self.helpers.hexToDec(trm[39])})
+            res.update({'byteDeStatusB': self.bytSta.byteDeStatus(trm[42])})
+            res.update({'duracionDePaso': self.helpers.hexToDec(trm[43])})
+            res.update({'funcionDePaso': self.bytFun.byteDeFuncion(trm[54])})
 
             r = {'respuestaEstadoEnvioComando': res}
             return r
