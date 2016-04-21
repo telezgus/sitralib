@@ -25,7 +25,7 @@ class ByteDeLamparas(object):
         }
 
         est = {'byteDeLamparas': estado}
-        return est
+        return estado
 
     def __setMovimiento(self, opt, nibble):
         if nibble in opt and opt[nibble]:
