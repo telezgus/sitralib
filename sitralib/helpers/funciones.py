@@ -40,6 +40,13 @@ class Helpers(object):
         return a
 
     def chunkStr(self, str, chunk_size):
+        """
+        Divide una cadena de texto y la convierte en una lista de
+        string del tamano de chunk_size
+        :param str: Cadena de texto
+        :param chunk_size: Integer
+        :return: list
+        """
         return [str[i:i + chunk_size] for i in range(0, len(str), chunk_size)]
 
     def isHex(self, num):
@@ -53,7 +60,7 @@ class Helpers(object):
         else:
             return False
 
-    def validateBetween(self, data={}):
+    def validateBetween(self, **data):
         """
         Valida un que un número este comprendido entre un valor máximo y
         un mínimo. Lo valores se toman inclusivamente; esto es, contando los
@@ -87,3 +94,8 @@ if __name__ == '__main__':
     print("sanitizeHex('B', 4)")
     print(hlp.sanitizeHex('B', 4))
     print('\t')
+    print('validateBetween(max=47, min=0, number=3)')
+    print(hlp.validateBetween(max=47, min=0, number=3))
+    print('\t')
+    print("chunkStr('1234567890', 2)")
+    print(hlp.chunkStr('1234567890', 2))
