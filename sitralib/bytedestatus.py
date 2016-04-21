@@ -12,8 +12,7 @@ class ByteDeStatus(object):
             pass
 
         num = self.helpers.hexToDec(hex)
-        sipla = self.helpers.validateBetween(
-            {'min': 0, 'max': 47, 'number': num})
+        sipla = self.helpers.validateBetween(min=0, max=47, number=num)
 
         if sipla:
             status['SIPLA'] = {

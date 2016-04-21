@@ -12,7 +12,7 @@ class Bcc(object):
         if bcc1 in trama.keys() and bcc2 in trama.keys():
             if self.helpers.hexToDec(trama[bcc1]) == self.helpers.hexToDec(
                     b1) and self.helpers.hexToDec(
-                    trama[bcc2]) == self.helpers.hexToDec(b2):
+                trama[bcc2]) == self.helpers.hexToDec(b2):
                 return True
             else:
                 return False
@@ -32,11 +32,11 @@ class Bcc(object):
         for i in trama:
             if i == bccFinalPosition:
                 break
-            elif self.helpers.validateBetween({
-                'min': bccIntermedioPosition,
-                'max': bccFinalPosition,
-                'number': i
-            }):
+            elif self.helpers.validateBetween(
+                    min=bccIntermedioPosition,
+                    max=bccFinalPosition,
+                    number=i
+            ):
                 bcc2 = bcc2 ^ self.helpers.hexToDec(trama[i])
 
         return self.helpers.intToHexString(bcc2)
