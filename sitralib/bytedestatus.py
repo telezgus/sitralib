@@ -35,8 +35,8 @@ class ByteDeStatus(object):
         else:
             status = False
 
-        sta['byteDeStatus'] = status
-        return sta
+        # sta['byteDeStatus'] = status
+        return status
 
 
 if __name__ == "__main__":

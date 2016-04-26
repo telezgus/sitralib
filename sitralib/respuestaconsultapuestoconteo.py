@@ -81,7 +81,9 @@ if __name__ == "__main__":
     print(trama1 + '\n')
     respuestaPuestoConteo = RespuestaConsultaPuestoConteo()
     ot = OrdenarTrama()
+
     tramaOrdenada = ot.ordenartrama(trama1)
+
     retorno = respuestaPuestoConteo.respuesta(tramaOrdenada)
     pp = pprint.PrettyPrinter(indent=4, width=200, depth=8, compact=True)
     pp.pprint(retorno)

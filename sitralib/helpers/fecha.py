@@ -10,7 +10,7 @@ class Fecha(object):
         timestamp = self._normalizarFecha(year, month, day, hour, minutes,
                                           seconds)
 
-        d = {'toArray': {
+        d = {
             'year': year,
             'month': month,
             'day': day,
@@ -19,7 +19,7 @@ class Fecha(object):
             'seconds': seconds,
             'timestamp': timestamp,
             'wday': self._dayOfWeek(wday)
-        }}
+        }
         return d
 
     def _normalizarFecha(self, year=0, month=0, day=0, hour=0, minutes=0,

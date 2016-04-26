@@ -5,31 +5,27 @@ class ByteDeLamparas(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def byteDeLamparas(self, hex, opt):
+    def byteDeLamparas(self, hex, mov=False, **opt):
         """
         Obtiene los valores para los movimientos de lámpara
         :param hex: string, Numero hexadecimal
-        :param opt: hi y lo nibble de acuerdo al movimiento a obtener
         :return: dict, con los valores para cada movimiento
         """
         if self.helpers.isHex(hex) == False:
             pass
 
         val = self.helpers.getNibbles(hex)
-        hi = self.__setMovimiento(opt, 'hi')
-        lo = self.__setMovimiento(opt, 'lo')
         valLo = self.__getTipo(val['lo'])
         valHi = self.__getTipo(val['hi'])
-        estado = {
-            'mov{0}'.format(hi): valHi, 'mov{0}'.format(lo): valLo
-        }
 
-        est = {'byteDeLamparas': estado}
-        return estado
-
-    def __setMovimiento(self, opt, nibble):
-        if nibble in opt and opt[nibble]:
-            return opt[nibble]
+        if mov == opt['hi']:
+            return valHi
+        elif mov == opt['lo']:
+            return valLo
+        else:
+            return {
+                'mov{0}'.format(opt['hi']): valHi, 'mov{0}'.format(opt['lo']): valLo
+            }
 
     def __getTipo(self, val):
         hexdec = self.helpers.hexToDec(val)
@@ -96,5 +92,5 @@ if __name__ == "__main__":
     print(help_text)
     opt = {'hi': 2, 'lo': 1}
     a = ByteDeLamparas()
-    b = a.byteDeLamparas('01', opt)
+    b = a.byteDeLamparas('01', hi=2, lo=1, mov=2)
     print(b)

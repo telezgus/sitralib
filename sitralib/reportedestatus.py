@@ -49,19 +49,21 @@ class ReporteDeStatus(object):
 
         return {}
 
-    '''
-    Retorna los indices que reportan alarmas en bitsDeStatusI
-    '''
+
 
     def __obtenerAlarmas(self, data):
+        '''
+        Retorna los indices que reportan alarmas en bitsDeStatusI
+        '''
         sys.exit(0)
 
-    '''
-    Evalua la trama C8 ó C9 y obtiene la colección de datos para
-    los bitsDeStatusI
-    '''
+
 
     def __obtenerBitsDeStatusI(self, trama):
+        '''
+        Evalua la trama C8 ó C9 y obtiene la colección de datos para
+        los bitsDeStatusI
+        '''
         if 'respuestaEnvioComando' in trama:
             return trama['respuestaEnvioComando'][16]['bitsDeStatusI']
         elif 'respuestaConsultaGrupoExtendido' in trama:
@@ -108,12 +110,13 @@ class ReporteDeStatus(object):
 
         return trama
 
-    '''
-    Evalua la trama C8 ó C9 y obtiene el numero de cruce
-    los bitsDeStatusI
-    '''
+
 
     def __obtenerNumeroCruce(self, trama):
+        '''
+        Evalua la trama C8 ó C9 y obtiene el numero de cruce
+        los bitsDeStatusI
+        '''
         if 'respuestaEnvioComando' in trama:
             return {
                 13: trama['respuestaEnvioComando'][13],

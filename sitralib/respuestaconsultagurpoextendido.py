@@ -43,15 +43,20 @@ class RespuestaConsultaGrupoExtendido(object):
             res.update({22: self.bytLamp.byteDeLamparas(trm[22],
                                                         {'hi': 6, 'lo': 5})})
             res.update({23: self.bytLamp.byteDeLamparas(trm[23],
-                                                        {'hi': 8, 'lo': 7})})
+                                                        {'hi': 8, 'lo': 7})}
+                       )
             res.update({24: self.bytLamp.byteDeLamparas(trm[24],
-                                                        {'hi': 10, 'lo': 9})})
+                                                        {'hi': 10, 'lo': 9})}
+                       )
             res.update({25: self.bytLamp.byteDeLamparas(trm[25],
-                                                        {'hi': 12, 'lo': 11})})
+                                                        {'hi': 12, 'lo': 11})}
+                       )
             res.update({26: self.bytLamp.byteDeLamparas(trm[26],
-                                                        {'hi': 14, 'lo': 13})})
+                                                        {'hi': 14, 'lo': 13})}
+                       )
             res.update({27: self.bytLamp.byteDeLamparas(trm[27],
-                                                        {'hi': 16, 'lo': 15})})
+                                                        {'hi': 16, 'lo': 15})}
+                       )
 
             res.update({28: self.fecha.fecha(trm[28], trm[29], trm[30], trm[31],
                                              trm[32], trm[33], trm[34])})
@@ -73,12 +78,7 @@ class RespuestaConsultaGrupoExtendido(object):
 
             res.update({54: self.bytFun.byteDeFuncion(trm[54])})
 
-            '''
-            res.update({'params':{'trm':{
-                'toArray':trm,
-                'toString': ' '.join(trm.values())
-                }}})
-            '''
+
             r = {'respuestaConsultaGrupoExtendido': res}
             return r
         else:
@@ -94,3 +94,5 @@ class RespuestaConsultaGrupoExtendido(object):
     def _joinNibblesCuad(self, hex1, hex2):
         n = (self.helpers.hexToDec(hex1) * 256) + self.helpers.hexToDec(hex2)
         return n
+
+# {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'C8', 10: '00', 11: '36', 12: '00', 13: '0B', 14: 'B8', 15: '01', 16: '14', 17: '00', 18: '20', 19: '00', 20: '99', 21: '99', 22: 'DD', 23: 'DD', 24: 'DD', 25: 'DD', 26: 'DD', 27: 'DD', 28: '16', 29: '04', 30: '23', 31: '19', 32: '21', 33: '36', 34: '07', 35: '00', 36: '01', 37: '01', 38: '02', 39: '02', 40: '00', 41: '00', 42: '01', 43: '0A', 44: '00', 45: '16', 46: '00', 47: '00', 48: '00', 49: '28', 50: '00', 51: '00', 52: '00', 53: '00', 54: '00', 55: '00', 56: '00', 57: '00', 58: '8B'}
