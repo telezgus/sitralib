@@ -5,40 +5,46 @@ class Fecha(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def fecha(self, year=0, month=0, day=0, hour=0, minutes=0, seconds=0,
-              wday=0):
-        timestamp = self._normalizarFecha(year, month, day, hour, minutes,
-                                          seconds)
+    def fecha(self, **kwargs):
+        timestamp = self.__normalizar_fecha(
+            year=kwargs["year"],
+            month=kwargs["month"],
+            day=kwargs["day"],
+            hour=kwargs["hour"],
+            minutes=kwargs["minutes"],
+            seconds=kwargs["seconds"]
+        )
 
         d = {
-            'year': year,
-            'month': month,
-            'day': day,
-            'hour': hour,
-            'minutes': minutes,
-            'seconds': seconds,
+            'year': kwargs["year"],
+            'month': kwargs["month"],
+            'day': kwargs["day"],
+            'hour': kwargs["hour"],
+            'minutes': kwargs["minutes"],
+            'seconds': kwargs["seconds"],
             'timestamp': timestamp,
-            'wday': self._dayOfWeek(wday)
+            'wday': self.__day_of_week(kwargs["wday"])
         }
         return d
 
-    def _normalizarFecha(self, year=0, month=0, day=0, hour=0, minutes=0,
-                         seconds=0):
-        dateSeparator = '-'
-        timeSeparator = ':'
+    def __normalizar_fecha(self, **kwargs):
+        date_separator = '-'
+        time_separator = ':'
 
-        dateTime = '{0}{6}{1}{6}{2}T{3}{7}{4}{7}{5}'.format(
-            year,
-            month, day,
-            hour,
-            minutes, seconds,
-            dateSeparator,
-            timeSeparator
+        datetime = '{0}{6}{1}{6}{2}T{3}{7}{4}{7}{5}'.format(
+            kwargs["year"],
+            kwargs["month"],
+            kwargs["day"],
+            kwargs["hour"],
+            kwargs["minutes"],
+            kwargs["seconds"],
+            date_separator,
+            time_separator
         )
-        return dateTime
+        return datetime
 
-    def _dayOfWeek(self, tmWday):
-        wday = self.helpers.hexToDec(tmWday)
+    def __day_of_week(self, tm_wday):
+        wday = self.helpers.hexToDec(tm_wday)
         dias = {
             1: 'domingo',
             2: 'lunes',
@@ -63,5 +69,13 @@ if __name__ == "__main__":
     """
     print(help_text)
     a = Fecha()
-    b = a.fecha('2015', '05', '09', '06', '29', '00', '01')
+    b = a.fecha(
+        year='2015',
+        month='05',
+        day='09',
+        hour='06',
+        minutes='29',
+        seconds='00',
+        wday='01'
+    )
     print(b)
