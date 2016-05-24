@@ -72,19 +72,19 @@ class RespuestaEstadoEnvioComando(object):
 
             res.update({
                 'dateTime': self.fecha.fecha(
-                    trm[28],
-                    trm[29],
-                    trm[30],
-                    trm[31],
-                    trm[32],
-                    trm[33],
-                    trm[34])
+                    year=trm[28],
+                    month=trm[29],
+                    day=trm[30],
+                    hour=trm[31],
+                    minutes=trm[32],
+                    seconds=trm[33],
+                    wday=trm[34])
             })
-
 
             res.update({'desfasaje': self._joinNibblesCuad(trm[52], trm[53])})
             res.update({'tiempoReal2': self._joinNibblesCuad(trm[44], trm[45])})
-            res.update({'tiempoPrescripto2': self._joinNibblesCuad(trm[48], trm[49])})
+            res.update(
+                {'tiempoPrescripto2': self._joinNibblesCuad(trm[48], trm[49])})
             res.update({'estructura': self.helpers.hexToDec(trm[35])})
             res.update({'programaDeTiempos': self.helpers.hexToDec(trm[36])})
             res.update({'byteDeStatus_b': self.bytSta.byteDeStatus(trm[37])})
@@ -94,9 +94,9 @@ class RespuestaEstadoEnvioComando(object):
             res.update({'duracionDePaso': self.helpers.hexToDec(trm[43])})
 
             res.update(self.bytFun.byteDeFuncion(trm[54]))
+            res.update({'object': 'respuestaEstadoEnvioComando'})
 
-            r = {'respuestaEstadoEnvioComando': res}
-            return r
+            return res
         else:
             return []
 

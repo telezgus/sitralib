@@ -3,18 +3,20 @@ import sys
 
 class ReporteDeStatus(object):
     def validar(self, trama):
+
         if not trama:
             return {}
 
         byteDeStatus = self.__obtenerByteDeStatus(trama)
         bitsDeStatusI = self.__obtenerBitsDeStatusI(trama)
         bitsDeAlarmas = self.__obtenerBitsDeAlarmas(trama)
-        crsIdNum = self.__obtenerNumeroCruce(trama)
+        numeroDeCruce = self.__obtenerNumeroCruce(trama)
 
         if trama:
             t = {'est': self.__estadoIndicador({'estado': bitsDeStatusI})}
 
-            if bitsDeStatusI['AP']['est']['val'] == None or int(bitsDeStatusI['TIT']['est']['val']) == 1:
+            if bitsDeStatusI['AP']['est']['val'] == None or int(
+                    bitsDeStatusI['TIT']['est']['val']) == 1:
                 t['vtr'] = 12
 
             elif int(bitsDeStatusI['AP']['est']['val']) == 1:
@@ -40,16 +42,17 @@ class ReporteDeStatus(object):
                 )
 
             alertas = {}
-            alertas.update({'byteDeStatus': self.__setAlertasByteDeStatus(byteDeStatus)})
-            alertas.update({'bitsDeStatusI': self.__setAlertasBitsDeStatusI(bitsDeStatusI)})
-            alertas.update({'bitsDeAlarma': self.__setAlertasBitsDeAlarmas(bitsDeAlarmas)})
-            t['crsIdNum'] = crsIdNum
+            alertas.update(
+                {'byteDeStatus': self.__setAlertasByteDeStatus(byteDeStatus)})
+            alertas.update({'bitsDeStatusI': self.__setAlertasBitsDeStatusI(
+                bitsDeStatusI)})
+            alertas.update(
+                {'bitsDeAlarma': self.__setAlertasBitsDeAlarmas(bitsDeAlarmas)})
+            t['numeroDeCruce'] = numeroDeCruce
             t['alertas'] = alertas
             return t
 
         return {}
-
-
 
     def __obtenerAlarmas(self, data):
         '''
@@ -57,19 +60,15 @@ class ReporteDeStatus(object):
         '''
         sys.exit(0)
 
-
-
     def __obtenerBitsDeStatusI(self, trama):
         '''
         Evalua la trama C8 ó C9 y obtiene la colección de datos para
         los bitsDeStatusI
         '''
-        if 'respuestaEnvioComando' in trama:
-            return trama['respuestaEnvioComando'][16]['bitsDeStatusI']
-        elif 'respuestaConsultaGrupoExtendido' in trama:
-            return trama['respuestaConsultaGrupoExtendido'][16]['bitsDeStatusI']
-        else:
-            return {}
+        if 'bitsDeStatusI' in trama:
+            return trama['bitsDeStatusI']
+
+        return {}
 
     def __setAlertasBitsDeStatusI(self, trama):
         # Remuevo los indices que no evalúo
@@ -96,12 +95,10 @@ class ReporteDeStatus(object):
         return trama
 
     def __obtenerByteDeStatus(self, trama):
-        if 'respuestaEnvioComando' in trama:
-            return trama['respuestaEnvioComando'][15]['byteDeStatus']
-        elif 'respuestaConsultaGrupoExtendido' in trama:
-            return trama['respuestaConsultaGrupoExtendido'][15]['byteDeStatus']
-        else:
-            return {}
+        if 'byteDeStatus_a' in trama:
+            return trama['byteDeStatus_a']
+
+        return {}
 
     def __setAlertasByteDeStatus(self, trama):
         # Remuevo los indices que no evalúo
@@ -110,39 +107,26 @@ class ReporteDeStatus(object):
 
         return trama
 
-
-
     def __obtenerNumeroCruce(self, trama):
         '''
         Evalua la trama C8 ó C9 y obtiene el numero de cruce
         los bitsDeStatusI
+        'numeroDeCruce': ['0B', 'B8'],
         '''
-        if 'respuestaEnvioComando' in trama:
-            return {
-                13: trama['respuestaEnvioComando'][13],
-                14: trama['respuestaEnvioComando'][14],
-            }
-        elif 'respuestaConsultaGrupoExtendido' in trama:
-            return {
-                13: trama['respuestaConsultaGrupoExtendido'][13],
-                14: trama['respuestaConsultaGrupoExtendido'][14],
-            }
-        else:
-            return {}
+        if 'numeroDeCruce' in trama:
+            return trama['numeroDeCruce']
 
-
+        return {}
 
     def __obtenerBitsDeAlarmas(self, trama):
         '''
         Evalua la trama C8 ó C9 y obtiene la colección de datos para
         los bits de alarmas
         '''
-        if 'respuestaEnvioComando' in trama:
-            return trama['respuestaEnvioComando'][18]['bitsDeAlarma']
-        elif 'respuestaConsultaGrupoExtendido' in trama:
-            return trama['respuestaConsultaGrupoExtendido'][18]['bitsDeAlarma']
-        else:
-            return {}
+        if 'bitsDeAlarma' in trama:
+            return trama['bitsDeAlarma']
+
+        return {}
 
     def __setAlertasBitsDeAlarmas(self, trama):
         # Remuevo los indices que no evalúo
@@ -215,3 +199,45 @@ class ReporteDeStatus(object):
                 t = apagado
 
             return t
+
+
+if __name__ == "__main__":
+    trama = {'byteDeStatus_a': {
+        'SIPLA': {'des': 'Plan', 'val': '1', 'cod': 'SIPLA'}},
+             'bitsDeStatusII': {'SI': {
+                 'des': 'EC en secuencia de inicio (intervalos A [34] y B [35])',
+                 'est': {'des': 'Normal', 'val': 0}}, 'AIS': {
+                 'des': 'EC aislado de grupo (No acepta comandos grupales)',
+                 'est': {'des': 'Normal', 'val': 0}}}, 'bitsDeAlarma': {
+            'TSUP': {'des': 'Tiempo suplementario de ciclo',
+                     'est': {'des': 'Normal', 'val': 0}},
+            'FR': {'des': 'Falta de rojo', 'est': {'des': 'Normal', 'val': 0}},
+            'FV': {'des': 'Falta de verde', 'est': {'des': 'Normal', 'val': 0}},
+            'CV': {'des': 'Conflicto de verde',
+                   'est': {'des': 'Normal', 'val': 0}},
+            'GPS': {'des': 'Sistema de posicionamiento global',
+                    'est': {'des': 'Falla', 'val': 1}},
+            'BT': {'des': 'Baja tensión', 'est': {'des': 'Normal', 'val': 0}}},
+             'numeroDeCruce': ['0B', 'B8'], 'bitsDeStatusIII': {
+            'D1': {'des': 'Demanda 1', 'est': {'des': 'Desocupada', 'val': 0}},
+            'D2': {'des': 'Demanda 2', 'est': {'des': 'Desocupada', 'val': 0}}},
+             'bitsDeStatusI': {'VP': {'des': 'Verde del movimiento 1',
+                                      'est': {'des': 'Apagado', 'val': 0}},
+                               'LP': {'des': 'Llave panel local central',
+                                      'est': {'des': 'Central', 'val': 1}},
+                               'AP': {'des': 'Apagado',
+                                      'est': {'des': 'Normal', 'val': 0}},
+                               'PFL': {'des': 'Plan forzado local desde CC',
+                                       'est': {'des': 'Normal', 'val': 0}},
+                               'TIT': {'des': 'Titilante',
+                                       'est': {'des': 'Normal', 'val': 0}},
+                               'TD': {'des': 'Tipo de día',
+                                      'est': {'des': 'Normal', 'val': 0}},
+                               'CP': {'des': 'Cambio de Plan',
+                                      'est': {'des': 'Normal', 'val': 0}},
+                               'C': {'des': 'Centralizado',
+                                     'est': {'des': 'Centralizado', 'val': 1}}}}
+    obj = ReporteDeStatus()
+    r = obj.validar(trama)
+
+    print(r)
