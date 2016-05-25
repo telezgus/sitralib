@@ -50,9 +50,28 @@ class ReporteDeStatus(object):
                 {'bitsDeAlarma': self.__setAlertasBitsDeAlarmas(bitsDeAlarmas)})
             t['numeroDeCruce'] = numeroDeCruce
             t['alertas'] = alertas
+            if 'byteDeLamparas' in trama:
+                t.update(self.__prepararTrama(trama))
             return t
 
         return {}
+
+    def __prepararTrama(self, trama):
+        """
+        Remueve los indices innecesarios para mostrar el estado
+        :return:
+        """
+        trama.pop('byteDeStatus_a')
+        trama.pop('byteDeStatus_b')
+        trama.pop('byteDeStatus_c')
+        trama.pop('bitsDeStatusI')
+        trama.pop('bitsDeStatusII')
+        trama.pop('bitsDeStatusIII')
+        trama.pop('object')
+        trama.pop('bitsDeAlarma')
+
+        return trama
+
 
     def __obtenerAlarmas(self, data):
         '''
@@ -204,11 +223,11 @@ class ReporteDeStatus(object):
 if __name__ == "__main__":
     trama = {'byteDeStatus_a': {
         'SIPLA': {'des': 'Plan', 'val': '1', 'cod': 'SIPLA'}},
-             'bitsDeStatusII': {'SI': {
-                 'des': 'EC en secuencia de inicio (intervalos A [34] y B [35])',
-                 'est': {'des': 'Normal', 'val': 0}}, 'AIS': {
-                 'des': 'EC aislado de grupo (No acepta comandos grupales)',
-                 'est': {'des': 'Normal', 'val': 0}}}, 'bitsDeAlarma': {
+        'bitsDeStatusII': {'SI': {
+            'des': 'EC en secuencia de inicio (intervalos A [34] y B [35])',
+            'est': {'des': 'Normal', 'val': 0}}, 'AIS': {
+            'des': 'EC aislado de grupo (No acepta comandos grupales)',
+            'est': {'des': 'Normal', 'val': 0}}}, 'bitsDeAlarma': {
             'TSUP': {'des': 'Tiempo suplementario de ciclo',
                      'est': {'des': 'Normal', 'val': 0}},
             'FR': {'des': 'Falta de rojo', 'est': {'des': 'Normal', 'val': 0}},
@@ -218,26 +237,144 @@ if __name__ == "__main__":
             'GPS': {'des': 'Sistema de posicionamiento global',
                     'est': {'des': 'Falla', 'val': 1}},
             'BT': {'des': 'Baja tensión', 'est': {'des': 'Normal', 'val': 0}}},
-             'numeroDeCruce': ['0B', 'B8'], 'bitsDeStatusIII': {
+        'numeroDeCruce': ['0B', 'B8'], 'bitsDeStatusIII': {
             'D1': {'des': 'Demanda 1', 'est': {'des': 'Desocupada', 'val': 0}},
             'D2': {'des': 'Demanda 2', 'est': {'des': 'Desocupada', 'val': 0}}},
-             'bitsDeStatusI': {'VP': {'des': 'Verde del movimiento 1',
-                                      'est': {'des': 'Apagado', 'val': 0}},
-                               'LP': {'des': 'Llave panel local central',
-                                      'est': {'des': 'Central', 'val': 1}},
-                               'AP': {'des': 'Apagado',
-                                      'est': {'des': 'Normal', 'val': 0}},
-                               'PFL': {'des': 'Plan forzado local desde CC',
-                                       'est': {'des': 'Normal', 'val': 0}},
-                               'TIT': {'des': 'Titilante',
-                                       'est': {'des': 'Normal', 'val': 0}},
-                               'TD': {'des': 'Tipo de día',
-                                      'est': {'des': 'Normal', 'val': 0}},
-                               'CP': {'des': 'Cambio de Plan',
-                                      'est': {'des': 'Normal', 'val': 0}},
-                               'C': {'des': 'Centralizado',
-                                     'est': {'des': 'Centralizado', 'val': 1}}}}
-    obj = ReporteDeStatus()
-    r = obj.validar(trama)
+        'bitsDeStatusI': {'VP': {'des': 'Verde del movimiento 1',
+                                 'est': {'des': 'Apagado', 'val': 0}},
+                          'LP': {'des': 'Llave panel local central',
+                                 'est': {'des': 'Central', 'val': 1}},
+                          'AP': {'des': 'Apagado',
+                                 'est': {'des': 'Normal', 'val': 0}},
+                          'PFL': {'des': 'Plan forzado local desde CC',
+                                  'est': {'des': 'Normal', 'val': 0}},
+                          'TIT': {'des': 'Titilante',
+                                  'est': {'des': 'Normal', 'val': 0}},
+                          'TD': {'des': 'Tipo de día',
+                                 'est': {'des': 'Normal', 'val': 0}},
+                          'CP': {'des': 'Cambio de Plan',
+                                 'est': {'des': 'Normal', 'val': 0}},
+                          'C': {'des': 'Centralizado',
+                                'est': {'des': 'Centralizado', 'val': 1}}}}
 
-    print(r)
+    trama2 = {'bitsDeAlarma': {'BT': {'des': 'Baja tensión',
+                                      'est': {'des': 'Normal', 'val': 0}},
+                               'CV': {'des': 'Conflicto de verde',
+                                      'est': {'des': 'Normal', 'val': 0}},
+                               'FR': {'des': 'Falta de rojo',
+                                      'est': {'des': 'Normal', 'val': 0}},
+                               'FV': {'des': 'Falta de verde',
+                                      'est': {'des': 'Normal', 'val': 0}},
+                               'GPS': {
+                                   'des': 'Sistema de posicionamiento global',
+                                   'est': {'des': 'Falla', 'val': 1}},
+                               'TSUP': {'des': 'Tiempo suplementario de ciclo',
+                                        'est': {'des': 'Normal', 'val': 0}}},
+              'bitsDeStatusI': {'AP': {'des': 'Apagado',
+                                       'est': {'des': 'Normal', 'val': 0}},
+                                'C': {'des': 'Centralizado',
+                                      'est': {'des': 'Centralizado', 'val': 1}},
+                                'CP': {'des': 'Cambio de Plan',
+                                       'est': {'des': 'Normal', 'val': 0}},
+                                'LP': {'des': 'Llave panel local central',
+                                       'est': {'des': 'Central', 'val': 1}},
+                                'PFL': {'des': 'Plan forzado local desde CC',
+                                        'est': {'des': 'Normal', 'val': 0}},
+                                'TD': {'des': 'Tipo de día',
+                                       'est': {'des': 'Normal', 'val': 0}},
+                                'TIT': {'des': 'Titilante',
+                                        'est': {'des': 'Normal', 'val': 0}},
+                                'VP': {'des': 'Verde del movimiento 1',
+                                       'est': {'des': 'Apagado', 'val': 0}}},
+              'bitsDeStatusII': {
+                  'AIS': {'des': 'EC aislado de grupo (No acepta '
+                                 'comandos grupales)',
+                          'est': {'des': 'Normal', 'val': 0}},
+                  'SI': {'des': 'EC en secuencia de inicio (intervalos A '
+                                '[34] y B [35])',
+                         'est': {'des': 'Normal', 'val': 0}}},
+              'bitsDeStatusIII': {'D1': {'des': 'Demanda 1',
+                                         'est': {'des': 'Desocupada',
+                                                 'val': 0}},
+                                  'D2': {'des': 'Demanda 2',
+                                         'est': {'des': 'Desocupada',
+                                                 'val': 0}}},
+              'byteDeFuncion': {'NAN': {'est': {'des': 'Ninguna', 'val': 1}}},
+              'byteDeLamparas': {'mov1': {'cod': 'rojo-intermitente',
+                                          'des': 'Rojo intermitente',
+                                          'val': 1},
+                                 'mov10': {'cod': 'inexistente',
+                                           'des': 'Inexistente',
+                                           'val': 1},
+                                 'mov11': {'cod': 'inexistente',
+                                           'des': 'Inexistente',
+                                           'val': 1},
+                                 'mov12': {'cod': 'inexistente',
+                                           'des': 'Inexistente',
+                                           'val': 1},
+                                 'mov13': {'cod': 'inexistente',
+                                           'des': 'Inexistente',
+                                           'val': 1},
+                                 'mov14': {'cod': 'inexistente',
+                                           'des': 'Inexistente',
+                                           'val': 1},
+                                 'mov15': {'cod': 'inexistente',
+                                           'des': 'Inexistente',
+                                           'val': 1},
+                                 'mov16': {'cod': 'inexistente',
+                                           'des': 'Inexistente',
+                                           'val': 1},
+                                 'mov2': {'cod': 'rojo-intermitente',
+                                          'des': 'Rojo intermitente',
+                                          'val': 1},
+                                 'mov3': {'cod': 'rojo-intermitente',
+                                          'des': 'Rojo intermitente',
+                                          'val': 1},
+                                 'mov4': {'cod': 'rojo-intermitente',
+                                          'des': 'Rojo intermitente',
+                                          'val': 1},
+                                 'mov5': {'cod': 'inexistente',
+                                          'des': 'Inexistente',
+                                          'val': 1},
+                                 'mov6': {'cod': 'inexistente',
+                                          'des': 'Inexistente',
+                                          'val': 1},
+                                 'mov7': {'cod': 'inexistente',
+                                          'des': 'Inexistente',
+                                          'val': 1},
+                                 'mov8': {'cod': 'inexistente',
+                                          'des': 'Inexistente',
+                                          'val': 1},
+                                 'mov9': {'cod': 'inexistente',
+                                          'des': 'Inexistente',
+                                          'val': 1}},
+              'byteDeStatus_a': {
+                  'SIPLA': {'cod': 'SIPLA', 'des': 'Plan', 'val': '1'}},
+              'byteDeStatus_b': {
+                  'SIPLA': {'cod': 'SIPLA', 'des': 'Plan', 'val': '1'}},
+              'byteDeStatus_c': {
+                  'SIPLA': {'cod': 'SIPLA', 'des': 'Plan', 'val': '1'}},
+              'dateTime': {'day': '23',
+                           'hour': '19',
+                           'minutes': '21',
+                           'month': '04',
+                           'seconds': '36',
+                           'timestamp': '16-04-23T19:21:36',
+                           'wday': 'sábado',
+                           'year': '16'},
+              'desfasaje': 0,
+              'duracionDePaso': 10,
+              'estructura': 0,
+              'numeroDeCruce': ['0B', 'B8'],
+              'numeroDePaso': 2,
+              'object': 'respuestaConsultaGrupoExtendido',
+              'programaDeTiempos': 1,
+              'segundoPaso': 2,
+              'tiempoPrescripto2': 40,
+              'tiempoReal2': 22}
+    obj = ReporteDeStatus()
+    r = obj.validar(trama2)
+    import pprint
+
+    pp = pprint
+    pp.pprint(r)
