@@ -4,8 +4,7 @@ import sys
 class ReporteDeStatus(object):
     def validar(self, trama):
 
-        if not trama:
-            return {}
+        if not trama: return {}
 
         byteDeStatus = self.__obtenerByteDeStatus(trama)
         bitsDeStatusI = self.__obtenerBitsDeStatusI(trama)
@@ -41,15 +40,19 @@ class ReporteDeStatus(object):
                     }
                 )
 
-            alertas = {}
+            alertas = dict()
             alertas.update(
                 {'byteDeStatus': self.__setAlertasByteDeStatus(byteDeStatus)})
             alertas.update({'bitsDeStatusI': self.__setAlertasBitsDeStatusI(
                 bitsDeStatusI)})
             alertas.update(
                 {'bitsDeAlarma': self.__setAlertasBitsDeAlarmas(bitsDeAlarmas)})
+
             t['numeroDeCruce'] = numeroDeCruce
             t['alertas'] = alertas
+
+            # Si la trama contempla propiedades de evaluación del
+            # estado extendido
             if 'byteDeLamparas' in trama:
                 t.update(self.__prepararTrama(trama))
             return t
