@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='sitra',
-    version='1.0.4',
+    version='1.0.5',
     py_modules=[
         'sitralib.validators.bcc',
         'sitralib.helpers.fecha',
@@ -27,6 +27,7 @@ setup(
         'sitralib.respuestaconsultapuestoconteo',
         'sitralib.respuestaenviocomando',
         'sitralib.respuestaenvioestructurapartealta',
+        'sitralib.respuestaestadoenviocomando',
     ],
     author='Agustin Bouillet',
     author_email='agustin.bouillet@gmail.com',
