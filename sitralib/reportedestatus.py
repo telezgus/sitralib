@@ -5,6 +5,7 @@ class ReporteDeStatus(object):
     def validar(self, trama):
 
         if not trama: return {}
+        t = dict()
 
         byteDeStatus = self.__obtenerByteDeStatus(trama)
         bitsDeStatusI = self.__obtenerBitsDeStatusI(trama)
@@ -12,43 +13,24 @@ class ReporteDeStatus(object):
         numeroDeCruce = self.__obtenerNumeroCruce(trama)
 
         if trama:
-            t = {'est': self.__estadoIndicador({'estado': bitsDeStatusI})}
+            t['numeroDeCruce'] = numeroDeCruce
+            t['bitsDeStatusI'] = bitsDeStatusI
+            t['est'] = self.__estadoIndicador({'estado': bitsDeStatusI})
+            t['vtr'] = self.__vector(bitsDeStatusI)
 
-            if bitsDeStatusI['AP']['est']['val'] == None or int(
-                    bitsDeStatusI['TIT']['est']['val']) == 1:
-                t['vtr'] = 12
-
-            elif int(bitsDeStatusI['AP']['est']['val']) == 1:
-
-                if int(bitsDeStatusI['TIT']['est']['val']) == 0:
-                    t['vtr'] = self.__estadoVector(
-                        {
-                            'estado': bitsDeStatusI,
-                            'normal': 10,
-                            'apagado': 11
-                        }
-                    )
-                else:
-                    t['vtr'] = 12
-
-            else:
-                t['vtr'] = self.__estadoVector(
-                    {
-                        'estado': bitsDeStatusI,
-                        'normal': 8,
-                        'apagado': 9
-                    }
-                )
-
+            # Agrupo las alertas
             alertas = dict()
             alertas.update(
                 {'byteDeStatus': self.__setAlertasByteDeStatus(byteDeStatus)})
-            alertas.update({'bitsDeStatusI': self.__setAlertasBitsDeStatusI(
-                bitsDeStatusI)})
+
+            alertas.update(
+                {'bitsDeStatusI': self.__setAlertasBitsDeStatusI(
+                    bitsDeStatusI)})
+
             alertas.update(
                 {'bitsDeAlarma': self.__setAlertasBitsDeAlarmas(bitsDeAlarmas)})
 
-            t['numeroDeCruce'] = numeroDeCruce
+            # Incluyo las alertas en el diccionario de retorno
             t['alertas'] = alertas
 
             # Si la trama contempla propiedades de evaluación del
@@ -59,22 +41,48 @@ class ReporteDeStatus(object):
 
         return {}
 
+    def __vector(self, bitsDeStatusI):
+        if bitsDeStatusI['AP']['est']['val'] == None or int(
+                bitsDeStatusI['TIT']['est']['val']) == 1:
+            vector = 12
+
+        elif int(bitsDeStatusI['AP']['est']['val']) == 1:
+
+            if int(bitsDeStatusI['TIT']['est']['val']) == 0:
+                vector = self.__estadoVector(
+                    {
+                        'estado': bitsDeStatusI,
+                        'normal': 10,
+                        'apagado': 11
+                    }
+                )
+            else:
+                vector = 12
+
+        else:
+            vector = self.__estadoVector(
+                {
+                    'estado': bitsDeStatusI,
+                    'normal': 8,
+                    'apagado': 9
+                }
+            )
+        return vector
+
     def __prepararTrama(self, trama):
         """
         Remueve los indices innecesarios para mostrar el estado
         :return:
         """
-        trama.pop('byteDeStatus_a')
+        # trama.pop('byteDeStatus_a')
         trama.pop('byteDeStatus_b')
         trama.pop('byteDeStatus_c')
-        trama.pop('bitsDeStatusI')
         trama.pop('bitsDeStatusII')
         trama.pop('bitsDeStatusIII')
         trama.pop('object')
         trama.pop('bitsDeAlarma')
 
         return trama
-
 
     def __obtenerAlarmas(self, data):
         '''
@@ -94,27 +102,20 @@ class ReporteDeStatus(object):
 
     def __setAlertasBitsDeStatusI(self, trama):
         # Remuevo los indices que no evalúo
-        trama.pop('VP', None)
-        trama.pop('C', None)
-        trama.pop('TD', None)
-        # trama.pop('LP', None)
+        new_trama = dict()
+        if trama['PFL']['est']['val'] != 0:
+            new_trama['PFL'] = trama['PFL']
 
-        if trama['PFL']['est']['val'] == 0:
-            trama.pop('PFL', None)
+        if trama['CP']['est']['val'] != 0:
+            new_trama['CP'] = trama['CP']
 
-        if trama['CP']['est']['val'] == 0:
-            trama.pop('CP', None)
+        if trama['LP']['est']['val'] != 0:
+            new_trama['LP'] = trama['LP']
 
-        if trama['LP']['est']['val'] == 1:
-            trama.pop('LP', None)
+        if trama['AP']['est']['val'] != 0:
+            new_trama['AP'] = trama['AP']
 
-        if trama['AP']['est']['val'] == 0:
-            trama.pop('AP', None)
-
-        if trama['TIT']['est']['val'] == 0:
-            trama.pop('TIT', None)
-
-        return trama
+        return new_trama
 
     def __obtenerByteDeStatus(self, trama):
         if 'byteDeStatus_a' in trama:
