@@ -62,9 +62,10 @@ class RespuestaConsultaPuestoConteo(object):
 
     def __ocupacion(self, numero, valor):
         b = {
-            'tiempoOcupacion{0}'.format(numero): {
+            'ocupacion{0}'.format(numero): {
                 'des': 'ocupación {0}'.format(numero),
-                'val': int(valor),
+                # 'val': int(valor),
+                'val': 0,
             }
         }
         return b
@@ -77,6 +78,7 @@ if __name__ == "__main__":
     #
     trama1 = '00 00 00 00 FF 01 00 01 E0 00 21 3E 1B BB 01 D0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF B0'
     trama2 = '00 00 00 00 FF 01 00 01 E0 00 21 3E 1B BB F0 51 01 02 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 3D'
+    trama3 = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'E0', 10: '00', 11: '21', 12: '3F', 13: '0B', 14: 'B8', 15: '00', 16: '14', 17: '00', 18: '20', 19: '00', 20: '01', 21: '02', 22: '03', 23: '04', 24: '05', 25: '06', 26: '07', 27: '08', 28: '0A', 29: '0B', 30: '0C', 31: '0D', 32: '0E', 33: '0F', 34: '10', 35: '11', 36: '00', 37: 'B0'}
     #
     print(trama1 + '\n')
     respuestaPuestoConteo = RespuestaConsultaPuestoConteo()
@@ -84,6 +86,6 @@ if __name__ == "__main__":
 
     tramaOrdenada = ot.ordenartrama(trama1)
 
-    retorno = respuestaPuestoConteo.respuesta(tramaOrdenada)
+    retorno = respuestaPuestoConteo.respuesta(trama3)
     pp = pprint.PrettyPrinter(indent=4, width=200, depth=8, compact=True)
     pp.pprint(retorno)
