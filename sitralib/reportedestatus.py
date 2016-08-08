@@ -109,7 +109,7 @@ class ReporteDeStatus(object):
         if trama['CP']['est']['val'] != 0:
             new_trama['CP'] = trama['CP']
 
-        if trama['LP']['est']['val'] != 0:
+        if trama['LP']['est']['val'] == 0:
             new_trama['LP'] = trama['LP']
 
         if trama['AP']['est']['val'] != 0:

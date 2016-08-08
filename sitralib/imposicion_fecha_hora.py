@@ -50,13 +50,18 @@ class ImposicionFechaHora(object):
         bcc1 = self.bcc.validateBccIntermadio(telegramaEnvio)
         telegramaEnvio[POSICION_BCC_INTERMEDIO] = bcc1
         # Segunda validación BCC
-        bcc2 = self.bcc.validateBccFinal(telegramaEnvio,
-                                         POSICION_BCC_INTERMEDIO,
-                                         POSICION_BCC_FINAL)
+        bcc2 = self.bcc.validateBccFinal(
+            telegramaEnvio,
+            POSICION_BCC_INTERMEDIO,
+            POSICION_BCC_FINAL
+        )
         telegramaEnvio[POSICION_BCC_FINAL] = bcc2
 
-        if self.bcc.isValidBcc(telegramaEnvio, POSICION_BCC_INTERMEDIO,
-                               POSICION_BCC_FINAL):
+        if self.bcc.isValidBcc(
+                telegramaEnvio,
+                POSICION_BCC_INTERMEDIO,
+                POSICION_BCC_FINAL
+        ):
             return ' '.join(telegramaEnvio.values())
         else:
             return None
@@ -82,8 +87,8 @@ if __name__ == '__main__':
     # Ejemplo
     imposicionFechaHora = ImposicionFechaHora()
     trama = imposicionFechaHora.create(
-            grp_id_numero=30,
-            crs_numero=3000,
-            datetime='2015-10-09 06:29:00'
+        grp_id_numero=30,
+        crs_numero=3000,
+        datetime='2015-10-09 06:29:00'
     )
     print(trama)

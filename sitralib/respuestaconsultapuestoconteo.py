@@ -55,7 +55,7 @@ class RespuestaConsultaPuestoConteo(object):
         a = {
             'espira{0}'.format(numero): {
                 'des': 'espira {0}'.format(numero),
-                'val': int(valor),
+                'val': int(valor, 16),
             }
         }
         return a
@@ -64,8 +64,7 @@ class RespuestaConsultaPuestoConteo(object):
         b = {
             'ocupacion{0}'.format(numero): {
                 'des': 'ocupación {0}'.format(numero),
-                # 'val': int(valor),
-                'val': 0,
+                'val': int(valor, 16),
             }
         }
         return b

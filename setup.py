@@ -1,8 +1,8 @@
 from distutils.core import setup
 
 setup(
-    name='sitra',
-    version='1.0.5',
+    name='sitralib',
+    version='1.0.7',
     py_modules=[
         'sitralib.validators.bcc',
         'sitralib.helpers.fecha',
@@ -20,8 +20,18 @@ setup(
         'sitralib.consultaestadoextendido',
         'sitralib.consultapuestoconteo',
         'sitralib.enviocomando',
-        'sitralib.imposicionfechahora',
+        'sitralib.grabacion_eeprom',
+        'sitralib.imposicion_fecha_hora',
         'sitralib.reportedestatus',
+        'sitralib.respuesta_agenda_anual',
+        'sitralib.respuesta_agenda_diaria',
+        'sitralib.respuesta_agenda_feriados_especial',
+        'sitralib.respuesta_estrucutra_parte_alta',
+        'sitralib.respuesta_estrucutra_parte_baja',
+        'sitralib.respuesta_funciones',
+        'sitralib.respuesta_matriz_conflictos',
+        'sitralib.respuesta_preajustes',
+        'sitralib.respuesta_programa_tiempos',
         'sitralib.respuesta',
         'sitralib.respuestaconsultagurpoextendido',
         'sitralib.respuestaconsultapuestoconteo',
