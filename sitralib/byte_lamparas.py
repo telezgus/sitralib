@@ -1,11 +1,11 @@
 from sitralib.helpers.funciones import *
 
 
-class ByteDeLamparas(object):
+class ByteLamparas(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def byteDeLamparas(self, hex, mov=False, **opt):
+    def byteLamparas(self, hex, mov=False, **opt):
         """
         Obtiene los valores para los movimientos de lámpara
         :param hex: string, Numero hexadecimal

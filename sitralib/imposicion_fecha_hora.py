@@ -84,11 +84,14 @@ if __name__ == '__main__':
         print(trama)
     """
     print(help_text)
+    import datetime
     # Ejemplo
+    date = datetime.datetime.now()
+    date_now = date.strftime('%Y-%m-%d %H:%M:%S')
     imposicionFechaHora = ImposicionFechaHora()
     trama = imposicionFechaHora.create(
         grp_id_numero=30,
         crs_numero=3000,
-        datetime='2015-10-09 06:29:00'
+        datetime=date_now
     )
     print(trama)

@@ -1,8 +1,8 @@
-from sitralib.bitsdealarma import *
-from sitralib.bitsdestatusi import *
-from sitralib.bitsdestatusii import *
-from sitralib.bitsdestatusiii import *
-from sitralib.bytedestatus import *
+from sitralib.bits_alarma import *
+from sitralib.bits_status_i import *
+from sitralib.bits_status_ii import *
+from sitralib.bits_status_iii import *
+from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 
 

@@ -1,13 +1,13 @@
 from sitralib.helpers.funciones import *
 
-from sitralib.helpers.ordenartrama import *
-from sitralib.respuestaconsultagurpoextendido import *
-from sitralib.respuestaestadoenviocomando import *
+from sitralib.helpers.ordenar_trama import *
+from sitralib.respuesta_consulta_gurpo_extendido import *
+from sitralib.respuesta_estado_envio_comando import *
 
-from sitralib.respuestaenviocomando import *
-from sitralib.enviocomando import *
+from sitralib.respuesta_envio_comando import *
+from sitralib.envio_comando import *
 
-from sitralib.respuestaconsultapuestoconteo import *
+from sitralib.respuesta_consulta_puesto_conteo import *
 # Grabacion
 from sitralib.grabacion_eeprom import *
 from sitralib.respuesta_agenda_anual import *
@@ -27,7 +27,7 @@ class Respuesta(object):
         self.ordtrama = OrdenarTrama()
 
     def obtenerRespuesta(self, trama):
-        trm = self.ordtrama.ordenartrama(trama)
+        trm = self.ordtrama.ordenarTrama(trama)
 
         if 9 in trm:
             dec = self.helpers.hexToDec(trm[9])

@@ -2,11 +2,11 @@ from sitralib.helpers.byte import *
 from sitralib.helpers.funciones import *
 
 
-class BitsDeAlarma(object):
+class BitsAlarma(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def bitsDeAlarma(self, hex):
+    def bitsAlarma(self, hex):
         if self.helpers.isHex(hex) == False:
             pass
 
@@ -50,16 +50,16 @@ class BitsDeAlarma(object):
         else:
             estado['GPS'].update({'est': {'val': 0, 'des': 'Normal'}})
 
-        est = {'bitsDeAlarma': estado}
+        est = {'bits_alarma': estado}
         return est
 
 if __name__ == "__main__":
     help_text = """
-    a = BitsDeAlarma()
-    b = a.bitsDeAlarma('01')
+    a = BitsAlarma()
+    b = a.bitsAlarma('01')
     print(b)
     """
     print(help_text)
-    a = BitsDeAlarma()
-    b = a.bitsDeAlarma('01')
+    a = BitsAlarma()
+    b = a.bitsAlarma('01')
     print(b)

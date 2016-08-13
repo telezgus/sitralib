@@ -5,7 +5,7 @@ class OrdenarTrama(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def ordenartrama(self, trama):
+    def ordenarTrama(self, trama):
         trmdict = self.__tramaToDict(trama)
 
         key = self.__getFfPosition(trmdict)

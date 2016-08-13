@@ -1,11 +1,11 @@
 from sitralib.helpers.funciones import *
 
 
-class ByteDeStatus(object):
+class ByteStatus(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def byteDeStatus(self, hex):
+    def byteStatus(self, hex):
         sta = {}
         status = {}
         if self.helpers.isHex(hex) == False:

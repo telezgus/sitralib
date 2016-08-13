@@ -1,41 +1,41 @@
 import sys
 
 
-class ReporteDeStatus(object):
+class ReporteEstado(object):
     def validar(self, trama):
 
         if not trama: return {}
         t = dict()
 
-        byteDeStatus = self.__obtenerByteDeStatus(trama)
-        bitsDeStatusI = self.__obtenerBitsDeStatusI(trama)
-        bitsDeAlarmas = self.__obtenerBitsDeAlarmas(trama)
+        byteDeStatus = self.__obtenerByteStatus(trama)
+        bitsDeStatusI = self.__obtenerBitsStatusI(trama)
+        bitsDeAlarmas = self.__obtenerBitsAlarmas(trama)
         numeroDeCruce = self.__obtenerNumeroCruce(trama)
 
         if trama:
-            t['numeroDeCruce'] = numeroDeCruce
-            t['bitsDeStatusI'] = bitsDeStatusI
+            t['numero_cruce'] = numeroDeCruce
+            t['bits_status_i'] = bitsDeStatusI
             t['est'] = self.__estadoIndicador({'estado': bitsDeStatusI})
             t['vtr'] = self.__vector(bitsDeStatusI)
 
             # Agrupo las alertas
             alertas = dict()
             alertas.update(
-                {'byteDeStatus': self.__setAlertasByteDeStatus(byteDeStatus)})
+                {'byte_status': self.__setAlertasByteDeStatus(byteDeStatus)})
 
             alertas.update(
-                {'bitsDeStatusI': self.__setAlertasBitsDeStatusI(
+                {'bits_status_i': self.__setAlertasBitsDeStatusI(
                     bitsDeStatusI)})
 
             alertas.update(
-                {'bitsDeAlarma': self.__setAlertasBitsDeAlarmas(bitsDeAlarmas)})
+                {'bits_alarma': self.__setAlertasBitsDeAlarmas(bitsDeAlarmas)})
 
             # Incluyo las alertas en el diccionario de retorno
             t['alertas'] = alertas
 
             # Si la trama contempla propiedades de evaluación del
             # estado extendido
-            if 'byteDeLamparas' in trama:
+            if 'byte_lamparas' in trama:
                 t.update(self.__prepararTrama(trama))
             return t
 
@@ -75,12 +75,12 @@ class ReporteDeStatus(object):
         :return:
         """
         # trama.pop('byteDeStatus_a')
-        trama.pop('byteDeStatus_b')
-        trama.pop('byteDeStatus_c')
-        trama.pop('bitsDeStatusII')
-        trama.pop('bitsDeStatusIII')
+        trama.pop('byte_status_b')
+        trama.pop('byte_status_c')
+        trama.pop('bits_status_ii')
+        trama.pop('bits_status_iii')
         trama.pop('object')
-        trama.pop('bitsDeAlarma')
+        trama.pop('bits_alarma')
 
         return trama
 
@@ -90,13 +90,13 @@ class ReporteDeStatus(object):
         '''
         sys.exit(0)
 
-    def __obtenerBitsDeStatusI(self, trama):
+    def __obtenerBitsStatusI(self, trama):
         '''
         Evalua la trama C8 ó C9 y obtiene la colección de datos para
         los bitsDeStatusI
         '''
-        if 'bitsDeStatusI' in trama:
-            return trama['bitsDeStatusI']
+        if 'bits_status_i' in trama:
+            return trama['bits_status_i']
 
         return {}
 
@@ -117,9 +117,9 @@ class ReporteDeStatus(object):
 
         return new_trama
 
-    def __obtenerByteDeStatus(self, trama):
-        if 'byteDeStatus_a' in trama:
-            return trama['byteDeStatus_a']
+    def __obtenerByteStatus(self, trama):
+        if 'byte_status_a' in trama:
+            return trama['byte_status_a']
 
         return {}
 
@@ -136,18 +136,18 @@ class ReporteDeStatus(object):
         los bitsDeStatusI
         'numeroDeCruce': ['0B', 'B8'],
         '''
-        if 'numeroDeCruce' in trama:
-            return trama['numeroDeCruce']
+        if 'numero_cruce' in trama:
+            return trama['numero_cruce']
 
         return {}
 
-    def __obtenerBitsDeAlarmas(self, trama):
+    def __obtenerBitsAlarmas(self, trama):
         '''
         Evalua la trama C8 ó C9 y obtiene la colección de datos para
         los bits de alarmas
         '''
-        if 'bitsDeAlarma' in trama:
-            return trama['bitsDeAlarma']
+        if 'bits_alarma' in trama:
+            return trama['bits_alarma']
 
         return {}
 

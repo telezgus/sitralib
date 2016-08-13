@@ -2,11 +2,11 @@ from sitralib.helpers.byte import *
 from sitralib.helpers.funciones import *
 
 
-class BitsDeStatusI(object):
+class BitsStatusI(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def bitsDeStatusI(self, hex):
+    def bitsStatusI(self, hex):
         if self.helpers.isHex(hex) == False:
             pass
 
@@ -64,7 +64,7 @@ class BitsDeStatusI(object):
         else:
             estado['TIT'].update({'est': {'val': 0, 'des': 'Normal'}})
 
-        est = {'bitsDeStatusI': estado}
+        est = {'bits_status_i': estado}
 
         return est
 

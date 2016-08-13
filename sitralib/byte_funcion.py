@@ -1,11 +1,11 @@
 from sitralib.helpers.funciones import *
 
 
-class ByteDeFuncion(object):
+class ByteFuncion(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def byteDeFuncion(self, hex):
+    def byteFuncion(self, hex):
 
         std = {}
         dec = self.helpers.hexToDec(hex)
@@ -112,7 +112,7 @@ class ByteDeFuncion(object):
                 'des': 'Borra todas las demandas'
             }}}
 
-        r = {'byteDeFuncion': std}
+        r = {'byte_funcion': std}
         return r
 
 

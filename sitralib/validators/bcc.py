@@ -43,7 +43,7 @@ class Bcc(object):
 
 
 if __name__ == "__main__":
-    from sitralib.helpers.ordenartrama import *
+    from sitralib.helpers.ordenar_trama import *
 
     trama1 = '00 00 00 00 FF 00 00 01 7C 00 0C 8E 1B BB 01 2F'
 

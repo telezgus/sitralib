@@ -1,9 +1,9 @@
 from sitralib.validators.bcc import *
-from sitralib.bitsdealarma import *
-from sitralib.bitsdestatusi import *
-from sitralib.bitsdestatusii import *
-from sitralib.bitsdestatusiii import *
-from sitralib.bytedestatus import *
+from sitralib.bits_alarma import *
+from sitralib.bits_status_i import *
+from sitralib.bits_status_ii import *
+from sitralib.bits_status_iii import *
+from sitralib.byte_status import *
 from sitralib.helpers.funciones import *
 
 POSICION_BCC_INTERMEDIO = 12
@@ -13,22 +13,22 @@ POSICION_BCC_FINAL = 37
 class RespuestaConsultaPuestoConteo(object):
     def __init__(self):
         self.helpers = Helpers()
-        self.bytSta = ByteDeStatus()
-        self.bitStaI = BitsDeStatusI()
-        self.bitStaII = BitsDeStatusII()
-        self.bitStaIII = BitsDeStatusIII()
-        self.bitAla = BitsDeAlarma()
+        self.bytSta = ByteStatus()
+        self.bitStaI = BitsStatusI()
+        self.bitStaII = BitsStatusII()
+        self.bitStaIII = BitsStatusIII()
+        self.bitAla = BitsAlarma()
         self.validateBcc = Bcc()
 
     def respuesta(self, trm):
         res = None
         if (self.validateBcc.isValidBcc(trm, POSICION_BCC_INTERMEDIO,
                                         POSICION_BCC_FINAL)):
-            res = {'byteDeStatus_a': self.bytSta.byteDeStatus(trm[15])}
-            res.update(self.bitStaI.bitsDeStatusI(trm[16]))
-            res.update(self.bitStaII.bitsDeStatusII(trm[17]))
-            res.update(self.bitAla.bitsDeAlarma(trm[18]))
-            res.update(self.bitStaIII.bitsDeStatusIII(trm[19]))
+            res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
+            res.update(self.bitStaI.bitsStatusI(trm[16]))
+            res.update(self.bitStaII.bitsStatusII(trm[17]))
+            res.update(self.bitAla.bitsAlarma(trm[18]))
+            res.update(self.bitStaIII.bitsStatusIII(trm[19]))
             # Valor de espira
             res.update(self.__espira(1, trm[20]))
             res.update(self.__espira(2, trm[21]))
@@ -71,7 +71,7 @@ class RespuestaConsultaPuestoConteo(object):
 
 
 if __name__ == "__main__":
-    from sitralib.helpers.ordenartrama import *
+    from sitralib.helpers.ordenar_trama import *
     import pprint
 
     #

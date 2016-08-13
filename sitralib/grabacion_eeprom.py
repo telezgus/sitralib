@@ -1,8 +1,8 @@
-from sitralib.bitsdealarma import *
-from sitralib.bitsdestatusi import *
-from sitralib.bitsdestatusii import *
-from sitralib.bitsdestatusiii import *
-from sitralib.bytedestatus import *
+from sitralib.bits_alarma import *
+from sitralib.bits_status_i import *
+from sitralib.bits_status_ii import *
+from sitralib.bits_status_iii import *
+from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 
 
@@ -14,28 +14,28 @@ class GrabacionEeprom(object):
     """
 
     def __init__(self):
-        self.bytSta = ByteDeStatus()
-        self.bitStaI = BitsDeStatusI()
-        self.bitStaII = BitsDeStatusII()
-        self.bitStaIII = BitsDeStatusIII()
-        self.bitAla = BitsDeAlarma()
+        self.bytSta = ByteStatus()
+        self.bitStaI = BitsStatusI()
+        self.bitStaII = BitsStatusII()
+        self.bitStaIII = BitsStatusIII()
+        self.bitAla = BitsAlarma()
         self.validateBcc = Bcc()
 
     def grabar(self, trm):
         res = None
 
         if (self.validateBcc.isValidBcc(trm, 12, 26)):
-            res = {'byteDeStatus_a': self.bytSta.byteDeStatus(trm[15])}
-            res.update({'numeroDeCruce': [trm[13], trm[14]]})
-            res.update(self.bitStaI.bitsDeStatusI(trm[16]))
-            res.update(self.bitStaII.bitsDeStatusII(trm[17]))
-            res.update(self.bitAla.bitsDeAlarma(trm[18]))
-            res.update(self.bitStaIII.bitsDeStatusIII(trm[19]))
-            res.update({'statusGrabacion': trm[20]})
-            res.update({'posicionActualGrabacionMSB': trm[21]})
-            res.update({'posicionActualGrabacionLSB': trm[22]})
-            res.update({'posicionFinalMemoriaMSB': trm[23]})
-            res.update({'posicionFinalMemoriaLSB': trm[24]})
+            res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
+            res.update({'numero_cruce': [trm[13], trm[14]]})
+            res.update(self.bitStaI.bitsStatusI(trm[16]))
+            res.update(self.bitStaII.bitsStatusII(trm[17]))
+            res.update(self.bitAla.bitsAlarma(trm[18]))
+            res.update(self.bitStaIII.bitsStatusIII(trm[19]))
+            res.update({'status_grabacion': trm[20]})
+            res.update({'posicion_actual_grabacion_msb': trm[21]})
+            res.update({'posicion_actual_grabacion_lsb': trm[22]})
+            res.update({'posicion_final_memoria_msb': trm[23]})
+            res.update({'posicion_final_memoria_lsb': trm[24]})
             res.update({'object': 'GrabacionEeprom'})
 
         return res
