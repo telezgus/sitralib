@@ -6,44 +6,40 @@ class Fecha(object):
         self.helpers = Helpers()
 
     def fecha(self, **kwargs):
-        timestamp = self.__normalizar_fecha(
-            year=kwargs["year"],
-            month=kwargs["month"],
-            day=kwargs["day"],
-            hour=kwargs["hour"],
-            minutes=kwargs["minutes"],
-            seconds=kwargs["seconds"]
-        )
-
-        d = {
-            'year': kwargs["year"],
-            'month': kwargs["month"],
-            'day': kwargs["day"],
-            'hour': kwargs["hour"],
-            'minutes': kwargs["minutes"],
-            'seconds': kwargs["seconds"],
+        """
+        Obtiene la fecha y la retorna en los diferentes formatos segun la app
+        :param kwargs: dict
+        :return: dict
+        """
+        timestamp = self.__normalizar_fecha(**kwargs)
+        kwargs.update({
             'timestamp': timestamp,
             'wday': self.__day_of_week(kwargs["wday"])
-        }
-        return d
+        })
+        return kwargs
 
     def __normalizar_fecha(self, **kwargs):
+        """
+        Agrega timestamp y wday a la fecha.
+        :param kwargs: dict
+        :return: dict
+        """
         date_separator = '-'
         time_separator = ':'
-
-        datetime = '{0}{6}{1}{6}{2}T{3}{7}{4}{7}{5}'.format(
-            kwargs["year"],
-            kwargs["month"],
-            kwargs["day"],
-            kwargs["hour"],
-            kwargs["minutes"],
-            kwargs["seconds"],
-            date_separator,
-            time_separator
+        datetime = "{year}{dsep}{month}{dsep}{day}T" \
+                   "{hour}{tsep}{minutes}{tsep}{seconds}".format(
+            dsep=date_separator,
+            tsep=time_separator,
+            **kwargs
         )
         return datetime
 
     def __day_of_week(self, tm_wday):
+        """
+        Retorna el dia de la semana. Español unicamente.
+        :param tm_wday: integer
+        :return: string
+        """
         wday = self.helpers.hexToDec(tm_wday)
         dias = {
             1: 'domingo',
