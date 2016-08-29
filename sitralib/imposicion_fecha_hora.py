@@ -18,8 +18,14 @@ class ImposicionFechaHora(object):
         self.bcc = Bcc()
 
     def create(self, **kwargs):
-        numeroControlador = self.helpers.intToHexString(kwargs['crs_numero'], 4)
-        tme = time.strptime(kwargs['datetime'], "%Y-%m-%d %H:%M:%S")
+        numeroControlador = self.helpers.intToHexString(
+            kwargs['crs_numero'],
+            4
+        )
+        tme = time.strptime(
+            kwargs['datetime'],
+            "%Y-%m-%d %H:%M:%S"
+        )
 
         telegramaEnvio = {
             1: '00',
@@ -85,6 +91,7 @@ if __name__ == '__main__':
     """
     print(help_text)
     import datetime
+
     # Ejemplo
     date = datetime.datetime.now()
     date_now = date.strftime('%Y-%m-%d %H:%M:%S')

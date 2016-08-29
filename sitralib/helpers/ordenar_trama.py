@@ -7,7 +7,6 @@ class OrdenarTrama(object):
 
     def ordenarTrama(self, trama):
         trmdict = self.__tramaToDict(trama)
-
         key = self.__getFfPosition(trmdict)
 
         if key == None: return {}

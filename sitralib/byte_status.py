@@ -6,7 +6,6 @@ class ByteStatus(object):
         self.helpers = Helpers()
 
     def byteStatus(self, hex):
-        sta = {}
         status = {}
         if self.helpers.isHex(hex) == False:
             pass
@@ -35,7 +34,6 @@ class ByteStatus(object):
         else:
             status = False
 
-        # sta['byteDeStatus'] = status
         return status
 
 

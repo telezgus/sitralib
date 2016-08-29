@@ -5,7 +5,7 @@ class ByteLamparas(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def byteLamparas(self, hex, mov=False, **opt):
+    def byteLamparas(self, hex, mov=False, **kwargs):
         """
         Obtiene los valores para los movimientos de lámpara
         :param hex: string, Numero hexadecimal
@@ -18,13 +18,14 @@ class ByteLamparas(object):
         valLo = self.__getTipo(val['lo'])
         valHi = self.__getTipo(val['hi'])
 
-        if mov == opt['hi']:
+        if mov == kwargs['hi']:
             return valHi
-        elif mov == opt['lo']:
+        elif mov == kwargs['lo']:
             return valLo
         else:
             return {
-                'mov{0}'.format(opt['hi']): valHi, 'mov{0}'.format(opt['lo']): valLo
+                'mov{hi}'.format(kwargs): valHi,
+                'mov{lo}'.format(kwargs): valLo
             }
 
     def __getTipo(self, val):
@@ -91,6 +92,6 @@ if __name__ == "__main__":
     # ejemplo
     print(help_text)
     opt = {'hi': 2, 'lo': 1}
-    a = ByteDeLamparas()
-    b = a.byteDeLamparas('01', hi=2, lo=1, mov=2)
+    a = ByteLamparas()
+    b = a.byteLamparas('01', hi=2, lo=1, mov=2)
     print(b)

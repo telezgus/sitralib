@@ -43,6 +43,6 @@ if __name__ == "__main__":
     """
     # ejemplo
     print(help_text)
-    a = BitsDeStatusIII()
-    b = a.bitsDeStatusIII('01')
+    a = BitsStatusIII()
+    b = a.bitsStatusIII('01')
     print(b)

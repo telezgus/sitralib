@@ -5,126 +5,93 @@ class ByteFuncion(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def byteFuncion(self, hex):
-
-        std = {}
+    def get(self, hex):
         dec = self.helpers.hexToDec(hex)
 
         if (dec == 0):
-            std = {'NAN': {'est': {
-                'val': 1,
-                'des': 'Ninguna'
-            }}}
-
+            cod = 'NAN'
+            val = '00'
+            des = 'Ninguna'
         elif (dec == 1):
-            std = {'SY': {'est': {
-                'val': 1,
-                'des': 'Sincronismo'
-            }}}
-
+            cod = 'SY'
+            val = '01'
+            des = 'Sincronismo'
         elif (dec == 2):
-            std = {'FO': {'est': {
-                'val': 1,
-                'des': 'Avance'
-            }}}
-
+            cod = 'FO'
+            val = '02'
+            des = 'Avance'
         elif (dec == 3):
-            std = {'JC': {'est': {
-                'val': 1,
-                'des': 'Salto incondicional'
-            }}}
-
+            cod = 'JC'
+            val = '03'
+            des = 'Salto incondicional'
         elif (dec == 4):
-            std = {'STE': {'est': {
-                'val': 1,
-                'des': 'Extensión'
-            }}}
-
+            cod = 'STE'
+            val = '04'
+            des = 'Extensión'
         elif (dec == 5):
-            std = {'JU': {'est': {
-                'val': 1,
-                'des': 'Salto incondicional'
-            }}}
-
+            cod = 'JU'
+            val = '05'
+            des = 'Salto incondicional'
         elif (dec == 6):
-            std = {'SY+JC': {'est': {
-                'val': 1,
-                'des': 'Sincronismo + salto condicional'
-            }}}
-
+            cod = 'SY+JC'
+            val = '06'
+            des = 'Sincronismo + salto condicional'
         elif (dec == 7):
-            std = {'FO+JC': {'est': {
-                'val': 1,
-                'des': 'Avance + salto incondicional'
-            }}}
-
+            cod = 'FO+JC'
+            val = '07'
+            des = 'Avance + salto incondicional'
         elif (dec == 8):
-            std = {'RD1': {'est': {
-                'val': 1,
-                'des': 'Borrar demanda 1'
-            }}}
-
+            cod = 'RD1'
+            val = '08'
+            des = 'Borrar demanda 1'
         elif (dec == 9):
-            std = {'RD2': {'est': {
-                'val': 1,
-                'des': 'Borrar demanda 2'
-            }}}
-
+            cod = 'RD2'
+            val = '09'
+            des = 'Borrar demanda 2'
         elif (dec == 10):
-            std = {'RD3': {'est': {
-                'val': 1,
-                'des': 'Borrar demanda 3'
-            }}}
-
+            cod = 'RD3'
+            val = '0A'
+            des = 'Borrar demanda 3'
         elif (dec == 11):
-            std = {'RD4': {'est': {
-                'val': 1,
-                'des': 'Borrar demanda 4'
-            }}}
-
+            cod = 'RD4'
+            val = '0B'
+            des = 'Borrar demanda 4'
         elif (dec == 12):
-            std = {'RD5': {'est': {
-                'val': 1,
-                'des': 'Borrar demanda 5'
-            }}}
-
+            cod = 'RD5'
+            val = '0C'
+            des = 'Borrar demanda 5'
         elif (dec == 13):
-            std = {'RD6': {'est': {
-                'val': 1,
-                'des': 'Borrar demanda 6'
-            }}}
-
+            cod = 'RD6'
+            val = '0D'
+            des = 'Borrar demanda 6'
         elif (dec == 14):
-            std = {'RD7': {'est': {
-                'val': 1,
-                'des': 'Borrar demanda 7'
-            }}}
-
+            cod = 'RD7'
+            val = '0D'
+            des = 'Borrar demanda 7'
         elif (dec == 15):
-            std = {'RD8': {'est': {
-                'val': 1,
-                'des': 'Borrar demanda 8'
-            }}}
-
+            cod = 'RD8'
+            val = '0F'
+            des = 'Borrar demanda 8'
         elif (dec == 16):
-            std = {'RAD': {'est': {
-                'val': 1,
-                'des': 'Borra todas las demandas'
-            }}}
+            cod = 'RAD'
+            val = '10'
+            des = 'Borra todas las demandas'
+        else:
+            return dict()
 
-        r = {'byte_funcion': std}
-        return r
+        std = {'cod': cod, 'val': val, 'des': des}
+        return std
 
 
 if __name__ == "__main__":
     help_text = """
     Ejemplo:
-        a = ByteDeFuncion()
-        b = a.byteDeFuncion('01')
+        a = ByteFuncion()
+        b = a.byteFuncion('01')
         print(b)
     """
     print(help_text)
     # Ejemplo
-    a = ByteDeFuncion()
-    b = a.byteDeFuncion('01')
+    a = ByteFuncion()
+    b = a.byteFuncion('01')
     print(b)

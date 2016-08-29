@@ -11,7 +11,10 @@ class ConsultaPuestoConteo(object):
         self.bcc = Bcc()
 
     def create(self, **kwargs):
-        numeroControlador = self.helpers.intToHexString(kwargs['crs_numero'], 4)
+        numeroControlador = self.helpers.intToHexString(
+            kwargs['crs_numero'],
+            4
+        )
 
         telegramaEnvio = {
             1: '00',
@@ -36,13 +39,17 @@ class ConsultaPuestoConteo(object):
         bcc1 = self.bcc.validateBccIntermadio(telegramaEnvio)
         telegramaEnvio[POSICION_BCC_INTERMEDIO] = bcc1
 
-        bcc2 = self.bcc.validateBccFinal(telegramaEnvio,
-                                         POSICION_BCC_INTERMEDIO,
-                                         POSICION_BCC_FINAL)
+        bcc2 = self.bcc.validateBccFinal(
+            telegramaEnvio,
+            POSICION_BCC_INTERMEDIO,
+            POSICION_BCC_FINAL
+        )
         telegramaEnvio[POSICION_BCC_FINAL] = bcc2
 
-        if self.bcc.isValidBcc(telegramaEnvio, POSICION_BCC_INTERMEDIO,
-                               POSICION_BCC_FINAL):
+        if self.bcc.isValidBcc(
+                telegramaEnvio,
+                POSICION_BCC_INTERMEDIO,
+                POSICION_BCC_FINAL):
             return ' '.join(telegramaEnvio.values())
         else:
             return None
@@ -54,7 +61,11 @@ if __name__ == "__main__":
 
     Ejemplo:
         a = ConsultaPuestoConteo()
-        trama = a.create(grp_id_numero=30, crs_numero=3000, ccm_id=1)
+        trama = a.create(
+            grp_id_numero=30,
+            crs_numero=3000,
+            ccm_id=1
+        )
         print(trama)
     """
     print(help_text)

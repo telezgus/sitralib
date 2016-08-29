@@ -73,10 +73,32 @@ class Helpers(object):
         else:
             return False
 
-    def getNibbles(self, hex):
+    def getNibbles(self, hex, zfill=None):
         hex.zfill(2)
-        nibble = {'hi': hex[0], 'lo': hex[1]}
+        if not zfill:
+            nibble = {
+                'hi': hex[0],
+                'lo': hex[1]
+            }
+        else:
+            nibble = {
+                'hi': self.sanitizeHex(hex[0], zfill),
+                'lo': self.sanitizeHex(hex[1], zfill)
+            }
         return nibble
+
+    def sliceDict(self, dict_original, **kwargs):
+        """
+        Obtiene una porción de un diccionario con indices numéricos.
+        :param dict_original: dict
+        :param kwargs: min=[int], max=[int]
+        :return: dict
+        """
+        slice = dict()
+        for val in dict_original:
+            if kwargs['min'] <= val <= kwargs['max']:
+                slice.update({val: dict_original[val]})
+        return slice;
 
 
 if __name__ == '__main__':
@@ -86,7 +108,7 @@ if __name__ == '__main__':
     print(hlp.hexToDec('AB'))
     print('\t')
     print('getNibbles("AB")')
-    print(hlp.getNibbles('AB'))
+    print(hlp.getNibbles('AB'), hlp.sanitizeHex(hlp.getNibbles('AB')['hi']))
     print('\t')
     print("sanitizeHex('B', 2)")
     print(hlp.sanitizeHex('B'))
