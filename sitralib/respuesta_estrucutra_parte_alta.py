@@ -25,7 +25,8 @@ class RespuestaEstrucutraParteAlta(object):
 
         if (self.validateBcc.isValidBcc(trm, 12, 20)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
-            res.update({'numero_cruce': [trm[13], trm[14]]})
+            res.update(
+                {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])})
             res.update(self.bitStaI.bitsStatusI(trm[16]))
             res.update(self.bitStaII.bitsStatusII(trm[17]))
             res.update(self.bitAla.bitsAlarma(trm[18]))

@@ -7,6 +7,7 @@ from sitralib.byte_status import *
 from sitralib.byte_funcion import *
 from sitralib.helpers.funciones import *
 
+
 class RespuestaConsultaEstructuraParteAlta(object):
     """
     Trama de respuesta de consulta estructura (parte alta) desde EC hacia CC
@@ -109,7 +110,8 @@ class RespuestaConsultaEstructuraParteAlta(object):
 
         if (self.validateBcc.isValidBcc(trm, 12, 255)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
-            res.update({'numero_cruce': [trm[13], trm[14]]})
+            res.update(
+                {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])})
             res.update(self.bitStaI.bitsStatusI(trm[16]))
             res.update(self.bitStaII.bitsStatusII(trm[17]))
             res.update(self.bitAla.bitsAlarma(trm[18]))

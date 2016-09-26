@@ -33,10 +33,7 @@ class RespuestaEnvioProgramaTiempos(object):
         if (self.validateBcc.isValidBcc(trm, 12, 81)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
             res.update(
-                {'numero_cruce': {
-                    'dec': self.helpers.hexToDec(trm[13] + trm[14]),
-                    'hex': trm[13] + trm[14]
-                }
+                {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])
             })
             res.update(self.bitStaI.bitsStatusI(trm[16]))
             res.update(self.bitStaII.bitsStatusII(trm[17]))
