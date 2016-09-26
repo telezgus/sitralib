@@ -83,7 +83,7 @@ if __name__ == "__main__":
     respuestaPuestoConteo = RespuestaConsultaPuestoConteo()
     ot = OrdenarTrama()
 
-    tramaOrdenada = ot.ordenartrama(trama1)
+    tramaOrdenada = ot.ordenarTrama(trama1)
 
     retorno = respuestaPuestoConteo.respuesta(trama3)
     pp = pprint.PrettyPrinter(indent=4, width=200, depth=8, compact=True)
