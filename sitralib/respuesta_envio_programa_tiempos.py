@@ -30,21 +30,18 @@ class RespuestaEnvioProgramaTiempos(object):
         self.bytFun = ByteFuncion()
 
     def respuestaEnvioProgramaTiempos(self, trm):
-
         if (self.validateBcc.isValidBcc(trm, 12, 81)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
             res.update(
                 {'numero_cruce': {
                     'dec': self.helpers.hexToDec(trm[13] + trm[14]),
                     'hex': trm[13] + trm[14]
-                    }
-                })
+                }
+            })
             res.update(self.bitStaI.bitsStatusI(trm[16]))
             res.update(self.bitStaII.bitsStatusII(trm[17]))
             res.update(self.bitAla.bitsAlarma(trm[18]))
             res.update(self.bitStaIII.bitsStatusIII(trm[19]))
-
-            # inicio
             res.update(
                 {'numero_programa': self.helpers.hexToDec(trm[20])})
             res.update(
@@ -55,23 +52,6 @@ class RespuestaEnvioProgramaTiempos(object):
                 {'desfasaje': self.__get_desfasaje(trm)})
             res.update(
                 {'tiempos_intervalo': self.__get_tiempos_intervalo(trm)})
-            #
-
-
-            # res.update({'desfasaje': self._joinNibblesCuad(trm[52], trm[53])})
-            # res.update(
-            #     {'tiempo_real_2': self._joinNibblesCuad(trm[44], trm[45])})
-            # res.update(
-            #     {'tiempo_prescripto_2': self._joinNibblesCuad(trm[48],
-            #                                                   trm[49])})
-            # res.update({'estructura': self.helpers.hexToDec(trm[35])})
-            # res.update({'programa_tiempos': self.helpers.hexToDec(trm[36])})
-            # res.update({'byte_status_b': self.bytSta.byteStatus(trm[37])})
-            # res.update({'numero_paso': self.helpers.hexToDec(trm[38])})
-            # res.update({'segundo_paso': self.helpers.hexToDec(trm[39])})
-            # res.update({'byte_status_c': self.bytSta.byteStatus(trm[42])})
-            # res.update({'duracion_paso': self.helpers.hexToDec(trm[43])})
-
             res.update({'object': 'respuestaEnvioProgramaTiempos'})
 
             return res
