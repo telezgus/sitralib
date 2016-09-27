@@ -26,8 +26,6 @@ class RespuestaConsultaAgendaDiaria(object):
     def respuestaConsultaAgendaDiaria(self, trm):
         if (self.validateBcc.isValidBcc(trm, 12, 61)):
 
-            self.__set_agendas_diarias_horas(trm)
-
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
             res.update(
                 {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])})
