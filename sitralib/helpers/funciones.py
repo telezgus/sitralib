@@ -60,15 +60,15 @@ class Helpers(object):
         else:
             return False
 
-    def validateBetween(self, **data):
+    def validateBetween(self, **kwargs):
         """
         Valida un que un número este comprendido entre un valor máximo y
         un mínimo. Lo valores se toman inclusivamente; esto es, contando los
         minimos y máximos.
-        :param data: Diccionario {'min':int, 'max': int, 'number':int}
+        :param kwargs: Diccionario {'min':int, 'max': int, 'number':int}
         :return: boolean
         """
-        if data['min'] <= data['number'] <= data['max']:
+        if kwargs['min'] <= int(kwargs['number']) <= kwargs['max']:
             return True
         else:
             return False
