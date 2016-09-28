@@ -124,7 +124,8 @@ class RespuestaConsultaAgendaFeriadosEspecial(object):
 if __name__ == "__main__":
     help_text = """
     obj = RespuestaConsultaAgendaFeriadosEspecial()
-    retorno = obj.RespuestaConsultaAgendaFeriadosEspecial({5: 'FF', 6: '00', 8: ... })
+    retorno = obj.RespuestaConsultaAgendaFeriadosEspecial(
+                        {5: 'FF', 6: '00', 8: ... })
     """
     print(help_text)
 
