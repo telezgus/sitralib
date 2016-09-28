@@ -71,11 +71,11 @@ class BitsStatusI(object):
 
 if __name__ == "__main__":
     help_text = """
-    a = BitsDeStatusI()
-    b = a.bitsDeStatusI('01')
+    a = BitsStatusI()
+    b = a.bitsStatusI('01')
     print(b)
     """
     print(help_text)
-    a = BitsDeStatusI()
-    b = a.bitsDeStatusI('01')
+    a = BitsStatusI()
+    b = a.bitsStatusI('01')
     print(b)

@@ -93,5 +93,5 @@ if __name__ == "__main__":
     print(help_text)
     # Ejemplo
     a = ByteFuncion()
-    b = a.byteFuncion('01')
+    b = a.get('01')
     print(b)

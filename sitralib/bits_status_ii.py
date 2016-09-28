@@ -32,11 +32,11 @@ class BitsStatusII(object):
 
 if __name__ == "__main__":
     help_text = """
-    a = BitsDeStatusII()
-    b = a.bitsDeStatusII('01')
+    a = BitsStatusII()
+    b = a.bitsStatusII('01')
     print(b)
     """
     print(help_text)
-    a = BitsDeStatusII()
-    b = a.bitsDeStatusII('01')
+    a = BitsStatusII()
+    b = a.bitsStatusII('01')
     print(b)
