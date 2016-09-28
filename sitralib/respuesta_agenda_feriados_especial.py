@@ -4,10 +4,12 @@ from sitralib.bits_status_ii import *
 from sitralib.bits_status_iii import *
 from sitralib.byte_status import *
 from sitralib.validators.bcc import *
+from sitralib.helpers.funciones import *
 
 
 class RespuestaAgendaFeriadosEspecial(object):
     def __init__(self):
+        self.helpers = Helpers()
         self.bytSta = ByteStatus()
         self.bitStaI = BitsStatusI()
         self.bitStaII = BitsStatusII()

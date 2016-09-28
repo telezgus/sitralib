@@ -4,7 +4,7 @@ from sitralib.bits_status_ii import *
 from sitralib.bits_status_iii import *
 from sitralib.byte_status import *
 from sitralib.validators.bcc import *
-
+from sitralib.helpers.funciones import *
 
 class RespuestaFunciones(object):
     """
@@ -19,6 +19,7 @@ class RespuestaFunciones(object):
         self.bitStaIII = BitsStatusIII()
         self.bitAla = BitsAlarma()
         self.validateBcc = Bcc()
+        self.helpers = Helpers()
 
     def respuesta(self, trm):
         res = None

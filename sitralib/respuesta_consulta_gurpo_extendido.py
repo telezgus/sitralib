@@ -28,7 +28,9 @@ class RespuestaConsultaGrupoExtendido(object):
 
         if (self.validateBcc.isValidBcc(trm, 12, 58)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
-            res.update({'numero_cruce': [trm[13], trm[14]]})
+            res.update(
+                {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])}
+            )
             res.update(self.bitStaI.bitsStatusI(trm[16]))
             res.update(self.bitStaII.bitsStatusII(trm[17]))
             res.update(self.bitAla.bitsAlarma(trm[18]))
@@ -101,7 +103,7 @@ class RespuestaConsultaGrupoExtendido(object):
             res.update({'byte_status_c': self.bytSta.byteStatus(trm[42])})
             res.update({'duracion_paso': self.helpers.hexToDec(trm[43])})
 
-            res.update(self.bytFun.byteFuncion(trm[54]))
+            res.update(self.bytFun.get(trm[54]))
             res.update({'object': 'respuestaConsultaGrupoExtendido'})
 
             return res

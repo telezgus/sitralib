@@ -1,13 +1,8 @@
-from sitralib.helpers.funciones import *
-
-from sitralib.helpers.ordenar_trama import *
 from sitralib.respuesta_consulta_gurpo_extendido import *
+from sitralib.respuesta_consulta_puesto_conteo import *
+from sitralib.respuesta_envio_comando import *
 from sitralib.respuesta_estado_envio_comando import *
 
-from sitralib.respuesta_envio_comando import *
-from sitralib.envio_comando import *
-
-from sitralib.respuesta_consulta_puesto_conteo import *
 # Grabacion
 from sitralib.grabacion_eeprom import *
 from sitralib.respuesta_agenda_anual import *
@@ -19,6 +14,8 @@ from sitralib.respuesta_agenda_diaria import *
 from sitralib.respuesta_funciones import *
 from sitralib.respuesta_programa_tiempos import *
 from sitralib.respuesta_matriz_conflictos import *
+from sitralib.respuesta_consulta_estructura_parte_baja import *
+from sitralib.helpers.ordenar_trama import *
 
 
 class Respuesta(object):
@@ -107,6 +104,20 @@ class Respuesta(object):
                 obj = RespuestaEstrucutraParteAlta()
                 return obj.respuesta(trm)
 
+            # OBTENCION DE ESTRUCTURA
+            elif dec == 203:
+                # 0xCB
+                # Respuesta de consulta estructura (parte alta).
+                obj = RespuestaConsultaEstructuraParteAlta()
+                return obj.get(trm)
+
+            elif dec == 204:
+                # 0xCC
+                # Trama de respuesta de consulta estructura (parte baja)
+                obj = RespuestaConsultaEstructuraParteBaja()
+                return obj.get(trm)
+
+
             else:
                 return None
 
@@ -118,18 +129,18 @@ if __name__ == "__main__":
              18: '20', 19: '00', 20: 'FF'}
 
     # Grabacion EEPROM
-    trama = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'E2', 10: '00', 11: '16',
+    trama33 = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'E2', 10: '00', 11: '16',
              12: '0A', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
              18: '20', 19: '00', 20: '03', 21: '00', 22: '10', 23: '00',
              24: '10', 25: 'EA', 26: '20'}
 
     # RespuestaPreajustes
-    trama = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D4', 10: '00', 11: '10',
+    trama3 = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D4', 10: '00', 11: '10',
              12: '3A', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
              18: '20', 19: '00', 20: 'F9'}
 
     # RespuestaAgendaFeriadosEspecial
-    trama = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D8', 10: '00', 11: '10',
+    trama5 = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D8', 10: '00', 11: '10',
              12: '36', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
              18: '20', 19: '00', 20: 'F5'}
 

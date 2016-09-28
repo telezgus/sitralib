@@ -14,6 +14,7 @@ class RespuestaAgendAnual(object):
     """
 
     def __init__(self):
+        self.helpers = Helpers()
         self.bytSta = ByteStatus()
         self.bitStaI = BitsStatusI()
         self.bitStaII = BitsStatusII()

@@ -3,6 +3,7 @@ from sitralib.bits_status_i import *
 from sitralib.bits_status_ii import *
 from sitralib.bits_status_iii import *
 from sitralib.byte_status import *
+from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 

@@ -20,6 +20,7 @@ class RespuestaAgendaDiaria(object):
         self.bitStaIII = BitsStatusIII()
         self.bitAla = BitsAlarma()
         self.validateBcc = Bcc()
+        self.helpers = Helpers()
 
     def respuesta(self, trm):
         res = None
