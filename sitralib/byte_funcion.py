@@ -5,7 +5,7 @@ class ByteFuncion(object):
     def __init__(self):
         self.helpers = Helpers()
 
-    def get(self, hex):
+    def byteFuncion(self, hex):
         dec = self.helpers.hexToDec(hex)
 
         if (dec == 0):

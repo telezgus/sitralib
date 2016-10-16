@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='sitralib',
-    version='1.0.11',
+    version='1.0.12',
     py_modules=[
         'sitralib.validators.bcc',
         'sitralib.helpers.fecha',
@@ -22,14 +22,24 @@ setup(
         'sitralib.envio_comando',
         'sitralib.grabacion_eeprom',
         'sitralib.imposicion_fecha_hora',
+        'sitralib.referencias',
         'sitralib.reporte_estado',
         'sitralib.respuesta_agenda_anual',
         'sitralib.respuesta_agenda_diaria',
         'sitralib.respuesta_agenda_feriados_especial',
+        'sitralib.respuesta_consulta_agenda_anual_semanal',
+        'sitralib.respuesta_consulta_agenda_diaria',
+        'sitralib.respuesta_consulta_agenda_feriados_especial',
+        'sitralib.respuesta_consulta_estructura_parte_alta',
+        'sitralib.respuesta_consulta_estructura_parte_baja',
+        'sitralib.respuesta_consulta_funciones',
         'sitralib.respuesta_consulta_gurpo_extendido',
+        'sitralib.respuesta_consulta_matriz_conflictos',
+        'sitralib.respuesta_consulta_preajustes',
         'sitralib.respuesta_consulta_puesto_conteo',
         'sitralib.respuesta_envio_comando',
         'sitralib.respuesta_envio_estructura_parte_alta',
+        'sitralib.respuesta_envio_programa_tiempos',
         'sitralib.respuesta_estado_envio_comando',
         'sitralib.respuesta_estrucutra_parte_alta',
         'sitralib.respuesta_estrucutra_parte_baja',
@@ -37,8 +47,7 @@ setup(
         'sitralib.respuesta_matriz_conflictos',
         'sitralib.respuesta_preajustes',
         'sitralib.respuesta_programa_tiempos',
-        'sitralib.respuesta',
-        'sitralib.referencias'
+        'sitralib.respuesta'
     ],
     author='Agustin Bouillet',
     author_email='agustin.bouillet@gmail.com',

@@ -28,7 +28,8 @@ class RespuestaEstadoEnvioComando(object):
 
         if (self.validateBcc.isValidBcc(trm, 12, 90)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
-            res.update({'numero_cruce': [trm[13], trm[14]]})
+            res.update(
+                {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])})
             res.update(self.bitStaI.bitsStatusI(trm[16]))
             res.update(self.bitStaII.bitsStatusII(trm[17]))
             res.update(self.bitAla.bitsAlarma(trm[18]))
@@ -84,8 +85,6 @@ class RespuestaEstadoEnvioComando(object):
             res.update({'desfasaje': self._joinNibblesCuad(trm[52], trm[53])})
             res.update(
                 {'tiempo_real_2': self._joinNibblesCuad(trm[44], trm[45])})
-            res.update(
-                {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])})
             res.update({'estructura': self.helpers.hexToDec(trm[35])})
             res.update({'programa_tiempos': self.helpers.hexToDec(trm[36])})
             res.update({'byte_status_b': self.bytSta.byteStatus(trm[37])})
