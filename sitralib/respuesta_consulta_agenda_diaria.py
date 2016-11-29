@@ -23,7 +23,7 @@ class RespuestaConsultaAgendaDiaria(object):
         self.bitAla = BitsAlarma()
         self.validateBcc = Bcc()
 
-    def respuestaConsultaAgendaDiaria(self, trm):
+    def get(self, trm):
         if (self.validateBcc.isValidBcc(trm, 12, 61)):
 
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}

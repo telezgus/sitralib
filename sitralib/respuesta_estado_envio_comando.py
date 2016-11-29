@@ -24,7 +24,7 @@ class RespuestaEstadoEnvioComando(object):
         self.fecha = Fecha()
         self.bytFun = ByteFuncion()
 
-    def respuestaEstadoEnvioComando(self, trm):
+    def get(self, trm):
 
         if (self.validateBcc.isValidBcc(trm, 12, 90)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}

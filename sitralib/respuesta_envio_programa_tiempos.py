@@ -29,7 +29,7 @@ class RespuestaEnvioProgramaTiempos(object):
         self.fecha = Fecha()
         self.bytFun = ByteFuncion()
 
-    def respuestaEnvioProgramaTiempos(self, trm):
+    def get(self, trm):
         if (self.validateBcc.isValidBcc(trm, 12, 81)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
             res.update(

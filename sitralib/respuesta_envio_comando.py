@@ -17,7 +17,7 @@ class RespuestaEnvioComando(object):
         self.bitAla = BitsAlarma()
         self.validateBcc = Bcc()
 
-    def respuestaEnvioComando(self, trm):
+    def get(self, trm):
         res = None
         r = {}
 

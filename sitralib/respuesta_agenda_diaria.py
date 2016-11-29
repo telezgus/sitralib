@@ -22,7 +22,7 @@ class RespuestaAgendaDiaria(object):
         self.validateBcc = Bcc()
         self.helpers = Helpers()
 
-    def respuesta(self, trm):
+    def get(self, trm):
         res = None
 
         if (self.validateBcc.isValidBcc(trm, 12, 20)):

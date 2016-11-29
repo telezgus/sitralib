@@ -8,6 +8,12 @@ from sitralib.helpers.funciones import *
 
 
 class RespuestaAgendaFeriadosEspecial(object):
+    """
+    Tabla 4.47: Trama de respuesta de agenda de feriados y especial
+    desde EC hacia CC.
+    0xD8
+    """
+
     def __init__(self):
         self.helpers = Helpers()
         self.bytSta = ByteStatus()
@@ -17,7 +23,7 @@ class RespuestaAgendaFeriadosEspecial(object):
         self.bitAla = BitsAlarma()
         self.validateBcc = Bcc()
 
-    def respuesta(self, trm):
+    def get(self, trm):
         res = None
 
         if (self.validateBcc.isValidBcc(trm, 12, 20)):

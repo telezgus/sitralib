@@ -24,7 +24,7 @@ class RespuestaConsultaGrupoExtendido(object):
         self.fecha = Fecha()
         self.bytFun = ByteFuncion()
 
-    def respuestaConsultaGrupoExtendido(self, trm):
+    def get(self, trm):
 
         if (self.validateBcc.isValidBcc(trm, 12, 58)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}

@@ -77,19 +77,6 @@ class ImposicionFechaHora(object):
 
 
 if __name__ == '__main__':
-    help_text = """
-    Crea la trama de imposición de hora
-
-    Ejemplo:
-        imposicionFechaHora = ImposicionFechaHora()
-        trama = imposicionFechaHora.create(
-            grp_id_numero=30,
-            crs_numero=3000,
-            datetime='2015-10-09 06:29:00'
-        )
-        print(trama)
-    """
-    print(help_text)
     import datetime
 
     # Ejemplo
