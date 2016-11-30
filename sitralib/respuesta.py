@@ -49,7 +49,7 @@ class Respuesta(object):
 
             elif dec == 224:
                 obj = RespuestaConsultaPuestoConteo()
-                return obj.respuesta(trm)
+                return obj.get(trm)
 
             elif dec == 226:
                 # 0xE2
