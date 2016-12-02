@@ -6,9 +6,6 @@ from sitralib.bits_status_iii import *
 from sitralib.byte_status import *
 from sitralib.helpers.funciones import *
 
-POSICION_BCC_INTERMEDIO = 12
-POSICION_BCC_FINAL = 37
-
 
 class RespuestaConsultaPuestoConteo(object):
     def __init__(self):
@@ -22,8 +19,7 @@ class RespuestaConsultaPuestoConteo(object):
 
     def get(self, trm):
         res = None
-        if (self.validateBcc.isValidBcc(trm, POSICION_BCC_INTERMEDIO,
-                                        POSICION_BCC_FINAL)):
+        if (self.validateBcc.isValidBcc(trm)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
             res.update(self.bitStaI.bitsStatusI(trm[16]))
             res.update(self.bitStaII.bitsStatusII(trm[17]))
@@ -85,6 +81,6 @@ if __name__ == "__main__":
 
     tramaOrdenada = ot.ordenarTrama(trama1)
 
-    retorno = respuestaPuestoConteo.respuesta(trama3)
+    retorno = respuestaPuestoConteo.get(trama3)
     pp = pprint.PrettyPrinter(indent=4, width=200, depth=8, compact=True)
     pp.pprint(retorno)

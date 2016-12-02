@@ -1,18 +1,14 @@
-"""
-Crea la trama de imposición de hora
-
-Ver referencias en Protocolo SITAR
-"Trama de imposición fecha y hora desde CC hacia EC"
-"""
 import time
 
 from sitralib.validators.bcc import *
 
-POSICION_BCC_INTERMEDIO = 12
-POSICION_BCC_FINAL = 22
-
 
 class ImposicionFechaHora(object):
+    """
+    Trama de imposición fecha y hora desde CC hacia EC
+    0x66
+    """
+
     def __init__(self):
         self.helpers = Helpers()
         self.bcc = Bcc()
@@ -27,7 +23,7 @@ class ImposicionFechaHora(object):
             "%Y-%m-%d %H:%M:%S"
         )
 
-        telegramaEnvio = {
+        trama = {
             1: '00',
             2: '00',
             3: '00',
@@ -52,25 +48,10 @@ class ImposicionFechaHora(object):
             22: '00',  # BCC
         }
 
-        # Primer validación BCC
-        bcc1 = self.bcc.validateBccIntermadio(telegramaEnvio)
-        telegramaEnvio[POSICION_BCC_INTERMEDIO] = bcc1
-        # Segunda validación BCC
-        bcc2 = self.bcc.validateBccFinal(
-            telegramaEnvio,
-            POSICION_BCC_INTERMEDIO,
-            POSICION_BCC_FINAL
-        )
-        telegramaEnvio[POSICION_BCC_FINAL] = bcc2
-
-        if self.bcc.isValidBcc(
-                telegramaEnvio,
-                POSICION_BCC_INTERMEDIO,
-                POSICION_BCC_FINAL
-        ):
-            return ' '.join(telegramaEnvio.values())
-        else:
-            return None
+        trama_consolidada = self.bcc.consolidate(trama)
+        if trama_consolidada:
+            return ' '.join(trama_consolidada.values())
+        return None
 
     def __zFill(self, value):
         return str(value).zfill(2)

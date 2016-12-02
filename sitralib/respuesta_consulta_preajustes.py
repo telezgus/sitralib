@@ -5,9 +5,6 @@ from sitralib.bits_status_iii import *
 from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 
-POSICION_BCC_INTERMEDIO = 12
-POSICION_BCC_FINAL = 92
-
 
 class RespuestaConsultaPreajustes(object):
     """
@@ -26,10 +23,7 @@ class RespuestaConsultaPreajustes(object):
 
     def get(self, trm):
         res = None
-        if (self.validateBcc.isValidBcc(
-                trm,
-                POSICION_BCC_INTERMEDIO,
-                POSICION_BCC_FINAL)):
+        if (self.validateBcc.isValidBcc(trm)):
             res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
             res.update(self.bitStaI.bitsStatusI(trm[16]))
             res.update(self.bitStaII.bitsStatusII(trm[17]))
@@ -77,6 +71,6 @@ if __name__ == "__main__":
     respuestaPuestoConteo = RespuestaConsultaPreajustes()
     ot = OrdenarTrama()
 
-    retorno = respuestaPuestoConteo.respuesta(trama)
+    retorno = respuestaPuestoConteo.get(trama)
     pp = pprint.PrettyPrinter()
     pp.pprint(retorno)

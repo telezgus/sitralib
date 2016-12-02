@@ -2,11 +2,11 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class ConsultaProgramaTiempos(object):
+class EnvioMatrizConflictos(object):
     """
-    Tabla 4.36:
-        Trama de consulta de programa de tiempo desde CC hacia EC
-    x71
+    Tabla 4.25:
+        Trama de envío de matriz de conflictos desde CC hacia EC
+    x6C
     """
 
     def __init__(self):
@@ -28,15 +28,40 @@ class ConsultaProgramaTiempos(object):
             6: '00',
             7: '00',
             8: self.helpers.intToHexString(kwargs['grp_id_numero']),
-            9: '71',  # Codigo según Protocolo
+            9: '6C',  # Codigo según Protocolo
             10: '00',
-            11: '0C',
+            11: '26',
             12: '00',  # BCC intermedio
             13: numeroControlador[:-2],
             14: numeroControlador[-2:],
-            # Número de Programa
-            15: self.helpers.intToHexString(kwargs['esp_numero']),
-            16: '00',  # BCC
+            15: '00',
+            16: '00',
+            17: '00',
+            18: '00',
+            19: '00',
+            20: '00',
+            21: '00',
+            22: '00',
+            23: '00',
+            24: '00',
+            25: '00',
+            26: '00',
+            27: '00',
+            28: '00',
+            29: '00',
+            30: '00',
+            31: '00',
+            32: '00',
+            33: '00',
+            34: '00',
+            35: '00',
+            36: '00',
+            37: '00',
+            38: '00',
+            39: '00',
+            40: '00',
+            41: '00',
+            42: '00'  # BCC
         }
 
         trama_consolidada = self.bcc.consolidate(trama)
@@ -46,7 +71,6 @@ class ConsultaProgramaTiempos(object):
 
 
 if __name__ == "__main__":
-    o = ConsultaProgramaTiempos()
-    a = o.create(crs_numero=3000, grp_id_numero=1, esp_numero=0)
+    o = EnvioMatrizConflictos()
+    a = o.create(crs_numero=3000, grp_id_numero=1)
     print(a)
-    # REf. 00 00 00 00 FF 00 00 01 71 00 0C 83 0B B8 00 30

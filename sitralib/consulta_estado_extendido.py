@@ -1,10 +1,6 @@
 from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
-POSICION_BCC_INTERMEDIO = 12
-POSICION_BCC_FINAL = 15
-
-
 class ConsultaEstadoExtendido(object):
     def __init__(self):
         self.helpers = Helpers()
@@ -13,7 +9,7 @@ class ConsultaEstadoExtendido(object):
     def create(self, **kwargs):
         numeroControlador = self.helpers.intToHexString(kwargs['crs_numero'], 4)
 
-        telegramaEnvio = {
+        trama = {
             1: '00',
             2: '00',
             3: '00',
@@ -31,33 +27,13 @@ class ConsultaEstadoExtendido(object):
             15: '00',  # BCC
         }
 
-        bcc1 = self.bcc.validateBccIntermadio(telegramaEnvio)
-        telegramaEnvio[POSICION_BCC_INTERMEDIO] = bcc1
-
-        bcc2 = self.bcc.validateBccFinal(telegramaEnvio,
-                                         POSICION_BCC_INTERMEDIO,
-                                         POSICION_BCC_FINAL)
-        telegramaEnvio[POSICION_BCC_FINAL] = bcc2
-
-        if self.bcc.isValidBcc(telegramaEnvio,
-                               POSICION_BCC_INTERMEDIO,
-                               POSICION_BCC_FINAL):
-            return ' '.join(telegramaEnvio.values())
-        else:
-            return None
+        trama_consolidada = self.bcc.consolidate(trama)
+        if trama_consolidada:
+            return ' '.join(trama_consolidada.values())
+        return None
 
 
 if __name__ == "__main__":
-    help_text = """
-    Crea la trama de consulta de estado extendido
-
-    Ejemplo:
-        extendido = ConsultaEstadoExtendido()
-        a = extendido.create(crs_numero=3000, grp_id_numero=30)
-        print(a)
-    """
-    print(help_text)
-
     extendido = ConsultaEstadoExtendido()
     a = extendido.create(crs_numero=3000, grp_id_numero=30)
     print(a)

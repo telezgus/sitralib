@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='sitralib',
-    version='1.0.12',
+    version='1.0.14',
     py_modules=[
         'sitralib.validators.bcc',
         'sitralib.helpers.fecha',
