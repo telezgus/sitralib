@@ -31,7 +31,7 @@ class ImposicionFechaHora(object):
             5: 'FF',
             6: '00',
             7: '00',
-            8: self.helpers.intToHexString(kwargs['grp_id_numero']),
+            8: self.helpers.intToHexString(kwargs['grp_id_num']),
             9: '66',  # Codigo según Protocolo
             10: '00',
             11: '12',
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     date_now = date.strftime('%Y-%m-%d %H:%M:%S')
     imposicionFechaHora = ImposicionFechaHora()
     trama = imposicionFechaHora.create(
-        grp_id_numero=30,
+        grp_id_num=30,
         crs_numero=3000,
         datetime=date_now
     )

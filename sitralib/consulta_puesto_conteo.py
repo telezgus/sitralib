@@ -21,7 +21,7 @@ class ConsultaPuestoConteo(object):
             5: 'FF',  # Encabezado
             6: '00',  # Esclavo
             7: '00',  # Destino = 0 CITAR 1F COMCLS
-            8: self.helpers.intToHexString(kwargs['grp_id_numero']),
+            8: self.helpers.intToHexString(kwargs['grp_id_num']),
             # Numero de grupo
             9: '7C',  # Codigo segun Protocolo
             10: '00',  # Longitud MSB
@@ -41,5 +41,5 @@ class ConsultaPuestoConteo(object):
 
 if __name__ == "__main__":
     pc = ConsultaPuestoConteo()
-    trama = pc.create(grp_id_numero=30, crs_numero=3000, ccm_id=1)
+    trama = pc.create(grp_id_num=30, crs_numero=3000, ccm_id=1)
     print(trama)

@@ -20,7 +20,7 @@ class ConsultaEstadoEnvioComando(object):
             5: 'FF',
             6: '00',
             7: '00',
-            8: self.helpers.intToHexString(kwargs['grp_id_numero']),
+            8: self.helpers.intToHexString(kwargs['grp_id_num']),
             9: '61',  # Codigo según Protocolo
             10: '00',
             11: '0C',
@@ -40,7 +40,7 @@ class ConsultaEstadoEnvioComando(object):
 if __name__ == "__main__":
     envioEstadoComando = ConsultaEstadoEnvioComando()
     trama = envioEstadoComando.create(
-        grp_id_numero=1,
+        grp_id_num=1,
         ccm_id=1,
         crs_numero=3000
     )

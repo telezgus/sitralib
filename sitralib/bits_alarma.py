@@ -54,12 +54,6 @@ class BitsAlarma(object):
         return est
 
 if __name__ == "__main__":
-    help_text = """
-    a = BitsAlarma()
-    b = a.bitsAlarma('01')
-    print(b)
-    """
-    print(help_text)
     a = BitsAlarma()
     b = a.bitsAlarma('01')
     print(b)

@@ -83,14 +83,6 @@ class ByteLamparas(object):
 
 
 if __name__ == "__main__":
-    help_text = """
-    Ejemplo:
-        opt = {'hi': 2, 'lo': 1}
-        a = ByteDeLamparas()
-        b = a.byteDeLamparas('01',opt)
-    """
-    # ejemplo
-    print(help_text)
     opt = {'hi': 2, 'lo': 1}
     a = ByteLamparas()
     b = a.byteLamparas('01', hi=2, lo=1, mov=2)

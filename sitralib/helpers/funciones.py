@@ -100,24 +100,49 @@ class Helpers(object):
                 slice.update({val: dict_original[val]})
         return slice;
 
+    def tramas_by_codigo(self, **kwargs):
+        """
+        Obtiene las tramas de un código específico
+        :param kwargs:
+        :return: list
+        """
+        # Verifico que tipo de key tiene (integer o string)
+        key = '9' if '9' in kwargs['tramas'].keys() else 9
+
+        arr = list()
+        for i in kwargs['tramas']:
+            if kwargs['tramas'][i][key].upper() == kwargs['codigo'].upper():
+                arr.append(kwargs['tramas'][i])
+        return arr
+
 
 if __name__ == '__main__':
     hlp = Helpers()
 
-    print('hexToDec("AB")')
-    print(hlp.hexToDec('AB'))
-    print('\t')
-    print('getNibbles("AB")')
-    print(hlp.getNibbles('AB'), hlp.sanitizeHex(hlp.getNibbles('AB')['hi']))
-    print('\t')
-    print("sanitizeHex('B', 2)")
-    print(hlp.sanitizeHex('B'))
-    print('\t')
-    print("sanitizeHex('B', 4)")
-    print(hlp.sanitizeHex('B', 4))
-    print('\t')
-    print('validateBetween(max=47, min=0, number=3)')
-    print(hlp.validateBetween(max=47, min=0, number=3))
-    print('\t')
-    print("chunkStr('1234567890', 2)")
-    print(hlp.chunkStr('1234567890', 2))
+    print(hlp.hexToDec('AA'), '\n')
+    print(
+        hlp.getNibbles('AB'), hlp.sanitizeHex(hlp.getNibbles('AB')['hi']), '\n'
+    )
+    print(hlp.sanitizeHex('B'), '\n')
+    print(hlp.sanitizeHex('B', 4), '\n')
+    print(hlp.validateBetween(max=47, min=0, number=3), '\n')
+    print(hlp.chunkStr('1234567890', 2), '\n')
+    test = {0: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'aA', 10: '00',
+                11: '0C', 12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
+            1: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '7C', 10: '00',
+                11: '0C',
+                12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
+            2: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '44', 10: '00',
+                11: '0C',
+                12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
+            3: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'aa', 10: '00',
+                11: '0C',
+                12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
+            4: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '7C', 10: '00',
+                11: '0C',
+                12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
+            5: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'aa', 10: '00',
+                11: '0C',
+                12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
+            }
+    print(hlp.tramas_by_codigo(tramas=test, codigo='AA'))

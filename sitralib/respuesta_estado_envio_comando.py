@@ -93,7 +93,7 @@ class RespuestaEstadoEnvioComando(object):
             res.update({'byte_status_c': self.bytSta.byteStatus(trm[42])})
             res.update({'duracion_paso': self.helpers.hexToDec(trm[43])})
 
-            res.update(self.bytFun.byteFuncion(trm[54]))
+            res.update(self.bytFun.get(trm[54]))
             res.update({'object': 'respuestaEstadoEnvioComando'})
 
             return res
@@ -113,12 +113,6 @@ class RespuestaEstadoEnvioComando(object):
 
 
 if __name__ == "__main__":
-    help_text = """
-    obj = RespuestaEstadoEnvioComando()
-    retorno = obj.respuestaEstadoEnvioComando({5: 'FF', 6: '00', 8: ... })
-    """
-    print(help_text)
-
     trama = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'C5', 10: '00', 11: '56',
              12: '6D', 13: '0B', 14: 'B8', 15: '00', 16: '14', 17: '00',
              18: '20', 19: '00', 20: '99', 21: '99', 22: 'DD', 23: 'DD',
@@ -150,7 +144,7 @@ if __name__ == "__main__":
              174: '00', 175: '00', 176: '00', 177: '00', 178: '00', 179: '00',
              180: '00', 181: '00', 182: '00', 183: '0F', 184: '0E'}
     obj = RespuestaEstadoEnvioComando()
-    retorno = obj.respuestaEstadoEnvioComando(trama)
+    retorno = obj.get(trama)
     #
     import pprint
 

@@ -27,7 +27,7 @@ class ConsultaPreajustes(object):
             5: 'FF',
             6: '00',
             7: '00',
-            8: self.helpers.intToHexString(kwargs['grp_id_numero']),
+            8: self.helpers.intToHexString(kwargs['grp_id_num']),
             9: '6F',  # Codigo según Protocolo
             10: '00',
             11: '0B',
@@ -45,6 +45,6 @@ class ConsultaPreajustes(object):
 
 if __name__ == "__main__":
     o = ConsultaPreajustes()
-    a = o.create(crs_numero=3000, grp_id_numero=30)
+    a = o.create(crs_numero=3000, grp_id_num=30)
     print(a)
 

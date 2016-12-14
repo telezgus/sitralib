@@ -70,12 +70,6 @@ class BitsStatusI(object):
 
 
 if __name__ == "__main__":
-    help_text = """
-    a = BitsStatusI()
-    b = a.bitsStatusI('01')
-    print(b)
-    """
-    print(help_text)
     a = BitsStatusI()
     b = a.bitsStatusI('01')
     print(b)

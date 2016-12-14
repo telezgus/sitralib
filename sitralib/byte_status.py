@@ -38,14 +38,6 @@ class ByteStatus(object):
 
 
 if __name__ == "__main__":
-    help_text = """
-    Ejemplo:
-        a = ByteStatus()
-        b = a.byteStatus('F0')
-        print(b)
-    """
-    print(help_text)
-
     a = ByteStatus()
     b = a.byteStatus('F0')
     print(b)

@@ -17,7 +17,7 @@ class ConsultaEstadoExtendido(object):
             5: 'FF',
             6: '00',
             7: '00',
-            8: self.helpers.intToHexString(kwargs['grp_id_numero']),
+            8: self.helpers.intToHexString(kwargs['grp_id_num']),
             9: '64',  # Codigo según Protocolo
             10: '00',
             11: '0B',
@@ -35,5 +35,5 @@ class ConsultaEstadoExtendido(object):
 
 if __name__ == "__main__":
     extendido = ConsultaEstadoExtendido()
-    a = extendido.create(crs_numero=3000, grp_id_numero=30)
+    a = extendido.create(crs_numero=3000, grp_id_num=30)
     print(a)

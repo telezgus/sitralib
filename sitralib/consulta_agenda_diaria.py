@@ -27,7 +27,7 @@ class ConsultaAgendaDriaria(object):
             5: 'FF',
             6: '00',
             7: '00',
-            8: self.helpers.intToHexString(kwargs['grp_id_numero']),
+            8: self.helpers.intToHexString(kwargs['grp_id_num']),
             9: '77',  # Codigo según Protocolo
             10: '00',
             11: '0C',
@@ -47,5 +47,5 @@ class ConsultaAgendaDriaria(object):
 
 if __name__ == "__main__":
     o = ConsultaAgendaDriaria()
-    a = o.create(crs_numero=3000, grp_id_numero=1, adi_id_num=0)
+    a = o.create(crs_numero=3000, grp_id_num=1, adi_id_num=0)
     print(a)

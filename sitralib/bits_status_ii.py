@@ -31,12 +31,6 @@ class BitsStatusII(object):
 
 
 if __name__ == "__main__":
-    help_text = """
-    a = BitsStatusII()
-    b = a.bitsStatusII('01')
-    print(b)
-    """
-    print(help_text)
     a = BitsStatusII()
     b = a.bitsStatusII('01')
     print(b)

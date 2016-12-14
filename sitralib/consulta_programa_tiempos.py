@@ -27,7 +27,7 @@ class ConsultaProgramaTiempos(object):
             5: 'FF',
             6: '00',
             7: '00',
-            8: self.helpers.intToHexString(kwargs['grp_id_numero']),
+            8: self.helpers.intToHexString(kwargs['grp_id_num']),
             9: '71',  # Codigo según Protocolo
             10: '00',
             11: '0C',
@@ -47,6 +47,6 @@ class ConsultaProgramaTiempos(object):
 
 if __name__ == "__main__":
     o = ConsultaProgramaTiempos()
-    a = o.create(crs_numero=3000, grp_id_numero=1, esp_numero=0)
+    a = o.create(crs_numero=3000, grp_id_num=1, esp_numero=0)
     print(a)
     # REf. 00 00 00 00 FF 00 00 01 71 00 0C 83 0B B8 00 30
