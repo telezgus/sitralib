@@ -88,7 +88,17 @@ if __name__ == "__main__":
     # Necesito procesar la trama para convertirla en Diccionario
     o = OrdenarTrama()
     trm = o.ordenarTrama(trama1)
-    print(trm)
+
+
+    n = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '7C', 10: '00', 11: '0C', 12: '8E', 13: '1B', 14:  '01', 16: '00'}
     a = Bcc()
-    b = a.isValidBcc(trm, 12, 16)
-    print(b)
+    c = a.consolidate(n)
+
+    print(c)
+
+    b = a.isValidBcc(n)
+    print( b )
+
+    trama_consolidada = a.consolidate(trm)
+    print(trama_consolidada)
+
