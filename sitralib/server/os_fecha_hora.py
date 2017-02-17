@@ -1,6 +1,7 @@
 import os
 import sys
 
+
 class OsFechaHora(object):
 	"""
 	Modifica la fecha y la hora del servidor
@@ -9,14 +10,21 @@ class OsFechaHora(object):
 	def __init__(self, **kwargs):
 		self.kwargs = kwargs
 
+	def to_print(self):
+		return '{year}-{mon}-{mday} {hour}:{min}:{sec}'.format(**self.kwargs)
+
 	def change(self, s):
 		if s == 1:
-			# os.system('date -s "2016-01-01 00:00:00"')
-			os.system(
-				'date -s "{year}-{mon}-{mday} {hour}:{min}:{sec}"'.format(
-					**self.kwargs
+			try:
+				# os.system('date -s "2016-01-01 00:00:00"')
+				os.system(
+					'date -s "{year}-{mon}-{mday} {hour}:{min}:{sec}"'.format(
+						**self.kwargs
+					)
 				)
-			)
+			except:
+				print('No es posible imponer la Fecha y la hora del servidor.')
+
 		elif s == 2:
 			try:
 				import pywin32
