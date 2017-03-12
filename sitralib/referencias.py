@@ -1,90 +1,162 @@
-from sitralib.helpers.funciones import Helpers
+EMPTY_PROCESS = {
+	'per': 0,
+	'cod': '0',
+	'nombre': ''
+}
 
-
-class Referencias(object):
-    referencias = {
-        '64': 'Consulta de grupos extendidos',
-        '65': 'Envío comando',
-        '66': 'fecha y hora',
-        '67': 'Consulta de estructura (parte alta)',
-        '68': 'Consulta de estructura (parte baja)',
-        '69': 'Envío de estructura (parte alta)',
-        '6A': 'Envío de estructura (parte baja)',
-        '6B': 'Consulta de matriz de conflictos',
-        '6C': 'Envío de matriz de conflictos',
-        '6D': 'Consulta de funciones',
-        '6E': 'Envío de funciones',
-        '6F': 'Consulta de preajustes',
-        '70': 'Envío de preajustes',
-        '71': 'Consulta de programa de tiempos',
-        '72': 'Envío de programa de tiempos',
-        '73': 'Consulta de agenda feriados y especial',
-        '74': 'Envío de agenda feriados y especial',
-        '75': 'Consulta de agenda anual',
-        '76': 'Envío de agenda anual',
-        '77': 'Consulta de agenda diaria',
-        '78': 'Envío de agenda diaria',
-        '79': 'Consulta de último evento',
-        '7A': 'Consulta de eventos',
-        '7D': 'Envío de contraseña hardware',
-        '7E': 'Envío de grabación EEPROM',
-        'C8': 'Respuesta consulta de grupos extendidos',
-        'C9': 'Respuesta envío comando',
-        'CA': 'Respuesta envío fecha y hora',
-        'CB': 'Respuesta consulta de estructura (parte alta)',
-        'CC': 'Respuesta consulta de estructura (parte baja)',
-        'CD': 'Respuesta envío de estructura (parte alta)',
-        'CE': 'Respuesta envío de estructura (parte baja)',
-        'CF': 'Respuesta consulta matriz de conflictos',
-        'D0': 'Respuesta envío matriz de conflictos',
-        'D1': 'Respuesta consulta de funciones',
-        'D2': 'Respuesta envío de funciones',
-        'D3': 'Respuesta consulta de preajustes',
-        'D4': 'Respuesta envío de preajustes',
-        'D5': 'Respuesta consulta de programa de tiempos',
-        'D6': 'Respuesta envío de programa de tiempos',
-        'D7': 'Respuesta consulta de agenda feriados y especial',
-        'D8': 'Respuesta envío de agenda feriados y especial',
-        'D9': 'Respuesta consulta de agenda anual',
-        'DA': 'Respuesta envío de agenda anual',
-        'DB': 'Respuesta consulta de agenda diaria',
-        'DC': 'Respuesta envío de agenda diaria',
-        'DD': 'Respuesta consulta de último evento',
-        'DE': 'Respuesta consulta de eventos',
-        'E1': 'Respuesta envío de contraseña hardware',
-        'E2': 'Respuesta envío de grabación EEPROM',
-    }
-
-    def __init__(self):
-        self.helpers = Helpers()
-
-    def __exists(self, num):
-        """
-        Valida si el valor hexadecimal esta dentro de las referencias.
-        :param num: string hexadecimal
-        :return: boolean
-        """
-        return True if num in self.referencias else False
-
-    def respuesta(self, num):
-        """
-        Retorna una respuesta al codigo ofrecido. Error si no es  un
-        valor hexadecimal, exitoso si es un valor existente en el diccionario e
-        inválido si no existe en el diccionario.
-        :param num: string Valor hexadecimal
-        :return: string
-        """
-        codigo = num.strip().upper()
-        if not self.helpers.isHex(codigo):
-            return "El valor que introdujo no es un número hexadecimal"
-
-        if self.__exists(codigo):
-            return self.referencias[codigo]
-
-        return "No hay referencias para el código ingresado"
-
+CODE_REFERENCIES = {
+	'64': {'technical': 'Consulta de grupos extendidos', 'humanize': ''},
+	'65': {'technical': 'Envío comando', 'humanize': 'Envío comando'},
+	'66': {'technical': 'fecha y hora', 'humanize': 'fecha y hora'},
+	'67': {
+		'technical': 'Consulta de estructura (parte alta)',
+		'humanize': 'Estructura, parta alta'
+	},
+	'68': {
+		'technical': 'Consulta de estructura (parte baja)',
+		'humanize': 'Estructura, parta baja'
+	},
+	'69': {
+		'technical': 'Envío de estructura (parte alta)',
+		'humanize': 'Estructura, parta alta'
+	},
+	'6A': {
+		'technical': 'Envío de estructura (parte baja)',
+		'humanize': 'Estructura, parta baja'
+	},
+	'6B': {
+		'technical': 'Consulta de matriz de conflictos',
+		'humanize': 'Matriz de conflictos'
+	},
+	'6C': {
+		'technical': 'Envío de matriz de conflictos',
+		'humanize': 'Matriz de conflictos'
+	},
+	'6D': {'technical': 'Consulta de funciones', 'humanize': 'Funciones'},
+	'6E': {'technical': 'Envío de funciones', 'humanize': 'Funciones'},
+	'6F': {'technical': 'Consulta de preajustes', 'humanize': 'Preajustes'},
+	'70': {'technical': 'Envío de preajustes', 'humanize': 'Preajustes'},
+	'71': {
+		'technical': 'Consulta de programa de tiempos',
+		'humanize': 'Tiempo de los programas'
+	},
+	'72': {
+		'technical': 'Envío de programa de tiempos',
+		'humanize': 'Tiempo de los programas'
+	},
+	'73': {
+		'technical': 'Consulta de agenda feriados y especial',
+		'humanize': 'Agenda feriados y eventos especiales'
+	},
+	'74': {
+		'technical': 'Envío de agenda feriados y especial',
+		'humanize': 'Agenda feriados y eventos especiales'
+	},
+	'75': {
+		'technical': 'Consulta de agenda anual',
+		'humanize': 'Agenda anual y agendas semanales'
+	},
+	'76': {
+		'technical': 'Envío de agenda anual',
+		'humanize': 'Agenda anual y agendas semanales'
+	},
+	'77': {
+		'technical': 'Consulta de agenda diaria',
+		'humanize': 'Agendas diarias'
+	},
+	'78': {
+		'technical': 'Envío de agenda diaria', 'humanize': 'Agendas diarias'
+	},
+	'79': {
+		'technical': 'Consulta de último evento',
+		'humanize': 'Consulta de último evento'
+	},
+	'7A': {
+		'technical': 'Consulta de eventos', 'humanize': 'Consulta de eventos'
+	},
+	'7D': {
+		'technical': 'Envío de contraseña hardware',
+		'humanize': 'Envío de contraseña hardware'
+	},
+	'7E': {
+		'technical': 'Envío de grabación EEPROM',
+		'humanize': 'Grabación de EEPROM'
+	},
+	'C8': {
+		'technical': 'Respuesta consulta de grupos extendidos',
+		'humanize': 'Respuesta consulta de grupos extendidos',
+	},
+	'C9': {
+		'technical': 'Respuesta envío comando',
+		'humanize': 'Respuesta envío comando'
+	},
+	'CA': {
+		'technical': 'Respuesta envío fecha y hora',
+		'humanize': 'Respuesta envío fecha y hora'
+	},
+	'CB': {
+		'technical': 'Respuesta consulta de estructura (parte alta)',
+		'humanize': 'Respuesta consulta de estructura (parte alta)'
+	},
+	'CC': {
+		'technical': 'Respuesta consulta de estructura (parte baja)',
+		'humanize': 'Respuesta consulta de estructura (parte baja)'
+	},
+	'CD': {
+		'technical': 'Respuesta envío de estructura (parte alta)',
+		'humanize': 'Respuesta envío de estructura (parte alta)'
+	},
+	'CE': {
+		'technical': 'Respuesta envío de estructura (parte baja)',
+		'humanize': 'Respuesta envío de estructura (parte baja)'
+	},
+	'CF': {
+		'technical': 'Respuesta consulta matriz de conflictos',
+		'humanize': ''
+	},
+	'D0': {
+		'technical': 'Respuesta envío matriz de conflictos', 'humanize': ''
+	},
+	'D1': {'technical': 'Respuesta consulta de funciones', 'humanize': ''},
+	'D2': {'technical': 'Respuesta envío de funciones', 'humanize': ''},
+	'D3': {'technical': 'Respuesta consulta de preajustes', 'humanize': ''},
+	'D4': {'technical': 'Respuesta envío de preajustes', 'humanize': ''},
+	'D5': {
+		'technical': 'Respuesta consulta de programa de tiempos',
+		'humanize': ''
+	},
+	'D6': {
+		'technical': 'Respuesta envío de programa de tiempos',
+		'humanize': ''
+	},
+	'D7': {
+		'technical': 'Respuesta consulta de agenda feriados y especial',
+		'humanize': ''
+	},
+	'D8': {
+		'technical': 'Respuesta envío de agenda feriados y especial',
+		'humanize': ''
+	},
+	'D9': {
+		'technical': 'Respuesta consulta de agenda anual', 'humanize': ''
+	},
+	'DA': {'technical': 'Respuesta envío de agenda anual', 'humanize': ''},
+	'DB': {
+		'technical': 'Respuesta consulta de agenda diaria', 'humanize': ''
+	},
+	'DC': {'technical': 'Respuesta envío de agenda diaria', 'humanize': ''},
+	'DD': {
+		'technical': 'Respuesta consulta de último evento', 'humanize': ''
+	},
+	'DE': {'technical': 'Respuesta consulta de eventos', 'humanize': ''},
+	'E1': {
+		'technical': 'Respuesta envío de contraseña hardware',
+		'humanize': ''
+	},
+	'E2': {
+		'technical': 'Respuesta envío de grabación EEPROM', 'humanize': ''
+	},
+}
 
 if __name__ == "__main__":
-    ref = Referencias()
-    respuesta = ref.respuesta('64')
-    print(respuesta)
+	print(REFERENCIAS['71']['humanize'])
