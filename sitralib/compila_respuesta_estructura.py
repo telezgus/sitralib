@@ -16,16 +16,14 @@ class CompilaRespuestaEstructura(object):
             intervalos_por_movimientos = self.__movimientos_por_intervalo(
                 intervalos=intervalos
             )
-            # print(intervalos_por_movimientos)
-            # print('\n\n')
+
 
         for i in baja:
             intervalos = self.__intervalos(trama=i)
             intervalos_por_movimientos = self.__movimientos_por_intervalo(
                 intervalos=intervalos
             )
-            # print(intervalos_por_movimientos)
-            # print('\n\n')
+
         return intervalos_por_movimientos
 
     def __movimientos_por_intervalo(self, **kwargs):
@@ -74,8 +72,8 @@ class CompilaRespuestaEstructura(object):
         # Verificacion
         trama = dict()
         for i in range(5, 256):
-            # key = str(i) if str(i) in kwargs['trama'] else int(i)
-            trama[i] = kwargs['trama'][str(i)]
+            key = str(i) if str(i) in kwargs['trama'] else int(i)
+            trama[i] = kwargs['trama'][key]
 
         trama_sliced = self.__slice(trama=trama)
         a = list()
