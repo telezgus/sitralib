@@ -12,8 +12,8 @@ class CompilaRespuestaProgramaTiempos(object):
             tramas=self.trm,
             codigo='D5'
         )
-        for i in programa_tiempos:
-            print(self.__programa(i))
+        return programa_tiempos
+
 
     def __programa(self, programas):
         v = {
@@ -30,7 +30,7 @@ class CompilaRespuestaProgramaTiempos(object):
         :param programas: dict
         :return: list
         """
-        return [int(programas[str(i)], 16) for i in range(21, 57)]
+        return [int(programas[i], 16) for i in range(21, 57)]
 
     def __desfasafe(self, programas):
         """
@@ -38,8 +38,8 @@ class CompilaRespuestaProgramaTiempos(object):
         :param programas: dict
         :return: int
         """
-        msb = programas['61']
-        lsb = programas['62']
+        msb = programas[61]
+        lsb = programas[62]
         valor = msb + lsb
         return self.helpers.hexToDec(valor)
 
@@ -49,8 +49,8 @@ class CompilaRespuestaProgramaTiempos(object):
         :param programas: dict
         :return: int
         """
-        msb = programas['59']
-        lsb = programas['60']
+        msb = programas[59]
+        lsb = programas[60]
         valor = msb + lsb
         return self.helpers.hexToDec(valor)
 
@@ -60,8 +60,8 @@ class CompilaRespuestaProgramaTiempos(object):
         :param programas: dict
         :return: int
         """
-        msb = programas['57']
-        lsb = programas['58']
+        msb = programas[57]
+        lsb = programas[58]
         valor = msb + lsb
         return self.helpers.hexToDec(valor)
 
