@@ -16,16 +16,17 @@ class CompilaRespuestaEstructura(object):
             intervalos_por_movimientos = self.__movimientos_por_intervalo(
                 intervalos=intervalos
             )
-            print(intervalos_por_movimientos)
-            print('\n\n')
+            # print(intervalos_por_movimientos)
+            # print('\n\n')
 
         for i in baja:
             intervalos = self.__intervalos(trama=i)
             intervalos_por_movimientos = self.__movimientos_por_intervalo(
                 intervalos=intervalos
             )
-            print(intervalos_por_movimientos)
-            print('\n\n')
+            # print(intervalos_por_movimientos)
+            # print('\n\n')
+        return intervalos_por_movimientos
 
     def __movimientos_por_intervalo(self, **kwargs):
         f = dict()
