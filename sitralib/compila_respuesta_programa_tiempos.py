@@ -8,12 +8,16 @@ class CompilaRespuestaProgramaTiempos(object):
         self.trm = tramas
 
     def compile(self):
+        programas = defaultdict(dict)
         programa_tiempos = self.helpers.tramas_by_codigo(
             tramas=self.trm,
             codigo='D5'
         )
-        return programa_tiempos
-
+        counter = 0
+        for i in programa_tiempos:
+            programas[counter] = self.__programa(i)
+            counter += 1
+        return programas
 
     def __programa(self, programas):
         v = {

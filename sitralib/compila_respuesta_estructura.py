@@ -10,7 +10,7 @@ class CompilaRespuestaEstructura(object):
     def compile(self):
         alta = self.helpers.tramas_by_codigo(tramas=self.trm, codigo='CB')
         baja = self.helpers.tramas_by_codigo(tramas=self.trm, codigo='CC')
-
+        intervalos_por_movimientos = None
         for i in alta:
             intervalos = self.__intervalos(trama=i)
             intervalos_por_movimientos = self.__movimientos_por_intervalo(
