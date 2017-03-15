@@ -1,10 +1,4 @@
-EMPTY_PROCESS = {
-	'per': 0,
-	'cod': '0',
-	'nombre': ''
-}
-
-CODE_REFERENCIES = {
+CODE_REFERENCES = {
 	'64': {'technical': 'Consulta de grupos extendidos', 'humanize': ''},
 	'65': {'technical': 'Envío comando', 'humanize': 'Envío comando'},
 	'66': {'technical': 'fecha y hora', 'humanize': 'fecha y hora'},
@@ -159,4 +153,4 @@ CODE_REFERENCIES = {
 }
 
 if __name__ == "__main__":
-	print(REFERENCIAS['71']['humanize'])
+	print(CODE_REFERENCES['71']['humanize'])
