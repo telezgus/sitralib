@@ -1,6 +1,6 @@
 from sitralib.helpers.funciones import *
 from collections import *
-
+import pprint
 
 class CompilaRespuestaEstructura(object):
 	def __init__(self, tramas):
@@ -8,17 +8,20 @@ class CompilaRespuestaEstructura(object):
 		self.trm = tramas
 
 	def compile(self):
+
+		pp = pprint.PrettyPrinter(indent=4)
+
 		alta = self.helpers.tramas_by_codigo(tramas=self.trm, codigo='CB')
 		baja = self.helpers.tramas_by_codigo(tramas=self.trm, codigo='CC')
 
-		listado_alta = listado_baja = list()
-
+		listado_alta  = list()
 		for i in alta:
 			intervalos = self.__intervalos(trama=i)
 			listado_alta.append(
 				self.__movimientos_por_intervalo(intervalos=intervalos)
 			)
 
+		listado_baja = list()
 		for i in baja:
 			intervalos = self.__intervalos(trama=i)
 			listado_baja.append(
@@ -114,5 +117,8 @@ if __name__ == '__main__':
 
 	o = CompilaRespuestaEstructura(json.loads(trm))
 	n = o.compile()
+	print('ALTA',len(n['alta']))
+	print('BAJA',len(n['baja']))
+	# pp = pprint.PrettyPrinter(indent=4)
+	# pp.pprint(n)
 
-	print(json.dumps(n))
