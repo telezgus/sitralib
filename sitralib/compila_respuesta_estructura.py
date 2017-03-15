@@ -1,6 +1,6 @@
 from sitralib.helpers.funciones import *
 from collections import *
-import pprint
+
 
 class CompilaRespuestaEstructura(object):
 	def __init__(self, tramas):
@@ -14,7 +14,7 @@ class CompilaRespuestaEstructura(object):
 		alta = self.helpers.tramas_by_codigo(tramas=self.trm, codigo='CB')
 		baja = self.helpers.tramas_by_codigo(tramas=self.trm, codigo='CC')
 
-		listado_alta  = list()
+		listado_alta = list()
 		for i in alta:
 			intervalos = self.__intervalos(trama=i)
 			listado_alta.append(
@@ -108,6 +108,7 @@ class CompilaRespuestaEstructura(object):
 
 if __name__ == '__main__':
 	import json
+	import pprint
 
 	open_file = open('test_tramas.json', 'r')
 	tramas = open_file.read()
@@ -117,8 +118,7 @@ if __name__ == '__main__':
 
 	o = CompilaRespuestaEstructura(json.loads(trm))
 	n = o.compile()
-	print('ALTA',len(n['alta']))
-	print('BAJA',len(n['baja']))
-	# pp = pprint.PrettyPrinter(indent=4)
-	# pp.pprint(n)
-
+	print('ALTA', len(n['alta']))
+	print('BAJA', len(n['baja']))
+# pp = pprint.PrettyPrinter(indent=4)
+# pp.pprint(n)
