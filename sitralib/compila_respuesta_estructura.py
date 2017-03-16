@@ -8,9 +8,6 @@ class CompilaRespuestaEstructura(object):
 		self.trm = tramas
 
 	def compile(self):
-
-		pp = pprint.PrettyPrinter(indent=4)
-
 		alta = self.helpers.tramas_by_codigo(tramas=self.trm, codigo='CB')
 		baja = self.helpers.tramas_by_codigo(tramas=self.trm, codigo='CC')
 
@@ -108,8 +105,6 @@ class CompilaRespuestaEstructura(object):
 
 if __name__ == '__main__':
 	import json
-	import pprint
-
 	open_file = open('test_tramas.json', 'r')
 	tramas = open_file.read()
 	trm = json.loads(tramas, object_pairs_hook=OrderedDict)
@@ -120,5 +115,4 @@ if __name__ == '__main__':
 	n = o.compile()
 	print('ALTA', len(n['alta']))
 	print('BAJA', len(n['baja']))
-# pp = pprint.PrettyPrinter(indent=4)
-# pp.pprint(n)
+
