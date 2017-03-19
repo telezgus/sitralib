@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
 	name='sitralib',
-	version='1.1.0',
+	version='1.1.1',
 	py_modules=[
 		'sitralib.server.os_fecha_hora',
 		'sitralib.validators.bcc',
@@ -76,7 +76,8 @@ setup(
 		'sitralib.respuesta_matriz_conflictos',
 		'sitralib.respuesta_preajustes',
 		'sitralib.respuesta_programa_tiempos',
-		'sitralib.respuesta'
+		'sitralib.respuesta',
+		'sitralib.generador_tramas_captura',
 	],
 	author='Agustin Bouillet',
 	author_email='agustin.bouillet@gmail.com',
