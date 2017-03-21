@@ -2,7 +2,13 @@ from sitralib.helpers.funciones import *
 from sitralib.helpers.ordenar_trama import *
 
 """
-Validación
+Validacion
+12 es la posición de la primer validación. Los XOR sumados desde el
+primer número hasta el valor previo a la posición 12, deben dar como resultado
+el valor expresado en la posición 12.
+
+Y la suma desde la posición a la ante-ultima debe dar el resultado expresado en
+el valor final
 """
 
 
