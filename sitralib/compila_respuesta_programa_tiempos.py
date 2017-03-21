@@ -1,5 +1,5 @@
 from sitralib.helpers.funciones import *
-
+import json
 
 class CompilaRespuestaProgramaTiempos(object):
 	def __init__(self, tramas):
@@ -41,7 +41,7 @@ class CompilaRespuestaProgramaTiempos(object):
 			for i in range(21, 57):
 				valor = programas[i] if i in programas else programas[
 					str(i)]
-				a.append(valor)
+				a.append(self.helpers.hexToDec(valor))
 		return a
 
 	def __desfasafe(self, programas):
@@ -94,7 +94,7 @@ if __name__ == '__main__':
 
 	open_file = open('test_tramas.json', 'r')
 	tramas = open_file.read()
-	trm = json.loads(tramas, object_pairs_hook=OrderedDict)
+	trm = json.loads(tramas)
 	#
 	trm = {
 		0: {
@@ -1059,4 +1059,4 @@ if __name__ == '__main__':
 	o = CompilaRespuestaProgramaTiempos(json.loads(trm))
 	r = o.compile()
 
-	print(json.dumps(r))
+	print(r)
