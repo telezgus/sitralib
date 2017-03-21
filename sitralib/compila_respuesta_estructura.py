@@ -28,11 +28,15 @@ class CompilaRespuestaEstructura(object):
 				self.__movimientos_por_intervalo(intervalos=intervalos)
 			)
 
-		return {'baja': listado_baja, 'alta': listado_alta}
+		r = list()
+		for i in range(3):
+			r.append(self.combine_array(listado_alta[i], listado_baja[i]))
+
+		return r
 
 	def __movimientos_por_intervalo(self, **kwargs):
 
-		f = ff = {}
+		f = {}
 		mov = defaultdict(dict)
 		for i in kwargs['intervalos']:
 			intervalos = kwargs['intervalos'][i]
@@ -44,7 +48,7 @@ class CompilaRespuestaEstructura(object):
 				counter += 1
 				mov[i][counter] = self.helpers.getNibbles(
 					intervalos[x], 2)['hi']
-			ff.update({i: intervalos[8]})
+
 			f[i] = intervalos[8]
 
 		fun = [f[i] for i in f]
@@ -69,7 +73,6 @@ class CompilaRespuestaEstructura(object):
 			c += 1
 		est.update({'fun': fun})
 
-		# p.pprint(est)
 		return est
 
 	def __slice(self, **kwargs):
@@ -125,10 +128,6 @@ class CompilaRespuestaEstructura(object):
 			for i in range(18):
 				alta[key].append(baja[key][i])
 
-		for i in range(18):
-			alta['fun'].append(baja['fun'][i])
-
-		p.pprint(alta)
 		return alta
 
 
@@ -140,4 +139,5 @@ if __name__ == '__main__':
 
 	o = CompilaRespuestaEstructura(json.loads(trm))
 	n = o.compile()
-	p.pprint(n['alta'][0])
+	p.pprint(n)
+
