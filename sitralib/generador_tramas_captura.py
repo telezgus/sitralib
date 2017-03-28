@@ -128,5 +128,5 @@ if __name__ == "__main__":
         crs_numero=3000,
         grp_id_num=1
     )
-    # print('-->', len(o.create()))
+
     print(o.create())
