@@ -10,7 +10,6 @@ from sitralib.compila_envio_agenda_diaria import *
 from sitralib.compila_envio_agenda_anual_semanal import *
 from sitralib.compila_envio_agenda_feriados_especial import *
 
-
 class GeneradorTramasGrabacion(object):
     def __init__(self, **kwargs):
         self.crs_id = kwargs['crs_id']
@@ -149,5 +148,7 @@ class GeneradorTramasGrabacion(object):
 
 
 if __name__ == "__main__":
+
+
     o = GeneradorTramasGrabacion()
     o.create()

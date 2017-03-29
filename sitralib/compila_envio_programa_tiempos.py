@@ -22,7 +22,9 @@ class CompilaEnvioProgramaTiempos(object):
 		espSup = self.helpers.intToHexString(esp_data['espSup'], 4)
 		espDesfasaje = self.helpers.intToHexString(esp_data['espDesfasaje'], 4)
 
-		trama = defaultdict(dict)
+		intervalos = self.__set_intervalo(esp_data['espData'])
+
+		trama = {}
 		trama[1] = '00'
 		trama[2] = '00'
 		trama[3] = '00'
@@ -39,6 +41,10 @@ class CompilaEnvioProgramaTiempos(object):
 		trama[14] = numeroControlador[-2:]
 		trama[15] = self.helpers.intToHexString(kwargs['esp_id_num'])
 		# ...Intervalos 16 a 51
+
+		# trama.update(intervalos)
+		for i in intervalos: trama[i] = intervalos[i]
+
 		trama[52] = espCiclo[:-2]
 		trama[53] = espCiclo[-2:]
 		trama[54] = espSup[:-2]
@@ -65,11 +71,6 @@ class CompilaEnvioProgramaTiempos(object):
 		trama[75] = 'FF'
 		trama[76] = '00'  # BCC final
 
-		intervalos = self.__set_intervalo(esp_data['espData'])
-
-		# trama.update(intervalos)
-		for i in intervalos:
-			trama[i] = intervalos[i]
 
 		trama_consolidada = self.bcc.consolidate(trama)
 		if trama_consolidada:
@@ -85,3 +86,15 @@ class CompilaEnvioProgramaTiempos(object):
 			counter += 1
 
 		return posicion
+
+
+
+if __name__ == "__main__":
+    o = CompilaEnvioProgramaTiempos()
+    a = o.create(
+		crs_numero=3000,
+		grp_id_num=1,
+		esp_id_num=0,
+		esp_data='{"espDesfasaje": "0", "espCiclo": "48", "espSup": "0", "espData": ["10", "10", "2", "1", "2", "10", "10", "2", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "5", "5"]}'
+	)
+    print(a)

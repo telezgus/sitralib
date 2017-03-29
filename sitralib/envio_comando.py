@@ -41,7 +41,7 @@ class EnvioComando(object):
 if __name__ == "__main__":
     envioComando = EnvioComando()
     trama = envioComando.create(
-        grp_id_num=1,
+        grp_id_num=str(1),
         ccm_id=1,
         crs_numero=3000
     )
