@@ -29,4 +29,6 @@ def getNTPTime(host="pool.ntp.org"):
 
 
 if __name__ == "__main__":
-    print(getNTPTime(host="pool.ntp.org"))
+    d = getNTPTime(host="pool.ntp.org")
+    # print(d)
+    # print(d.day, d.month, d.year, d.hour, d.minute, d.second, d.weekday(), d.microsecond)
