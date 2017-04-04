@@ -79,7 +79,7 @@ setup(
 		'sitralib.respuesta',
 		'sitralib.generador_tramas_captura',
 		'sitralib.generador_tramas_grabacion',
-		'sitralib.respuesta_imposicion_fecha_hora.py'
+		'sitralib.respuesta_imposicion_fecha_hora'
 	],
 	author='Agustin Bouillet',
 	author_email='agustin.bouillet@gmail.com',
