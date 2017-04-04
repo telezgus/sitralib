@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
 	name='sitralib',
-	version='1.1.2',
+	version='1.1.4',
 	py_modules=[
 		'sitralib.server.os_fecha_hora',
 		'sitralib.validators.bcc',
@@ -79,6 +79,7 @@ setup(
 		'sitralib.respuesta',
 		'sitralib.generador_tramas_captura',
 		'sitralib.generador_tramas_grabacion',
+		'sitralib.respuesta_imposicion_fecha_hora.py'
 	],
 	author='Agustin Bouillet',
 	author_email='agustin.bouillet@gmail.com',
