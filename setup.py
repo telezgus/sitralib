@@ -2,9 +2,10 @@ from distutils.core import setup
 
 setup(
 	name='sitralib',
-	version='1.1.4',
+	version='1.1.5',
 	py_modules=[
 		'sitralib.server.os_fecha_hora',
+		'sitralib.server.ntp',
 		'sitralib.validators.bcc',
 		'sitralib.helpers.fecha',
 		'sitralib.helpers.byte',
