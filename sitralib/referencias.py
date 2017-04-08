@@ -1,5 +1,5 @@
 CODE_REFERENCES = {
-	'00': {'technical': 'No se encuentran datos', 'humanize': ''},
+	'00': {'technical': '', 'humanize': ''},
 	'64': {'technical': 'Consulta de grupos extendidos', 'humanize': ''},
 	'65': {'technical': 'Envío comando', 'humanize': 'Envío comando'},
 	'66': {'technical': 'fecha y hora', 'humanize': 'fecha y hora'},
