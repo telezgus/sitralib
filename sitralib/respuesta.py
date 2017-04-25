@@ -23,7 +23,7 @@ from sitralib.respuesta_consulta_agenda_diaria import *
 from sitralib.respuesta_consulta_agenda_anual_semanal import *
 from sitralib.respuesta_consulta_agenda_feriados_especial import *
 from sitralib.respuesta_consulta_preajustes import *
-
+from sitralib.respuesta_consulta_estructura_parte_alta import *
 
 class Respuesta(object):
     def __init__(self):
