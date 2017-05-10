@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
 	name='sitralib',
-	version='1.1.10',
+	version='1.1.11',
 	py_modules=[
 		'sitralib.server.os_fecha_hora',
 		'sitralib.server.ntp',
