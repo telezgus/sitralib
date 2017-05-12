@@ -1,3 +1,7 @@
+"""
+Referencia de códigos
+"""
+
 '''
 Matriz de codigos de envio y respusta
 '''
@@ -231,6 +235,54 @@ CODE_REFERENCES = {
         'humanize': ''
     },
 }
+
+MENSAJES = {
+    1: {
+        'tipo': 'advertencia',
+        'mensaje': 'TIMEOUT',
+    },
+    2: {
+        'tipo': 'advertencia',
+        'mensaje': 'Trama incompleta',
+    },
+    3: {
+        'tipo': 'error',
+        'mensaje': 'Falla de conexión',
+    },
+    4: {
+        'tipo': 'error',
+        'mensaje': 'No se puede crear el archivo de alertas',
+    },
+    5: {
+        'tipo': 'error',
+        'mensaje': 'Error al procesar el archivo extendido',
+    },
+    6: {
+        'tipo': 'error',
+        'mensaje': 'No se puede imponer la fecha y hora en el servidor',
+    },
+    7: {
+        'tipo': 'error',
+        'mensaje': 'No se puede imponer fecha y hora en el cruce',
+    },
+    8: {
+        'tipo' : 'error',
+        'mensaje': "Fallo despues de {0} intentos",
+    },
+    9: {
+        'tipo' : 'error',
+        'mensaje': "Trama inválida",
+    },
+    10: {
+        'tipo' : 'exito',
+        'mensaje': "Trama correcta",
+    },
+    11: {
+        'tipo' : 'error',
+        'mensaje': "Falla de SOCKET",
+    },
+}
+
 
 if __name__ == "__main__":
     print(CODE_REFERENCES['71']['humanize'])
