@@ -1,6 +1,5 @@
 from sitralib.helpers.funciones import *
 
-
 class OrdenarTrama(object):
     def __init__(self):
         self.helpers = Helpers()
@@ -59,6 +58,18 @@ class OrdenarTrama(object):
             return self.__stringToDict(trama)
         else:
             return None
+
+
+    def get_codigo_trama(self, trama):
+        """
+        Retorna el codigo de la trama
+        """
+        trm = self.ordenarTrama(trama)
+        if 9 in trm:
+            return trm[9]
+        return None
+
+
 
 
 if __name__ == '__main__':

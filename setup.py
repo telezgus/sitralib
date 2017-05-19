@@ -2,8 +2,10 @@ from distutils.core import setup
 
 setup(
 	name='sitralib',
-	version='1.1.13',
+	version='1.1.14',
 	py_modules=[
+		'sitralib.captura',
+		'sitralib.grabacion',
 		'sitralib.server.os_fecha_hora',
 		'sitralib.server.ntp',
 		'sitralib.validators.bcc',
