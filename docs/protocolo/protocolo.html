@@ -1,0 +1,9625 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link href='https://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Oxygen', sans-serif;
+	;
+	color: #555;
+	font-size: 83%;
+	background: #f9f9f9
+}
+h1 { font-weight: 300}
+h2 {
+	color: tomato;
+	font-weight: 300;
+	font-size: 1.5em;
+	margin-top: 2em;
+}
+
+table, td, th {
+	border-collapse: collapse;
+	padding: 8px 16px
+}
+table {border:1px solid #ddd;}
+td {
+	border-bottom: 1px solid #ddd;
+}
+th {
+	border-bottom: 2px solid #555; 
+	text-align: left;
+	font-size: 105%
+}
+th p, td p {
+	margin: 0;
+	padding: 0
+}
+.epigrafe { 
+	color:#999; 
+	margin-bottom: 3em; 
+	font-weight: 300
+}
+.container{ 
+	width: 100%; 
+	max-width: 960px; 
+	margin: auto; 
+	background: #fff; 
+	padding: 2em; 
+	box-sizing:border-box;
+}
+.jump { 
+    display: block;
+    width: 3em; 
+    height: 3em; 
+    background: tomato; 
+    color:#fff;
+    position: fixed;
+    bottom:0;
+    right: 0;
+    line-height: 3em;
+    text-align: center;
+    text-decoration: none
+ }
+ .jump:hover { background: #555 }
+</style>
+</head>
+<body>
+<a class="jump" href="#start" title="Ir al comienzo de la página">↩</a>
+<div class="container">
+<p id="start">Cap&iacute;tulo 4</p>
+<h1>Protocolo CITAR</h1>
+<h2>1. Consideraciones Generales</h2>
+<p><em>Se transmite a 9600 bps con paridad par.</em></p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Función de la Trama</th>
+      <th>Código</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td height="39">Consulta de grupos extendidos</td>
+      <td><a href="#bookmark64">0x64</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío comando</td>
+      <td><a href="#bookmark65">0x65</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío fecha y hora</td>
+      <td><a href="#bookmark66">0x66</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de estructura (parte alta)</td>
+      <td><a href="#bookmark75">0x67</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de estructura (parte baja)</td>
+      <td><a href="#bookmark77">0x68</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de estructura (parte alta)</td>
+      <td><a href="#bookmark71">0x69</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de estructura (parte baja)</td>
+      <td><a href="#bookmark73">0x6A</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de matriz de conflictos</td>
+      <td><a href="#bookmark81">0x6B</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de matriz de conflictos</td>
+      <td><a href="#bookmark79">0x6C</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de funciones</td>
+      <td><a href="#bookmark85">0x6D</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de funciones</td>
+      <td><a href="#bookmark83">0x6E</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de preajustes</td>
+      <td><a href="#bookmark108">0x6F</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de preajustes</td>
+      <td><a href="#bookmark106">0x70</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de programa de tiempos</td>
+      <td><a href="#bookmark89">0x71</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de programa de tiempos</td>
+      <td><a href="#bookmark87">0x72</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de agenda feriados y especial</td>
+      <td><a href="#bookmark100">0x73</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de agenda feriados y especial</td>
+      <td><a href="#bookmark98">0x74</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de agenda anual</td>
+      <td><a href="#bookmark96">0x75</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de agenda anual</td>
+      <td><a href="#bookmark94">0x76</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de agenda diaria</td>
+      <td><a href="#bookmark93">0x77</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de agenda diaria</td>
+      <td><a href="#bookmark91">0x78</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de último evento</td>
+      <td><a href="#bookmark110">0x79</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Consulta de eventos</td>
+      <td><a href="#bookmark112">0x7A</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de contraseña hardware</td>
+      <td><a href="#bookmark102">0x7D</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Envío de grabación EEPROM</td>
+      <td><a href="#bookmark104">0x7E</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de grupos extendidos</td>
+      <td><a href="#bookmark70">0xC8</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío comando</td>
+      <td><a href="#bookmark66">0xC9</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío fecha y hora</td>
+      <td><a href="#bookmark68">0xCA</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de estructura (parte alta)</td>
+      <td><a href="#bookmark76">0xCB</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de estructura (parte baja)</td>
+      <td><a href="#bookmark78">0xCC</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío de estructura (parte alta)</td>
+      <td><a href="#bookmark72">0xCD</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío de estructura (parte baja)</td>
+      <td><a href="#bookmark74">0xCE</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta matriz de conflictos</td>
+      <td><a href="#bookmark82">0xCF</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío matriz de conflictos</td>
+      <td><a href="#bookmark80">0xD0</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de funciones</td>
+      <td><a href="#bookmark86">0xD1</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío de funciones</td>
+      <td><a href="#bookmark84">0xD2</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de preajustes</td>
+      <td><a href="#bookmark109">0xD3</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío de preajustes</td>
+      <td><a href="#bookmark107">0xD4</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de programa de tiempos</td>
+      <td><a href="#bookmark90">0xD5</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío de programa de tiempos</td>
+      <td><a href="#bookmark88">0xD6</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de agenda feriados y especial</td>
+      <td><a href="#bookmark101">0xD7</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío de agenda feriados y especial</td>
+      <td><a href="#bookmark99">0xD8</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de agenda anual</td>
+      <td><a href="#bookmark97">0xD9</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío de agenda anual</td>
+      <td><a href="#bookmark95">0xDA</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de agenda diaria</td>
+      <td><a href="#bookmark113">0xDB</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío de agenda diaria</td>
+      <td><a href="#bookmark92">0xDC</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de último evento</td>
+      <td><a href="#bookmark111">0xDD</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta consulta de eventos</td>
+      <td><a href="#bookmark113">0xDE</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío de contraseña hardware</td>
+      <td><a href="#bookmark103">0xE1</a></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Respuesta Envío de grabación EEPROM</td>
+      <td><a href="#bookmark105">0xE2</a></td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.1: Resúmen de códigos de las tramas</p>
+<a name="bookmark65"></a><h2>4.2. Trama corta de comando</h2>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Posición</th>
+      <th>Código</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC?</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x65</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0C</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Comando</td>
+      <td>Ver tabla 4.3</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.2: Trama corta desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Código</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>Sipla</td>
+      <td>0x00 a 0x2F</td>
+    </tr>
+    <tr>
+      <td>Titilante</td>
+      <td>0xF0</td>
+    </tr>
+    <tr>
+      <td>Apagado</td>
+      <td>0xF1</td>
+    </tr>
+    <tr>
+      <td>Local</td>
+      <td>0xF2</td>
+    </tr>
+    <tr>
+      <td>Desagrupar</td>
+      <td>0xF3</td>
+    </tr>
+    <tr>
+      <td>Normalizar o agrupar</td>
+      <td>0xF4</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.3: Byte de Comando</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Posición</th>
+      <th>Código</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xC9</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.4: Trama corta desde EC hacia CC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Código</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>Sipla</td>
+      <td>0x00 a 0x2F</td>
+    </tr>
+    <tr>
+      <td>Titilante</td>
+      <td>0xF0</td>
+    </tr>
+    <tr>
+      <td>Apagado</td>
+      <td>0xF1</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.5: Byte de Estado</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th colspan="8"><p>Bits</th>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>VP</td>
+      <td>PFL</td>
+      <td>CP</td>
+      <td>LP</td>
+      <td>TD</td>
+      <td>C</td>
+      <td>AP</td>
+      <td>TIT</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.6: Bits de Status I</p>
+<p>VP:&nbsp;Verde del movimiento 1. 0 = Apagado, 1 = Encendido</p>
+<p>PFL:&nbsp;Plan forzado local desde CC. 0 = Normal, 1 = Forzado</p>
+<p>CP:&nbsp;Cambiando Plan. 0 = Normal, 1 = Cambiando</p>
+<p>LP:&nbsp;Llave panel local central. 0 = Local, 1 = Central</p>
+<p>TD:&nbsp;Tipo de Día. 0 = Normal, 1 = Feriado o evento</p>
+<p>C:&nbsp;Centralizado. 0 = Local, 1 = Centralizado</p>
+<p>AP:&nbsp;Apagado. 0 = Normal, 1 = LLave panel apagado o EC apagado</p>
+<p>TIT:&nbsp;Titilante. 0 = Normal, 1 = LLave panel titilante o EC titilante</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th colspan="8"><p>Bits</th>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>SI</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>AIS</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.7: Bits de Status II</p>
+<p>AIS:&nbsp;EC aislado de grupo (No acepta comandos grupales). 0 = Normal, 1 = Aislado</p>
+<p>SI:&nbsp;EC en secuencia de inicio (intervalos A (34) y B (35)). 0 = Normal, 1 = Secuencia de inicio</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th colspan="8"><p>Bits</th>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>D2</td>
+      <td>D1</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.8: Bits de Status III</p>
+<p>D1:&nbsp;Demanda 1. 0 = Desocupada, 1 = Ocupada</p>
+<p>D2:&nbsp;Demanda 2. 0 = Desocupada, 1 = Ocupada</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th colspan="8"><p>Bits</th>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>BT</td>
+      <td>CV</td>
+      <td>TSUP</td>
+      <td>FR</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.9: Bits de Alarmas</p>
+<p>FR:&nbsp;Falta de rojo. 0 = Normal, 1 = Falla</p>
+<p>TSUP:&nbsp;Tiempo suplementario de ciclo. 0 = Normal, 1 = Falla</p>
+<p>CV:&nbsp;Conflicto de verde. 0 = Normal, 1 = Falla</p>
+<p>BT:&nbsp;Baja Tensión. 0 = Normal, 1 = Falla</p>
+<a name="bookmark66"></a><h2>4.3. Trama de imposición de fecha y hora</h2>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Posición</th>
+      <th>Código</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC?</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x66</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x12</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de EC MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de EC LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>An&tilde;o</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Mes</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Día</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Hora</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Minutos</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Segundos</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Dia de la semana</td>
+      <td>Formato BCD (0x01 = domingo)</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.10: Trama de imposición fecha y hora desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Posición</th>
+      <th>Código</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xCA</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.11: Trama de imposición fecha y hora desde EC hacia CC</p>
+<a name="bookmark64"></a><h2>4.4. Trama de estado extendido</h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC?</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x64</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de EC MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de EC LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.12: Trama de estado extendido desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xC8</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x36</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Estado Lámparas 2 - 1</td>
+      <td>Ver tabla 4.14</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Estado Lámparas 4 - 3</td>
+      <td>Ver tabla 4.14</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Estado Lámparas 6 - 5</td>
+      <td>Ver tabla 4.14</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Estado Lámparas 8 - 7</td>
+      <td>Ver tabla 4.14</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Estado Lámparas 10 - 9</td>
+      <td>Ver tabla 4.14</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Estado Lámparas 12 - 11</td>
+      <td>Ver tabla 4.14</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Estado Lámparas 14 - 13</td>
+      <td>Ver tabla 4.14</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Estado Lámparas 16 - 15</td>
+      <td>Ver tabla 4.14</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>An&tilde;o</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Mes</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Día</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>Hora</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Minutos</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Segundos</td>
+      <td>Formato BCD</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>Dia de la semana</td>
+      <td>Formato BCD (0x01 = domingo)</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>Estructura</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>Programa de Tiempos</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>Número de paso</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Segundo de paso</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>Duración de paso</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>Segundo de ciclo MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>Segundo de ciclo LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>Tiempo suplementario ciclo actual MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>Tiempo suplementario ciclo actual LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>Duración de ciclo MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>Duración de ciclo LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>Preajuste tiempo suplementario MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>Preajuste tiempo suplementario LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>Desfasaje MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>Desfasaje LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>Función de paso</td>
+      <td>Ver tabla 4.15</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>Resultado Operación Función</td>
+      <td>Nibble superior = parámetro 2, Nible inferior = parámetro 1</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>Demandas externas almacenadas</td>
+      <td>D8 a D1</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>Demandas agendadas</td>
+      <td>D8 a D1</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.13: Trama de estado extendido desde EC hacia CC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Código Nibble</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>Apagado</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>Rojo</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>Amarillo</td>
+      <td>0x02</td>
+    </tr>
+    <tr>
+      <td>Rojo + Amarillo</td>
+      <td>0x03</td>
+    </tr>
+    <tr>
+      <td>Verde</td>
+      <td>0x04</td>
+    </tr>
+    <tr>
+      <td>Rojo intermitente</td>
+      <td>0x09</td>
+    </tr>
+    <tr>
+      <td>Amarillo intermitente</td>
+      <td>0x0A</td>
+    </tr>
+    <tr>
+      <td>Verde intermitente</td>
+      <td>0x0C</td>
+    </tr>
+    <tr>
+      <td>Rojo + Amarillo intermitente</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>Verde + Amarillo intermitente</td>
+      <td>0x0E</td>
+    </tr>
+    <tr>
+      <td>Inexitente</td>
+      <td>0x0D</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.14: Byte de Lámparas</p>
+</hr>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Código</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>Ninguna</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>SY (Sincronismo)</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>FO (Avance)</td>
+      <td>0x02</td>
+    </tr>
+    <tr>
+      <td>JC (Salto incondicional )</td>
+      <td>0x03</td>
+    </tr>
+    <tr>
+      <td>STE (ExTensión)</td>
+      <td>0x04</td>
+    </tr>
+    <tr>
+      <td>JU (Salto incondicional )</td>
+      <td>0x05</td>
+    </tr>
+    <tr>
+      <td>SY + JC (Sincronismo + salto condicional)</td>
+      <td>0x06</td>
+    </tr>
+    <tr>
+      <td>Fo + JC (Avance + salto incondicional )</td>
+      <td>0x07</td>
+    </tr>
+    <tr>
+      <td>RD1 (Borrar demanda 1)</td>
+      <td>0x08</td>
+    </tr>
+    <tr>
+      <td>RD2 (Borrar demanda 2)</td>
+      <td>0x09</td>
+    </tr>
+    <tr>
+      <td>RD3 (Borrar demanda 3)</td>
+      <td>0x0A</td>
+    </tr>
+    <tr>
+      <td>RD4 (Borrar demanda 4)</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>RD5 (Borrar demanda 5)</td>
+      <td>0x0C</td>
+    </tr>
+    <tr>
+      <td>RD6 (Borrar demanda 6)</td>
+      <td>0x0D</td>
+    </tr>
+    <tr>
+      <td>RD7 (Borrar demanda 7)</td>
+      <td>0x0E</td>
+    </tr>
+    <tr>
+      <td>RD8 (Borrar demanda 8)</td>
+      <td>0x0F</td>
+    </tr>
+    <tr>
+      <td>RAD (Borrar todas las demandas)</td>
+      <td>0x10</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.15: Byte de Función</p>
+<h2><a name="bookmark10">
+  4.5. Trama de envío de estructura</a></h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x69</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0xF6</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Número de Estructura</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Estado Intervalo 0 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Estado Intervalo 0 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Estado Intervalo 0 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Estado Intervalo 0 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Estado Intervalo 0 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Estado Intervalo 0 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Estado Intervalo 0 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Estado Intervalo 0 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Función Intervalo 0</td>
+      <td>Ver tabla 4.15</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Parámetro 1 Función Intervalo 0</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Parámetro 2 Función Intervalo 0</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Parámetro 3 Función Intervalo 0</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Parámetro 4 Función Intervalo 0</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>237</td>
+      <td>Estado Intervalo 17 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>238</td>
+      <td>Estado Intervalo 17 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>239</td>
+      <td>Estado Intervalo 17 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>240</td>
+      <td>Estado Intervalo 17 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>241</td>
+      <td>Estado Intervalo 17 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>242</td>
+      <td>Estado Intervalo 17 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>243</td>
+      <td>Estado Intervalo 17 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>244</td>
+      <td>Estado Intervalo 17 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>245</td>
+      <td>Función Intervalo 17</td>
+      <td>Ver tabla 4.15</td>
+    </tr>
+    <tr>
+      <td>246</td>
+      <td>Parámetro 1 Función Intervalo 17</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>247</td>
+      <td>Parámetro 2 Función Intervalo 17</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>248</td>
+      <td>Parámetro 3 Función Intervalo 17</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>249</td>
+      <td>Parámetro 4 Función Intervalo 17</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>250</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.16: Trama de envío de estructura (parte alta) desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th><a name="bookmark62">Función</a></th>
+      <th>Parámetro 1</th>
+      <th>Parámetro 2</th>
+      <th>Parámetro 3</th>
+      <th>Parámetro 4</th>
+    </tr>
+    <tr>
+      <td>JC
+      (Salto condicional)</td>
+      <td>Número de
+       Función 1</td>
+      <td>Número
+        intervalo salto</td>
+      <td>Número de
+       Función 2</td>
+      <td>Número
+       intervalo salto</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark11">STE (ExTensión)</a><a name="bookmark72">‌</a></td>
+      <td>Número de
+      Función</td>
+      <td>Incremento</td>
+      <td>M´aximo
+      incremento</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>JU
+        (Salto incondicional)</td>
+      <td>Número
+        intervalo salto</td>
+      <td>0x00</td>
+      <td>0x00</td>
+      <td>0x00
+       (0xFF = Deshabilitado)</td>
+    </tr>
+    <tr>
+      <td>SY + JC
+       (Sincronismo + salto condicional)</td>
+      <td>Número de
+        Función 1</td>
+      <td>Número
+      intervalo salto</td>
+      <td>Número de
+        Función 2</td>
+      <td>Número
+        intervalo salto</td>
+    </tr>
+    <tr>
+      <td>FO + JC
+       (Avance + salto condicional)</td>
+      <td>Número de
+        Función 1</td>
+      <td>Número
+        intervalo salto</td>
+      <td>Número de
+        Función 2</td>
+      <td>Número
+        intervalo salto</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.17: Parámetros de las funciones en la estructura</p>
+
+<p>Nota sobre los Parámetros de las funciones</p>
+<p>Número de funcion xx: 0xFF = Deshabilitada</p>
+<p>Número de intervalo: 0x80 OR Número de intervalo = salto inmediato, de lo contrario salto normal</p>
+
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xCD</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark12">18</a><a name="bookmark73">‌</a></td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.18: Trama de respuesta de envio de estructura (parte alta) desde EC hacia CC</p>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x6A</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0xF6</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Número de Estructura</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Estado Intervalo 18 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Estado Intervalo 18 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Estado Intervalo 18 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Estado Intervalo 18 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Estado Intervalo 18 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Estado Intervalo 18 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Estado Intervalo 18 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Estado Intervalo 18 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Función Intervalo 18</td>
+      <td>Ver tabla 4.15</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Parámetro 1 Función Intervalo 18</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Parámetro 2 Función Intervalo 18</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Parámetro 3 Función Intervalo 18</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Parámetro 4 Función Intervalo 18</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>211</td>
+      <td>Estado Intervalo 33 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>212</td>
+      <td>Estado Intervalo 33 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>213</td>
+      <td>Estado Intervalo 33 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>214</td>
+      <td>Estado Intervalo 33 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>215</td>
+      <td>Estado Intervalo 33 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>216</td>
+      <td>Estado Intervalo 33 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>217</td>
+      <td>Estado Intervalo 33 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>218</td>
+      <td>Estado Intervalo 33 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>219</td>
+      <td>Función Intervalo 33</td>
+      <td>Ver tabla 4.15</td>
+    </tr>
+    <tr>
+      <td>220</td>
+      <td>Parámetro 1 Función Intervalo 33</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>221</td>
+      <td>Parámetro 2 Función Intervalo 33</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>222</td>
+      <td>Parámetro 3 Función Intervalo 33</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>223</td>
+      <td>Parámetro 4 Función Intervalo 33</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>224</td>
+      <td>Estado Intervalo 34 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>225</td>
+      <td>Estado Intervalo 34 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>226</td>
+      <td>Estado Intervalo 34 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>227</td>
+      <td>Estado Intervalo 34 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>228</td>
+      <td>Estado Intervalo 34 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>229</td>
+      <td>Estado Intervalo 34 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>230</td>
+      <td>Estado Intervalo 34 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>231</td>
+      <td>Estado Intervalo 34 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>232</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>233</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>234</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>235</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>236</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>237</td>
+      <td>Estado Intervalo 35 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>238</td>
+      <td>Estado Intervalo 35 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>239</td>
+      <td>Estado Intervalo 35 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>240</td>
+      <td>Estado Intervalo 35 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>241</td>
+      <td>Estado Intervalo 35 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>242</td>
+      <td>Estado Intervalo 35 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>243</td>
+      <td>Estado Intervalo 35 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>244</td>
+      <td>Estado Intervalo 35 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>245</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>246</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>247</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>248</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>249</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>250</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.19: Trama de envio de estructura (parte baja) desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th><a name="bookmark13">Posición</a><a name="bookmark74">‌</a></th>
+      <th>Código</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark14">5</a></td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xCE</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark75">18</a></td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.20: Trama de respuesta de envio estructura (parte baja) desde EC hacia CC</p>
+<h2>4.6. Trama de consulta de Estructura</h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x67</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0C</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Número de Estructura</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.21: Trama consulta de estructura (parte alta) desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th><a name="bookmark15">Posición</a><a name="bookmark76">‌</a></th>
+      <th>Código</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xCB</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0xFB</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark63">15</a></td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Número de Estructura</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Estado Intervalo 0 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Estado Intervalo 0 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Estado Intervalo 0 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Estado Intervalo 0 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Estado Intervalo 0 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Estado Intervalo 0 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Estado Intervalo 0 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Estado Intervalo 0 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Función Intervalo 0</td>
+      <td>Ver tabla 4.15</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Parámetro 1 Función Intervalo 0</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>Parámetro 2 Función Intervalo 0</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Parámetro 3 Función Intervalo 0</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Parámetro 4 Función Intervalo 0</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>242</td>
+      <td>Estado Intervalo 17 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>243</td>
+      <td>Estado Intervalo 17 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>244</td>
+      <td>Estado Intervalo 17 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>245</td>
+      <td>Estado Intervalo 17 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>246</td>
+      <td>Estado Intervalo 17 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>247</td>
+      <td>Estado Intervalo 17 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>248</td>
+      <td>Estado Intervalo 17 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>249</td>
+      <td>Estado Intervalo 17 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>250</td>
+      <td>Función Intervalo 17</td>
+      <td>Ver tabla 4.15</td>
+    </tr>
+    <tr>
+      <td>251</td>
+      <td>Parámetro 1 Función Intervalo 17</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>252</td>
+      <td>Parámetro 2 Función Intervalo 17</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>253</td>
+      <td>Parámetro 3 Función Intervalo 17</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>254</td>
+      <td>Parámetro 4 Función Intervalo 17</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>255</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.22: Trama de respuesta de consulta estructura (parte alta) desde EC hacia CC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark16">Posición</a><a name="bookmark77">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark17">6</a><a name="bookmark78">‌</a></td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x68</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0C</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Número de Estructura</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.23: Trama consulta de estructura (parte baja) desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xCC</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0xFB</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Número de Estructura</td>
+      <td>-</td>
+    </tr>
+  
+    <tr>
+      <td>21</td>
+      <td>Estado Intervalo 18 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Estado Intervalo 18 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Estado Intervalo 18 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Estado Intervalo 18 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Estado Intervalo 18 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Estado Intervalo 18 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Estado Intervalo 18 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Estado Intervalo 18 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Función Intervalo 18</td>
+      <td>Ver tabla 4.15</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Parámetro 1 Función Intervalo 18</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>Parámetro 2 Función Intervalo 18</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Parámetro 3 Función Intervalo 18</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Parámetro 4 Función Intervalo 18</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>216</td>
+      <td>Estado Intervalo 33 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>217</td>
+      <td>Estado Intervalo 33 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>218</td>
+      <td>Estado Intervalo 33 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>219</td>
+      <td>Estado Intervalo 33 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>220</td>
+      <td>Estado Intervalo 33 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>221</td>
+      <td>Estado Intervalo 33 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>222</td>
+      <td>Estado Intervalo 33 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>223</td>
+      <td>Estado Intervalo 33 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>224</td>
+      <td>Función Intervalo 33</td>
+      <td>Ver tabla 4.15</td>
+    </tr>
+    <tr>
+      <td>225</td>
+      <td>Parámetro 1 Función Intervalo 33</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>226</td>
+      <td>Parámetro 2 Función Intervalo 33</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>227</td>
+      <td>Parámetro 3 Función Intervalo 33</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>228</td>
+      <td>Parámetro 4 Función Intervalo 33</td>
+      <td>Ver tabla 4.17</td>
+    </tr>
+    <tr>
+      <td>229</td>
+      <td>Estado Intervalo 34 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>230</td>
+      <td>Estado Intervalo 34 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>231</td>
+      <td>Estado Intervalo 34 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>232</td>
+      <td>Estado Intervalo 34 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>233</td>
+      <td>Estado Intervalo 34 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>234</td>
+      <td>Estado Intervalo 34 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>235</td>
+      <td>Estado Intervalo 34 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>236</td>
+      <td>Estado Intervalo 34 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>237</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>238</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>239</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>240</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>241</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>242</td>
+      <td>Estado Intervalo 35 Movimiento 2 - 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>243</td>
+      <td>Estado Intervalo 35 Movimiento 4 - 3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>244</td>
+      <td>Estado Intervalo 35 Movimiento 6 - 5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>245</td>
+      <td>Estado Intervalo 35 Movimiento 8 - 7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>246</td>
+      <td>Estado Intervalo 35 Movimiento 10 - 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>247</td>
+      <td>Estado Intervalo 35 Movimiento 12 - 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>248</td>
+      <td>Estado Intervalo 35 Movimiento 14 - 13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>249</td>
+      <td>Estado Intervalo 35 Movimiento 16 - 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>250</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>251</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>252</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>253</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>254</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>255</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.24: Trama de respuesta de consulta estructura (parte baja)</p>
+<p>desde EC hacia CC</p>
+<h2><a name="bookmark18">4.7. Trama de Envio de Matriz de Conflictos</a><a name="bookmark79">‌</a></h2>
+
+
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x6C</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x29</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark19">13</a><a name="bookmark80">‌</a></td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Matriz de Conflicto Movimiento 1 LSB</td>
+      <td>8 - 2</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Matriz de Conflicto Movimiento 1 MSB</td>
+      <td>16 - 9</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Matriz de Conflicto Movimiento 2 LSB</td>
+      <td>8 - 3</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Matriz de Conflicto Movimiento 2 MSB</td>
+      <td>16 - 9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Matriz de Conflicto Movimiento 3 LSB</td>
+      <td>8 - 4</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Matriz de Conflicto Movimiento 3 MSB</td>
+      <td>16 - 9</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>Matriz de Conflicto Movimiento 15 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>Matriz de Conflicto Movimiento 15 MSB</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.25: Trama de envío de matriz de conflictos desde CC hacia EC</p>
+
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xD0</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.26: Trama de envío de matriz de conflictos desde EC hacia CC</p>
+<h2><a name="bookmark20"><br>
+  Trama de Consulta de Matriz de Conflictos</a><a name="bookmark81">‌</a></h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark21">7</a><a name="bookmark82">‌</a></td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x6B</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.27: Trama de consulta de matriz de conflictos desde CC hacia EC</p>
+
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xCF</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x2E</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Matriz de Conflicto Movimiento 1 LSB</td>
+      <td>8 - 2</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Matriz de Conflicto Movimiento 1 MSB</td>
+      <td>16 - 9</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Matriz de Conflicto Movimiento 2 LSB</td>
+      <td>8 - 3</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Matriz de Conflicto Movimiento 2 MSB</td>
+      <td>16 - 9</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Matriz de Conflicto Movimiento 3 LSB</td>
+      <td>8 - 4</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Matriz de Conflicto Movimiento 3 MSB</td>
+      <td>16 - 9</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>Matriz de Conflicto Movimiento 15 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>Matriz de Conflicto Movimiento 15 MSB</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.28: Trama de respuesta a consulta de matriz de conflictos desde EC hacia CC</p>
+<h2>Trama de Envío de Funciones</h2>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark22">Posición</a><a name="bookmark83">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x6E</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x26</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Número de Función</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Habilitaci´on</td>
+      <td>Bit 0 = 1 habilitado</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Función 1</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Función 2</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Función 3</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Función 4</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Función 5</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Función 6</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Función 7</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Función 8</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Función 9</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Función 10</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Función 11</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Función 12</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Función 13</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Función 14</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>Función 15</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Función 16</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Función 17</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>Función 18</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>Función 19</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>Función 20</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Función 21</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>Función 22</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Función 23</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Función 24</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.29: Trama de envío de funciones desde CC hacia EC</p>
+
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td>Función</td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark23">=</a><a name="bookmark84">‌</a></td>
+      <td>0x00</td>
+      <td>Terminador de Función</td>
+    </tr>
+    <tr>
+      <td>NOT</td>
+      <td>0x01</td>
+      <td>Función l´ogica NOT</td>
+    </tr>
+    <tr>
+      <td>AND</td>
+      <td>0x02</td>
+      <td>Función l´ogica AND</td>
+    </tr>
+    <tr>
+      <td>OR</td>
+      <td>0x03</td>
+      <td>Función l´ogica OR</td>
+    </tr>
+    <tr>
+      <td>XOR</td>
+      <td>0x04</td>
+      <td>Función l´ogica XOR</td>
+    </tr>
+    <tr>
+      <td>==</td>
+      <td>0x10</td>
+      <td>Función l´ogica igual</td>
+    </tr>
+    <tr>
+      <td>&lt;</td>
+      <td>0x11</td>
+      <td>Función l´ogica menor que</td>
+    </tr>
+    <tr>
+      <td>&gt;</td>
+      <td>0x12</td>
+      <td>Función l´ogica mayor que</td>
+    </tr>
+    <tr>
+      <td>≤</td>
+      <td>0x13</td>
+      <td>Función l´ogica menor o igual que</td>
+    </tr>
+    <tr>
+      <td>≥</td>
+      <td>0x14</td>
+      <td>Función l´ogica mayor o igual que</td>
+    </tr>
+    <tr>
+      <td>&lt;&gt;</td>
+      <td>0x15</td>
+      <td>Función l´ogica distinto</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>0x20</td>
+      <td>Función adici´on</td>
+    </tr>
+    <tr>
+      <td>−</td>
+      <td>0x21</td>
+      <td>Funcion resta</td>
+    </tr>
+    <tr>
+      <td>D1 - D8</td>
+      <td>0x50 - 0x57</td>
+      <td>Demandas</td>
+    </tr>
+    <tr>
+      <td>D1to - D8to</td>
+      <td>0x60 - 0x67</td>
+      <td>Tiempo de ocupacio´n de demandas</td>
+    </tr>
+    <tr>
+      <td>D1c - D8c</td>
+      <td>0x70 - 0x77</td>
+      <td>Conteo de demandas</td>
+    </tr>
+    <tr>
+      <td>D1h - D8h</td>
+      <td>0x80 - 0x87</td>
+      <td>Tiempo de demandas</td>
+    </tr>
+    <tr>
+      <td>Fa - Fh</td>
+      <td>0xD0 - 0xD7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Constante</td>
+      <td>-</td>
+      <td>Son dos bytes consecutivos, 1ro = 0x90, 2do = valor constante</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.30: Funciones de Salto Condicional</p>
+
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xD2</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.31: Trama de respuesta a envío de funciones desde EC hacia CC</p>
+<h2><a name="bookmark24">Trama de Consulta de Funciones</a><a name="bookmark85">‌</a></h2>
+
+
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x6D</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0C</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Número de Función</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.32: Trama de consulta de funciones desde CC hacia EC</p>
+
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark25">Posición</a><a name="bookmark86">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xD1</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x2B</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Número de Función</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Habilitaci´on</td>
+      <td>Bit 0 = 1 habilitado</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Función 1</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Función 2</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Función 3</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Función 4</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Función 5</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Función 6</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Función 7</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Función 8</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Función 9</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>Función 10</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Función 11</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Función 12</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>Función 13</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>Función 14</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>Función 15</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Función 16</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>Función 17</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Función 18</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Función 19</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>Función 20</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>Función 21</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>Función 22</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>Función 23</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>Función 24</td>
+      <td>Ver tabla 4.30</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.33: Trama de respuesta a consulta de funciones desde EC hacia CC</p>
+<h2><a name="bookmark26">Trama envío de programa de tiempos</a><a name="bookmark87">‌</a></h2>
+
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x72</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x48</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Número de Programa</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Tiempo Intervalo 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Tiempo Intervalo 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>..</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>Tiempo Intervalo 34</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>Tiempo Intervalo 35</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>Duración de Ciclo MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>Duración de Ciclo LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>Tiempo Suplementario MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>Tiempo Suplementario LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>Desfasaje MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>Desfasaje LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>Tiempo de Avance 1 MSB</td>
+      <td>0x7FFF = anulado</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>Tiempo de Avance 1 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>Tiempo de Avance 2 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>Tiempo de Avance 2 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>Tiempo de Avance 3 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>Tiempo de Avance 3 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>Tiempo de Avance 4 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>Tiempo de Avance 4 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>Tiempo de Avance 5 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>Tiempo de Avance 5 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>Tiempo de Avance 6 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>Tiempo de Avance 6 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>Tiempo de Avance 7 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>Tiempo de Avance 7 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>Tiempo de Avance 8 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>Tiempo de Avance 8 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>Tiempo de Avance 9 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>Tiempo de Avance 9 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.34: Trama de envío de programa de tiempo desde CC hacia EC</p>
+
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark27">Posición</a><a name="bookmark88">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xD6</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark28">11</a><a name="bookmark89">‌</a></td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.35: Trama de respuesta de envío de programa de tiempos desde EC hacia CC</p>
+<h2>Trama consulta de programa de tiempos</h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x71</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0C</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Número de Programa</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.36: Trama de consulta de programa de tiempo desde CC hacia EC</p>
+
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark29">Posición</a><a name="bookmark90">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xD5</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x4D</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Número de Programa</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Tiempo Intervalo 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Tiempo Intervalo 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>..</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>Tiempo Intervalo 34</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>Tiempo Intervalo 35</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>Duración de Ciclo MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>Duración de Ciclo LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>Tiempo Suplementario MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>Tiempo Suplementario LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>Desfasaje MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>Desfasaje LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>Tiempo de Avance 1 MSB</td>
+      <td>0x7FFF = anulado</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>Tiempo de Avance 1 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>Tiempo de Avance 2 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>Tiempo de Avance 2 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>Tiempo de Avance 3 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>Tiempo de Avance 3 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>Tiempo de Avance 4 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>Tiempo de Avance 4 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>Tiempo de Avance 5 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>Tiempo de Avance 5 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>Tiempo de Avance 6 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>Tiempo de Avance 6 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>Tiempo de Avance 7 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>Tiempo de Avance 7 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>77</td>
+      <td>Tiempo de Avance 8 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td>Tiempo de Avance 8 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td>Tiempo de Avance 9 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>Tiempo de Avance 9 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.37: Trama de respuesta de envío de programa de tiempos desde EC hacia CC</p>
+<h2><a name="bookmark30">Trama envío de Agenda Diaria</a><a name="bookmark91">‌</a></h2>
+
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x78</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x34</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Número de Agenda Diaria</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Hora Cambio 0</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Minuto Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Programa Cambio 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Demanda Almacenada Cambio 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Hora Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Minuto Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Programa Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Demanda Almacenada Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>Hora Cambio 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>Minuto Cambio 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>Programa Cambio 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>Demanda Almacenada Cambio 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.38: Trama de envío de agenda diaria desde CC hacia EC</p>
+
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark31">Posición</a><a name="bookmark92">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xDC</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark32">12</a><a name="bookmark93">‌</a></td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.39: Trama de respuesta de agenda diaria desde EC hacia CC</p>
+
+<h2>Trama de Consulta de Agenda Diaria</h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x77</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0xC</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Número de Agenda Diaria</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.40: Trama de consulta de agenda diaria desde CC hacia EC</p>
+
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark33">2</a></td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xDB</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x39</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Número de Agenda Diaria</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Hora Cambio 0</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Minuto Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Programa Cambio 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Demanda Almacenada Cambio 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Hora Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Minuto Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Programa Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Demanda Almacenada Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>Hora Cambio 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>Minuto Cambio 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>Programa Cambio 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>Demanda Almacenada Cambio 9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.41: Trama de respuesta de consulta de agenda diaria desde EC hacia CC</p>
+<h2><a name="bookmark34">
+  Trama envío de Agenda Anual y Semanal</a></h2>
+<table>
+  <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Origen MSB </td>
+    <td>0x00</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Origen LSB </td>
+    <td>0x00</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Destino MSB </td>
+    <td>0x00</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Destino LSB </td>
+    <td>0x00</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Header </td>
+    <td>0xFF</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Tipo origen </td>
+    <td>0x00 = CITAR, 0x1F = COMCLS</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Número de esclavo del EC</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Número de grupo del EC </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Código </td>
+    <td>0x76</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>Longitud Total - 4 MSB </td>
+    <td>0x00</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Longitud Total - 4 LSB </td>
+    <td>0x83</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>BCC intermedio </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>Número de Controlador MSB </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Número de Controlador LSB </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>Día Cambio 0 </td>
+    <td>0x01</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>Mes Cambio 0 </td>
+    <td>0x01</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>Día Cambio 1 </td>
+    <td>0x7FFF = anulado</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>Mes Cambio 1 </td>
+    <td>-</td>
+  <tr>
+    <td>...</td>
+    <td>... </td>
+    <td>...</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Día Cambio 11</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Mes Cambio 11 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 0</td>
+    <td> 0x00</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 1 </td>
+    <td>0x01</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 2</td>
+    <td> 0x02</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 3 </td>
+    <td>0x03</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 4 </td>
+    <td>0x04</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 5</td>
+    <td> 0x05</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 6</td>
+    <td> 0x06</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 7</td>
+    <td> 0x07</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 8 </td>
+    <td>0x08</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 9</td>
+    <td> 0x09</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 10</td>
+    <td> 0x0A</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Número de Agenda Semanal 11</td>
+    <td> 0x0B</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Domingo Agenda Semanal 0</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Lunes Agenda Semanal 0</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Martes Agenda Semanal 0</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Miércoles Agenda Semanal 0</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Jueves Agenda Semanal 0 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Viernes Agenda Semanal 0 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Sábado Agenda Semanal 0 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Domingo Agenda Semanal 1</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Lunes Agenda Semanal 1 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Martes Agenda Semanal 1 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Miércoles Agenda Semanal 1 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Jueves Agenda Semanal 1 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Viernes Agenda Semanal 1 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Sábado Agenda Semanal 1</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>... </td>
+    <td>...</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Domingo Agenda Semanal 11 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Lunes Agenda Semanal 11</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Martes Agenda Semanal 11</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Miércoles Agenda Semanal 11</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Jueves Agenda Semanal 11</td>
+    <td> -</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Viernes Agenda Semanal 11 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Agenda Diaria Sábado Agenda Semanal 11 </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>BCC </td>
+    <td>-</td>
+  </tr>
+</table>
+<p class="epigrafe">Tabla 4.42: Trama de envío de agenda diaria desde CC hacia EC </p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark35">Posición</a><a name="bookmark95">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xDA</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark36">15</a><a name="bookmark96">‌</a></td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.43: Trama de respuesta de agenda diaria desde EC hacia CC</p>
+<h2>Trama Consulta de Agenda Anual y Semanal</h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x75</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.44: Trama de consulta de agenda diaria desde CC hacia EC</p>
+
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark37">Posición</a><a name="bookmark97">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xD9</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x88</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Día Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Mes Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Día Cambio 1</td>
+      <td>0x7FFF = anulado</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Mes Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Día Cambio 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>Mes Cambio 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Número de Agenda Semanal 0</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Número de Agenda Semanal 1</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>Número de Agenda Semanal 2</td>
+      <td>0x02</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>Número de Agenda Semanal 3</td>
+      <td>0x03</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>Número de Agenda Semanal 4</td>
+      <td>0x04</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>Número de Agenda Semanal 5</td>
+      <td>0x05</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>Número de Agenda Semanal 6</td>
+      <td>0x06</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>Número de Agenda Semanal 7</td>
+      <td>0x07</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>Número de Agenda Semanal 8</td>
+      <td>0x08</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>Número de Agenda Semanal 9</td>
+      <td>0x09</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>Número de Agenda Semanal 10</td>
+      <td>0x0A</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>Número de Agenda Semanal 11</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>Agenda Diaria Domingo Agenda Semanal 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>Agenda Diaria Lunes Agenda Semanal 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>Agenda Diaria Martes Agenda Semanal 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>Agenda Diaria Miércoles Agenda Semanal 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>Agenda Diaria Jueves Agenda Semanal 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>Agenda Diaria Viernes Agenda Semanal 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>Agenda Diaria Sábado Agenda Semanal 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>Agenda Diaria Domingo Agenda Semanal 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>Agenda Diaria Lunes Agenda Semanal 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>Agenda Diaria Martes Agenda Semanal 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>Agenda Diaria Miércoles Agenda Semanal 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>Agenda Diaria Jueves Agenda Semanal 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>Agenda Diaria Viernes Agenda Semanal 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>Agenda Diaria Sábado Agenda Semanal 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>133</td>
+      <td>Agenda Diaria Domingo Agenda Semanal 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>134</td>
+      <td>Agenda Diaria Lunes Agenda Semanal 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>135</td>
+      <td>Agenda Diaria Martes Agenda Semanal 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>136</td>
+      <td>Agenda Diaria Miércoles Agenda Semanal 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>137</td>
+      <td>Agenda Diaria Jueves Agenda Semanal 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>138</td>
+      <td>Agenda Diaria Viernes Agenda Semanal 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>139</td>
+      <td>Agenda Diaria Sábado Agenda Semanal 11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>140</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<h2><a name="bookmark38">Trama envío de Agenda Feriados y Especial</a><a name="bookmark98">‌</a></h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x74</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x9B</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Día Agenda Especial Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Mes Agenda Especial Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Día Agenda Especial Cambio 1</td>
+      <td>0x7FFF = anulado</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Mes Agenda Especial Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Día Agenda Especial Cambio 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>Mes Agenda Especial Cambio 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Día Agenda Feriados Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Mes Agenda Feriados Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>Día Agenda Feriados Cambio 1</td>
+      <td>0x7FFF = anulado</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>Mes Agenda Feriados Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Día Agenda Feriados Cambio 31</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Mes Agenda Feriados Cambio 31</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Agenda Diaria Agenda Especial Cambio 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Agenda Diaria Agenda Especial Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Agenda Diaria Agenda Especial Cambio 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Agenda Diaria Agenda Feriados Cambio 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Agenda Diaria Agenda Feriados Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>158</td>
+      <td>Agenda Diaria Agenda Feriados Cambio 31</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>159</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.46: Trama de envío de agenda de feriados y especial desde CC hacia EC</p>
+
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark39">Posición</a><a name="bookmark99">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xD8</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark40">17</a><a name="bookmark100">‌</a></td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.47: Trama de respuesta de agenda de feriados y especial desde EC hacia CC</p>
+<h2>Trama Consulta de Agenda Feriados y Especial</h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x73</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.48: Trama de consulta de agenda de feriados y especial desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark41">Posición</a><a name="bookmark101">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xD7</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0xA0</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Día Agenda Especial Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Mes Agenda Especial Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Día Agenda Especial Cambio 1</td>
+      <td>0x7FFF = anulado</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Mes Agenda Especial Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Día Agenda Especial Cambio 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>Mes Agenda Especial Cambio 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Día Agenda Feriados Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Mes Agenda Feriados Cambio 0</td>
+      <td>0x01</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>Día Agenda Feriados Cambio 1</td>
+      <td>0x7FFF = anulado</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>Mes Agenda Feriados Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Día Agenda Feriados Cambio 31</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Mes Agenda Feriados Cambio 31</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Agenda Diaria Agenda Especial Cambio 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Agenda Diaria Agenda Especial Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Agenda Diaria Agenda Especial Cambio 15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Agenda Diaria Agenda Feriados Cambio 0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Agenda Diaria Agenda Feriados Cambio 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>163</td>
+      <td>Agenda Diaria Agenda Feriados Cambio 31</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>164</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.49: Trama de respuesta de agenda de feriados y especial desde EC hacia CC</p>
+<h2><a name="bookmark42"><br>
+  Trama envío de contraseña Hardware</a><a name="bookmark102">‌</a></h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x7D</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x13</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark43">14</a><a name="bookmark103">‌</a></td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Caracter contraseña 1</td>
+      <td>Ascii</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Caracter contraseña 2</td>
+      <td>Ascii</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Caracter contraseña 3</td>
+      <td>Ascii</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Caracter contraseña 4</td>
+      <td>Ascii</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Caracter contraseña 5</td>
+      <td>Ascii</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Caracter contraseña 6</td>
+      <td>Ascii</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Caracter contraseña 7</td>
+      <td>Ascii</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Caracter contraseña 8</td>
+      <td>Ascii</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.50: Trama de envío de contraseña hardware desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xE1</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.51: Trama de respuesta de contraseña hardware desde EC hacia CC</p>
+<h2><a name="bookmark44">Trama envío de Grabacio´n a EEPROM</a><a name="bookmark104">‌</a></h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark45">7</a><a name="bookmark105">‌</a></td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x7E</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.52: Trama de grabación de EEPROM desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xE2</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x16</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Status Grabacio´n</td>
+      <td>0x00 = nada, 0x03 = grabando, 0x04 = terminada</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>-</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Posición Actual Grabacio´n MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Posición Actual Grabacio´n LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Posición Final Memoria MSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Posición Final Memoria LSB</td>
+      <td>0xEA</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.53: Trama de grabación en EEPROM desde EC hacia CC</p>
+<h2>Trama envío Preajustes</h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark46">3</a><a name="bookmark106">‌</a></td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de Esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo Destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de Grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x70</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x51</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Número de Grupo del EC Nuevo</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Número de Controlador Nuevo MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Número de Controlador Nuevo LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>Flanco de Demandas</td>
+      <td>D8 - D1, 0 = Flanco Negativo, 1 = Flanco Positivo</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>Demandas como Conteo</td>
+      <td>D8 - D1, 0 = Demanda, 1 = Conteo</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>Retardo Demanda 1 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>Retardo Demanda 1 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>Retardo Demanda 2 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>Retardo Demanda 2 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>Retardo Demanda 3 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark47">74</a><a name="bookmark107">‌</a></td>
+      <td>Retardo Demanda 3 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>Retardo Demanda 4 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>Retardo Demanda 4 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>77</td>
+      <td>Retardo Demanda 5 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td>Retardo Demanda 5 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td>Retardo Demanda 6 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>Retardo Demanda 6 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td>Retardo Demanda 7 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>82</td>
+      <td>Retardo Demanda 7 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>83</td>
+      <td>Retardo Demanda 8 MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>84</td>
+      <td>Retardo Demanda 8 LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>85</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.54: Trama de envio de preajustes desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xD4</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.55: Trama de respuesta de envio de preajustes desde EC hacia CC</p>
+<h2><a name="bookmark48"><br>
+  Trama de consulta de preajustes</a><a name="bookmark108">‌</a></h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark49">5</a><a name="bookmark109">‌</a></td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC?</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x6F</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de EC MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de EC LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.56: Trama de consulta de preajustes desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xD3</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x58</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Número de Grupo EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>Demandas como conteo</td>
+      <td>D8 - D1, 0 = Demanda, 1 = Conteo</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark50">77</a><a name="bookmark110">‌</a></td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>82</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>83</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>84</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>85</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>86</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>87</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>88</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>89</td>
+      <td>??????????</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>90</td>
+      <td>Sistema operativo</td>
+      <td>ej 0x05 = P005</td>
+    </tr>
+    <tr>
+      <td>91</td>
+      <td>Versio´n sistema operativo</td>
+      <td>ej 0x90 = 9.0</td>
+    </tr>
+    <tr>
+      <td>92</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.57: Trama de consulta de preajustes desde EC hacia CC</p>
+<h2>Trama de consulta de último evento</h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0x79</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.58: Trama de consulta de último evento CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td><a name="bookmark51">Posición</a><a name="bookmark111">‌</a></td>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xDD</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x33</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Año</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Mes</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Día</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Hora</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Minutos</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Segundos</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>Día de la semana</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Estructura</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Programa de Tiempos</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>Estado</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>Número de Paso</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>Segundo de Paso</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Estado</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Duración de Paso</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>Segundo de Ciclo MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>Segundo de Ciclo LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>Tiempo Suplementario Ciclo Actual MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>Tiempo Suplementario Ciclo Actual LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>Duración de Ciclo MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>Duración de Ciclo LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>Preajuste Tiempo Suplementario MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>Preajuste Tiempo Suplementario LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>Desfasaje MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>Desfasaje LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>Función de Paso</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>Resultado Operación Función</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>Demandas Externas Almacenadas</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>Demandas Agendadas</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.59: Trama de respuesta a consulta de último evento desde EC hacia CC</p>
+<h2><a name="bookmark52">Trama de consulta de eventos</a><a name="bookmark112">‌</a></h2>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Tipo origen</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><a name="bookmark53">9</a><a name="bookmark113">‌</a></td>
+      <td>Código</td>
+      <td>0x7A</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x0B</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.60: Trama de consulta de eventos desde CC hacia EC</p>
+<table cellspacing="0">
+  <tbody>
+      <tr>
+    <th>Posición</th>
+    <th>Código</th>
+    <th>Comentarios</th>
+  </tr>
+    <tr>
+      <td>1</td>
+      <td>Origen MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Origen LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Destino MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Destino LSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Header</td>
+      <td>0xFF</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Número de esclavo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Tipo destino</td>
+      <td>0x00 = CITAR, 0x1F = COMCLS</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Número de grupo del EC</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Código</td>
+      <td>0xDE</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Longitud Total - 4 MSB</td>
+      <td>0x00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Longitud Total - 4 LSB</td>
+      <td>0x38</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>BCC intermedio</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Número de Controlador MSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Número de Controlador LSB</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Estado</td>
+      <td>Ver tabla 4.5</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Status I</td>
+      <td>Ver tabla 4.6</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Status II</td>
+      <td>Ver tabla 4.7</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Alarmas</td>
+      <td>Ver tabla 4.9</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Status III</td>
+      <td>Ver tabla 4.8</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Día evento 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Hora evento 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Minutos evento 1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Evento 1</td>
+      <td>Ver tabla 4.62</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>Día evento 10</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>Hora evento 10</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>Minutos evento 10</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>Evento 10</td>
+      <td>Ver tabla 4.62</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>BCC</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.61: Trama de respuesta a consulta de eventos desde EC hacia CC</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <td>Código</td>
+      <td>Comentarios</td>
+    </tr>
+    <tr>
+      <td>Titilante</td>
+      <td>0x10</td>
+    </tr>
+    <tr>
+      <td>Tiempo Suplementario</td>
+      <td>0x13</td>
+    </tr>
+    <tr>
+      <td>Normal</td>
+      <td>0x0F</td>
+    </tr>
+    <tr>
+      <td>Modo Local</td>
+      <td>0x0B, 0x0C</td>
+    </tr>
+    <tr>
+      <td>Baja Tensión</td>
+      <td>0x14</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.62: Código de Eventos</p>
+<h2>Comportamiento</h2>
+<p>Si el grupo al que va dirigido el mensaje está mal, el EC no responde a pesar de que el Número de cruce es correcto.</p>
+<h4>Bit AIS (Aislado)</h4>
+<p>El bit Aislado indica que el EC no acepta comandos grupales. Este bit es siempre igual a cero, pero es uno cuando:</p>
+<p>El EC se encuentra en falla</p>
+<p>El EC recibe un comando Desagrupar</p>
+<p>Cuando el EC recibe el comando Agrupar, seteará el bit Aislado a cero, siempre y cuando este no se encuentre en estado de error.</p>
+
+<h4>Bit SI (Secuencia de Inicio)</h4>
+<p>Este bit se setea siempre en cero, salvo que el EC se encuentre ejecutando la secuencia de inicio.</p>
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Bit</th>
+      <th>Comando o Estado</th>
+      <th>Estado anterior</th>
+      <th>Estado posterior</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>AIS</td>
+      <td>EC en Error</td>
+      <td>0</td>
+      <td>1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>AIS</td>
+      <td>Comando Desagrupar</td>
+      <td>0</td>
+      <td>1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>AIS</td>
+      <td>Comando Agrupar</td>
+      <td>1</td>
+      <td>0</td>
+      <td>EC Normal</td>
+    </tr>
+    <tr>
+      <td>AIS</td>
+      <td>Comando Agrupar</td>
+      <td>1</td>
+      <td>1</td>
+      <td>EC en Error</td>
+    </tr>
+    <tr>
+      <td>SI</td>
+      <td>Ejecutando Secuencia de Inicio</td>
+      <td>0</td>
+      <td>1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>SI</td>
+      <td>Termina Secuencia de Inicio</td>
+      <td>1</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="epigrafe">Tabla 4.63: Comportamiento de Bits de Status </p>
+
+  <h4>Equivalencia de Planes</h4>
+
+<table cellspacing="0">
+  <tbody>
+    <tr>
+      <th>Indice Interno</th>
+      <th>Plan S-3200</th>
+      <th>Sipla CLS-214 PLUS</th>
+      <th>Estructura</th>
+      <th>Programa de Tiempos</th>
+      <th>Comentarios</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>6</td>
+      <td>5</td>
+      <td>0</td>
+      <td>5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>7</td>
+      <td>6</td>
+      <td>0</td>
+      <td>6</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>7</td>
+      <td>0</td>
+      <td>7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>9</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>10</td>
+      <td>9</td>
+      <td>0</td>
+      <td>9</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>11</td>
+      <td>10</td>
+      <td>0</td>
+      <td>10</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>12</td>
+      <td>11</td>
+      <td>0</td>
+      <td>11</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>13</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>14</td>
+      <td>13</td>
+      <td>0</td>
+      <td>13</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>15</td>
+      <td>14</td>
+      <td>0</td>
+      <td>14</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>16</td>
+      <td>15</td>
+      <td>0</td>
+      <td>15</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>17</td>
+      <td>16</td>
+      <td>1</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>18</td>
+      <td>17</td>
+      <td>1</td>
+      <td>1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>19</td>
+      <td>18</td>
+      <td>1</td>
+      <td>2</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>20</td>
+      <td>19</td>
+      <td>1</td>
+      <td>3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>21</td>
+      <td>20</td>
+      <td>1</td>
+      <td>4</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>22</td>
+      <td>21</td>
+      <td>1</td>
+      <td>5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>23</td>
+      <td>22</td>
+      <td>1</td>
+      <td>6</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>24</td>
+      <td>32</td>
+      <td>2</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>25</td>
+      <td>33</td>
+      <td>2</td>
+      <td>1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>26</td>
+      <td>34</td>
+      <td>2</td>
+      <td>2</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>27</td>
+      <td>35</td>
+      <td>2</td>
+      <td>3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>28</td>
+      <td>36</td>
+      <td>2</td>
+      <td>4</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>29</td>
+      <td>37</td>
+      <td>2</td>
+      <td>5</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>30</td>
+      <td>38</td>
+      <td>2</td>
+      <td>6</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p class="epigrafe">Tabla 4.64: Equivalencia entre Números de plan</p>
+</div>
+</body>
+</html>

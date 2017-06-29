@@ -6,13 +6,6 @@ import sitralib.referencias as ref
 from sitralib.validators.bcc import *
 from sitralib.helpers.ordenar_trama import *
 
-EMPTY_PROCESS = {
-    'per': 0,
-    'cod': '0',
-    'nombre': '',
-    'datetime': time.strftime('%Y-%m-%dT%H:%M:%S'),
-}
-
 
 class Captura(object):
     def __init__(self, **kwargs):
@@ -66,6 +59,7 @@ class Captura(object):
                     # Se superó la cantidad de reintentos
                     message_error = {
                         'status': 4,
+                        'uuid' : self.configs['uuid'],
                         'description': ref.MENSAJES[8]['mensaje'].format(
                             self.configs['reintentos']
                         ),
@@ -95,7 +89,7 @@ class Captura(object):
         self.__proceso_finalizado()
 
         # Retronr una lista con las tramas
-        return {'data': data, 'success': 1}
+        return {'data': data, 'success': 1,'uuid':self.configs['uuid']}
 
 
     def __send_lan(self, tgm):
@@ -126,6 +120,7 @@ class Captura(object):
             if not self.validator.isValidBcc(tramaProcesada):
                 return {
                     'status': 5,
+                    'uuid' : self.configs['uuid'],
                     'description': ref.MENSAJES[9]['mensaje'],
                     'trama_obtenida': tramaProcesada,
                     'success': 0
@@ -133,6 +128,7 @@ class Captura(object):
 
             return {
                 # 'status': 1,
+                'uuid' : self.configs['uuid'],
                 'description': ref.MENSAJES[10]['mensaje'],
                 'success': 1,
                 'status': 1,
@@ -143,6 +139,7 @@ class Captura(object):
         except socket.timeout:
             message = {
                 'status': 2,
+                'uuid' : self.configs['uuid'],
                 'description': ref.MENSAJES[1]['mensaje'],
                 'success': 0,
             }
@@ -151,6 +148,7 @@ class Captura(object):
         except socket.error:
             message = {
                 'status': 3,
+                'uuid' : self.configs['uuid'],
                 'description': ref.MENSAJES[11]['mensaje'],
                 'success': 0,
             }
@@ -160,6 +158,14 @@ class Captura(object):
         """
         Crea un archivo *.json con el porcentaje vacio
         """
+        EMPTY_PROCESS = {
+                    'uuid': self.configs['uuid'],
+                    'per': 0,
+                    'crsid': self.configs['crs_id'],
+                    'cod': '0',
+                    'nombre': '',
+                    'datetime': time.strftime('%Y-%m-%dT%H:%M:%S'),
+                }
         self.__procentaje_proceso(EMPTY_PROCESS)
 
     def __procentaje_proceso(self, data):
@@ -184,8 +190,9 @@ class Captura(object):
             cod = '00'
 
         percent = {
+            'uuid' : self.configs['uuid'],
             'datetime': time.strftime('%Y-%m-%dT%H:%M:%S'),
-            'crsid': kwargs['crsid'],
+            'crsid': self.configs['crs_id'],
             'accion': 'captura',
             'per': porcentaje,
             'cod': kwargs['cod'],

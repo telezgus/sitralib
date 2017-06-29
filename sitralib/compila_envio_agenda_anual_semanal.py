@@ -2,6 +2,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 from collections import *
 import time
+from datetime import datetime
 
 ASE_DEFAULT = {
 	'domingo': '00',
@@ -93,8 +94,8 @@ class CompilaEnvioAgendaAnualSemanal(object):
 		:return: string
 		"""
 		try:
-			ans_mes = data[key]['ans_mes']
-			return str(ans_mes).zfill(2)
+			a = datetime.strptime(str(data[key]['ans_fecha']), "%Y-%m-%d")
+			return str(a.month).zfill(2)
 		except:
 			return '7F'
 
@@ -104,8 +105,8 @@ class CompilaEnvioAgendaAnualSemanal(object):
 		:return: string
 		"""
 		try:
-			ans_dia = data[key]['ans_dia']
-			return str(ans_dia).zfill(2)
+			a = datetime.strptime(str(data[key]['ans_fecha']), "%Y-%m-%d")
+			return str(a.day).zfill(2)
 		except:
 			return 'FF'
 
@@ -128,12 +129,29 @@ class CompilaEnvioAgendaAnualSemanal(object):
 		:return: string
 		"""
 		try:
-			val = str(data[key][dia])
+			val = str(data[key]['ase_{0}'.format(dia)])
 			return self.helpers.intToHexString(val)
 		except:
 			return ASE_DEFAULT[dia]
 
 
 if __name__ == "__main__":
-	o = CompilaEnvioAgendaDiaria()
-	o.set_cambios()
+	data = {
+		'agendas_semanales': [
+		    	{'id': 1, 'anuales': 1, 'ase_id_num': 1, 'ase_nombre': 'Agenda semanal 1', 'ase_descripcion': '', 'ase_lunes': 2, 'ase_martes': 1, 'ase_miercoles': 1, 'ase_jueves': 1, 'ase_viernes': 1, 'ase_sabado': 1, 'ase_domingo': 1},
+		    	{'id': 2, 'anuales': 1, 'ase_id_num': 2, 'ase_nombre': '', 'ase_descripcion': '', 'ase_lunes': 1, 'ase_martes': 2, 'ase_miercoles': 1, 'ase_jueves': 2, 'ase_viernes': 1, 'ase_sabado': 1, 'ase_domingo': 1}
+		    ],
+		'agendas_anuales_semanas': [
+		    	{'ans_id': 1, 'anuales': 1, 'semanales': 1, 'ans_fecha': '2016-01-01' },
+				{'ans_id': 2, 'anuales': 2, 'semanales': 2, 'ans_fecha': '2017-06-20' }
+		    ]
+	}
+
+	o = CompilaEnvioAgendaAnualSemanal()
+	result = o.create(
+		agendas_anuales_semanas=data['agendas_anuales_semanas'],
+		agendas_semanales=data['agendas_semanales'],
+		crs_numero=3000,
+		grp_id_num=1
+	)
+	print(result)

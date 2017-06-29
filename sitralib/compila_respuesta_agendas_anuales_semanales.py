@@ -12,6 +12,9 @@ class CompilaRespuestaAgendasAnualesSemanales(object):
             tramas=self.trm,
             codigo='D9'
         )
+
+        print(tramas)
+
         data = {
             'anuales': self.__anuales(tramas),
             'semanales': self.__semanales(tramas)
@@ -34,6 +37,8 @@ class CompilaRespuestaAgendasAnualesSemanales(object):
         counter2 = 0
         for i in range(20, 44):
             valor = data[0][str(i)]
+
+
             if valor.upper() == '7F' or valor.upper() == 'FF':
                 continue
 
@@ -48,6 +53,7 @@ class CompilaRespuestaAgendasAnualesSemanales(object):
                 counter2 += 1
 
             counter1 += 1
+
         return a
 
     def __semanales(self, data):

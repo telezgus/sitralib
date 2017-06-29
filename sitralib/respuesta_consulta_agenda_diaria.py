@@ -85,7 +85,7 @@ class RespuestaConsultaAgendaDiaria(object):
 if __name__ == "__main__":
     help_text = """
     obj = RespuestaConsultaAgendaDiaria()
-    retorno = obj.respuestaConsultaAgendaDiaria({5: 'FF', 6: '00', 8: ... })
+    retorno = obj.get({5: 'FF', 6: '00', 8: ... })
     """
     print(help_text)
 
@@ -103,7 +103,7 @@ if __name__ == "__main__":
              72: "10", 73: "38", 74: "06", 75: "4A", 76: "01", 77: "14",
              78: "00", 79: "00", 80: "00", 81: "61"}
     obj = RespuestaConsultaAgendaDiaria()
-    retorno = obj.respuestaConsultaAgendaDiaria(trama)
+    retorno = obj.get(trama)
     #
     import pprint
 

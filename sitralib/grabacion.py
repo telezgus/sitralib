@@ -66,6 +66,7 @@ class Grabacion(object):
                     # Se superó la cantidad de reintentos
                     message_error = {
                         'status': 4,
+                        'uuid' : self.configs['uuid'],
                         'description': ref.MENSAJES[8]['mensaje'].format(
                             self.configs['reintentos']
                         ),
@@ -113,12 +114,12 @@ class Grabacion(object):
 
             # Seteo las condiciones para los timeouts
             codigo = self.ordenar_trama.get_codigo_trama(trama)
-            # print('___', codigo, '____')
+
             if (codigo == '7E'):
                 timeout = self.configs['timeout_eeprom']
             else:
                 timeout = self.configs['timeout']
-            # print('___', timeout, '____')
+
             sock.settimeout(timeout)
             sock.connect(address)
 
@@ -135,6 +136,7 @@ class Grabacion(object):
             if not self.validator.isValidBcc(tramaProcesada):
                 return {
                     'status': 5,
+                    'uuid' : self.configs['uuid'],
                     'description': ref.MENSAJES[9]['mensaje'],
                     'success': 0,
                     'trama_obtenida': tramaProcesada
@@ -143,6 +145,7 @@ class Grabacion(object):
             return {
                 'description': ref.MENSAJES[10]['mensaje'],
                 'success': 1,
+                'uuid' : self.configs['uuid'],
                 'status': 1,
                 'trama_obtenida': tramaProcesada,
             }
@@ -150,6 +153,7 @@ class Grabacion(object):
         except socket.timeout:
             message = {
                 'status': 2,
+                'uuid' : self.configs['uuid'],
                 'description': ref.MENSAJES[1]['mensaje'],
                 'success': 0,
             }
@@ -158,6 +162,7 @@ class Grabacion(object):
         except socket.error:
             message = {
                 'status': 3,
+                'uuid' : self.configs['uuid'],
                 'description': ref.MENSAJES[11]['mensaje'],
                 'success': 0,
             }
@@ -189,10 +194,11 @@ class Grabacion(object):
         percent = {
             'datetime': time.strftime('%Y-%m-%dT%H:%M:%S'),
             'crsid': kwargs['crsid'],
+            'uuid' : self.configs['uuid'],
             'accion': 'grabacion',
             'per': porcentaje,
             'cod': kwargs['cod'],
-            'nombre': ref.CODE_REFERENCES[kwargs['cod']]['humanize']
+            'nombre': ref.CODE_REFERENCES[kwargs['cod']]['humanize'],
         }
         self.__procentaje_proceso(percent)
 

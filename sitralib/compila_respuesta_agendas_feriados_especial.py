@@ -88,4 +88,7 @@ if __name__ == '__main__':
     trm = json.loads(tramas, object_pairs_hook=OrderedDict)
     #
     o = CompilaRespuestaAgendasFeriadosEspecial(trm)
-    print(o.compile())
+    result = o.compile()
+
+    for i in result:
+        print(i, result[i])

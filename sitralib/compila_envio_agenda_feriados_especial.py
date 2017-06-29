@@ -74,6 +74,7 @@ class CompilaEnvioAgendaFeriadosEspecial(object):
 
 	def __set_dia_mes(self, key, data):
 		a = defaultdict(dict)
+
 		try:
 			fecha = time.strptime(str(data[key]['fer_fecha']), '%Y-%m-%d')
 			mes = str(fecha.tm_mon).zfill(2)
@@ -103,3 +104,33 @@ class CompilaEnvioAgendaFeriadosEspecial(object):
 
 	def __set_agendas_diarias(self, data):
 		return [item['adi'] for item in data]
+
+
+
+if __name__ == "__main__":
+	d = {
+		'feriados': [
+			{'diarias__adi_id_num': 3, 'fer_fecha': '2017-05-24', 'fer_id': 1, 'fer_nombre': 'Feriado Test', 'anuales__anu_id': 1, 'feriadotipo': 1}
+			],
+		'especiales': [
+			{
+				'feriadotipo': 2,
+				'diarias': 2,
+				'anuales': 1,
+				'adi_id_num' : 2,
+				'fer_id': 3,
+				'fer_nombre': 'especial test',
+				'fer_fecha': '2017-05-24'
+				}
+			]
+	}
+
+	o = CompilaEnvioAgendaFeriadosEspecial()
+	result = o.create(
+		feriados=d['feriados'],
+		especiales=d['especiales'],
+		crs_numero=3000,
+		grp_id_num=1,
+	)
+
+	print(result)
