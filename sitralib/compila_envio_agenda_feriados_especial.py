@@ -13,12 +13,12 @@ class CompilaEnvioAgendaFeriadosEspecial(object):
 	Envio Agenda Feriados y especial
 	x74
 	"""
-
 	def __init__(self):
 		self.helpers = Helpers()
 		self.bcc = Bcc()
 
 	def create(self, **kwargs):
+
 		numeroControlador = self.helpers.intToHexString(kwargs['crs_numero'], 4)
 
 		trama = defaultdict(dict)
@@ -64,10 +64,10 @@ class CompilaEnvioAgendaFeriadosEspecial(object):
 			trama[c] = value
 			c += 1
 
-
 		trama[159] = '00'  # BCC final
 
-		trama_consolidada = self.bcc.consolidate(trama)
+		trama_consolidada = self.bcc.consolidate(self.helpers.ddict2dict(trama))
+
 		if trama_consolidada:
 			return ' '.join(trama_consolidada.values())
 		return None
@@ -79,9 +79,17 @@ class CompilaEnvioAgendaFeriadosEspecial(object):
 			fecha = time.strptime(str(data[key]['fer_fecha']), '%Y-%m-%d')
 			mes = str(fecha.tm_mon).zfill(2)
 			dia = str(fecha.tm_mday).zfill(2)
+
+			if 'diarias__adi_id_num' in data[key]:
+				adi_id_num = data[key]['diarias__adi_id_num']
+			elif 'adi_id_num' in data[key]:
+				adi_id_num = data[key]['adi_id_num']
+			else:
+				adi_id_num = ADI_DEFAULT
+
 			a['dia'] = dia
 			a['mes'] = mes
-			a['adi'] = self.helpers.intToHexString(data[key]['adi_id_num'])
+			a['adi'] = self.helpers.intToHexString(adi_id_num)
 		except:
 			a['dia'] = DIA_ANULADO
 			a['mes'] = MES_ANULADO
@@ -110,7 +118,14 @@ class CompilaEnvioAgendaFeriadosEspecial(object):
 if __name__ == "__main__":
 	d = {
 		'feriados': [
-			{'diarias__adi_id_num': 3, 'fer_fecha': '2017-05-24', 'fer_id': 1, 'fer_nombre': 'Feriado Test', 'anuales__anu_id': 1, 'feriadotipo': 1}
+			{
+				'diarias__adi_id_num': 3,
+				'fer_fecha': '2017-05-24',
+				'fer_id': 1,
+				'fer_nombre': 'Feriado Test',
+				'anuales__anu_id': 1,
+				'feriadotipo': 1
+			}
 			],
 		'especiales': [
 			{
@@ -120,17 +135,20 @@ if __name__ == "__main__":
 				'adi_id_num' : 2,
 				'fer_id': 3,
 				'fer_nombre': 'especial test',
-				'fer_fecha': '2017-05-24'
+				'fer_fecha': '2017-06-30'
 				}
 			]
 	}
+
+
+
 
 	o = CompilaEnvioAgendaFeriadosEspecial()
 	result = o.create(
 		feriados=d['feriados'],
 		especiales=d['especiales'],
 		crs_numero=3000,
-		grp_id_num=1,
+		grp_id_num=1
 	)
 
 	print(result)

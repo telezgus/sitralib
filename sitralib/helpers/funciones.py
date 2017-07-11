@@ -16,7 +16,8 @@ class Helpers(object):
         :param num: String
         :return: Integer
         """
-        return int(num, 16)
+        number = num if type(num) == 'string' else str(num)
+        return int(number, 16)
 
     def intToHexString(self, num, zfill=2):
         """
@@ -115,6 +116,15 @@ class Helpers(object):
                 arr.append(kwargs['tramas'][i])
         return arr
 
+	def ddict2dict(self, d):
+        """
+        Convierte un diccionario creado con defaultdict a un
+        diccionario convencional
+        """
+	    for k, v in d.items():
+	        if isinstance(v, dict):
+	            d[k] = self.ddict2dict(v)
+	    return dict(d)
 
 if __name__ == '__main__':
     hlp = Helpers()

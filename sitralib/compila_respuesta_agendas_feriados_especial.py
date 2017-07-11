@@ -37,7 +37,7 @@ class CompilaRespuestaAgendasFeriadosEspecial(object):
 
             if contadorCambio == 2:
                 a[agrupadorCambio]['month'] = valor
-                a[agrupadorCambio]['adi_id'] = planes[agrupadorCambio]
+                a[agrupadorCambio]['adi_id_num'] = self.helpers.hexToDec(planes[agrupadorCambio])
                 contadorCambio = 0
                 agrupadorCambio += 1
 
@@ -61,7 +61,7 @@ class CompilaRespuestaAgendasFeriadosEspecial(object):
 
             if contadorCambio == 2:
                 a[agrupadorCambio]['month'] = valor
-                a[agrupadorCambio]['adi_id'] = feriados[agrupadorCambio]
+                a[agrupadorCambio]['adi_id_num'] = self.helpers.hexToDec(feriados[agrupadorCambio])
                 contadorCambio = 0
                 agrupadorCambio += 1
 
@@ -89,6 +89,6 @@ if __name__ == '__main__':
     #
     o = CompilaRespuestaAgendasFeriadosEspecial(trm)
     result = o.compile()
-
+    print(result)
     for i in result:
         print(i, result[i])
