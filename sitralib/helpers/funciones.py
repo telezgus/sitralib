@@ -116,15 +116,15 @@ class Helpers(object):
                 arr.append(kwargs['tramas'][i])
         return arr
 
-	def ddict2dict(self, d):
+    def ddict2dict(self, d):
         """
         Convierte un diccionario creado con defaultdict a un
         diccionario convencional
         """
-	    for k, v in d.items():
-	        if isinstance(v, dict):
-	            d[k] = self.ddict2dict(v)
-	    return dict(d)
+        for k, v in d.items():
+            if isinstance(v, dict):
+                d[k] = self.ddict2dict(v)
+        return dict(d)
 
 if __name__ == '__main__':
     hlp = Helpers()
