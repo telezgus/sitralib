@@ -8,31 +8,31 @@ from sitralib.helpers.funciones import *
 
 
 class RespuestaMatrizConflictos(object):
-    """
-    0xD0
-    Respuesta Envío matriz de conflictos
-    """
+  """
+  0xD0
+  Respuesta Envío matriz de conflictos
+  """
 
-    def __init__(self):
-        self.bytSta = ByteStatus()
-        self.bitStaI = BitsStatusI()
-        self.bitStaII = BitsStatusII()
-        self.bitStaIII = BitsStatusIII()
-        self.bitAla = BitsAlarma()
-        self.validateBcc = Bcc()
-        self.helpers = Helpers()
+  def __init__(self):
+    self.bytSta = ByteStatus()
+    self.bitStaI = BitsStatusI()
+    self.bitStaII = BitsStatusII()
+    self.bitStaIII = BitsStatusIII()
+    self.bitAla = BitsAlarma()
+    self.validateBcc = Bcc()
+    self.helpers = Helpers()
 
-    def get(self, trm):
-        res = None
+  def get(self, trm):
+    res = None
 
-        if (self.validateBcc.isValidBcc(trm, 12, 20)):
-            res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
-            res.update(
-                {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])})
-            res.update(self.bitStaI.bitsStatusI(trm[16]))
-            res.update(self.bitStaII.bitsStatusII(trm[17]))
-            res.update(self.bitAla.bitsAlarma(trm[18]))
-            res.update(self.bitStaIII.bitsStatusIII(trm[19]))
-            res.update({'object': 'RespuestaMatrizConflictos'})
+    if (self.validateBcc.isValidBcc(trm, 12, 20)):
+      res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
+      res.update(
+        {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])})
+      res.update(self.bitStaI.bitsStatusI(trm[16]))
+      res.update(self.bitStaII.bitsStatusII(trm[17]))
+      res.update(self.bitAla.bitsAlarma(trm[18]))
+      res.update(self.bitStaIII.bitsStatusIII(trm[19]))
+      res.update({'object': 'RespuestaMatrizConflictos'})
 
-        return res
+    return res

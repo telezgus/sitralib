@@ -173,9 +173,9 @@ class Captura(object):
         Crea un archivo *.json con el estado del porcentaje
         """
         try:
-            file = open(self.configs['porcentaje'], 'w')
-            file.write(json.dumps(data))
-            file.close()
+            with open(self.configs['porcentaje'], 'w') as file:
+                file.write(json.dumps(data))
+
         except Exception as e:
             print(e)
 
