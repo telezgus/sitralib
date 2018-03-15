@@ -80,7 +80,7 @@ class CompilaEnvioAgendaAnualSemanal(object):
 
   def __set_agendas_anuales(self, data):
     l = []
-    for i in range(0, 12):
+    for ia in range(12):
       l.append(self.__set_mes_cambio(i, data))
       l.append(self.__set_dia_cambio(i, data))
 
@@ -112,7 +112,7 @@ class CompilaEnvioAgendaAnualSemanal(object):
 
   def __set_agendas_semanales(self, data):
     ase_num = []
-    for i in range(0, 12):
+    for i in range(12):
       ase_num.append(self.__set_dia(data, i, "domingo"))
       ase_num.append(self.__set_dia(data, i, "lunes"))
       ase_num.append(self.__set_dia(data, i, "martes"))

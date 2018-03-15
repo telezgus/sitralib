@@ -112,7 +112,7 @@ class CompilaEnvioAgendaDiaria(object):
     idx = 16
     adh = defaultdict(dict)
 
-    for i in range(0, 10):
+    for i in range(10):
       adh[idx] = self.__get_hora(i, args)
 
       idx += 1
