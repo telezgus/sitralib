@@ -22,7 +22,7 @@ class EnvioFunciones(object):
     trama = {
       1: '00',
       2: '00',
-      3: '00',box dei la biblia
+      3: '00',
       4: '00',
       5: 'FF',
       6: '00',
