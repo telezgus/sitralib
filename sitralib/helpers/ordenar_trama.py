@@ -65,9 +65,10 @@ class OrdenarTrama(object):
         Retorna el codigo de la trama
         """
         trm = self.ordenarTrama(trama)
-        if 9 in trm:
-            return trm[9]
-        return None
+        try:
+          return trm[9]
+        except KeyError:
+          return None
 
 
 

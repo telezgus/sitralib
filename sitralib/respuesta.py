@@ -33,7 +33,8 @@ class Respuesta(object):
   def obtenerRespuesta(self, trama):
     trm = self.ordtrama.ordenarTrama(trama)
 
-    if 9 in trm:
+
+    try:
       dec = self.helpers.hexToDec(trm[9])
       if dec == 201:
         obj = RespuestaEnvioComando()
@@ -166,9 +167,8 @@ class Respuesta(object):
         obj = RespuestaConsultaPreajustes()
         return obj.get(trm)
 
-
-      else:
-        return None
+    except:
+      return None
 
 
 if __name__ == "__main__":
@@ -178,7 +178,7 @@ if __name__ == "__main__":
        18: '20', 19: '00', 20: 'FF'}
 
   # Grabacion EEPROM
-  trama33 = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'E2', 10: '00', 11: '16',
+  trama33 = {5: 'FF', 6: '00', 7: '00', 8: '01', 99: 'E2', 10: '00', 11: '16',
          12: '0A', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
          18: '20', 19: '00', 20: '03', 21: '00', 22: '10', 23: '00',
          24: '10', 25: 'EA', 26: '20'}

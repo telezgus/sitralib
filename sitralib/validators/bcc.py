@@ -62,10 +62,11 @@ class Bcc(object):
     # al len de la trama hay que sumarle 4 por los 00 hasta FF,
     # luego al range se le suma 1 porque los key comienzan en 0
     for i in range(self.POSICION_BCC_INTERMEDIO, (len(trama) + 5)):
-      if i in trama:
+
+      try:
         if i == bcc_final_position: break
         bcc2 = bcc2 ^ self.helpers.hexToDec(trama[i])
-      else:
+      except KeyError:
         return None
 
     return self.helpers.intToHexString(bcc2)

@@ -17,7 +17,7 @@ class Captura(object):
     """
     Ejecuta la captura de datos
     """
-    data = dict()
+    data = list()
     counter = 0
 
     for trama in self.configs['tramas']:
@@ -39,10 +39,11 @@ class Captura(object):
         trama_respuesta = self.__send_lan(trama)
 
         ## código trama respuesta
-        if 'trama_obtenida' in trama_respuesta:
+        try:
           codigo_trama_respuesta = self.ordenar_trama.get_codigo_trama(
-            trama_respuesta['trama_obtenida'])
-        else:
+              trama_respuesta['trama_obtenida']
+          )
+        except KeyError:
           codigo_trama_respuesta = '00'
 
         # Validación
@@ -74,7 +75,7 @@ class Captura(object):
         return trama_respuesta
 
       # Si no hubiera error collecciono las tramas
-      data.update({counter: trama_respuesta['trama_obtenida']})
+      data.append(trama_respuesta['trama_obtenida'])
 
       codigo = self.ordenar_trama.get_codigo_trama(trama)
       self.__archivoJson(
@@ -127,14 +128,12 @@ class Captura(object):
         }
 
       return {
-        # 'status': 1,
         'uuid' : self.configs['uuid'],
         'description': ref.MENSAJES[10]['mensaje'],
         'success': 1,
         'status': 1,
         'trama_obtenida': tramaProcesada,
       }
-      # return tramaProcesada
 
     except socket.timeout:
       message = {
