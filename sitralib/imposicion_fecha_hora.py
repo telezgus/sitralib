@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 import time
-
 from sitralib.validators.bcc import *
 
 

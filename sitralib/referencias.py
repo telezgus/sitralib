@@ -1,7 +1,7 @@
+# -*- coding: utf-8 -*-
 """
 Referencia de códigos
 """
-
 '''
 Matriz de codigos de envio y respusta
 '''

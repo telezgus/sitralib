@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from sitralib.helpers.funciones import *
 from collections import *
 
@@ -12,8 +13,6 @@ class CompilaRespuestaAgendasAnualesSemanales(object):
       tramas=self.trm,
       codigo='D9'
     )
-
-    print(tramas)
 
     data = {
       'anuales': self.__anuales(tramas),

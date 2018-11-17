@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from sitralib.validators.bcc import *
 from sitralib.bits_alarma import *
 from sitralib.bits_status_i import *

@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 class Byte(object):
   def __init__(self, number):
     if self.__isstr(number):

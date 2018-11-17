@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 from collections import *

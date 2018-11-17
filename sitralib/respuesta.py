@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from sitralib.respuesta_consulta_gurpo_extendido import *
 from sitralib.respuesta_consulta_puesto_conteo import *
 from sitralib.respuesta_envio_comando import *

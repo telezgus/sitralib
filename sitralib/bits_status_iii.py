@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from sitralib.helpers.byte import *
 
 from sitralib.helpers.funciones import *

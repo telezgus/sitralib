@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import string
 
-
 class Helpers(object):
   def sanitizeHex(self, num, fill=2):
     hexToDec = self.hexToDec(num)
@@ -13,11 +12,18 @@ class Helpers(object):
   def hexToDec(self, num):
     """
     Hace la conversión de un número hexadecimal a decimal.
-    :param num: String
-    :return: Integer
+    :param num: str
+    :return: int
     """
-    number = num if type(num) == 'string' else str(num)
-    return int(number, 16)
+    try:
+      return int(num, 16)
+    except TypeError:
+      return None
+    else:
+      if type(num) == 'string':
+        return int(str(num), 16)
+
+    return None
 
   def intToHexString(self, num, zfill=2):
     """
@@ -107,15 +113,9 @@ class Helpers(object):
     :param kwargs:
     :return: list
     """
-    # Verifico que tipo de key tiene (integer o string)
-
-    codigo=kwargs.get('codigo')
-    key = '9'
-    tramas = kwargs.get('tramas')
-
     arr = list()
-    for i in tramas:
-      if i[key].upper() == codigo.upper():
+    for i in kwargs['tramas']:
+      if i.get('9', 9).upper() == kwargs['codigo'].upper():
         arr.append(i)
     return arr
 
