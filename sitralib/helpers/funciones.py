@@ -2,12 +2,12 @@
 import string
 
 class Helpers(object):
+
   def sanitizeHex(self, num, fill=2):
     hexToDec = self.hexToDec(num)
     toHex = '{:X}'.format(hexToDec)
-    zFill = toHex.zfill(fill)
+    return toHex.zfill(fill)
 
-    return zFill
 
   def hexToDec(self, num):
     """
@@ -21,9 +21,10 @@ class Helpers(object):
       return None
     else:
       if type(num) == 'string':
-        return int(str(num), 16)
+        return int(num, 16)
 
     return None
+
 
   def intToHexString(self, num, zfill=2):
     """
