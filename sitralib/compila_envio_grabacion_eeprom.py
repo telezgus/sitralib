@@ -21,21 +21,21 @@ class CompilaEnvioGrabacionEeprom(object):
     )
 
     trama = {
-      1: '00',
-      2: '00',
-      3: '00',
-      4: '00',
-      5: 'FF',
-      6: '00',
-      7: '00',
-      8: self.helpers.intToHexString(kwargs['grp_id_num']),
-      9: '7E',  # Codigo según Protocolo
-      10: '00',
-      11: '0B',
-      12: '00',  # BCC intermedio
-      13: numeroControlador[:-2],
-      14: numeroControlador[-2:],
-      15: '00' # BCC
+      1  : '00',
+      2  : '00',
+      3  : '00',
+      4  : '00',
+      5  : 'FF',
+      6  : '00',
+      7  : '00',
+      8  : self.helpers.intToHexString(kwargs['grp_id_num']),
+      9  : '7E',  # Codigo según Protocolo
+      10 : '00',
+      11 : '0B',
+      12 : '00',  # BCC intermedio
+      13 : numeroControlador[:-2],
+      14 : numeroControlador[-2:],
+      15 : '00' # BCC
     }
 
     trama_consolidada = self.bcc.consolidate(trama)

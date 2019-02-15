@@ -9,7 +9,49 @@ class OrdenarTrama(object):
 
 
   def ordenarTrama(self, trama):
-    """Recibe una trama
+    """Recibe una trama en diferentes tipos y la retorna en un dict
+    ordenada.
+
+    Parameters
+    ----------
+    trama : list
+        Trama pasada como list. Sus valores pueden ser enteros o strings.
+
+    Returns
+    -------
+    dict
+
+
+    >>> ordenarTrama(
+        ['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xc9',
+         '0x0', '0x10', '0x27', '0xb', '0xb8', '0x1', '0x14', '0x0', '0x20',
+         '0x0', '0xa1']
+    )
+    {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'C9', 10: '00', 11: '10', 12: '27',
+    13: '0B', 14: 'B8', 15: '01', 16: '14', 17: '00', 18: '20', 19: '00',
+    20: 'A1'}
+
+
+    >>> ordenarTrama('00000000FF0000017C000C8E1BBB012FEEFF00')
+    {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '7C', 10: '00', 11: '0C', 12: '8E',
+    13: '1B', 14: 'BB', 15: '01', 16: '2F', 17: 'EE', 18: 'FF', 19: '00'}
+
+
+    >>> ordenarTrama('00 00 00 00 FF 00 00 01 7C 00 0C 8E 1B BB 01 2F')
+    {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '7C', 10: '00', 11: '0C', 12: '8E',
+    13: '1B', 14: 'BB', 15: '01', 16: '2F'}
+
+
+    >>> ordenarTrama(
+          ('0 0 0 0 FF 0 0 1 D1 0 2B 4 13 89 0 10 0 20 0 0 0 0 0 0 0 0 0 0 0 0'
+           ' 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 AE')
+    )
+    {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D1', 10: '00', 11: '2B', 12: '04',
+    13: '13', 14: '89', 15: '00', 16: '10', 17: '00', 18: '20', 19: '00',
+    20: '00', 21: '00', 22: '00', 23: '00', 24: '00', 25: '00', 26: '00',
+    27: '00', 28: '00', 29: '00', 30: '00', 31: '00', 32: '00', 33: '00',
+    34: '00', 35: '00', 36: '00', 37: '00', 38: '00', 39: '00', 40: '00',
+    41: '00', 42: '00', 43: '00', 44: '00', 45: '00', 46: '00', 47: 'AE'}
     """
     trmdict = self.__tramaToDict(trama)
     key = self.__getFfPosition(trmdict)
@@ -123,7 +165,7 @@ class OrdenarTrama(object):
 
 
   def __dicttodict(self, trama):
-    """Retorna el diccionario con correccion de keys y valoes"""
+    """Retorna el diccionario con corrección de keys y valores"""
     trm = {}
     for key in trama:
       trm[key] = self.helpers.sanitizeHex(trama[key])
@@ -132,11 +174,11 @@ class OrdenarTrama(object):
 
 
   def __tramaToDict(self, trama):
-    """Retorna el diccionario de la trama habiendo recibido list, 
-    dict o string.
+    """Retorna el diccionario con valores corregidos de la trama 
+    habiendo recibido list, dict o str.
     """
     getType = type(trama)
-    
+
     if getType == list:
       return self.__listtodict(trama)
     elif getType == dict:
@@ -149,15 +191,24 @@ class OrdenarTrama(object):
 
   def get_codigo_trama(self, trama):
     """Retorna el codigo de la trama.
-    
-    Params
-    —————-
+
+    Parameters
+    —————-----
     trama : string
-    
-    Return
-    —————-
+
+    Returns
+    —————--
       str : Código hexadecimal.
-    
+
+    >>> get_codigo_trama('00000000FF0000017C000C8E1BBB012FEEFF00')
+    7C
+
+    >>> ordenarTrama(
+              ['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xc9',
+               '0x0', '0x10', '0x27', '0xb', '0xb8', '0x1', '0x14', '0x0', 
+               '0x20','0x0', '0xa1']
+        )
+    C9
     """
     trm = self.ordenarTrama(trama)
     try:
@@ -183,6 +234,9 @@ if __name__ == '__main__':
 
   # Ejemplo
   o = OrdenarTrama()
+  print(o.get_codigo_trama(['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xc9',
+         '0x0', '0x10', '0x27', '0xb', '0xb8', '0x1', '0x14', '0x0', '0x20',
+         '0x0', '0xa1']))
   trm0 = o.ordenarTrama(
         ['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xc9',
          '0x0', '0x10', '0x27', '0xb', '0xb8', '0x1', '0x14', '0x0', '0x20',
