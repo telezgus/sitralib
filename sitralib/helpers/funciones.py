@@ -2,16 +2,16 @@
 import string
 
 class Helpers(object):
+
   def sanitizeHex(self, num, fill=2):
     hexToDec = self.hexToDec(num)
     toHex = '{:X}'.format(hexToDec)
-    zFill = toHex.zfill(fill)
+    return toHex.zfill(fill)
 
-    return zFill
 
   def hexToDec(self, num):
-    """
-    Hace la conversión de un número hexadecimal a decimal.
+    """Hace la conversión de un número hexadecimal a decimal.
+
     :param num: str
     :return: int
     """
@@ -20,10 +20,11 @@ class Helpers(object):
     except TypeError:
       return None
     else:
-      if type(num) == 'string':
-        return int(str(num), 16)
+      if type(num) == str:
+        return int(num, 16)
 
     return None
+
 
   def intToHexString(self, num, zfill=2):
     """
@@ -34,6 +35,7 @@ class Helpers(object):
     :return: string
     """
     return '{:X}'.format(int(num)).zfill(zfill)
+
 
   def listToDict(self, lista):
     """
@@ -46,6 +48,7 @@ class Helpers(object):
       a[i] = lista[i]
     return a
 
+
   def chunkStr(self, str, chunk_size):
     """
     Divide una cadena de texto y la convierte en una lista de
@@ -55,6 +58,7 @@ class Helpers(object):
     :return: list
     """
     return [str[i:i + chunk_size] for i in range(0, len(str), chunk_size)]
+
 
   def isHex(self, num):
     """
@@ -66,6 +70,7 @@ class Helpers(object):
       return True
     else:
       return False
+
 
   def validateBetween(self, **kwargs):
     """
@@ -79,6 +84,7 @@ class Helpers(object):
       return True
     else:
       return False
+
 
   def getNibbles(self, hex, zfill=None):
     hex.zfill(2)
@@ -94,6 +100,7 @@ class Helpers(object):
       }
     return nibble
 
+
   def sliceDict(self, dict_original, **kwargs):
     """
     Obtiene una porción de un diccionario con indices numéricos.
@@ -107,6 +114,7 @@ class Helpers(object):
         slice.update({val: dict_original[val]})
     return slice;
 
+
   def tramas_by_codigo(self, **kwargs):
     """
     Obtiene las tramas de un código específico
@@ -119,6 +127,7 @@ class Helpers(object):
         arr.append(i)
     return arr
 
+
   def ddict2dict(self, d):
     """
     Convierte un diccionario creado con defaultdict a un
@@ -128,6 +137,8 @@ class Helpers(object):
       if isinstance(v, dict):
         d[k] = self.ddict2dict(v)
     return dict(d)
+
+
 
 if __name__ == '__main__':
   hlp = Helpers()

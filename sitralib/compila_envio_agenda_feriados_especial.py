@@ -4,10 +4,8 @@ from sitralib.validators.bcc import *
 from collections import *
 import time, datetime
 
-DIA_ANULADO = '7F'
-MES_ANULADO = 'FF'
-ADI_DEFAULT = '00'
 
+DIA_ANULADO, MES_ANULADO, ADI_DEFAULT = '7F', 'FF', '00'
 
 class CompilaEnvioAgendaFeriadosEspecial(object):
   """
@@ -22,16 +20,16 @@ class CompilaEnvioAgendaFeriadosEspecial(object):
 
     numeroControlador = self.helpers.intToHexString(kwargs['crs_numero'], 4)
 
-    trama = defaultdict(dict)
-    trama[1] = '00'
-    trama[2] = '00'
-    trama[3] = '00'
-    trama[4] = '00'
-    trama[5] = 'FF'
-    trama[6] = '00'
-    trama[7] = '00'
-    trama[8] = self.helpers.intToHexString(kwargs['grp_id_num'])
-    trama[9] = '74'  # Codigo según Protocolo
+    trama     = defaultdict(dict)
+    trama[1]  = '00'
+    trama[2]  = '00'
+    trama[3]  = '00'
+    trama[4]  = '00'
+    trama[5]  = 'FF'
+    trama[6]  = '00'
+    trama[7]  = '00'
+    trama[8]  = self.helpers.intToHexString(kwargs['grp_id_num'])
+    trama[9]  = '74'  # Codigo según Protocolo
     trama[10] = '00'
     trama[11] = '9B'
     trama[12] = '00'  # BCC intermedio
