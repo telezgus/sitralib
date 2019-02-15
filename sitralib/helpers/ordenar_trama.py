@@ -9,6 +9,8 @@ class OrdenarTrama(object):
 
 
   def ordenarTrama(self, trama):
+    """Recibe una trama
+    """
     trmdict = self.__tramaToDict(trama)
     key = self.__getFfPosition(trmdict)
 
@@ -36,10 +38,10 @@ class OrdenarTrama(object):
     >>> __listtodict(["0", "1", "aa", "bb",])
     {0: '00', 1: '01', 2: 'AA', 3: 'BB'}
 
-    __listtodict([0, 1, "aa", "bb",])
+    >>> __listtodict([0, 1, "aa", "bb",])
     {0: '00', 1: '01', 2: 'AA', 3: 'BB'}
 
-    __listtodict([0, 1, "aa", "b",])
+    >>> __listtodict([0, 1, "aa", "b",])
     {0: '00', 1: '01', 2: 'AA', 3: '0B'}
     """
     a = {}
@@ -121,6 +123,7 @@ class OrdenarTrama(object):
 
 
   def __dicttodict(self, trama):
+    """Retorna el diccionario con correccion de keys y valoes"""
     trm = {}
     for key in trama:
       trm[key] = self.helpers.sanitizeHex(trama[key])
@@ -129,7 +132,11 @@ class OrdenarTrama(object):
 
 
   def __tramaToDict(self, trama):
+    """Retorna el diccionario de la trama habiendo recibido list, 
+    dict o string.
+    """
     getType = type(trama)
+    
     if getType == list:
       return self.__listtodict(trama)
     elif getType == dict:
@@ -141,8 +148,16 @@ class OrdenarTrama(object):
 
 
   def get_codigo_trama(self, trama):
-    """
-    Retorna el codigo de la trama
+    """Retorna el codigo de la trama.
+    
+    Params
+    —————-
+    trama : string
+    
+    Return
+    —————-
+      str : Código hexadecimal.
+    
     """
     trm = self.ordenarTrama(trama)
     try:
