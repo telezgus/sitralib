@@ -26,6 +26,7 @@ class GeneradorTramasCaptura(object):
 
     return a + b + c + d + e + f + g + h
 
+
   def __get_estructuras(self):
     parte_alta = ConsultaEstructuraParteAlta()
     parte_baja = ConsultaEstructuraParteBaja()
@@ -48,6 +49,7 @@ class GeneradorTramasCaptura(object):
       )
     return tramas
 
+
   def __get_consulta_catriz_conflicto(self):
     o = ConsultaMatrizConflicto()
 
@@ -56,6 +58,7 @@ class GeneradorTramasCaptura(object):
       grp_id_num=self.k['grp_id_num']
     )
     return [trama]
+
 
   def __get_consulta_funciones(self):
     o = ConsultaFunciones()
@@ -68,6 +71,7 @@ class GeneradorTramasCaptura(object):
         )
       )
     return tramas
+
 
   def __get_consulta_programa_tiempos(self):
     o = ConsultaProgramaTiempos()
@@ -82,6 +86,7 @@ class GeneradorTramasCaptura(object):
       )
     return tramas
 
+
   def __get_consulta_agenda_diaria(self):
     o = ConsultaAgendaDriaria()
     tramas = list()
@@ -95,6 +100,7 @@ class GeneradorTramasCaptura(object):
       )
     return tramas
 
+
   def __get_consulta_agenda_anual_semanal(self):
     o = ConsultaAgendaAnualSemanal()
 
@@ -104,6 +110,7 @@ class GeneradorTramasCaptura(object):
     )
     return [trama]
 
+
   def __get_consulta_agenda_feriados_especial(self):
     o = ConsultaAgendaFeriadosEspecial()
 
@@ -112,6 +119,7 @@ class GeneradorTramasCaptura(object):
       grp_id_num=self.k['grp_id_num']
     )
     return [trama]
+
 
   def __get_consulta_preajustes(self):
     o = ConsultaPreajustes()
