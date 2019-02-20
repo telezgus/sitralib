@@ -5,13 +5,30 @@ import json
 import sitralib.referencias as ref
 from sitralib.validators.bcc import *
 from sitralib.helpers.ordenar_trama import *
+from pymongo import MongoClient
+from bson.json_util import dumps, loads
+from termcolor import colored
 
-
-class Captura(object):
+class Captura:
   def __init__(self, **kwargs):
     self.ordenar_trama = OrdenarTrama()
     self.configs = kwargs
     self.validator = Bcc()
+
+    # Conexión MongoDB
+    mongo_connect = MongoClient(
+        self.configs['databases']["monitor"]["HOST"],
+        self.configs['databases']["monitor"]["PORT"]
+    )
+    self.mongo_db = mongo_connect.sitra
+    self.mongo_db.proceso.remove({})
+
+    if self.configs.get('sitra_debug'):
+      print(
+            colored("ARGS", 'cyan', attrs=["reverse", "bold"]),
+            self.configs
+        )
+
 
   def get(self):
     """
@@ -94,8 +111,7 @@ class Captura(object):
 
 
   def __send_lan(self, tgm):
-    """
-    Conexión LAN
+    """Conexión LAN
     """
     try:
       trama = []
@@ -108,6 +124,12 @@ class Captura(object):
       sock.connect(address)
       hex_string = tgm
 
+      if self.configs.get('sitra_debug'):
+        print(
+            colored("ENVIA", 'cyan', attrs=["reverse", "bold"]),
+            hex_string
+        )
+
       for num in hex_string.split(): sock.sendall(bytearray.fromhex(num))
 
       time.sleep(self.configs['timeout'])
@@ -116,71 +138,109 @@ class Captura(object):
       for x in sock.recv(2048): trama.append(hex(x))
       sock.close()
 
+      if self.configs.get('sitra_debug'):
+        print(
+            colored("RESPUESTA TRAMA BRUTA", 'cyan',
+                    attrs=["reverse", "bold"]),
+            trama
+        )
+
       tramaProcesada = self.ordenar_trama.ordenarTrama(trama)
+
+      # Debug
+      if self.configs.get('sitra_debug'):
+        print(
+            colored(
+                "RESPUESTA TRAMA PROCESADA",
+                "cyan", attrs=["reverse", "bold"]
+            ),
+            tramaProcesada
+        )
+        print(
+            colored(
+                "VALIDA BCC", "cyan", attrs=["reverse", "bold"]
+            ),
+            self.validator.isValidBcc(tramaProcesada)
+        )
+        print("\n\n\n")
+
 
       if not self.validator.isValidBcc(tramaProcesada):
         return {
-          'status': 5,
-          'uuid' : self.configs['uuid'],
-          'description': ref.MENSAJES[9]['mensaje'],
-          'trama_obtenida': tramaProcesada,
-          'success': 0
+            'status'         : 5,
+            'uuid'           : self.configs['uuid'],
+            'description'    : ref.MENSAJES[9]['mensaje'],
+            'trama_obtenida' : tramaProcesada,
+            'success'        : 0
         }
 
       return {
-        'uuid' : self.configs['uuid'],
-        'description': ref.MENSAJES[10]['mensaje'],
-        'success': 1,
-        'status': 1,
-        'trama_obtenida': tramaProcesada,
+          'uuid'             : self.configs['uuid'],
+          'description'      : ref.MENSAJES[10]['mensaje'],
+          'success'          : 1,
+          'status'           : 1,
+          'trama_obtenida'   : tramaProcesada,
       }
 
     except socket.timeout:
+      if self.configs.get('sitra_debug'):
+        print(
+            colored(
+                "TIMEOUT", "yellow", attrs=["reverse", "bold"]
+            )
+        )
+
       message = {
-        'status': 2,
-        'uuid' : self.configs['uuid'],
-        'description': ref.MENSAJES[1]['mensaje'],
-        'success': 0,
+          'status'           : 2,
+          'uuid'             : self.configs['uuid'],
+          'description'      : ref.MENSAJES[1]['mensaje'],
+          'success'          : 0,
       }
       return message
 
     except socket.error:
+      if self.configs.get('sitra_debug'):
+        print(
+            colored(
+                "ERROR DE CONEXION", "red", attrs=["reverse", "bold"]
+            )
+        )
+
       message = {
-        'status': 3,
-        'uuid' : self.configs['uuid'],
-        'description': ref.MENSAJES[11]['mensaje'],
-        'success': 0,
+          'status'           : 3,
+          'uuid'             : self.configs['uuid'],
+          'description'      : ref.MENSAJES[11]['mensaje'],
+          'success'          : 0,
       }
       return message
 
+
   def __proceso_finalizado(self):
-    """
-    Crea un archivo *.json con el porcentaje vacio
+    """Crea un archivo *.json con el porcentaje vacio
     """
     EMPTY_PROCESS = {
-          'uuid': self.configs['uuid'],
-          'per': 0,
-          'crsid': self.configs['crs_id'],
-          'cod': '0',
-          'nombre': '',
-          'datetime': time.strftime('%Y-%m-%dT%H:%M:%S'),
-        }
+        'uuid'     : self.configs['uuid'],
+        'per'      : 0,
+        'crsid'    : self.configs['crs_id'],
+        'cod'      : '0',
+        'nombre'   : '',
+        'datetime' : time.strftime('%Y-%m-%dT%H:%M:%S'),
+    }
     self.__procentaje_proceso(EMPTY_PROCESS)
 
+
   def __procentaje_proceso(self, data):
-    """
-    Crea un archivo *.json con el estado del porcentaje
-    """
+    # Si el usuario no está logueado hace un redirect.
     try:
-      file = open(self.configs['porcentaje'], 'w')
-      file.write(json.dumps(data))
-      file.close()
-    except Exception as e:
-      print(e)
+      self.mongo_db.proceso.update_one(
+          {"_id": 1}, {"$set": {'data':data}}, upsert=True
+      )
+    except:
+      print('problemas grabando en mongo')
+
 
   def __archivoJson(self, **kwargs):
-    """
-    Crea un archivo *.json con el porcentaje creado
+    """Crea un archivo *.json con el porcentaje creado
     """
     porcentaje = round((kwargs['num'] * 100) / kwargs['total'])
     if not kwargs['cod']:
@@ -189,13 +249,13 @@ class Captura(object):
       cod = '00'
 
     percent = {
-      'uuid' : self.configs['uuid'],
-      'datetime': time.strftime('%Y-%m-%dT%H:%M:%S'),
-      'crsid': self.configs['crs_id'],
-      'accion': 'captura',
-      'per': porcentaje,
-      'cod': kwargs['cod'],
-      'nombre': ref.CODE_REFERENCES[kwargs['cod']]['humanize']
+        'uuid'     : self.configs['uuid'],
+        'datetime' : time.strftime('%Y-%m-%dT%H:%M:%S'),
+        'crsid'    : self.configs['crs_id'],
+        'accion'   : 'captura',
+        'per'      : porcentaje,
+        'cod'      : kwargs['cod'],
+        'nombre'   : ref.CODE_REFERENCES[kwargs['cod']]['humanize']
     }
     self.__procentaje_proceso(percent)
 

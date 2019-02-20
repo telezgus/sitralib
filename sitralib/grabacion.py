@@ -5,6 +5,10 @@ import json
 import sitralib.referencias as ref
 from sitralib.validators.bcc import *
 from sitralib.helpers.ordenar_trama import *
+from pymongo import MongoClient
+from bson.json_util import dumps, loads
+from termcolor import colored
+
 
 EMPTY_PROCESS = {
   'per': 0,
@@ -19,6 +23,21 @@ class Grabacion(object):
     self.ordenar_trama = OrdenarTrama()
     self.configs = kwargs
     self.validator = Bcc()
+
+    # Conexión MongoDB
+    mongo_connect = MongoClient(
+        self.configs['databases']["monitor"]["HOST"],
+        self.configs['databases']["monitor"]["PORT"]
+    )
+    self.mongo_db = mongo_connect.sitra
+    self.mongo_db.proceso.remove({})
+
+    if self.configs.get('sitra_debug'):
+      print(
+            colored("ARGS", 'cyan', attrs=["reverse", "bold"]),
+            self.configs
+        )
+
 
   def get(self):
     """
@@ -125,22 +144,45 @@ class Grabacion(object):
       sock.connect(address)
       trama = []
 
-      # with open('/work/log.txt', 'a') as f:
-      #   f.write(
-      #       "{0}, {1}\n".format(kwargs.get('timeout'), kwargs.get('codigo'))
-      #   )
+      if self.configs.get('sitra_debug'):
+        print(colored("ENVIA", 'cyan', attrs=["reverse", "bold"]),tgm)
 
       for num in tgm.split(): sock.sendall(bytearray.fromhex(num))
 
       time.sleep(kwargs.get('timeout', 1))
       # sock.settimeout(None)
-      
-      for x in sock.recv(2048):
-        trama.append(hex(x))
-      
+
+      for x in sock.recv(2048): trama.append(hex(x))
+
       sock.close()
 
+      if self.configs.get('sitra_debug'):
+        print(
+            colored("RESPUESTA TRAMA BRUTA", 'cyan',
+                    attrs=["reverse", "bold"]),
+            trama
+        )
+
+
       tramaProcesada = self.ordenar_trama.ordenarTrama(trama)
+
+      # Debug
+      if self.configs.get('sitra_debug'):
+        print(
+            colored(
+                "RESPUESTA TRAMA PROCESADA",
+                "cyan", attrs=["reverse", "bold"]
+            ),
+            tramaProcesada
+        )
+        print(
+            colored(
+                "VALIDA BCC", "cyan", attrs=["reverse", "bold"]
+            ),
+            self.validator.isValidBcc(tramaProcesada)
+        )
+        print("\n\n\n")
+
 
       if not self.validator.isValidBcc(tramaProcesada):
         return {
@@ -160,6 +202,13 @@ class Grabacion(object):
       }
 
     except socket.timeout:
+      if self.configs.get('sitra_debug'):
+        print(
+            colored(
+                "TIMEOUT", "yellow", attrs=["reverse", "bold"]
+            )
+        )
+
       message = {
         'status': 2,
         'uuid' : self.configs['uuid'],
@@ -169,6 +218,13 @@ class Grabacion(object):
       return message
 
     except socket.error:
+      if self.configs.get('sitra_debug'):
+        print(
+            colored(
+                "ERROR DE CONEXION", "red", attrs=["reverse", "bold"]
+            )
+        )
+
       message = {
         'status': 3,
         'uuid' : self.configs['uuid'],
@@ -177,22 +233,36 @@ class Grabacion(object):
       }
       return message
 
+
   def __proceso_finalizado(self):
     """
     Crea un archivo *.json con el porcentaje vacio
     """
     self.__procentaje_proceso(EMPTY_PROCESS)
 
+
+
+  # def __procentaje_proceso(self, data):
+  #   """
+  #   Crea un archivo *.json con el estado del porcentaje
+  #   """
+  #   try:
+  #     file = open(self.configs['porcentaje'], 'w')
+  #     file.write(json.dumps(data))
+  #     file.close()
+  #   except Exception as e:
+  #     print(e)
+
   def __procentaje_proceso(self, data):
-    """
-    Crea un archivo *.json con el estado del porcentaje
-    """
+    # Si el usuario no está logueado hace un redirect.
     try:
-      file = open(self.configs['porcentaje'], 'w')
-      file.write(json.dumps(data))
-      file.close()
-    except Exception as e:
-      print(e)
+      self.mongo_db.proceso.update_one(
+          {"_id": 1}, {"$set": {'data':data}}, upsert=True
+      )
+    except:
+      print('problemas grabando en mongo')
+
+
 
   def __archivoJson(self, **kwargs):
     """
