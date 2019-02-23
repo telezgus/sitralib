@@ -6,13 +6,13 @@ import time
 from datetime import datetime
 
 ASE_DEFAULT = {
-  'domingo': '00',
-  'lunes': '00',
-  'martes': '00',
-  'miercoles': '00',
-  'jueves': '00',
-  'viernes': '00',
-  'sabado': '00'
+  'domingo'   : '00',
+  'lunes'     : '00',
+  'martes'    : '00',
+  'miercoles' : '00',
+  'jueves'    : '00',
+  'viernes'   : '00',
+  'sabado'    : '00'
 }
 
 

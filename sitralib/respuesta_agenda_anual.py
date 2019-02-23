@@ -7,7 +7,7 @@ from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 
 
-class RespuestaAgendAnual(object):
+class RespuestaAgendAnual:
   """
   0xDA
   Respuesta Envío de agenda anual
@@ -15,18 +15,18 @@ class RespuestaAgendAnual(object):
   """
 
   def __init__(self):
-    self.helpers = Helpers()
-    self.bytSta = ByteStatus()
-    self.bitStaI = BitsStatusI()
-    self.bitStaII = BitsStatusII()
-    self.bitStaIII = BitsStatusIII()
-    self.bitAla = BitsAlarma()
+    self.helpers     = Helpers()
+    self.bytSta      = ByteStatus()
+    self.bitStaI     = BitsStatusI()
+    self.bitStaII    = BitsStatusII()
+    self.bitStaIII   = BitsStatusIII()
+    self.bitAla      = BitsAlarma()
     self.validateBcc = Bcc()
 
   def get(self, trm):
     res = None
 
-    if (self.validateBcc.isValidBcc(trm, 12, 20)):
+    if self.validateBcc.isValidBcc(trm):
       res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
       res.update(
         {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])})

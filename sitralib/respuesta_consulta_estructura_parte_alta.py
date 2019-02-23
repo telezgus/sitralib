@@ -16,14 +16,14 @@ class RespuestaConsultaEstructuraParteAlta(object):
   """
 
   def __init__(self):
-    self.helpers = Helpers()
-    self.bytSta = ByteStatus()
-    self.bitStaI = BitsStatusI()
-    self.bitStaII = BitsStatusII()
-    self.bitStaIII = BitsStatusIII()
-    self.bitAla = BitsAlarma()
+    self.helpers      = Helpers()
+    self.bytSta       = ByteStatus()
+    self.bitStaI      = BitsStatusI()
+    self.bitStaII     = BitsStatusII()
+    self.bitStaIII    = BitsStatusIII()
+    self.bitAla       = BitsAlarma()
     self.byte_funcion = ByteFuncion()
-    self.validateBcc = Bcc()
+    self.validateBcc  = Bcc()
 
   def __get_intervalos(self, trama):
     """

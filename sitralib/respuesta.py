@@ -26,7 +26,9 @@ from sitralib.respuesta_consulta_agenda_feriados_especial import *
 from sitralib.respuesta_consulta_preajustes import *
 from sitralib.respuesta_consulta_estructura_parte_alta import *
 
-class Respuesta(object):
+
+
+class Respuesta:
   def __init__(self):
     self.helpers = Helpers()
     self.ordtrama = OrdenarTrama()

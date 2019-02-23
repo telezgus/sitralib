@@ -31,6 +31,7 @@ class Bcc(object):
   def isValidBcc(self, trama, *args):
 
     trama = self.trama_to_type(trama)
+    print(trama)
 
     bcc1 = self.POSICION_BCC_INTERMEDIO
     bcc2 = self.__posicion_bcc2(trama)
