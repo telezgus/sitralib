@@ -8,7 +8,7 @@ class ReporteEstado(object):
     if not trama: return {}
     t = dict()
 
-    byteDeStatus = self.__obtenerByteStatus(trama)
+    byteDeStatus  = self.__obtenerByteStatus(trama)
     bitsDeStatusI = self.__obtenerBitsStatusI(trama)
     bitsDeAlarmas = self.__obtenerBitsAlarmas(trama)
     numeroDeCruce = self.__obtenerNumeroCruce(trama)

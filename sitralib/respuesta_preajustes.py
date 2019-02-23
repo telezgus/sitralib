@@ -14,13 +14,13 @@ class RespuestaPreajustes(object):
   """
 
   def __init__(self):
-    self.bytSta = ByteStatus()
-    self.bitStaI = BitsStatusI()
-    self.bitStaII = BitsStatusII()
-    self.bitStaIII = BitsStatusIII()
-    self.bitAla = BitsAlarma()
+    self.bytSta      = ByteStatus()
+    self.bitStaI     = BitsStatusI()
+    self.bitStaII    = BitsStatusII()
+    self.bitStaIII   = BitsStatusIII()
+    self.bitAla      = BitsAlarma()
     self.validateBcc = Bcc()
-    self.helpers = Helpers()
+    self.helpers     = Helpers()
 
 
   def get(self, trm):

@@ -16,12 +16,12 @@ class RespuestaConsultaAgendaFeriadosEspecial(object):
   """
 
   def __init__(self):
-    self.helpers = Helpers()
-    self.bytSta = ByteStatus()
-    self.bitStaI = BitsStatusI()
-    self.bitStaII = BitsStatusII()
-    self.bitStaIII = BitsStatusIII()
-    self.bitAla = BitsAlarma()
+    self.helpers     = Helpers()
+    self.bytSta      = ByteStatus()
+    self.bitStaI     = BitsStatusI()
+    self.bitStaII    = BitsStatusII()
+    self.bitStaIII   = BitsStatusIII()
+    self.bitAla      = BitsAlarma()
     self.validateBcc = Bcc()
 
   def get(self, trm):

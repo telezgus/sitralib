@@ -10,12 +10,12 @@ from sitralib.validators.bcc import *
 
 class RespuestaEnvioEstructuraParteAlta(object):
   def __init__(self):
-    self.helpers = Helpers()
-    self.bytSta = ByteStatus()
-    self.bitStaI = BitsStatusI()
-    self.bitStaII = BitsStatusII()
-    self.bitStaIII = BitsStatusIII()
-    self.bitAla = BitsAlarma()
+    self.helpers     = Helpers()
+    self.bytSta      = ByteStatus()
+    self.bitStaI     = BitsStatusI()
+    self.bitStaII    = BitsStatusII()
+    self.bitStaIII   = BitsStatusIII()
+    self.bitAla      = BitsAlarma()
     self.validateBcc = Bcc()
 
   def respuesta(self, trm):

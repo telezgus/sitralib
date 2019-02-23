@@ -12,16 +12,16 @@ from sitralib.compila_envio_agenda_feriados_especial import *
 
 class GeneradorTramasGrabacion(object):
   def __init__(self, **kwargs):
-    self.crs_id = kwargs['crs_id']
-    self.grp_id_num = kwargs['grp_id_num']
-    self.crs_numero = kwargs['crs_numero']
-    self.programas = kwargs['programas']
-    self.movimientos = kwargs['movimientos']
-    self.agendas_diarias = kwargs['agendas_diarias']
-    self.agendas_semanales = kwargs['agendas_semanales']
+    self.crs_id                  = kwargs['crs_id']
+    self.grp_id_num              = kwargs['grp_id_num']
+    self.crs_numero              = kwargs['crs_numero']
+    self.programas               = kwargs['programas']
+    self.movimientos             = kwargs['movimientos']
+    self.agendas_diarias         = kwargs['agendas_diarias']
+    self.agendas_semanales       = kwargs['agendas_semanales']
     self.agendas_anuales_semanas = kwargs['agendas_anuales_semanas']
-    self.feriados = kwargs['feriados']
-    self.especiales = kwargs['especiales']
+    self.feriados                = kwargs['feriados']
+    self.especiales              = kwargs['especiales']
 
   def create(self):
     a = self.__estructuras()

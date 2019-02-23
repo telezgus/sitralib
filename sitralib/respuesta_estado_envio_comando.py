@@ -14,16 +14,16 @@ from sitralib.validators.bcc import *
 
 class RespuestaEstadoEnvioComando(object):
   def __init__(self):
-    self.helpers = Helpers()
-    self.bytSta = ByteStatus()
-    self.bitStaI = BitsStatusI()
-    self.bitStaII = BitsStatusII()
-    self.bitStaIII = BitsStatusIII()
-    self.bitAla = BitsAlarma()
+    self.helpers     = Helpers()
+    self.bytSta      = ByteStatus()
+    self.bitStaI     = BitsStatusI()
+    self.bitStaII    = BitsStatusII()
+    self.bitStaIII   = BitsStatusIII()
+    self.bitAla      = BitsAlarma()
     self.validateBcc = Bcc()
-    self.bytLamp = ByteLamparas()
-    self.fecha = Fecha()
-    self.bytFun = ByteFuncion()
+    self.bytLamp     = ByteLamparas()
+    self.fecha       = Fecha()
+    self.bytFun      = ByteFuncion()
 
   def get(self, trm):
 
