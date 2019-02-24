@@ -7,7 +7,7 @@ from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 
 
-class RespuestaAgendaDiaria(object):
+class RespuestaAgendaDiaria:
   """
   0xDC
   Trama de respuesta de agenda diaria

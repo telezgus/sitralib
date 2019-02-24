@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class ConsultaEstructuraParteAlta(object):
+class ConsultaEstructuraParteAlta:
   """
   Tabla 4.21:
   Trama consulta de estructura (parte alta) desde CC hacia EC

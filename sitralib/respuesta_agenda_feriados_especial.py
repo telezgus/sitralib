@@ -8,7 +8,7 @@ from sitralib.validators.bcc import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaAgendaFeriadosEspecial(object):
+class RespuestaAgendaFeriadosEspecial:
   """
   Tabla 4.47: Trama de respuesta de agenda de feriados y especial
   desde EC hacia CC.

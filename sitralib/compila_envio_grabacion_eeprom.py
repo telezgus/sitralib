@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class CompilaEnvioGrabacionEeprom(object):
+class CompilaEnvioGrabacionEeprom:
   """
   Tabla 4.52:
     Trama de grabación de EEPROM desde CC hacia EC

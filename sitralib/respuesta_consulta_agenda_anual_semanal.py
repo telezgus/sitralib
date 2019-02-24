@@ -9,7 +9,7 @@ from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 
 
-class RespuestaConsultaAgendaAnualSemanal(object):
+class RespuestaConsultaAgendaAnualSemanal:
   """
   Trama de respuesta de consulta de agenda anual semanal desde EC hacia CC
   xD9

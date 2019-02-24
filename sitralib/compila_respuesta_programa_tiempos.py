@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 import json
 
 
-class CompilaRespuestaProgramaTiempos(object):
+class CompilaRespuestaProgramaTiempos:
   def __init__(self, tramas):
     self.helpers = Helpers()
     self.trm = tramas

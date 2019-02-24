@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class ConsultaAgendaFeriadosEspecial(object):
+class ConsultaAgendaFeriadosEspecial:
   """
   Tabla 4.48:
     Trama de consulta de agenda de feriados y especial desde CC hacia EC

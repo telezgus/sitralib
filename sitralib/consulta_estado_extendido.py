@@ -2,7 +2,7 @@
 from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
-class ConsultaEstadoExtendido(object):
+class ConsultaEstadoExtendido:
   def __init__(self):
     self.helpers = Helpers()
     self.bcc = Bcc()

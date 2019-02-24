@@ -8,7 +8,7 @@ from sitralib.validators.bcc import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaPreajustes(object):
+class RespuestaPreajustes:
   """0xD4
   Trama de respuesta de envio de preajustes
   """

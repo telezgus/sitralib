@@ -18,7 +18,7 @@ EMPTY_PROCESS = {
 }
 
 
-class Grabacion(object):
+class Grabacion:
   def __init__(self, **kwargs):
     self.ordenar_trama = OrdenarTrama()
     self.configs = kwargs

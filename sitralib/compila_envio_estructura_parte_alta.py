@@ -5,7 +5,7 @@ from collections import *
 import json
 
 
-class CompilaEnvioEstructuraParteAlta(object):
+class CompilaEnvioEstructuraParteAlta:
   """
   Trama de envío de estructura (parte alta) desde CC hacia EC
   x69

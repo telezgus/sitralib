@@ -4,7 +4,7 @@ from sitralib.validators.bcc import *
 from collections import *
 
 
-class CompilaEnvioMatrizConflictos(object):
+class CompilaEnvioMatrizConflictos:
   """
   Envio matriz de conflictos
   x6C
@@ -18,16 +18,16 @@ class CompilaEnvioMatrizConflictos(object):
 
     numeroControlador = self.helpers.intToHexString(kwargs['crs_numero'], 4)
 
-    trama = defaultdict(dict)
-    trama[1] = '00'
-    trama[2] = '00'
-    trama[3] = '00'
-    trama[4] = '00'
-    trama[5] = 'FF'
-    trama[6] = '00'
-    trama[7] = '00'
-    trama[8] = self.helpers.intToHexString(kwargs['grp_id_num'])
-    trama[9] = '6C'  # Codigo según Protocolo
+    trama     = defaultdict(dict)
+    trama[1]  = '00'
+    trama[2]  = '00'
+    trama[3]  = '00'
+    trama[4]  = '00'
+    trama[5]  = 'FF'
+    trama[6]  = '00'
+    trama[7]  = '00'
+    trama[8]  = self.helpers.intToHexString(kwargs['grp_id_num'])
+    trama[9]  = '6C'  # Codigo según Protocolo
     trama[10] = '00'
     trama[11] = '29'
     trama[12] = '00'  # BCC intermedio

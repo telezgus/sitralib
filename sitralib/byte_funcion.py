@@ -2,7 +2,7 @@
 from sitralib.helpers.funciones import *
 
 
-class ByteFuncion(object):
+class ByteFuncion:
   def __init__(self):
     self.helpers = Helpers()
 

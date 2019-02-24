@@ -7,7 +7,7 @@ from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 
 
-class RespuestaConsultaPreajustes(object):
+class RespuestaConsultaPreajustes:
   """
   Trama de consulta de preajustes desde EC hacia CC
   0xD3

@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from collections import *
 
 
-class CompilaRespuestaAgendasDiarias(object):
+class CompilaRespuestaAgendasDiarias:
   def __init__(self, tramas):
     self.helpers = Helpers()
     self.trm = tramas

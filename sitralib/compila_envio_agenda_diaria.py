@@ -68,7 +68,7 @@ ADI_DEFAULT = {
 }
 
 
-class CompilaEnvioAgendaDiaria(object):
+class CompilaEnvioAgendaDiaria:
   """
   Envio Agenda Diaria
   x78
@@ -81,16 +81,16 @@ class CompilaEnvioAgendaDiaria(object):
   def create(self, *args, **kwargs):
     numeroControlador = self.helpers.intToHexString(kwargs['crs_numero'], 4)
 
-    trama = defaultdict(dict)
-    trama[1] = '00'
-    trama[2] = '00'
-    trama[3] = '00'
-    trama[4] = '00'
-    trama[5] = 'FF'
-    trama[6] = '00'
-    trama[7] = '00'
-    trama[8] = self.helpers.intToHexString(kwargs['grp_id_num'])
-    trama[9] = '78'  # Codigo según Protocolo
+    trama     = defaultdict(dict)
+    trama[1]  = '00'
+    trama[2]  = '00'
+    trama[3]  = '00'
+    trama[4]  = '00'
+    trama[5]  = 'FF'
+    trama[6]  = '00'
+    trama[7]  = '00'
+    trama[8]  = self.helpers.intToHexString(kwargs['grp_id_num'])
+    trama[9]  = '78'  # Codigo según Protocolo
     trama[10] = '00'
     trama[11] = '34'
     trama[12] = '00'  # BCC intermedio
@@ -129,11 +129,13 @@ class CompilaEnvioAgendaDiaria(object):
 
     return adh
 
+
   def __get_plan(self, key, data):
     try:
       return str(data[key]['pla_hex'])
     except:
       return ADI_DEFAULT[key]['adh_plan']
+
 
   def __get_minutos(self, key, data):
     try:
@@ -143,6 +145,7 @@ class CompilaEnvioAgendaDiaria(object):
     except:
       return ADI_DEFAULT[key]['adh_min']
 
+
   def __get_hora(self, key, data):
     try:
       adh_hora = str(data[key]['adh_hora'])
@@ -150,6 +153,7 @@ class CompilaEnvioAgendaDiaria(object):
       return str(t.tm_hour).zfill(2)
     except:
       return ADI_DEFAULT[key]['adh_hrs']
+
 
   def __get_demanda_almacenada(self):
     return '00'

@@ -9,7 +9,7 @@ from sitralib.byte_funcion import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaConsultaEstructuraParteAlta(object):
+class RespuestaConsultaEstructuraParteAlta:
   """
   Trama de respuesta de consulta estructura (parte alta) desde EC hacia CC
   0xCB

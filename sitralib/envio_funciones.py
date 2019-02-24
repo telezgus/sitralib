@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class EnvioFunciones(object):
+class EnvioFunciones:
   """
   Tabla 4.29:
     Trama de envío de funciones desde CC hacia EC

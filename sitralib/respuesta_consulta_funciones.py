@@ -7,7 +7,7 @@ from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 
 
-class RespuestaConsultaFunciones(object):
+class RespuestaConsultaFunciones:
   """
   Tabla 4.33: Trama de respuesta a consulta de funciones desde EC hacia CC
   0xD1

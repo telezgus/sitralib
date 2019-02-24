@@ -9,7 +9,7 @@ from sitralib.byte_funcion import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaConsultaEstructuraParteBaja(object):
+class RespuestaConsultaEstructuraParteBaja:
   """
   Trama de respuesta de consulta estructura (parte baja)
   0xCC

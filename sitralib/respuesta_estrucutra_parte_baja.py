@@ -7,7 +7,7 @@ from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 from sitralib.helpers.funciones import *
 
-class RespuestaEstrucutraParteBaja(object):
+class RespuestaEstrucutraParteBaja:
   """
   0xCE
   Respuesta Envío de estructura (parte baja)

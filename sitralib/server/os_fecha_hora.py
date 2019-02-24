@@ -3,7 +3,7 @@ import os
 import sys
 
 
-class OsFechaHora(object):
+class OsFechaHora:
   """
   Modifica la fecha y la hora del servidor
   """

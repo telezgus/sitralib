@@ -3,7 +3,7 @@ import time
 from sitralib.validators.bcc import *
 
 
-class ImposicionFechaHora(object):
+class ImposicionFechaHora:
   """
   Trama de imposición fecha y hora desde CC hacia EC
   0x66

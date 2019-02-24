@@ -3,7 +3,7 @@ import re
 from sitralib.helpers.funciones import *
 
 
-class OrdenarTrama(object):
+class OrdenarTrama:
   def __init__(self):
     self.helpers = Helpers()
 

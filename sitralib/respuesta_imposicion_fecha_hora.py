@@ -8,7 +8,7 @@ from sitralib.byte_status import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaImposicionFechaHora(object):
+class RespuestaImposicionFechaHora:
     """
     Respuesta Imposición Fecha y hora
     xCA

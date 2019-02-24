@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class EnvioMatrizConflictos(object):
+class EnvioMatrizConflictos:
     """
     Tabla 4.25:
         Trama de envío de matriz de conflictos desde CC hacia EC

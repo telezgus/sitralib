@@ -16,7 +16,7 @@ ASE_DEFAULT = {
 }
 
 
-class CompilaEnvioAgendaAnualSemanal(object):
+class CompilaEnvioAgendaAnualSemanal:
   """
   Envio Agenda Diaria
   x78
@@ -29,16 +29,16 @@ class CompilaEnvioAgendaAnualSemanal(object):
   def create(self, **kwargs):
     numeroControlador = self.helpers.intToHexString(kwargs['crs_numero'], 4)
 
-    trama = defaultdict(dict)
-    trama[1] = '00'
-    trama[2] = '00'
-    trama[3] = '00'
-    trama[4] = '00'
-    trama[5] = 'FF'
-    trama[6] = '00'
-    trama[7] = '00'
-    trama[8] = self.helpers.intToHexString(kwargs['grp_id_num'])
-    trama[9] = '76'  # Codigo según Protocolo
+    trama     = defaultdict(dict)
+    trama[1]  = '00'
+    trama[2]  = '00'
+    trama[3]  = '00'
+    trama[4]  = '00'
+    trama[5]  = 'FF'
+    trama[6]  = '00'
+    trama[7]  = '00'
+    trama[8]  = self.helpers.intToHexString(kwargs['grp_id_num'])
+    trama[9]  = '76'  # Codigo según Protocolo
     trama[10] = '00'
     trama[11] = '83'
     trama[12] = '00'  # BCC intermedio
@@ -139,8 +139,14 @@ class CompilaEnvioAgendaAnualSemanal(object):
 if __name__ == "__main__":
   data = {
     'agendas_semanales': [
-        {'id': 1, 'anuales': 1, 'ase_id_num': 1, 'ase_nombre': 'Agenda semanal 1', 'ase_descripcion': '', 'ase_lunes': 2, 'ase_martes': 1, 'ase_miercoles': 1, 'ase_jueves': 1, 'ase_viernes': 1, 'ase_sabado': 1, 'ase_domingo': 1},
-        {'id': 2, 'anuales': 1, 'ase_id_num': 2, 'ase_nombre': '', 'ase_descripcion': '', 'ase_lunes': 1, 'ase_martes': 2, 'ase_miercoles': 1, 'ase_jueves': 2, 'ase_viernes': 1, 'ase_sabado': 1, 'ase_domingo': 1}
+        {'id': 1, 'anuales': 1, 'ase_id_num': 1, 
+         'ase_nombre': 'Agenda semanal 1', 'ase_descripcion': '', 
+         'ase_lunes': 2, 'ase_martes': 1, 'ase_miercoles': 1, 'ase_jueves': 1, 
+         'ase_viernes': 1, 'ase_sabado': 1, 'ase_domingo': 1},
+        {'id': 2, 'anuales': 1, 'ase_id_num': 2, 'ase_nombre': '', 
+         'ase_descripcion': '', 'ase_lunes': 1, 'ase_martes': 2, 
+         'ase_miercoles': 1, 'ase_jueves': 2, 'ase_viernes': 1, 
+         'ase_sabado': 1, 'ase_domingo': 1}
       ],
     'agendas_anuales_semanas': [
         {'ans_id': 1, 'anuales': 1, 'semanales': 1, 'ans_fecha': '2016-01-01' },

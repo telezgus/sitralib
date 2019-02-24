@@ -2,7 +2,7 @@
 import sys
 
 
-class ReporteEstado(object):
+class ReporteEstado:
   def validar(self, trama):
 
     if not trama: return {}
@@ -44,6 +44,7 @@ class ReporteEstado(object):
 
     return {}
 
+
   def __vector(self, bitsDeStatusI):
     if bitsDeStatusI['AP']['est']['val'] == None or int(
         bitsDeStatusI['TIT']['est']['val']) == 1:
@@ -60,6 +61,7 @@ class ReporteEstado(object):
       else:
         vector = 12
 
+
     else:
       vector = self.__estadoVector({
         'estado': bitsDeStatusI,
@@ -67,6 +69,7 @@ class ReporteEstado(object):
         'apagado': 9
       })
     return vector
+
 
   def __prepararTrama(self, trama):
     """
@@ -83,11 +86,13 @@ class ReporteEstado(object):
 
     return trama
 
+
   def __obtenerAlarmas(self, data):
     '''
     Retorna los indices que reportan alarmas en bitsDeStatusI
     '''
     sys.exit(0)
+
 
   def __obtenerBitsStatusI(self, trama):
     '''
@@ -98,6 +103,7 @@ class ReporteEstado(object):
       return trama['bits_status_i']
 
     return {}
+
 
   def __setAlertasBitsDeStatusI(self, trama):
     # Remuevo los indices que no evalúo
@@ -116,6 +122,7 @@ class ReporteEstado(object):
 
     return new_trama
 
+
   def __obtenerByteStatus(self, trama):
     if 'byte_status_a' in trama:
       return trama['byte_status_a']
@@ -129,6 +136,7 @@ class ReporteEstado(object):
 
     return trama
 
+
   def __obtenerNumeroCruce(self, trama):
     '''
     Evalua la trama C8 ó C9 y obtiene el numero de cruce
@@ -140,6 +148,7 @@ class ReporteEstado(object):
 
     return {}
 
+
   def __obtenerBitsAlarmas(self, trama):
     '''
     Evalua la trama C8 ó C9 y obtiene la colección de datos para
@@ -149,6 +158,7 @@ class ReporteEstado(object):
       return trama['bits_alarma']
 
     return {}
+
 
   def __setAlertasBitsDeAlarmas(self, trama):
     # Remuevo los indices que no evalúo
@@ -175,6 +185,7 @@ class ReporteEstado(object):
 
     return trama
 
+
   def __estadoIndicador(self, data):
     if len(data) > 0:
 
@@ -195,6 +206,7 @@ class ReporteEstado(object):
       return est
 
     return False
+
 
   def __estadoVector(self, opt):
 
