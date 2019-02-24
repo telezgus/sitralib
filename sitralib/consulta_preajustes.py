@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class ConsultaPreajustes(object):
+class ConsultaPreajustes:
   """
   Tabla 4.56:
     Trama de consulta de preajustes desde CC hacia EC

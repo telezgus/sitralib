@@ -12,7 +12,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class RespuestaEstadoEnvioComando(object):
+class RespuestaEstadoEnvioComando:
   def __init__(self):
     self.helpers     = Helpers()
     self.bytSta      = ByteStatus()
@@ -74,18 +74,17 @@ class RespuestaEstadoEnvioComando(object):
 
       res.update({
         'datetime': self.fecha.fecha(
-          year=trm[28],
-          month=trm[29],
-          day=trm[30],
-          hour=trm[31],
-          minutes=trm[32],
-          seconds=trm[33],
-          wday=trm[34])
+          year    =trm[28],
+          month   =trm[29],
+          day     =trm[30],
+          hour    =trm[31],
+          minutes =trm[32],
+          seconds =trm[33],
+          wday    =trm[34])
       })
 
       res.update({'desfasaje': self._joinNibblesCuad(trm[52], trm[53])})
-      res.update(
-        {'tiempo_real_2': self._joinNibblesCuad(trm[44], trm[45])})
+      res.update({'tiempo_real_2': self._joinNibblesCuad(trm[44], trm[45])})
       res.update({'estructura': self.helpers.hexToDec(trm[35])})
       res.update({'programa_tiempos': self.helpers.hexToDec(trm[36])})
       res.update({'byte_status_b': self.bytSta.byteStatus(trm[37])})

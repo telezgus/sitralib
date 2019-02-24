@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class Byte(object):
+class Byte:
   def __init__(self, number):
     if self.__isstr(number):
       number = self.__strToInt(number)

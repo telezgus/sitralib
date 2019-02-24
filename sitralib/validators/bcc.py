@@ -14,7 +14,7 @@ from sitralib.helpers.ordenar_trama import *
 
 
 
-class Bcc(object):
+class Bcc:
   POSICION_BCC_INTERMEDIO = 12
 
   def __init__(self):
@@ -31,8 +31,7 @@ class Bcc(object):
   def isValidBcc(self, trama, *args):
 
     trama = self.trama_to_type(trama)
-    print(trama)
-
+    
     bcc1 = self.POSICION_BCC_INTERMEDIO
     bcc2 = self.__posicion_bcc2(trama)
 

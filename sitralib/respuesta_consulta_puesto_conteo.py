@@ -8,7 +8,7 @@ from sitralib.byte_status import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaConsultaPuestoConteo(object):
+class RespuestaConsultaPuestoConteo:
   def __init__(self):
     self.helpers       = Helpers()
     self.bytSta        = ByteStatus()

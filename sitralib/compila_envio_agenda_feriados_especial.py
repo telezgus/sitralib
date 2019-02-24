@@ -7,7 +7,7 @@ import time, datetime
 
 DIA_ANULADO, MES_ANULADO, ADI_DEFAULT = '7F', 'FF', '00'
 
-class CompilaEnvioAgendaFeriadosEspecial(object):
+class CompilaEnvioAgendaFeriadosEspecial:
   """
   Envio Agenda Feriados y especial
   x74

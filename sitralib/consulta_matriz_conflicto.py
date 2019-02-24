@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class ConsultaMatrizConflicto(object):
+class ConsultaMatrizConflicto:
     """
     Tabla 4.27:
         Trama de consulta de matriz de conflictos desde CC hacia EC

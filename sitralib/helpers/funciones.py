@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import string
 
-class Helpers(object):
+class Helpers:
 
   def sanitizeHex(self, num, fill=2):
     hexToDec = self.hexToDec(num)

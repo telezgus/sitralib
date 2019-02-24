@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class ConsultaAgendaDriaria(object):
+class ConsultaAgendaDriaria:
   """
   Tabla 4.40:
     Trama de consulta de agenda diaria desde CC hacia EC

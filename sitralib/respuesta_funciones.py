@@ -7,7 +7,7 @@ from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 from sitralib.helpers.funciones import *
 
-class RespuestaFunciones(object):
+class RespuestaFunciones:
   """
   0xD2
   Respuesta Envio de funciones

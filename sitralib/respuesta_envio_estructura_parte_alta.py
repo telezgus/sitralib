@@ -8,7 +8,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class RespuestaEnvioEstructuraParteAlta(object):
+class RespuestaEnvioEstructuraParteAlta:
   def __init__(self):
     self.helpers     = Helpers()
     self.bytSta      = ByteStatus()

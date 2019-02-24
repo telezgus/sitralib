@@ -8,7 +8,7 @@ from sitralib.byte_status import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaConsultaMatrizConflictos(object):
+class RespuestaConsultaMatrizConflictos:
   """
   Trama de respuesta a consulta de matriz de conflictos desde EC hacia CC
   0xCF

@@ -10,7 +10,7 @@ from sitralib.consulta_agenda_feriados_especial import *
 from sitralib.consulta_preajustes import *
 
 
-class GeneradorTramasCaptura(object):
+class GeneradorTramasCaptura:
   def __init__(self, **kwargs):
     self.k = kwargs
 

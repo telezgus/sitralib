@@ -9,7 +9,7 @@ from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 
 
-class RespuestaConsultaAgendaDiaria(object):
+class RespuestaConsultaAgendaDiaria:
   """
   Trama de respuesta de consulta de agenda diaria desde EC hacia CC
   xDB

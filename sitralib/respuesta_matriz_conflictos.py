@@ -8,7 +8,7 @@ from sitralib.validators.bcc import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaMatrizConflictos(object):
+class RespuestaMatrizConflictos:
   """
   0xD0
   Respuesta Envío matriz de conflictos

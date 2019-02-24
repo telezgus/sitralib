@@ -8,7 +8,7 @@ from sitralib.byte_status import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaEnvioComando(object):
+class RespuestaEnvioComando:
   def __init__(self):
     self.helpers     = Helpers()
     self.bytSta      = ByteStatus()

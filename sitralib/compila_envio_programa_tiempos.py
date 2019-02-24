@@ -5,7 +5,7 @@ from collections import *
 import json
 
 
-class CompilaEnvioProgramaTiempos(object):
+class CompilaEnvioProgramaTiempos:
   """
   Envio programa tiempos
   x6E

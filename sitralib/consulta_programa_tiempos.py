@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class ConsultaProgramaTiempos(object):
+class ConsultaProgramaTiempos:
   """
   Tabla 4.36:
     Trama de consulta de programa de tiempo desde CC hacia EC

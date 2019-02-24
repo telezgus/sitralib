@@ -12,7 +12,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class RespuestaEnvioProgramaTiempos(object):
+class RespuestaEnvioProgramaTiempos:
   """
   Trama de respuesta de envío de programa de tiempos desde EC hacia CC
   xD5

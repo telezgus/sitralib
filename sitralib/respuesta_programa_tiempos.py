@@ -8,7 +8,7 @@ from sitralib.validators.bcc import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaProgramaTiempos(object):
+class RespuestaProgramaTiempos:
   """
   D6
   Respuesta Envío de programa de tiempos

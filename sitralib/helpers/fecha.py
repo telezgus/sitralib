@@ -2,7 +2,7 @@
 from sitralib.helpers.funciones import *
 
 
-class Fecha(object):
+class Fecha:
   def __init__(self):
     self.helpers = Helpers()
 

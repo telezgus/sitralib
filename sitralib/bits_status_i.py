@@ -3,7 +3,7 @@ from sitralib.helpers.byte import *
 from sitralib.helpers.funciones import *
 
 
-class BitsStatusI(object):
+class BitsStatusI:
   def __init__(self):
     self.helpers = Helpers()
 

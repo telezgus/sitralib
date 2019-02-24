@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class EnvioComando(object):
+class EnvioComando:
     def __init__(self):
         self.helpers = Helpers()
         self.bcc = Bcc()

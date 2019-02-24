@@ -4,7 +4,7 @@ from sitralib.validators.bcc import *
 from collections import *
 
 
-class CompilaEnvioFunciones(object):
+class CompilaEnvioFunciones:
   """
   Envio de funciones
   x6E

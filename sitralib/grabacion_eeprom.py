@@ -7,7 +7,7 @@ from sitralib.byte_status import *
 from sitralib.validators.bcc import *
 from sitralib.helpers.funciones import *
 
-class GrabacionEeprom(object):
+class GrabacionEeprom:
   """
   Trama SITAR 0xE2
   Trama de grabación de EEPROM desde CC hacia EC

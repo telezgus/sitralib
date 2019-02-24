@@ -12,7 +12,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class RespuestaConsultaGrupoExtendido(object):
+class RespuestaConsultaGrupoExtendido:
     def __init__(self):
         self.helpers     = Helpers()
         self.bytSta      = ByteStatus()

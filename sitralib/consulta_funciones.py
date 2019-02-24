@@ -3,7 +3,7 @@ from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
 
-class ConsultaFunciones(object):
+class ConsultaFunciones:
   """
   Tabla 4.32:
     Trama de consulta de funciones desde CC hacia EC

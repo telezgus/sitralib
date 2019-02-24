@@ -8,7 +8,7 @@ from sitralib.validators.bcc import *
 from sitralib.helpers.funciones import *
 
 
-class RespuestaEstrucutraParteAlta(object):
+class RespuestaEstrucutraParteAlta:
   """
   0xCD
   Respuesta Envío de estructura (parte alta)
