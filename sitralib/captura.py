@@ -38,15 +38,26 @@ class Captura:
     counter = 0
 
     for trama in self.configs['tramas']:
+
       counter_while = 0
       while True:
         """
         Envia la trama 'n' candidad de veces intentado concretar la
         comunicacion; si no lo logra, muere mostrando un error.
         """
-        # print('--- intento', counter_while)
-        # código trama de envio
 
+        # Retiene el ejecución por el período seteado en timeout.
+        time.sleep(self.configs['timeout'])
+
+        if self.configs.get('sitra_debug'):
+          print(
+              colored(
+                  "INTENTO {0}".format(counter_while), 
+                  'blue', attrs=["reverse", "bold"]
+              )
+          )
+
+        # código trama de envio
         codigo_trama_envio = self.ordenar_trama.get_codigo_trama(trama)
         # print('codigo_trama_envio', codigo_trama_envio)
         # código trama de respuesta
@@ -132,10 +143,11 @@ class Captura:
 
       for num in hex_string.split(): sock.sendall(bytearray.fromhex(num))
 
-      time.sleep(self.configs['timeout'])
-      # sock.settimeout(None)
+      time.sleep(self.configs.get('espera'))
 
       for x in sock.recv(2048): trama.append(hex(x))
+
+      # sock.settimeout(None)
       sock.close()
 
       if self.configs.get('sitra_debug'):
