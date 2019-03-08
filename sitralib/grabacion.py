@@ -1,14 +1,15 @@
 # -*- coding: UTF-8 -*-
+import json
 import socket
 import time
-import json
-import sitralib.referencias as ref
-from sitralib.validators.bcc import *
-from sitralib.helpers.ordenar_trama import *
-from pymongo import MongoClient
+
 from bson.json_util import dumps, loads
+from pymongo import MongoClient
 from termcolor import colored
 
+import sitralib.referencias as ref
+from sitralib.helpers.ordenar_trama import *
+from sitralib.validators.bcc import *
 
 EMPTY_PROCESS = {
   'per': 0,

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from sitralib.validators.bcc import *
 from sitralib.bits_alarma import *
 from sitralib.bits_status_i import *
 from sitralib.bits_status_ii import *
 from sitralib.bits_status_iii import *
 from sitralib.byte_status import *
 from sitralib.helpers.funciones import *
+from sitralib.validators.bcc import *
 
 
 class RespuestaImposicionFechaHora:
@@ -52,4 +52,3 @@ if __name__ == '__main__':
 
     pp = pprint
     pp.pprint(retorno)
-
