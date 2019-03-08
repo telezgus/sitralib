@@ -5,68 +5,68 @@ from collections import *
 from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
-ADI_DEFAULT = {
-  0: {
+ADI_DEFAULT = [
+  {
     'adh_hora': '00:01:00',
     'adh_plan': '00',
     'adh_hrs': '00',
     'adh_min': '01',
   },
-  1: {
+  {
     'adh_hora': '00:00:00',
     'adh_plan': '00',
     'adh_hrs': '00',
     'adh_min': '00',
   },
-  2: {
+  {
     'adh_hora': '00:00:00',
     'adh_plan': '00',
     'adh_hrs': '00',
     'adh_min': '00',
   },
-  3: {
+  {
     'adh_hora': '00:00:00',
     'adh_plan': '00',
     'adh_hrs': '00',
     'adh_min': '00',
   },
-  4: {
+  {
     'adh_hora': '00:00:00',
     'adh_plan': '00',
     'adh_hrs': '00',
     'adh_min': '00',
   },
-  5: {
+  {
     'adh_hora': '00:00:00',
     'adh_plan': '00',
     'adh_hrs': '00',
     'adh_min': '00',
   },
-  6: {
+  {
     'adh_hora': '00:00:00',
     'adh_plan': '00',
     'adh_hrs': '00',
     'adh_min': '00',
   },
-  7: {
+  {
     'adh_hora': '00:00:00',
     'adh_plan': '00',
     'adh_hrs': '00',
     'adh_min': '00',
   },
-  8: {
+  {
     'adh_hora': '00:00:00',
     'adh_plan': '00',
     'adh_hrs': '00',
     'adh_min': '00',
   },
-  9: {
+  {
     'adh_hora': '00:00:00',
     'adh_plan': '00',
     'adh_hrs': '00',
     'adh_min': '00',
   },
-}
+]
 
 
 class CompilaEnvioAgendaDiaria:
