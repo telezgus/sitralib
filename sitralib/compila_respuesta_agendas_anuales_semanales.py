@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from sitralib.helpers.funciones import *
 from collections import *
+
+from sitralib.helpers.funciones import *
 
 
 class CompilaRespuestaAgendasAnualesSemanales:

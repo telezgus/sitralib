@@ -12,8 +12,6 @@ from sitralib.helpers.funciones import *
 from sitralib.helpers.ordenar_trama import *
 
 
-
-
 class Bcc:
   POSICION_BCC_INTERMEDIO = 12
 
@@ -130,4 +128,3 @@ if __name__ == "__main__":
   print(b)
   # print(a.consolidate(t))
   print(a.consolidate(trama1))
-

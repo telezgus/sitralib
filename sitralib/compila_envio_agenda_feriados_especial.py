@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+import datetime
+import time
+from collections import *
+
 from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
-from collections import *
-import time, datetime
-
 
 DIA_ANULADO, MES_ANULADO, ADI_DEFAULT = '7F', 'FF', '00'
 

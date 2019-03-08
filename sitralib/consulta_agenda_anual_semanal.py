@@ -2,6 +2,7 @@
 from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
 
+
 class ConsultaAgendaAnualSemanal:
   """
   Tabla 4.44:

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
+
 from sitralib.helpers.funciones import *
 
 
@@ -253,5 +254,3 @@ if __name__ == '__main__':
   print(trm1, end='\n')
   print(trm2, end='\n')
   print(trm3, end='\n')
-
-

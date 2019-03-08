@@ -48,4 +48,3 @@ if __name__ == "__main__":
   o = ConsultaPreajustes()
   a = o.create(crs_numero=3000, grp_id_num=30)
   print(a)
-

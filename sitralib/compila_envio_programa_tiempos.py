@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+import json
+from collections import *
+
 from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
-from collections import *
-import json
 
 
 class CompilaEnvioProgramaTiempos:
