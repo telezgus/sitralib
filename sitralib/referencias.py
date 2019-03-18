@@ -48,19 +48,19 @@ CODE_REFERENCES = {
   },
   '67': {
     'technical': 'Consulta de estructura (parte alta)',
-    'humanize': 'Estructura, parta alta'
+    'humanize': 'Estructura, parte alta'
   },
   '68': {
     'technical': 'Consulta de estructura (parte baja)',
-    'humanize': 'Estructura, parta baja'
+    'humanize': 'Estructura, parte baja'
   },
   '69': {
     'technical': 'Envío de estructura (parte alta)',
-    'humanize': 'Estructura, parta alta'
+    'humanize': 'Estructura, parte alta'
   },
   '6A': {
     'technical': 'Envío de estructura (parte baja)',
-    'humanize': 'Estructura, parta baja'
+    'humanize': 'Estructura, parte baja'
   },
   '6B': {
     'technical': 'Consulta de matriz de conflictos',

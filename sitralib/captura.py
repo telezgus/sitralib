@@ -65,7 +65,7 @@ class Captura:
         # print('codigo_trama_envio', codigo_trama_envio)
         # código trama de respuesta
         codigo_trama_verificacion = ref.CONSULTA_RESPUESTA[
-          codigo_trama_envio]
+            codigo_trama_envio]
         # print('codigo_trama_verificacion', codigo_trama_verificacion)
         trama_respuesta = self.__send_lan(trama)
 
@@ -90,12 +90,12 @@ class Captura:
         elif counter_while >= self.configs['reintentos']:
           # Se superó la cantidad de reintentos
           message_error = {
-            'status': 4,
-            'uuid' : self.configs['uuid'],
-            'description': ref.MENSAJES[8]['mensaje'].format(
-              self.configs['reintentos']
-            ),
-            'success': 0,
+              'status': 4,
+              'uuid' : self.configs['uuid'],
+              'description': ref.MENSAJES[8]['mensaje'].format(
+                  self.configs['reintentos']
+              ),
+              'success': 0,
           }
           return message_error
 
@@ -110,10 +110,10 @@ class Captura:
 
       codigo = self.ordenar_trama.get_codigo_trama(trama)
       self.__archivoJson(
-        crsid=self.configs['crs_id'],
-        num=counter,
-        cod=codigo,
-        total=len(self.configs['tramas'])
+          crsid=self.configs['crs_id'],
+          num=counter,
+          cod=codigo,
+          total=len(self.configs['tramas'])
       )
 
       counter += 1
@@ -130,8 +130,8 @@ class Captura:
     try:
       trama = []
       address = (
-        str(self.configs['crs_ip']),
-        int(self.configs['prt_puerto'])
+          str(self.configs['crs_ip']),
+          int(self.configs['prt_puerto'])
       )
       sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       sock.settimeout(self.configs['timeout'])
@@ -179,13 +179,12 @@ class Captura:
         )
         print("\n\n\n")
 
-
       if not self.validator.isValidBcc(tramaProcesada):
         return {
             'status'         : 5,
             'uuid'           : self.configs['uuid'],
             'description'    : ref.MENSAJES[9]['mensaje'],
-            'trama_obtenida' : tramaProcesada,
+            'trama_obtenida' : trama,
             'success'        : 0
         }
 
@@ -275,8 +274,6 @@ class Captura:
     self.__procentaje_proceso(percent)
 
 
-class TramaInvalida(Exception):
-  pass
 
 
 if __name__ == '__main__':
