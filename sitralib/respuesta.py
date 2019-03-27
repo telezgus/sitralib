@@ -32,10 +32,11 @@ class Respuesta:
 
 
   def obtenerRespuesta(self, trama):
-    trm = self.ordtrama.ordenarTrama(trama)
-    dec = self.helpers.hexToDec(trm[9])
 
     try:
+      trm = self.ordtrama.ordenarTrama(trama)
+      dec = self.helpers.hexToDec(trm.get(9))
+
       dispatch = {
           201: RespuestaEnvioComando().get,
           200: RespuestaConsultaGrupoExtendido().get,
@@ -91,5 +92,5 @@ if __name__ == "__main__":
         18: '20', 19: '00', 20: 'F5'}
 
   rta = Respuesta()
-  resultado = rta.obtenerRespuesta(trama3)
+  resultado = rta.obtenerRespuesta([])
   print(resultado)
