@@ -26,29 +26,29 @@ class RespuestaConsultaPuestoConteo:
     if self.validateBcc.isValidBcc(trama_ordenada)\
           and trama_ordenada.get(9) == 'E0':
 
-      res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
-      res.update(self.bitStaI.bitsStatusI(trm[16]))
-      res.update(self.bitStaII.bitsStatusII(trm[17]))
-      res.update(self.bitAla.bitsAlarma(trm[18]))
-      res.update(self.bitStaIII.bitsStatusIII(trm[19]))
+      res = {'byte_status_a': self.bytSta.byteStatus(trama_ordenada.get(15))}
+      res.update(self.bitStaI.bitsStatusI(trama_ordenada.get(16)))
+      res.update(self.bitStaII.bitsStatusII(trama_ordenada.get(17)))
+      res.update(self.bitAla.bitsAlarma(trama_ordenada.get(18)))
+      res.update(self.bitStaIII.bitsStatusIII(trama_ordenada.get(19)))
       # Valor de espira
-      res.update(self.__espira(1, trm[20]))
-      res.update(self.__espira(2, trm[21]))
-      res.update(self.__espira(3, trm[22]))
-      res.update(self.__espira(4, trm[23]))
-      res.update(self.__espira(5, trm[24]))
-      res.update(self.__espira(6, trm[25]))
-      res.update(self.__espira(7, trm[26]))
-      res.update(self.__espira(8, trm[27]))
+      res.update(self.__espira(1, trama_ordenada.get(20)))
+      res.update(self.__espira(2, trama_ordenada.get(21)))
+      res.update(self.__espira(3, trama_ordenada.get(22)))
+      res.update(self.__espira(4, trama_ordenada.get(23)))
+      res.update(self.__espira(5, trama_ordenada.get(24)))
+      res.update(self.__espira(6, trama_ordenada.get(25)))
+      res.update(self.__espira(7, trama_ordenada.get(26)))
+      res.update(self.__espira(8, trama_ordenada.get(27)))
       # Tiempo de ocupacion
-      res.update(self.__ocupacion(1, trm[28]))
-      res.update(self.__ocupacion(2, trm[29]))
-      res.update(self.__ocupacion(3, trm[30]))
-      res.update(self.__ocupacion(4, trm[31]))
-      res.update(self.__ocupacion(5, trm[32]))
-      res.update(self.__ocupacion(6, trm[33]))
-      res.update(self.__ocupacion(7, trm[34]))
-      res.update(self.__ocupacion(8, trm[35]))
+      res.update(self.__ocupacion(1, trama_ordenada.get(28)))
+      res.update(self.__ocupacion(2, trama_ordenada.get(29)))
+      res.update(self.__ocupacion(3, trama_ordenada.get(30)))
+      res.update(self.__ocupacion(4, trama_ordenada.get(31)))
+      res.update(self.__ocupacion(5, trama_ordenada.get(32)))
+      res.update(self.__ocupacion(6, trama_ordenada.get(33)))
+      res.update(self.__ocupacion(7, trama_ordenada.get(34)))
+      res.update(self.__ocupacion(8, trama_ordenada.get(35)))
       res.update({'object': 'RespuestaConsultaPuestoConteo'})
 
     return res
@@ -91,21 +91,24 @@ if __name__ == "__main__":
             30: '0C', 31: '0D', 32: '0E', 33: '0F', 34: '10', 35: '11', 
             36: '00', 37: 'B0'}
   trama4 = '00 00 00 00 FF 00 00 01 71 00 0C 83 0B B8 00 30'
-  trama5 = ['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xe0', 
-            '0x0', '0x21', '0x3f', '0xb', '0xb8', '0x3', '0x94', '0x0', 
-            '0x20', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', 
-            '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', 
-            '0x0', '0x3b']
+  trama5 = ['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1e', '0xe0',
+            '0x0', '0x21', '0x20', '0x6', '0x49', '0x1', '0x94', '0x0', '0x0',
+            '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0',
+            '0x3c', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0',
+            '0xc6', '0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1e',
+            '0xc5', '0x0', '0x56', '0x72', '0x6', '0x49', '0x1', '0x94', '0x0',
+            '0x0', '0x0', '0x44', '0x1', '0x0', '0x0', '0xdd', '0xdd', '0xdd',
+            '0xdd', '0x19', '0x4', '0x2', '0x4', '0x34', '0x27', '0x3', '0x0',
+            '0x1', '0x1', '0x0', '0x1', '0x0', '0x0', '0x1', '0x18', '0x0',
+            '0x1', '0x0', '0x0', '0x0', '0x50', '0x0', '0x0', '0x0', '0x1e',
+            '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0',
+            '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0',
+            '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0',
+            '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0', '0x0',
+            '0xb1']
   trama = trama5
-  b = Bcc()
-
-  print(b.isValidBcc(trama))
-  print(trama, end='\n\n')
-
   respuestaPuestoConteo = RespuestaConsultaPuestoConteo()
-  ot = OrdenarTrama()
 
-  tramaOrdenada = ot.ordenarTrama(trama)
 
-  retorno = respuestaPuestoConteo.get(tramaOrdenada)
+  retorno = respuestaPuestoConteo.get(trama)
   pp.pprint(retorno)
