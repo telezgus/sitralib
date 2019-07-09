@@ -74,7 +74,6 @@ class CompilaEnvioAgendaDiaria:
   Envio Agenda Diaria
   x78
   """
-
   def __init__(self):
     self.helpers = Helpers()
     self.bcc = Bcc()
@@ -158,3 +157,5 @@ class CompilaEnvioAgendaDiaria:
 
   def __get_demanda_almacenada(self):
     return '00'
+
+

@@ -21,7 +21,7 @@ class Fecha:
 
   def __normalizar_fecha(self, **kwargs):
     """Agrega timestamp y wday a la fecha.
-    
+
     :param kwargs: dict
     :return: dict
     """
