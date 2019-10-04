@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from sitralib.bits_alarma import *
+from sitralib.bits_falta import *
 from sitralib.bits_status_i import *
 from sitralib.bits_status_ii import *
 from sitralib.bits_status_iii import *
@@ -24,10 +25,13 @@ class RespuestaEstadoEnvioComando:
     self.bytLamp     = ByteLamparas()
     self.fecha       = Fecha()
     self.bytFun      = ByteFuncion()
+    self.bits_falta  = BitsFalta()
+
+
 
   def get(self, trm):
 
-    if (self.validateBcc.isValidBcc(trm, 12, 90)):
+    if self.validateBcc.isValidBcc(trm, 12, 90):
       res = {'byte_status_a': self.bytSta.byteStatus(trm[15])}
       res.update(
         {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])})
@@ -93,6 +97,101 @@ class RespuestaEstadoEnvioComando:
       res.update({'byte_status_c': self.bytSta.byteStatus(trm[42])})
       res.update({'duracion_paso': self.helpers.hexToDec(trm[43])})
 
+
+      bits_falta = {}
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[58], name="falta_rojo_1",
+                                    label="Rojo {0}", prefix="FR{0}", start=1))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[59], name="falta_rojo_2",
+                                    label="Rojo {0}", prefix="FR{0}", start=9))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[60], name="falta_amarillo_1",
+                                    label="Amarillo {0}", prefix="FA{0}",
+                                    start=1))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[61], name="falta_amarillo_2",
+                                    label="Amarillo {0}", prefix="FA{0}",
+                                    start=9))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[62], name="falta_verde_1",
+                                    label="Verde {0}", prefix="FV{0}",
+                                    start=1))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[63], name="falta_verde_2",
+                                    label="Verde {0}", prefix="FV{0}",
+                                    start=9))
+
+
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[64], name="conflicto_rojo_1",
+                                    label="Conflicto Rojo {0}", prefix="FR{0}", start=1))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[65], name="conflicto_rojo_2",
+                                    label="Conflicto Rojo {0}", prefix="FR{0}", start=9))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[66], name="conflicto_amarillo_1",
+                                    label="Conflicto Amarillo {0}", prefix="FA{0}",
+                                    start=1))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[67], name="conflicto_amarillo_2",
+                                    label="Conflicto Amarillo {0}", prefix="FA{0}",
+                                    start=9))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[68], name="conflicto_verde_1",
+                                    label="Conflicto Verde {0}", prefix="FV{0}",
+                                    start=1))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[69], name="conflicto_verde_2",
+                                    label="Conflicto Verde {0}", prefix="FV{0}",
+                                    start=9))
+
+
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[70], name="fusible_rojo_1",
+                                    label="Fusible Rojo {0}", prefix="FR{0}", start=1))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[71], name="fusible_rojo_2",
+                                    label="Fusible Rojo {0}", prefix="FR{0}", start=9))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[72], name="fusible_amarillo_1",
+                                    label="Fusible Amarillo {0}", prefix="FA{0}",
+                                    start=1))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[73], name="fusible_amarillo_2",
+                                    label="Fusible Amarillo {0}", prefix="FA{0}",
+                                    start=9))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[74], name="fusible_verde_1",
+                                    label="Fusible Verde {0}", prefix="FV{0}",
+                                    start=1))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[75], name="fusible_verde_2",
+                                    label="Fusible Verde {0}", prefix="FV{0}",
+                                    start=9))
+
+
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[76], name="detector_demanda_1",
+                                    label="Detector {0}", prefix="DD{0}",
+                                    start=1))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[77], name="detector_demanda_2",
+                                    label="Detector {0}", prefix="DD{0}",
+                                    start=9))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[78], name="detector_demanda_3",
+                                    label="Detector {0}", prefix="DD{0}",
+                                    start=17))
+      bits_falta.update(
+          self.bits_falta.bitsFalta(trm[79], name="detector_demanda_4",
+                                    label="Detector {0}", prefix="DD{0}",
+                                    start=25))
+
+
+
+
+      res.update(bits_falta)
       res.update(self.bytFun.get(trm[54]))
       res.update({'object': 'respuestaEstadoEnvioComando'})
 
@@ -113,40 +212,25 @@ class RespuestaEstadoEnvioComando:
 
 
 if __name__ == "__main__":
-  trama = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'C5', 10: '00', 11: '56',
-       12: '6D', 13: '0B', 14: 'B8', 15: '00', 16: '14', 17: '00',
-       18: '20', 19: '00', 20: '99', 21: '99', 22: 'DD', 23: 'DD',
-       24: 'DD', 25: 'DD', 26: 'DD', 27: 'DD', 28: '01', 29: '60',
-       30: '60', 31: '60', 32: '62', 33: '42', 34: '00', 35: '20',
-       36: '00', 37: '00', 38: '00', 39: '20', 40: '50', 41: '00',
-       42: '00', 43: '00', 44: '50', 45: '00', 46: 'F0', 47: '00',
-       48: '00', 49: '01', 50: '40', 51: '00', 52: '00', 53: '00',
-       54: '00', 55: '00', 56: '00', 57: '00', 58: '00', 59: '00',
-       60: '00', 61: '00', 62: '00', 63: '00', 64: '00', 65: '00',
-       66: '00', 67: '00', 68: '00', 69: '00', 70: '00', 71: '00',
-       72: '00', 73: '00', 74: '00', 75: '00', 76: '00', 77: '00',
-       78: '00', 79: '00', 80: '00', 81: '00', 82: '00', 83: '00',
-       84: '00', 85: '00', 86: '00', 87: '00', 88: '00', 89: '00',
-       90: '00', 91: '0E', 92: '50', 93: '00', 94: '00', 95: '00',
-       96: '0F', 97: 'F0', 98: '00', 99: '00', 100: '01', 101: 'C5',
-       102: '00', 103: '56', 104: '6D', 105: '0B', 106: 'B8', 107: '00',
-       108: '14', 109: '00', 110: '20', 111: '00', 112: 'AA', 113: 'AA',
-       114: 'DD', 115: 'DD', 116: 'DD', 117: 'DD', 118: 'DD', 119: 'DD',
-       120: '16', 121: '06', 122: '00', 123: '60', 124: '62', 125: '42',
-       126: '10', 127: '20', 128: '00', 129: '00', 130: '00', 131: '30',
-       132: '10', 133: '00', 134: '00', 135: '00', 136: '50', 137: '01',
-       138: '00', 139: '00', 140: '00', 141: '01', 142: '40', 143: '00',
-       144: '00', 145: '00', 146: '00', 147: '00', 148: '00', 149: '00',
-       150: '00', 151: '00', 152: '00', 153: '00', 154: '00', 155: '00',
-       156: '00', 157: '00', 158: '00', 159: '00', 160: '00', 161: '00',
-       162: '00', 163: '00', 164: '00', 165: '00', 166: '00', 167: '00',
-       168: '00', 169: '00', 170: '00', 171: '00', 172: '00', 173: '00',
-       174: '00', 175: '00', 176: '00', 177: '00', 178: '00', 179: '00',
-       180: '00', 181: '00', 182: '00', 183: '0F', 184: '0E'}
-  obj = RespuestaEstadoEnvioComando()
-  retorno = obj.get(trama)
-  #
-  import pprint
+  import pprint as pp
 
-  pp = pprint
+  # Falta de rojo 5
+  trama = "00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 95"
+  # Falta de amarillo 2
+  trama = "00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 87"
+  # Falta de fusible rojo 1
+  trama = "00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 84"
+  # Falta de Fusible Verde 16
+  trama = "00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 05"
+
+
+  bcc = Bcc()
+  # b = bcc.isValidBcc(trama)
+  # print(b)
+  # print(bcc.consolidate(trama))
+  # print(bcc.isValidBcc(trama))
+
+
+  obj     = RespuestaEstadoEnvioComando()
+  retorno = obj.get(bcc.consolidate(trama))
   pp.pprint(retorno)
