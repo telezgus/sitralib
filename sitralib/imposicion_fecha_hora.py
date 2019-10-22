@@ -24,6 +24,14 @@ class ImposicionFechaHora:
       "%Y-%m-%d %H:%M:%S"
     )
 
+    """"[summary]"
+
+    En la PC CITAR a reemplazar manda un telegrama 0x66 cada 10 minutos con
+    los campos siguientes en blanco:
+    numero de esclavo = 0x00
+    numero de grupo = 0x00
+    numero de cruce = 0x00 0x00
+    """
     trama = {
       1  : '00',
       2  : '00',
@@ -31,7 +39,7 @@ class ImposicionFechaHora:
       4  : '00',
       5  : 'FF',
       6  : '00',
-      7  : '00',
+      7  : kwargs.get("num_esclavo", "00"),
       8  : self.helpers.intToHexString(kwargs['grp_id_num']),
       9  : '66',                            # Codigo según Protocolo
       10 : '00',
