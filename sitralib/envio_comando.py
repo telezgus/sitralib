@@ -21,15 +21,15 @@ class EnvioComando:
             4: '00',
             5: 'FF',
             6: '00',
-            7: '00',
-            8: self.helpers.intToHexString(kwargs['grp_id_num']),
+            7: self.helpers.intToHexString(kwargs.get('esclavo', 0)), # Esclavo
+            8: self.helpers.intToHexString(kwargs.get('grp_id_num')),
             9: '65',  # Codigo según Protocolo
             10: '00',
             11: '0C',
             12: '00',  # BCC intermedio
             13: numeroControlador[:-2],
             14: numeroControlador[-2:],
-            15: self.helpers.intToHexString(kwargs['ccm_id'], 2),
+            15: self.helpers.intToHexString(kwargs.get('ccm_id'), 2),
             16: '00',  # BCC
         }
 
@@ -44,6 +44,7 @@ if __name__ == "__main__":
     trama = envioComando.create(
         grp_id_num=str(1),
         ccm_id=1,
-        crs_numero=3000
+        crs_numero=3000,
+        esclavo=9
     )
     print(trama)
