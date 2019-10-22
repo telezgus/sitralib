@@ -20,7 +20,7 @@ class ConsultaEstadoEnvioComando:
       4: '00',
       5: 'FF',
       6: '00',
-      7: '00',
+      7: self.helpers.intToHexString(kwargs.get('esclavo', 0)), # Esclavo,
       8: self.helpers.intToHexString(kwargs['grp_id_num']),
       9: '61',  # Codigo según Protocolo
       10: '00',
