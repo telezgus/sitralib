@@ -101,10 +101,12 @@ class RespuestaEstadoEnvioComando:
       bits_falta = {}
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[58], name="falta_rojo_1",
-                                    label="Rojo {0}", prefix="FR{0}", start=1))
+                                    label="Rojo {0}", prefix="FR{0}",
+                                    start=1))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[59], name="falta_rojo_2",
-                                    label="Rojo {0}", prefix="FR{0}", start=9))
+                                    label="Rojo {0}", prefix="FR{0}",
+                                    start=9))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[60], name="falta_amarillo_1",
                                     label="Amarillo {0}", prefix="FA{0}",
@@ -125,49 +127,65 @@ class RespuestaEstadoEnvioComando:
 
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[64], name="conflicto_rojo_1",
-                                    label="Conflicto Rojo {0}", prefix="FR{0}", start=1))
+                                    label="Conflicto Rojo {0}",
+                                    prefix="FR{0}",
+                                    start=1))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[65], name="conflicto_rojo_2",
-                                    label="Conflicto Rojo {0}", prefix="FR{0}", start=9))
+                                    label="Conflicto Rojo {0}",
+                                    prefix="FR{0}",
+                                    start=9))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[66], name="conflicto_amarillo_1",
-                                    label="Conflicto Amarillo {0}", prefix="FA{0}",
+                                    label="Conflicto Amarillo {0}",
+                                    prefix="FA{0}",
                                     start=1))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[67], name="conflicto_amarillo_2",
-                                    label="Conflicto Amarillo {0}", prefix="FA{0}",
+                                    label="Conflicto Amarillo {0}",
+                                    prefix="FA{0}",
                                     start=9))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[68], name="conflicto_verde_1",
-                                    label="Conflicto Verde {0}", prefix="FV{0}",
+                                    label="Conflicto Verde {0}",
+                                    prefix="FV{0}",
                                     start=1))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[69], name="conflicto_verde_2",
-                                    label="Conflicto Verde {0}", prefix="FV{0}",
+                                    label="Conflicto Verde {0}",
+                                    prefix="FV{0}",
                                     start=9))
 
 
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[70], name="fusible_rojo_1",
-                                    label="Fusible Rojo {0}", prefix="FR{0}", start=1))
+                                    label="Fusible Rojo {0}",
+                                    prefix="FR{0}",
+                                    start=1))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[71], name="fusible_rojo_2",
-                                    label="Fusible Rojo {0}", prefix="FR{0}", start=9))
+                                    label="Fusible Rojo {0}",
+                                    prefix="FR{0}",
+                                    start=9))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[72], name="fusible_amarillo_1",
-                                    label="Fusible Amarillo {0}", prefix="FA{0}",
+                                    label="Fusible Amarillo {0}",
+                                    prefix="FA{0}",
                                     start=1))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[73], name="fusible_amarillo_2",
-                                    label="Fusible Amarillo {0}", prefix="FA{0}",
+                                    label="Fusible Amarillo {0}",
+                                    prefix="FA{0}",
                                     start=9))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[74], name="fusible_verde_1",
-                                    label="Fusible Verde {0}", prefix="FV{0}",
+                                    label="Fusible Verde {0}",
+                                    prefix="FV{0}",
                                     start=1))
       bits_falta.update(
           self.bits_falta.bitsFalta(trm[75], name="fusible_verde_2",
-                                    label="Fusible Verde {0}", prefix="FV{0}",
+                                    label="Fusible Verde {0}",
+                                    prefix="FV{0}",
                                     start=9))
 
 

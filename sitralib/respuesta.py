@@ -32,44 +32,51 @@ class Respuesta:
 
 
   def obtenerRespuesta(self, trama):
+    respuesta = None
 
-    try:
-      trm = self.ordtrama.ordenarTrama(trama)
-      dec = self.helpers.hexToDec(trm.get(9))
+    if trama:
+      try:
+        trm = self.ordtrama.ordenarTrama(trama)
+        dec = self.helpers.hexToDec(trm.get(9))
 
-      dispatch = {
-          201: RespuestaEnvioComando().get,
-          200: RespuestaConsultaGrupoExtendido().get,
-          197: RespuestaEstadoEnvioComando().get,
-          224: RespuestaConsultaPuestoConteo().get,
-          226: GrabacionEeprom().grabar,
-          212: RespuestaPreajustes().get,
-          216: RespuestaAgendaFeriadosEspecial().get,
-          218: RespuestaAgendAnual().get,
-          220: RespuestaAgendaDiaria().get,
-          214: RespuestaProgramaTiempos().get,
-          210: RespuestaFunciones().get,
-          208: RespuestaMatrizConflictos().get,
-          206: RespuestaEstrucutraParteBaja().get,
-          205: RespuestaEstrucutraParteAlta().get,
-          203: RespuestaConsultaEstructuraParteAlta().get,
-          204: RespuestaConsultaEstructuraParteBaja().get,
-          207: RespuestaConsultaMatrizConflictos().get,
-          209: RespuestaConsultaFunciones().get,
-          213: RespuestaEnvioProgramaTiempos().get,
-          219: RespuestaConsultaAgendaDiaria().get,
-          217: RespuestaConsultaAgendaAnualSemanal().get,
-          215: RespuestaConsultaAgendaFeriadosEspecial().get,
-          211: RespuestaConsultaPreajustes().get,
-      }
+        dispatch = {
+            201 : RespuestaEnvioComando().get,
+            200 : RespuestaConsultaGrupoExtendido().get,
+            197 : RespuestaEstadoEnvioComando().get,
+            224 : RespuestaConsultaPuestoConteo().get,
+            226 : GrabacionEeprom().grabar,
+            212 : RespuestaPreajustes().get,
+            216 : RespuestaAgendaFeriadosEspecial().get,
+            218 : RespuestaAgendAnual().get,
+            220 : RespuestaAgendaDiaria().get,
+            214 : RespuestaProgramaTiempos().get,
+            210 : RespuestaFunciones().get,
+            208 : RespuestaMatrizConflictos().get,
+            206 : RespuestaEstrucutraParteBaja().get,
+            205 : RespuestaEstrucutraParteAlta().get,
+            203 : RespuestaConsultaEstructuraParteAlta().get,
+            204 : RespuestaConsultaEstructuraParteBaja().get,
+            207 : RespuestaConsultaMatrizConflictos().get,
+            209 : RespuestaConsultaFunciones().get,
+            213 : RespuestaEnvioProgramaTiempos().get,
+            219 : RespuestaConsultaAgendaDiaria().get,
+            217 : RespuestaConsultaAgendaAnualSemanal().get,
+            215 : RespuestaConsultaAgendaFeriadosEspecial().get,
+            211 : RespuestaConsultaPreajustes().get,
+        }
 
-      return dispatch[dec](trm)
+        respuesta = dispatch[dec](trm)
+      except KeyError:
+        pass
+      except:
+        print("Se produjo un error en la libreria SITRALIB / Respuesta")
 
-    except:
-      return None
+    return respuesta
+
 
 
 if __name__ == "__main__":
+  import pprint as pp
   # RespuestaFunciones
   trama = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D2', 10: '00', 11: '10',
        12: '3C', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
@@ -91,6 +98,10 @@ if __name__ == "__main__":
         12: '36', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
         18: '20', 19: '00', 20: 'F5'}
 
+  trama_6 = []
+  trama_7 = {}
+  trama_8 = None
+
   rta = Respuesta()
-  resultado = rta.obtenerRespuesta([])
-  print(resultado)
+  resultado = rta.obtenerRespuesta(trama_8)
+  pp.pprint(resultado)
