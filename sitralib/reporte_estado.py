@@ -183,6 +183,9 @@ class ReporteEstado:
     if trama['GPS']['est']['val'] == 0:
       trama.pop('GPS', None)
 
+    if trama['PA']['est']['val'] == 0:
+      trama.pop('PA', None)
+
     return trama
 
 
