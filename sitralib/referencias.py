@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Referencia de códigos
+Referencia de codigos
 """
 '''
 Matriz de codigos de envio y respusta
@@ -39,8 +39,8 @@ CODE_REFERENCES = {
     'humanize': ''
   },
   '65': {
-    'technical': 'Envío comando',
-    'humanize': 'Envío comando'
+    'technical': 'Envio comando',
+    'humanize': 'Envio comando'
   },
   '66': {
     'technical': 'fecha y hora',
@@ -55,11 +55,11 @@ CODE_REFERENCES = {
     'humanize': 'Estructura, parte baja'
   },
   '69': {
-    'technical': 'Envío de estructura (parte alta)',
+    'technical': 'Envio de estructura (parte alta)',
     'humanize': 'Estructura, parte alta'
   },
   '6A': {
-    'technical': 'Envío de estructura (parte baja)',
+    'technical': 'Envio de estructura (parte baja)',
     'humanize': 'Estructura, parte baja'
   },
   '6B': {
@@ -67,7 +67,7 @@ CODE_REFERENCES = {
     'humanize': 'Matriz de conflictos'
   },
   '6C': {
-    'technical': 'Envío de matriz de conflictos',
+    'technical': 'Envio de matriz de conflictos',
     'humanize': 'Matriz de conflictos'
   },
   '6D': {
@@ -75,7 +75,7 @@ CODE_REFERENCES = {
     'humanize': 'Funciones'
   },
   '6E': {
-    'technical': 'Envío de funciones',
+    'technical': 'Envio de funciones',
     'humanize': 'Funciones'
   },
   '6F': {
@@ -83,7 +83,7 @@ CODE_REFERENCES = {
     'humanize': 'Preajustes'
   },
   '70': {
-    'technical': 'Envío de preajustes',
+    'technical': 'Envio de preajustes',
     'humanize': 'Preajustes'
   },
   '71': {
@@ -91,7 +91,7 @@ CODE_REFERENCES = {
     'humanize': 'Tiempo de los programas'
   },
   '72': {
-    'technical': 'Envío de programa de tiempos',
+    'technical': 'Envio de programa de tiempos',
     'humanize': 'Tiempo de los programas'
   },
   '73': {
@@ -99,7 +99,7 @@ CODE_REFERENCES = {
     'humanize': 'Agenda feriados y eventos especiales'
   },
   '74': {
-    'technical': 'Envío de agenda feriados y especial',
+    'technical': 'Envio de agenda feriados y especial',
     'humanize': 'Agenda feriados y eventos especiales'
   },
   '75': {
@@ -107,7 +107,7 @@ CODE_REFERENCES = {
     'humanize': 'Agenda anual y agendas semanales'
   },
   '76': {
-    'technical': 'Envío de agenda anual',
+    'technical': 'Envio de agenda anual',
     'humanize': 'Agenda anual y agendas semanales'
   },
   '77': {
@@ -115,36 +115,36 @@ CODE_REFERENCES = {
     'humanize': 'Agendas diarias'
   },
   '78': {
-    'technical': 'Envío de agenda diaria',
+    'technical': 'Envio de agenda diaria',
     'humanize': 'Agendas diarias'
   },
   '79': {
-    'technical': 'Consulta de último evento',
-    'humanize': 'Consulta de último evento'
+    'technical': 'Consulta de ultimo evento',
+    'humanize': 'Consulta de ultimo evento'
   },
   '7A': {
     'technical': 'Consulta de eventos',
     'humanize': 'Consulta de eventos'
   },
   '7D': {
-    'technical': 'Envío de contraseña hardware',
-    'humanize': 'Envío de contraseña hardware'
+    'technical': 'Envio de contrasena hardware',
+    'humanize': 'Envio de contrasena hardware'
   },
   '7E': {
-    'technical': 'Envío de grabación EEPROM',
-    'humanize': 'Grabación de EEPROM'
+    'technical': 'Envio de grabacion EEPROM',
+    'humanize': 'Grabacion de EEPROM'
   },
   'C8': {
     'technical': 'Respuesta consulta de grupos extendidos',
     'humanize': 'Respuesta consulta de grupos extendidos',
   },
   'C9': {
-    'technical': 'Respuesta envío comando',
-    'humanize': 'Respuesta envío comando'
+    'technical': 'Respuesta envio comando',
+    'humanize': 'Respuesta envio comando'
   },
   'CA': {
-    'technical': 'Respuesta envío fecha y hora',
-    'humanize': 'Respuesta envío fecha y hora'
+    'technical': 'Respuesta envio fecha y hora',
+    'humanize': 'Respuesta envio fecha y hora'
   },
   'CB': {
     'technical': 'Respuesta consulta de estructura (parte alta)',
@@ -155,19 +155,19 @@ CODE_REFERENCES = {
     'humanize': 'Respuesta consulta de estructura (parte baja)'
   },
   'CD': {
-    'technical': 'Respuesta envío de estructura (parte alta)',
-    'humanize': 'Respuesta envío de estructura (parte alta)'
+    'technical': 'Respuesta envio de estructura (parte alta)',
+    'humanize': 'Respuesta envio de estructura (parte alta)'
   },
   'CE': {
-    'technical': 'Respuesta envío de estructura (parte baja)',
-    'humanize': 'Respuesta envío de estructura (parte baja)'
+    'technical': 'Respuesta envio de estructura (parte baja)',
+    'humanize': 'Respuesta envio de estructura (parte baja)'
   },
   'CF': {
     'technical': 'Respuesta consulta matriz de conflictos',
     'humanize': ''
   },
   'D0': {
-    'technical': 'Respuesta envío matriz de conflictos',
+    'technical': 'Respuesta envio matriz de conflictos',
     'humanize': ''
   },
   'D1': {
@@ -175,7 +175,7 @@ CODE_REFERENCES = {
     'humanize': ''
   },
   'D2': {
-    'technical': 'Respuesta envío de funciones',
+    'technical': 'Respuesta envio de funciones',
     'humanize': ''
   },
   'D3': {
@@ -183,7 +183,7 @@ CODE_REFERENCES = {
     'humanize': ''
   },
   'D4': {
-    'technical': 'Respuesta envío de preajustes',
+    'technical': 'Respuesta envio de preajustes',
     'humanize': ''
   },
   'D5': {
@@ -191,7 +191,7 @@ CODE_REFERENCES = {
     'humanize': ''
   },
   'D6': {
-    'technical': 'Respuesta envío de programa de tiempos',
+    'technical': 'Respuesta envio de programa de tiempos',
     'humanize': ''
   },
   'D7': {
@@ -199,7 +199,7 @@ CODE_REFERENCES = {
     'humanize': ''
   },
   'D8': {
-    'technical': 'Respuesta envío de agenda feriados y especial',
+    'technical': 'Respuesta envio de agenda feriados y especial',
     'humanize': ''
   },
   'D9': {
@@ -207,7 +207,7 @@ CODE_REFERENCES = {
     'humanize': ''
   },
   'DA': {
-    'technical': 'Respuesta envío de agenda anual',
+    'technical': 'Respuesta envio de agenda anual',
     'humanize': ''
   },
   'DB': {
@@ -215,11 +215,11 @@ CODE_REFERENCES = {
     'humanize': ''
   },
   'DC': {
-    'technical': 'Respuesta envío de agenda diaria',
+    'technical': 'Respuesta envio de agenda diaria',
     'humanize': ''
   },
   'DD': {
-    'technical': 'Respuesta consulta de último evento',
+    'technical': 'Respuesta consulta de ultimo evento',
     'humanize': ''
   },
   'DE': {
@@ -227,11 +227,11 @@ CODE_REFERENCES = {
     'humanize': ''
   },
   'E1': {
-    'technical': 'Respuesta envío de contraseña hardware',
+    'technical': 'Respuesta envio de contrasena hardware',
     'humanize': ''
   },
   'E2': {
-    'technical': 'Respuesta envío de grabación EEPROM',
+    'technical': 'Respuesta envio de grabacion EEPROM',
     'humanize': ''
   },
 }
@@ -247,7 +247,7 @@ MENSAJES = {
   },
   3: {
     'tipo': 'error',
-    'mensaje': 'Falla de conexión',
+    'mensaje': 'Falla de conexion',
   },
   4: {
     'tipo': 'error',
@@ -271,7 +271,7 @@ MENSAJES = {
   },
   9: {
     'tipo' : 'error',
-    'mensaje': "Trama inválida",
+    'mensaje': "Trama invalida",
   },
   10: {
     'tipo' : 'exito',
