@@ -218,10 +218,36 @@ class OrdenarTrama:
       return None
 
 
+  def numero_cruce(self, trama):
+    """Retorna el número de cruce en formato decimal
+
+    Arguments:
+      trama {list,dict,string} -- Trama
+
+    Returns:
+      [integer] -- Número de cruce
+    """
+    numero = None
+
+    trm = self.ordenarTrama(trama)
+
+    try:
+      byte_13 = self.helpers.sanitizeHex(trm.get(13))
+      byte_14 = self.helpers.sanitizeHex(trm.get(14))
+
+      numero = self.helpers.hexToDec("{}{}".format(byte_13, byte_14))
+    except:
+      pass
+
+    return numero
+
+
+
+
 
 
 if __name__ == '__main__':
-  help_text = """Ordena una trama de números hexadecimales
+  """Ordena una trama de números hexadecimales
 
   Ejemplo:
     o = Ordenartrama()
@@ -230,14 +256,16 @@ if __name__ == '__main__':
     print(trm1)
     print(trm2)
   """
-  print(help_text)
-  print("-"*79, end="\n\n")
+
+  t1 = ['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xc9',
+         '0x0', '0x10', '0x27', '0xb', '0xb8', '0x1', '0x14', '0x0', '0x20',
+         '0x0', '0xa1']
 
   # Ejemplo
   o = OrdenarTrama()
-  print(o.get_codigo_trama(['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xc9',
-         '0x0', '0x10', '0x27', '0xb', '0xb8', '0x1', '0x14', '0x0', '0x20',
-         '0x0', '0xa1']))
+  print(o.get_codigo_trama(['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0',
+         '0x1', '0xc9', '0x0', '0x10', '0x27', '0xb', '0xb8', '0x1', '0x14',
+         '0x0', '0x20', '0x0', '0xa1']))
   trm0 = o.ordenarTrama(
         ['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xc9',
          '0x0', '0x10', '0x27', '0xb', '0xb8', '0x1', '0x14', '0x0', '0x20',
@@ -250,7 +278,8 @@ if __name__ == '__main__':
          '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 AE')
   )
 
-  print(trm0, end='\n')
-  print(trm1, end='\n')
-  print(trm2, end='\n')
-  print(trm3, end='\n')
+  print(trm0)
+  print(o.numero_cruce(t1))
+  # print(trm1)
+  # print(trm2)
+  # print(trm3)
