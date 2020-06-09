@@ -122,11 +122,25 @@ class Helpers:
     :param kwargs:
     :return: list
     """
-    arr = list()
-    for i in kwargs['tramas']:
-      if i.get('9', 9).upper() == kwargs['codigo'].upper():
-        arr.append(i)
-    return arr
+
+    # Casteo los diccionarios, paso a mayusculas el valor y los compilo
+    # en una nueva lista.
+    sanitized_list = []
+
+    for trama in kwargs['tramas']:
+      d = {}
+      for key, value in trama.items():
+        d.update({str(key): value.upper()})
+
+      sanitized_list.append(d)
+
+    # Obtengo las tramas con número igual al código pasado por parametro
+    tramas_codigo = list()
+    for i in sanitized_list:
+      if i.get('9') == kwargs['codigo']:
+        tramas_codigo.append(i)
+
+    return tramas_codigo
 
 
   def ddict2dict(self, d):
@@ -152,22 +166,22 @@ if __name__ == '__main__':
   print(hlp.sanitizeHex('B', 4), '\n')
   print(hlp.validateBetween(max=47, min=0, number=3), '\n')
   print(hlp.chunkStr('1234567890', 2), '\n')
-  test = {0: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'aA', 10: '00',
+  test = [{5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'aA', 10: '00',
         11: '0C', 12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
-      1: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '7C', 10: '00',
+      {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '7C', 10: '00',
         11: '0C',
         12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
-      2: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '44', 10: '00',
+      {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '44', 10: '00',
         11: '0C',
         12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
-      3: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'aa', 10: '00',
+      {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'aa', 10: '00',
         11: '0C',
         12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
-      4: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '7C', 10: '00',
+      {5: 'FF', 6: '00', 7: '00', 8: '01', 9: '7C', 10: '00',
         11: '0C',
         12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
-      5: {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'aa', 10: '00',
+      {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'aa', 10: '00',
         11: '0C',
         12: '8E', 13: '1B', 14: 'BB', 15: '01', 16: '2F'},
-      }
+      ]
   print(hlp.tramas_by_codigo(tramas=test, codigo='AA'))
