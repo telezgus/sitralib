@@ -281,6 +281,10 @@ MENSAJES = {
     'tipo' : 'error',
     'mensaje': "Falla de SOCKET",
   },
+  12: {
+    'tipo' : 'advertencia',
+    'mensaje': "El numero de cruce recibido no coincide con el esperado",
+  },
 }
 
 
