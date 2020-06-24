@@ -46,29 +46,55 @@ class ReporteEstado:
 
 
   def __vector(self, bitsDeStatusI):
+    """Retorna el estado/color con el que se debe representar el vector
+    en la pantalla de monitoreo.
+
+
+    Arguments:
+      bitsDeStatusI {dict} -- Respuesta de bitsDeStatusI
+
+    Returns:
+      [int] -- Número/codigo del color a utilizar
+    """
     if bitsDeStatusI['AP']['est']['val'] == None or int(
         bitsDeStatusI['TIT']['est']['val']) == 1:
-      vector = 12
+      vector = 12 # Apagado/inactivo
 
+    # Si el cruce esta apagado
     elif int(bitsDeStatusI['AP']['est']['val']) == 1:
 
+      # Si no es titilante.
       if int(bitsDeStatusI['TIT']['est']['val']) == 0:
         vector = self.__estadoVector({
-          'estado': bitsDeStatusI,
-          'normal': 10,
-          'apagado': 11
+          'estado'  : bitsDeStatusI,
+          'normal'  : 10, # Verde oscuro
+          'apagado' : 11  # Rojo oscuro
         })
       else:
-        vector = 12
-
+        vector = 12 # Apagado/inactivo
 
     else:
       vector = self.__estadoVector({
-        'estado': bitsDeStatusI,
-        'normal': 8,
-        'apagado': 9
+        'estado'  : bitsDeStatusI,
+        'normal'  : 8, # verde activo
+        'apagado' : 9  # Rojo activo
       })
     return vector
+
+
+
+  def __estadoVector(self, opt):
+
+    est     = opt.get('estado')
+    normal  = opt.get('normal')
+    apagado = opt.get('apagado')
+
+    if int(est['VP']['est']['val']) == 1:
+      t = normal
+    elif int(est['VP']['est']['val']) == 0:
+      t = apagado
+
+    return t
 
 
   def __prepararTrama(self, trama):
@@ -211,31 +237,6 @@ class ReporteEstado:
     return False
 
 
-  def __estadoVector(self, opt):
-
-    if len(opt) > 0:
-
-      if 'estado' in opt:
-        est = opt['estado']
-      else:
-        est = False
-
-      if 'normal' in opt:
-        normal = opt['normal']
-      else:
-        normal = False
-
-      if 'apagado' in opt:
-        apagado = opt['apagado']
-      else:
-        apagado = False
-
-      if int(est['VP']['est']['val']) == 1:
-        t = normal
-      elif int(est['VP']['est']['val']) == 0:
-        t = apagado
-
-      return t
 
 
 if __name__ == "__main__":
