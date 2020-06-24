@@ -73,4 +73,5 @@ class BitsStatusI:
 if __name__ == "__main__":
   a = BitsStatusI()
   b = a.bitsStatusI('01')
-  print(b)
+  b = a.bitsStatusI('A1')
+  b = a.bitsStatusI('FF')

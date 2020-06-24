@@ -9,6 +9,9 @@ class ImposicionFechaHora:
   Trama de imposición fecha y hora desde CC hacia EC
   0x66
   """
+  
+  # Modifico el numero de dia de acuerdo con el protocolo SITAR.
+  WEEKDAYS = [2, 3, 4, 5, 6, 7, 1]
 
   def __init__(self):
     self.helpers = Helpers()
@@ -53,7 +56,8 @@ class ImposicionFechaHora:
       18 : self.__zFill(tme.tm_hour),       # hora
       19 : self.__zFill(tme.tm_min),        # Minutos
       20 : self.__zFill(tme.tm_sec),        # Segundos
-      21 : self.__zFill(tme.tm_wday),       # Día de la semana
+      21 : self.__zFill(self.WEEKDAYS[tme.tm_wday]),       # Día de la semana
+      # 21 : self.__zFill(tme.tm_wday),       # Día de la semana
       22 : '00',                            # BCC
     }
 
@@ -70,12 +74,36 @@ if __name__ == '__main__':
   import datetime
 
   # Ejemplo
-  date = datetime.datetime.now()
-  date_now = date.strftime('%Y-%m-%d %H:%M:%S')
-  imposicionFechaHora = ImposicionFechaHora()
-  trama = imposicionFechaHora.create(
-    grp_id_num=30,
-    crs_numero=3000,
-    datetime=date_now
-  )
-  print(trama)
+
+  # date_lun = datetime.datetime.strptime('2020-06-22 00:00:00','%Y-%m-%d %H:%M:%S')
+  # date_mar = datetime.datetime.strptime('2020-06-23 00:00:00','%Y-%m-%d %H:%M:%S')
+  # date_mie = datetime.datetime.strptime('2020-06-24 00:00:00','%Y-%m-%d %H:%M:%S')
+  # date_jue = datetime.datetime.strptime('2020-06-25 00:00:00','%Y-%m-%d %H:%M:%S')
+  # date_vie = datetime.datetime.strptime('2020-06-26 00:00:00','%Y-%m-%d %H:%M:%S')
+  # date_sab = datetime.datetime.strptime('2020-06-27 00:00:00','%Y-%m-%d %H:%M:%S')
+  # date_dom = datetime.datetime.strptime('2020-06-28 00:00:00','%Y-%m-%d %H:%M:%S')
+
+  date_lun = '2020-06-22 00:00:00'
+  date_mar = '2020-06-23 00:00:00'
+  date_mie = '2020-06-24 00:00:00'
+  date_jue = '2020-06-25 00:00:00'
+  date_vie = '2020-06-26 00:00:00'
+  date_sab = '2020-06-27 00:00:00'
+  date_dom = '2020-06-28 00:00:00'
+
+  impf = ImposicionFechaHora()
+
+  trama_lun = impf.create(grp_id_num=30, crs_numero=3000, datetime=date_lun)
+  trama_mar = impf.create(grp_id_num=30, crs_numero=3000, datetime=date_mar)
+  trama_mie = impf.create(grp_id_num=30, crs_numero=3000, datetime=date_mie)
+  trama_jue = impf.create(grp_id_num=30, crs_numero=3000, datetime=date_jue)
+  trama_vie = impf.create(grp_id_num=30, crs_numero=3000, datetime=date_vie)
+  trama_sab = impf.create(grp_id_num=30, crs_numero=3000, datetime=date_sab)
+  trama_dom = impf.create(grp_id_num=30, crs_numero=3000, datetime=date_dom)
+  print(trama_lun)
+  print(trama_mar)
+  print(trama_mie)
+  print(trama_jue)
+  print(trama_vie)
+  print(trama_sab)
+  print(trama_dom)
