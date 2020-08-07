@@ -96,7 +96,7 @@ class RespuestaEstadoEnvioComando:
       res.update({'segundo_paso': self.helpers.hexToDec(trm[39])})
       res.update({'byte_status_c': self.bytSta.byteStatus(trm[42])})
       res.update({'duracion_paso': self.helpers.hexToDec(trm[43])})
-
+      res.update({'duracion_ciclo': self._joinNibblesCuad(trm[48], trm[49])})
 
       bits_falta = {}
       bits_falta.update(
