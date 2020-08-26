@@ -16,20 +16,20 @@ class ByteStatus:
 
     if sipla:
       status['SIPLA'] = {
-        'des': 'Plan',
+        'des': 'Plan {}'.format(num),
         'val': str(num),
         'cod': 'SIPLA'
       }
     elif num == 240:
       status['TIT'] = {
         'des': 'Titilante',
-        'val': True,
+        'val': '240',
         'cod': 'TIT'
       }
     elif num == 241:
       status['AP'] = {
         'des': 'Apagado',
-        'val': True,
+        'val': '241',
         'cod': 'AP'
       }
     else:
