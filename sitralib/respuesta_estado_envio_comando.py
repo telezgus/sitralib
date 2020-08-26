@@ -78,13 +78,13 @@ class RespuestaEstadoEnvioComando:
 
       res.update({
         'datetime': self.fecha.fecha(
-          year    =trm[28],
-          month   =trm[29],
-          day     =trm[30],
-          hour    =trm[31],
-          minutes =trm[32],
-          seconds =trm[33],
-          wday    =trm[34])
+          year    = '20{}'.format(trm[28]),
+          month   = trm[29],
+          day     = trm[30],
+          hour    = trm[31],
+          minutes = trm[32],
+          seconds = trm[33],
+          wday    = trm[34])
       })
 
       res.update({'desfasaje': self._joinNibblesCuad(trm[52], trm[53])})
