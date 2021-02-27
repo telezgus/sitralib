@@ -37,15 +37,15 @@ class ReporteEstado:
       })
 
       alertas.update({
-        'byte_falta': self.__setAlertasBitsDeAlarmas(byteFalta)
+        'byte_falta': byteFalta
       })
 
       alertas.update({
-        'byte_conflicto': self.__setAlertasBitsDeAlarmas(byteConflicto)
+        'byte_conflicto': byteConflicto
       })
 
       alertas.update({
-        'byte_falta_fusible': self.__setAlertasBitsDeAlarmas(byteFaltaFusible)
+        'byte_falta_fusible': byteFaltaFusible
       })
 
       # Incluyo las alertas en el diccionario de retorno
