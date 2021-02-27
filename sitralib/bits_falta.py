@@ -10,7 +10,7 @@ class BitsFalta:
 
 
   def bitsFalta(self, hex, name="Falta de rojo 1", label="Rojo {0}",
-                prefix="FR{0}", start=9):
+                prefix="FR{0}", start=9, autoincrement=False):
     if self.helpers.isHex(hex) == False:
       pass
 
@@ -20,20 +20,22 @@ class BitsFalta:
 
     counter = 0
     for i in range(start, start+8):
+      idx = i if autoincrement else ''
       byte_eval = int(byte.binaryReversed[counter])
       estado.append({
-              "abbr"  : prefix.format(i),
-              "name"  : label.format(i),
-              "descr" : "Falla" if byte_eval == 1 else "Normal",
-              "value" : byte_eval
-      })
+          prefix.format(idx) : {
+            'des': label.format(idx).strip(),
+            'est':{
+              'val': byte_eval,
+              'des': "Falla" if byte_eval == 1 else "Normal"
+            }
+          }
+        }
+      )
       counter +=1
-
-
 
     est = {name: estado}
     return est
-
 
 
 if __name__ == "__main__":

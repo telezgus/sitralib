@@ -8,10 +8,13 @@ class ReporteEstado:
     if not trama: return {}
     t = dict()
 
-    byteDeStatus  = self.__obtenerByteStatus(trama)
-    bitsDeStatusI = self.__obtenerBitsStatusI(trama)
-    bitsDeAlarmas = self.__obtenerBitsAlarmas(trama)
-    numeroDeCruce = self.__obtenerNumeroCruce(trama)
+    byteDeStatus     = self.__obtenerByteStatus(trama)
+    bitsDeStatusI    = self.__obtenerBitsStatusI(trama)
+    bitsDeAlarmas    = self.__obtenerBitsAlarmas(trama)
+    byteFalta        = self.__obtenerByteFalta(trama)
+    byteConflicto    = self.__obtenerByteConflicto(trama)
+    byteFaltaFusible = self.__obtenerByteFaltaFusible(trama)
+    numeroDeCruce    = self.__obtenerNumeroCruce(trama)
 
     if trama:
       t['numero_cruce'] = numeroDeCruce
@@ -31,6 +34,18 @@ class ReporteEstado:
 
       alertas.update({
         'bits_alarma': self.__setAlertasBitsDeAlarmas(bitsDeAlarmas)
+      })
+
+      alertas.update({
+        'byte_falta': self.__setAlertasBitsDeAlarmas(byteFalta)
+      })
+
+      alertas.update({
+        'byte_conflicto': self.__setAlertasBitsDeAlarmas(byteConflicto)
+      })
+
+      alertas.update({
+        'byte_falta_fusible': self.__setAlertasBitsDeAlarmas(byteFaltaFusible)
       })
 
       # Incluyo las alertas en el diccionario de retorno
@@ -154,6 +169,28 @@ class ReporteEstado:
       return trama['byte_status_a']
 
     return {}
+
+
+  def __obtenerByteFalta(self, trama):
+    if 'byte_falta' in trama:
+      return trama['byte_falta']
+
+    return {}
+
+
+  def __obtenerByteConflicto(self, trama):
+    if 'byte_conflicto' in trama:
+      return trama['byte_conflicto']
+
+    return {}
+
+
+  def __obtenerByteFaltaFusible(self, trama):
+    if 'byte_falta_fusible' in trama:
+      return trama['byte_falta_fusible']
+
+    return {}
+
 
   def __setAlertasByteDeStatus(self, trama):
     # Remuevo los indices que no evalúo
