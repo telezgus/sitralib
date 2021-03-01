@@ -141,6 +141,8 @@ class RespuestaEstadoEnvioComando:
         n = self.get_falla(i, byte_falta)
         if n:
           falla = n
+          break
+
 
       byte_conflicto = dict()
       byte_conflicto.update(
@@ -179,6 +181,7 @@ class RespuestaEstadoEnvioComando:
         n = self.get_falla(i, byte_conflicto)
         if n:
           conflicto = n
+          break
 
 
       byte_fusible = dict()
@@ -217,7 +220,8 @@ class RespuestaEstadoEnvioComando:
       for i in ['fusible_rojo', 'fusible_amarillo', 'fusible_verde']:
         n = self.get_falla(i, byte_fusible)
         if n:
-          fusible.append(n)
+          fusible = n
+          break
 
 
       byte_detector = dict()
@@ -288,7 +292,7 @@ if __name__ == "__main__":
   # print(bcc.isValidBcc(trama))
 
   obj     = RespuestaEstadoEnvioComando()
-  retorno = obj.get(bcc.consolidate(trama1))
+  retorno = obj.get(bcc.consolidate(trama3))
   pp.pprint(retorno)
   
   
