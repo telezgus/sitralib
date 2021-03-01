@@ -147,32 +147,32 @@ class RespuestaEstadoEnvioComando:
       byte_conflicto = dict()
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[64], name="conflicto_rojo_1",
-                                    label="Conflicto Rojo {0}",
+                                    label="Conflicto de rojo {0}",
                                     prefix="CR{0}",
                                     start=1))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[65], name="conflicto_rojo_2",
-                                    label="Conflicto Rojo {0}",
+                                    label="Conflicto de rojo {0}",
                                     prefix="CR{0}",
                                     start=9))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[66], name="conflicto_amarillo_1",
-                                    label="Conflicto Amarillo {0}",
+                                    label="Conflicto de amarillo {0}",
                                     prefix="CA{0}",
                                     start=1))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[67], name="conflicto_amarillo_2",
-                                    label="Conflicto Amarillo {0}",
+                                    label="Conflicto de amarillo {0}",
                                     prefix="CA{0}",
                                     start=9))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[68], name="conflicto_verde_1",
-                                    label="Conflicto Verde {0}",
+                                    label="Conflicto de verde {0}",
                                     prefix="CV{0}",
                                     start=1))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[69], name="conflicto_verde_2",
-                                    label="Conflicto Verde {0}",
+                                    label="Conflicto de verde {0}",
                                     prefix="CV{0}",
                                     start=9))
 
@@ -187,32 +187,32 @@ class RespuestaEstadoEnvioComando:
       byte_fusible = dict()
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[70], name="fusible_rojo_1",
-                                    label="Fusible Rojo {0}",
+                                    label="Falta de fusible de rojo {0}",
                                     prefix="FFR{0}",
                                     start=1))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[71], name="fusible_rojo_2",
-                                    label="Fusible Rojo {0}",
+                                    label="Falta de fusible de rojo {0}",
                                     prefix="FFR{0}",
                                     start=9))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[72], name="fusible_amarillo_1",
-                                    label="Fusible Amarillo {0}",
+                                    label="Falta de fusible de amarillo {0}",
                                     prefix="FFA{0}",
                                     start=1))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[73], name="fusible_amarillo_2",
-                                    label="Fusible Amarillo {0}",
+                                    label="Falta de fusible de amarillo {0}",
                                     prefix="FFA{0}",
                                     start=9))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[74], name="fusible_verde_1",
-                                    label="Fusible Verde {0}",
+                                    label="Falta de fusible de verde {0}",
                                     prefix="FFV{0}",
                                     start=1))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[75], name="fusible_verde_2",
-                                    label="Fusible Verde {0}",
+                                    label="Falta de fusible de verde {0}",
                                     prefix="FFV{0}",
                                     start=9))
       

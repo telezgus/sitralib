@@ -32,8 +32,8 @@ class BitsAlarma:
         "des": "Conflicto de verde",
         "est": evaluacion[int(byte.binaryReversed[2])]
       },
-      "BT": {
-        "des": "Baja tensión",
+      "BTT": {
+        "des": "Baja tensión, umbral de titilante",
         "est": evaluacion[int(byte.binaryReversed[3])]
       },
       "PA": {
@@ -47,6 +47,10 @@ class BitsAlarma:
       "FV": {
         "des": "Falta de verde",
         "est": evaluacion[int(byte.binaryReversed[6])]
+      },
+      "BTA": {
+        "des": "Baja tensión, umbral de apagado",
+        "est": evaluacion[int(byte.binaryReversed[7])]
       },
     }
 
