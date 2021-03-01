@@ -231,9 +231,6 @@ class ReporteEstado:
     if trama['TSUP']['est']['val'] == 0:
       trama.pop('TSUP', None)
 
-    if trama['BT']['est']['val'] == 0:
-      trama.pop('BT', None)
-
     if trama['FR']['est']['val'] == 0:
       trama.pop('FR', None)
 
