@@ -252,6 +252,9 @@ class ReporteEstado:
     if trama['BTA']['est']['val'] == 0:
       trama.pop('BTA', None)
 
+    if trama['BTA']['est']['val'] == 1:
+      trama.pop('BTT', None)
+
     return trama
 
 
