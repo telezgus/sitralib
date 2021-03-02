@@ -50,7 +50,7 @@ class ReporteEstado:
 
       # Incluyo las alertas en el diccionario de retorno
       t['alertas'] = alertas
-
+            
       # Si la trama contempla propiedades de evaluación del
       # estado extendido
       if 'byte_lamparas' in trama:
@@ -97,9 +97,7 @@ class ReporteEstado:
     return vector
 
 
-
   def __estadoVector(self, opt):
-
     est     = opt.get('estado')
     normal  = opt.get('normal')
     apagado = opt.get('apagado')
@@ -117,38 +115,39 @@ class ReporteEstado:
     Remueve los indices innecesarios para mostrar el estado
     :return:
     """
-    # trama.pop('byteDeStatus_a')
-    trama.pop('byte_status_b')
-    trama.pop('byte_status_c')
-    trama.pop('bits_status_ii')
-    trama.pop('bits_status_iii')
-    trama.pop('object')
-    trama.pop('bits_alarma')
+    remove_list = [
+        # 'byte_status_a',
+        'byte_status_b',
+        'byte_status_c',
+        'bits_status_ii',
+        'bits_status_iii',
+        'object',
+        'bits_alarma'
+        
+        'byte_falta_fusible',
+        'byte_conflicto',
+        'byte_falta',
+        'byte_detector'
+    ]
+
+    for i in remove_list:
+      trama.pop(i, None)
 
     return trama
 
 
   def __obtenerAlarmas(self, data):
-    '''
-    Retorna los indices que reportan alarmas en bitsDeStatusI
-    '''
     sys.exit(0)
 
 
   def __obtenerBitsStatusI(self, trama):
-    '''
-    Evalua la trama C8 ó C9 y obtiene la colección de datos para
-    los bitsDeStatusI
-    '''
-    if 'bits_status_i' in trama:
-      return trama['bits_status_i']
-
-    return {}
+    return trama.get('bits_status_i', dict())
 
 
   def __setAlertasBitsDeStatusI(self, trama):
-    # Remuevo los indices que no evalúo
+
     new_trama = dict()
+
     if trama['PFL']['est']['val'] != 0:
       new_trama['PFL'] = trama['PFL']
 
@@ -165,35 +164,22 @@ class ReporteEstado:
 
 
   def __obtenerByteStatus(self, trama):
-    if 'byte_status_a' in trama:
-      return trama['byte_status_a']
-
-    return {}
+    return trama.get('byte_status_a', dict())
 
 
   def __obtenerByteFalta(self, trama):
-    if 'byte_falta' in trama:
-      return trama['byte_falta']
-
-    return {}
+    return trama.get('byte_falta', dict())
 
 
   def __obtenerByteConflicto(self, trama):
-    if 'byte_conflicto' in trama:
-      return trama['byte_conflicto']
-
-    return {}
+    return trama.get('byte_conflicto', dict())
 
 
   def __obtenerByteFaltaFusible(self, trama):
-    if 'byte_falta_fusible' in trama:
-      return trama['byte_falta_fusible']
-
-    return {}
+    return trama.get('byte_falta_fusible', dict())
 
 
   def __setAlertasByteDeStatus(self, trama):
-    # Remuevo los indices que no evalúo
     if 'SIPLA' in trama:
       return {}
 
@@ -201,32 +187,15 @@ class ReporteEstado:
 
 
   def __obtenerNumeroCruce(self, trama):
-    '''
-    Evalua la trama C8 ó C9 y obtiene el numero de cruce
-    los bitsDeStatusI
-    'numeroDeCruce': ['0B', 'B8'],
-    '''
-    if 'numero_cruce' in trama:
-      return trama['numero_cruce']
-
-    return {}
+    return trama.get('numero_cruce', dict())
 
 
   def __obtenerBitsAlarmas(self, trama):
-    '''
-    Evalua la trama C8 ó C9 y obtiene la colección de datos para
-    los bits de alarmas
-    '''
-    if 'bits_alarma' in trama:
-      return trama['bits_alarma']
-
-    return {}
+    return trama.get('bits_alarma', dict())
 
 
   def __setAlertasBitsDeAlarmas(self, trama):
     # Remuevo los indices que no evalúo
-    # trama.pop('TSUP', None)
-    # trama.pop('BT', None)
 
     if trama['TSUP']['est']['val'] == 0:
       trama.pop('TSUP', None)
@@ -282,11 +251,18 @@ class ReporteEstado:
 
 
 if __name__ == "__main__":
-  pass
-  # trama = {}
-  # obj = ReporteEstado()
-  # r = obj.validar(trama2)
-  # import pprint
-  #
-  # pp = pprint
-  # pp.pprint(r)
+  import pprint as pp
+  from sitralib.respuesta import *
+  resp = Respuesta()
+  
+  trama = """FF 00 00 01 C5 00 60 5B 0B B4 F0 15 00 20 00 AA 9A 00 00 DD DD DD DD
+21 03 02 00 37 02 02 00 00 F0 22 01 00 00 F0 03 00 00 00 00 00 5A 00
+00 00 18 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 64"""
+  
+  t = resp.obtenerRespuesta(trama)
+
+  reporte_estado = ReporteEstado()
+  reporte_validado = reporte_estado.validar(t)
+  pp.pprint(reporte_validado)
