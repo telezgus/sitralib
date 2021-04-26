@@ -71,7 +71,9 @@ class BitsStatusI:
 
 
 if __name__ == "__main__":
+
+  import pprint as pp
+
   a = BitsStatusI()
-  b = a.bitsStatusI('01')
-  b = a.bitsStatusI('A1')
-  b = a.bitsStatusI('FF')
+  b = a.bitsStatusI('05')
+  pp.pprint(b)

@@ -241,7 +241,7 @@ class ReporteEstado:
       elif int(est['C']['est']['val']) == 1:
         est = 6  # centralizado
       else:
-        est = 5  # local
+        est = 5  # local / Color naranja
 
       return est
 
