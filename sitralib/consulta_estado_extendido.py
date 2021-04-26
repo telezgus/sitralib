@@ -9,6 +9,37 @@ class ConsultaEstadoExtendido:
     self.bcc = Bcc()
 
   def create(self, **kwargs):
+    """Crea la trama de consulta de estado extendido.
+
+    Arguments:
+      **kwargs {dict} -- Diccionario con valores para generar la trama.
+
+    Returns:
+      [string] -- Trama de estado extendido
+
+
+
+    >>> ConsultaEstadoExtendido().create(crs_numero=3000, grp_id_num=30, esclavo=5)
+    '00 00 00 00 FF 00 05 1E 64 00 0B 8B 0B B8 38'
+
+    >>> ConsultaEstadoExtendido().create(crs_numero=3000, grp_id_num=30)
+    '00 00 00 00 FF 00 00 1E 64 00 0B 8E 0B B8 3D'
+
+    >>> ConsultaEstadoExtendido().create(crs_numero='3000', grp_id_num='30')
+    '00 00 00 00 FF 00 00 1E 64 00 0B 8E 0B B8 3D'
+
+    >>> ConsultaEstadoExtendido().create()
+    Traceback (most recent call last):
+     ...
+    KeyError: 'crs_numero'
+
+    >>> ConsultaEstadoExtendido().create(crs_numero=3000)
+    Traceback (most recent call last):
+     ...
+    KeyError: 'grp_id_num'
+
+
+    """
     numeroControlador = self.helpers.intToHexString(kwargs['crs_numero'], 4)
 
     trama = {
@@ -18,7 +49,7 @@ class ConsultaEstadoExtendido:
       4: '00',
       5: 'FF',
       6: '00',
-      7: '00',
+      7: self.helpers.intToHexString(kwargs.get('esclavo', 0)), # Esclavo
       8: self.helpers.intToHexString(kwargs['grp_id_num']),
       9: '64',  # Codigo según Protocolo
       10: '00',
@@ -36,6 +67,5 @@ class ConsultaEstadoExtendido:
 
 
 if __name__ == "__main__":
-  extendido = ConsultaEstadoExtendido()
-  a = extendido.create(crs_numero=3000, grp_id_num=30)
-  print(a)
+  import doctest
+  doctest.testmod(verbose=True)

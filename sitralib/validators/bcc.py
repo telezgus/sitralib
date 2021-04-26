@@ -121,11 +121,20 @@ if __name__ == "__main__":
   trama1 = "00 00 00 00 FF 00 00 01 69 00 F6 61 0B B8 00 04 41 00 00 00 00 00 00 01 00 00 00 00 04 41 00 00 00 00 00 00 00 00 00 00 00 02 21 00 00 00 00 00 00 00 00 00 00 00 01 11 00 00 00 00 00 00 00 00 00 00 00 01 14 00 00 00 00 00 00 00 00 00 00 00 01 19 00 00 00 00 00 00 00 00 00 00 00 01 11 00 00 00 00 00 00 00 00 00 00 00 43 31 00 00 00 00 00 00 05 00 00 00 FF A9 32 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 EE"
 
   # Necesito procesar la trama para convertirla en Diccionario
-  
+  separator = '-'*80
   t = '00 00 00 00 FF 00 00 01 61 00 0C 93 0B B9 02 23 88 AA DD EE'
+  t = '0 0 0 0 FF 0 0 1 E0 0 21 3F B B6 0 94 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 FF 17'
   a = Bcc()
+  trama = a.trama_to_type(t)
+  print('BCC intermedio ', a.validateBccIntermadio(trama))
+  print('BCC final', a.validateBccFinal(trama))
+
   b = a.isValidBcc(t)
+  print(separator)
   print(b)
-  # print(a.consolidate(t))
+  print(separator)
+  print(a.consolidate(t))
+  print(separator)
   print(a.consolidate(trama1))
+  print(separator)
   print(a.isValidBcc(trama1))

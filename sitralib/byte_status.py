@@ -40,5 +40,5 @@ class ByteStatus:
 
 if __name__ == "__main__":
   a = ByteStatus()
-  b = a.byteStatus('F0')
+  b = a.byteStatus('F2')
   print(b)
