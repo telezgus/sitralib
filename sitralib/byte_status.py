@@ -32,10 +32,10 @@ class ByteStatus:
         'val': '241',
         'cod': 'AP'
       }
-    elif num == 242:
-      return dict()
+    # elif num == 242:
+    #   status = dict()
     else:
-      status = False
+      status = dict()
 
     return status
 

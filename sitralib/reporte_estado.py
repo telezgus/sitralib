@@ -5,7 +5,7 @@ import sys
 class ReporteEstado:
   def validar(self, trama):
 
-    if not trama: return {}
+    if not trama: return dict()
     t = dict()
 
     byteDeStatus     = self.__obtenerByteStatus(trama)
@@ -57,7 +57,7 @@ class ReporteEstado:
         t.update(self.__prepararTrama(trama))
       return t
 
-    return {}
+    return dict()
 
 
   def __vector(self, bitsDeStatusI):
@@ -181,7 +181,7 @@ class ReporteEstado:
 
   def __setAlertasByteDeStatus(self, trama):
     if 'SIPLA' in trama:
-      return {}
+      return dict()
 
     return trama
 
@@ -255,11 +255,11 @@ if __name__ == "__main__":
   from sitralib.respuesta import *
   resp = Respuesta()
   
-  trama = """FF 00 00 01 C5 00 60 5B 0B B4 F0 15 00 20 00 AA 9A 00 00 DD DD DD DD
-21 03 02 00 37 02 02 00 00 F0 22 01 00 00 F0 03 00 00 00 00 00 5A 00
-00 00 18 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  trama = """FF 00 00 01 C5 00 60 5B 0B B4 F2 94 00 20 00 14 11 00 00 DD DD DD DD
+21 06 01 17 49 28 02 00 04 F2 00 1E 00 00 F2 2B 00 1E 00 00 00 78 00
+00 00 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 64"""
+00 00 00 89"""
   
   t = resp.obtenerRespuesta(trama)
 
