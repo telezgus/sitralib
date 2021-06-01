@@ -33,7 +33,7 @@ class ByteStatus:
         'cod': 'AP'
       }
     elif num == 242:
-      return []
+      return dict()
     else:
       status = False
 
