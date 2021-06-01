@@ -32,6 +32,8 @@ class ByteStatus:
         'val': '241',
         'cod': 'AP'
       }
+    elif num == 242:
+      return []
     else:
       status = False
 

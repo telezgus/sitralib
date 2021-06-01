@@ -11,8 +11,10 @@ class OsFechaHora:
   def __init__(self, **kwargs):
     self.kwargs = kwargs
 
+
   def to_print(self):
     return '{year}-{mon}-{mday} {hour}:{min}:{sec}'.format(**self.kwargs)
+
 
   def change(self, s):
     if s == 1:
@@ -49,6 +51,7 @@ class OsFechaHora:
 
     else:
       print('Parámetro equivocado')
+
 
   def check_os(self):
     if sys.platform == 'linux2' or sys.platform == 'linux':
