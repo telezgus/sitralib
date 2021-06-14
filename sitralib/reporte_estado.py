@@ -160,6 +160,9 @@ class ReporteEstado:
     if trama['AP']['est']['val'] != 0:
       new_trama['AP'] = trama['AP']
 
+    if trama['TIT']['est']['val'] != 0:
+      new_trama['TIT'] = trama['TIT']
+
     return new_trama
 
 
