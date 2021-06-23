@@ -238,18 +238,19 @@ class ReporteEstado:
         est = False
 
       if int(est['AP']['est']['val']) == 1:
-        est = 7  # apagado
+        est = 7  # Negro / apagado
       elif int(est['TIT']['est']['val']) == 1:
-        est = 4  # titilante
+        est = 4  # Amarillo / titilante
       elif int(est['C']['est']['val']) == 1:
-        est = 6  # centralizado
+        est = 6  # Azul / Comunicado
+      elif int(est['C']['est']['val']) == 0:
+        est = 13  # Azul con raya / Local
       else:
         est = 5  # local / Color naranja
 
       return est
 
     return False
-
 
 
 
@@ -264,6 +265,7 @@ if __name__ == "__main__":
 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 00 00 00 89"""
   
+  trama = "FF 17 00 00 C9 00 10 31 05 0C 00 D0 00 00 00 E8"
   t = resp.obtenerRespuesta(trama)
 
   reporte_estado = ReporteEstado()
