@@ -19,6 +19,7 @@ class ReporteEstado:
     if trama:
       t['numero_cruce'] = numeroDeCruce
       t['bits_status_i'] = bitsDeStatusI
+      t['byte_status'] = self.__obtenerByteStatus(trama)
       t['est'] = self.__estadoIndicador({'estado': bitsDeStatusI})
       t['vtr'] = self.__vector(bitsDeStatusI)
 
