@@ -45,7 +45,7 @@ if __name__ == "__main__":
     grp_id_num=1,
     ccm_id=1,
     crs_numero=3000,
-    esclavo=9,
+    esclavo="0",
     origen=32
   )
   print(trama)
