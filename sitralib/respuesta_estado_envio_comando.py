@@ -37,7 +37,7 @@ class RespuestaEstadoEnvioComando:
         for x in falta:
           if falta[x]['est']['val'] == 1:
             return falta
-          
+
     return falla
 
 
@@ -176,7 +176,7 @@ class RespuestaEstadoEnvioComando:
                                     prefix="CV{0}",
                                     start=9))
 
-      conflicto = dict()        
+      conflicto = dict()
       for i in ['conflicto_rojo', 'conflicto_amarillo', 'conflicto_verde']:
         n = self.get_falla(i, byte_conflicto)
         if n:
@@ -215,7 +215,7 @@ class RespuestaEstadoEnvioComando:
                                     label="Falta de fusible de verde {0}",
                                     prefix="FFV{0}",
                                     start=9))
-      
+
       fusible = dict()        
       for i in ['fusible_rojo', 'fusible_amarillo', 'fusible_verde']:
         n = self.get_falla(i, byte_fusible)
@@ -242,6 +242,20 @@ class RespuestaEstadoEnvioComando:
                                     label="Detector {0}", prefix="D{0}",
                                     start=25, autoincrement=True))
 
+
+
+      # TEMPERATURE
+      res.update(
+        {'temperature': {
+              'temp_display': int(trm[81]),
+              'temp_mother': int(trm[82]),
+              'temp_extension_1': int(trm[83]),
+              'temp_extension_2': int(trm[84]),
+              'temp_extension_3': int(trm[85]),
+              'temp_pi_cpu': int(trm[86]),
+              'temp_pi_gpu': int(trm[87]),
+        }}
+      )
 
       res.update({'byte_falta': falla})
       res.update({'byte_conflicto': conflicto})
@@ -283,8 +297,7 @@ if __name__ == "__main__":
   trama6 = '00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 20 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 A5'
   # Falta de Fusible Verde 16
   trama7 = '00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 05'
-  
-  
+
   bcc = Bcc()
   # b = bcc.isValidBcc(trama)
   # print(b)
@@ -292,8 +305,6 @@ if __name__ == "__main__":
   # print(bcc.isValidBcc(trama))
 
   obj     = RespuestaEstadoEnvioComando()
-  retorno = obj.get(bcc.consolidate(trama3))
+  retorno = obj.get(bcc.consolidate(trama1))
   pp.pprint(retorno)
-  
-  
-  
+
