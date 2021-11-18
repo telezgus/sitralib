@@ -243,17 +243,16 @@ class RespuestaEstadoEnvioComando:
                                     start=25, autoincrement=True))
 
 
-
       # TEMPERATURE
       res.update(
         {'temperature': {
-              'temp_display': int(trm[81]),
-              'temp_mother': int(trm[82]),
-              'temp_extension_1': int(trm[83]),
-              'temp_extension_2': int(trm[84]),
-              'temp_extension_3': int(trm[85]),
-              'temp_pi_cpu': int(trm[86]),
-              'temp_pi_gpu': int(trm[87]),
+              'temp_display': self.helpers.hexToDec(trm[81]),
+              'temp_mother': self.helpers.hexToDec(trm[82]),
+              'temp_extension_1': self.helpers.hexToDec(trm[83]),
+              'temp_extension_2': self.helpers.hexToDec(trm[84]),
+              'temp_extension_3': self.helpers.hexToDec(trm[85]),
+              'temp_pi_cpu':  self.helpers.hexToDec(trm[86]),
+              'temp_pi_gpu': self.helpers.hexToDec(trm[87]),
         }}
       )
 
