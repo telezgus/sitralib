@@ -11,6 +11,7 @@ class ReporteEstado:
     byteDeStatus     = self.__obtenerByteStatus(trama)
     bitsDeStatusI    = self.__obtenerBitsStatusI(trama)
     bitsDeAlarmas    = self.__obtenerBitsAlarmas(trama)
+    bitsDeAlarmasII  = self.__obtenerBitsAlarmasII(trama)
     byteFalta        = self.__obtenerByteFalta(trama)
     byteConflicto    = self.__obtenerByteConflicto(trama)
     byteFaltaFusible = self.__obtenerByteFaltaFusible(trama)
@@ -36,6 +37,11 @@ class ReporteEstado:
       alertas.update({
         'bits_alarma': self.__setAlertasBitsDeAlarmas(bitsDeAlarmas)
       })
+
+      alertas.update({
+        'bits_alarma_ii': self.__setAlertasBitsDeAlarmasII(bitsDeAlarmasII)
+      })
+
 
       alertas.update({
         'byte_falta': byteFalta
@@ -194,40 +200,106 @@ class ReporteEstado:
     return trama.get('numero_cruce', dict())
 
 
+  def __obtenerBitsAlarmasII(self, trama):
+    return trama.get('bits_alarma_ii', dict())
+
+
   def __obtenerBitsAlarmas(self, trama):
     return trama.get('bits_alarma', dict())
 
 
-  def __setAlertasBitsDeAlarmas(self, trama):
-    # Remuevo los indices que no evalúo
+  def __data_validator(self, key, trama):
+    return trama.get(key, dict()).get("est", dict()).get("val")
 
-    if trama['TSUP']['est']['val'] == 0:
+
+  def __setAlertasBitsDeAlarmas(self, trama):
+    """Remuevo los indices que no evalúo
+    """
+
+    if self.__data_validator("TSUP", trama) == 0:
       trama.pop('TSUP', None)
 
-    if trama['FR']['est']['val'] == 0:
+    if self.__data_validator("FR", trama) == 0:
       trama.pop('FR', None)
 
-    if trama['CV']['est']['val'] == 0:
+    if self.__data_validator("CV", trama) == 0:
       trama.pop('CV', None)
 
-    if trama['FV']['est']['val'] == 0:
+    if self.__data_validator("FV", trama) == 0:
       trama.pop('FV', None)
 
-    if trama['GPS']['est']['val'] == 0:
+    if self.__data_validator("GPS", trama) == 0:
       trama.pop('GPS', None)
 
-    if trama['PA']['est']['val'] == 0:
+    if self.__data_validator("PA", trama) == 0:
       trama.pop('PA', None)
 
-    if trama['BTT']['est']['val'] == 0:
+    if self.__data_validator("BTT", trama) == 0:
       trama.pop('BTT', None)
 
-    if trama['BTA']['est']['val'] == 1:
+    if self.__data_validator("BTT", trama)== 1:
       trama.pop('BTT', None)
-    elif trama['BTA']['est']['val'] == 0:
+
+    elif self.__data_validator("BTA", trama) == 0:
       trama.pop('BTA', None)
 
     return trama
+
+
+
+  def __setAlertasBitsDeAlarmasII(self, trama):
+    """
+    Remuevo los indices que no evalúo
+
+    'bits_alarma_ii': {'CLAG': {'des': 'Cambio Local Agendas',
+                             'est': {'des': 'Normal', 'val': 0}},
+                    'CLCO': {'des': 'Cambio Local Configuracion',
+                             'est': {'des': 'Normal', 'val': 0}},
+                    'CLPR': {'des': 'Cambio Local Programas',
+                             'est': {'des': 'Normal', 'val': 0}},
+                    'ERTC': {'des': 'Error Seg RTC',
+                             'est': {'des': 'Normal', 'val': 0}},
+                    'MEEX': {'des': 'Modo Emergencia Externo',
+                             'est': {'des': 'Normal', 'val': 0}},
+                    'MMEX': {'des': 'Modo Manual Externo',
+                             'est': {'des': 'Normal', 'val': 0}},
+                    'PMMX': {'des': 'Pulso del Modo Manual Externo',
+                             'est': {'des': 'Normal', 'val': 0}},
+                    'PPPC': {'des': 'Programacion por PC',
+                             'est': {'des': 'Normal', 'val': 0}}},
+    """
+
+
+    if self.__data_validator("CLAG", trama) == 0:
+      trama.pop('CLAG', None)
+
+    if self.__data_validator("CLCO", trama) == 0:
+      trama.pop('CLCO', None)
+
+    if self.__data_validator("CLPR", trama) == 0:
+      trama.pop('CLPR', None)
+
+    if self.__data_validator("ERTC", trama) == 0:
+      trama.pop('ERTC', None)
+
+    if self.__data_validator("MEEX", trama) == 0:
+      trama.pop('MEEX', None)
+
+    if self.__data_validator("MMEX", trama) == 0:
+      trama.pop('MMEX', None)
+
+    if self.__data_validator("PMMX", trama) == 0:
+      trama.pop('PMMX', None)
+
+    if self.__data_validator("PMMX", trama)== 1:
+      trama.pop('PMMX', None)
+
+    elif self.__data_validator("PPPC", trama) == 0:
+      trama.pop('PPPC', None)
+
+    return trama
+
+
 
 
   def __estadoIndicador(self, data):
@@ -259,15 +331,11 @@ if __name__ == "__main__":
   import pprint as pp
   from sitralib.respuesta import *
   resp = Respuesta()
-  
-  trama = """FF 00 00 01 C5 00 60 5B 0B B4 F2 94 00 20 00 14 11 00 00 DD DD DD DD
-21 06 01 17 49 28 02 00 04 F2 00 1E 00 00 F2 2B 00 1E 00 00 00 78 00
-00 00 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 89"""
-  
+
   trama = "FF 17 00 00 C9 00 10 31 05 0C 00 D0 00 00 00 E8"
-  t = resp.obtenerRespuesta(trama)
+  trama1 = "00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 95"
+
+  t = resp.obtenerRespuesta(trama1)
 
   reporte_estado = ReporteEstado()
   reporte_validado = reporte_estado.validar(t)

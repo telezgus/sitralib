@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from sitralib.bits_alarma import *
+from sitralib.bits_alarma_ii import *
 from sitralib.bits_falta import *
 from sitralib.bits_status_i import *
 from sitralib.bits_status_ii import *
@@ -21,6 +22,7 @@ class RespuestaEstadoEnvioComando:
     self.bitStaII    = BitsStatusII()
     self.bitStaIII   = BitsStatusIII()
     self.bitAla      = BitsAlarma()
+    self.bitAlaII    = BitsAlarmaII()
     self.validateBcc = Bcc()
     self.bytLamp     = ByteLamparas()
     self.fecha       = Fecha()
@@ -50,6 +52,7 @@ class RespuestaEstadoEnvioComando:
       res.update(self.bitStaI.bitsStatusI(trm[16]))
       res.update(self.bitStaII.bitsStatusII(trm[17]))
       res.update(self.bitAla.bitsAlarma(trm[18]))
+      res.update(self.bitAlaII.bitsAlarmaII(trm[80]))
       res.update(self.bitStaIII.bitsStatusIII(trm[19]))
 
       # Lamparas
