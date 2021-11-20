@@ -116,27 +116,27 @@ class RespuestaEstadoEnvioComando:
       byte_falta = {}
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[58], name="falta_rojo_1",
-                                    label="Falta de rojo {0}", prefix="FR{0}",
+                                    label="Falta de rojo", prefix="FR",
                                     start=1))
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[59], name="falta_rojo_2",
-                                    label="Falta de rojo {0}", prefix="FR{0}",
+                                    label="Falta de rojo", prefix="FR",
                                     start=9))
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[60], name="falta_amarillo_1",
-                                    label="Falta de amarillo {0}", prefix="FA{0}",
+                                    label="Falta de amarillo", prefix="FA",
                                     start=1))
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[61], name="falta_amarillo_2",
-                                    label="Falta de amarillo {0}", prefix="FA{0}",
+                                    label="Falta de amarillo", prefix="FA",
                                     start=9))
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[62], name="falta_verde_1",
-                                    label="Falta de verde {0}", prefix="FV{0}",
+                                    label="Falta de verde", prefix="FV",
                                     start=1))
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[63], name="falta_verde_2",
-                                    label="Falta de verde {0}", prefix="FV{0}",
+                                    label="Falta de verde", prefix="FV",
                                     start=9))
 
       falla = dict()       
@@ -150,33 +150,33 @@ class RespuestaEstadoEnvioComando:
       byte_conflicto = dict()
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[64], name="conflicto_rojo_1",
-                                    label="Conflicto de rojo {0}",
-                                    prefix="CR{0}",
+                                    label="Conflicto de rojo",
+                                    prefix="CR",
                                     start=1))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[65], name="conflicto_rojo_2",
-                                    label="Conflicto de rojo {0}",
-                                    prefix="CR{0}",
+                                    label="Conflicto de rojo",
+                                    prefix="CR",
                                     start=9))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[66], name="conflicto_amarillo_1",
-                                    label="Conflicto de amarillo {0}",
-                                    prefix="CA{0}",
+                                    label="Conflicto de amarillo",
+                                    prefix="CA",
                                     start=1))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[67], name="conflicto_amarillo_2",
-                                    label="Conflicto de amarillo {0}",
-                                    prefix="CA{0}",
+                                    label="Conflicto de amarillo",
+                                    prefix="CA",
                                     start=9))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[68], name="conflicto_verde_1",
-                                    label="Conflicto de verde {0}",
-                                    prefix="CV{0}",
+                                    label="Conflicto de verde",
+                                    prefix="CV",
                                     start=1))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[69], name="conflicto_verde_2",
-                                    label="Conflicto de verde {0}",
-                                    prefix="CV{0}",
+                                    label="Conflicto de verde",
+                                    prefix="CV",
                                     start=9))
 
       conflicto = dict()
@@ -190,33 +190,33 @@ class RespuestaEstadoEnvioComando:
       byte_fusible = dict()
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[70], name="fusible_rojo_1",
-                                    label="Falta de fusible de rojo {0}",
-                                    prefix="FFR{0}",
+                                    label="Falta de fusible de rojo",
+                                    prefix="FFR",
                                     start=1))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[71], name="fusible_rojo_2",
-                                    label="Falta de fusible de rojo {0}",
-                                    prefix="FFR{0}",
+                                    label="Falta de fusible de rojo",
+                                    prefix="FFR",
                                     start=9))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[72], name="fusible_amarillo_1",
-                                    label="Falta de fusible de amarillo {0}",
-                                    prefix="FFA{0}",
+                                    label="Falta de fusible de amarillo",
+                                    prefix="FFA",
                                     start=1))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[73], name="fusible_amarillo_2",
-                                    label="Falta de fusible de amarillo {0}",
-                                    prefix="FFA{0}",
+                                    label="Falta de fusible de amarillo",
+                                    prefix="FFA",
                                     start=9))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[74], name="fusible_verde_1",
-                                    label="Falta de fusible de verde {0}",
-                                    prefix="FFV{0}",
+                                    label="Falta de fusible de verde",
+                                    prefix="FFV",
                                     start=1))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[75], name="fusible_verde_2",
-                                    label="Falta de fusible de verde {0}",
-                                    prefix="FFV{0}",
+                                    label="Falta de fusible de verde",
+                                    prefix="FFV",
                                     start=9))
 
       fusible = dict()        
@@ -230,19 +230,19 @@ class RespuestaEstadoEnvioComando:
       byte_detector = dict()
       byte_detector.update(
           self.bits_falta.bitsFalta(trm[76], name="detector_demanda_1",
-                                    label="Detector {0}", prefix="D{0}",
+                                    label="Detector", prefix="D",
                                     start=1, autoincrement=True))
       byte_detector.update(
           self.bits_falta.bitsFalta(trm[77], name="detector_demanda_2",
-                                    label="Detector {0}", prefix="D{0}",
+                                    label="Detector", prefix="D",
                                     start=9, autoincrement=True))
       byte_detector.update(
           self.bits_falta.bitsFalta(trm[78], name="detector_demanda_3",
-                                    label="Detector {0}", prefix="D{0}",
+                                    label="Detector", prefix="D",
                                     start=17, autoincrement=True))
       byte_detector.update(
           self.bits_falta.bitsFalta(trm[79], name="detector_demanda_4",
-                                    label="Detector {0}", prefix="D{0}",
+                                    label="Detector", prefix="D",
                                     start=25, autoincrement=True))
 
 
