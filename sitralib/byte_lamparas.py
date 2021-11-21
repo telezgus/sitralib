@@ -15,6 +15,9 @@ class ByteLamparas:
     if self.helpers.isHex(hex) == False:
       pass
 
+    print('------>', hex)
+
+
     val   = self.helpers.getNibbles(hex)
     valLo = self.__getTipo(val['lo'])
     valHi = self.__getTipo(val['hi'])
