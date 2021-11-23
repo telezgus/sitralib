@@ -67,6 +67,10 @@ class ReporteEstado:
     return dict()
 
 
+  def __data_validator(self, key, trama):
+    return trama.get(key, dict()).get("est", dict()).get("val")
+
+
   def __vector(self, bitsDeStatusI):
     """Retorna el estado/color con el que se debe representar el vector
     en la pantalla de monitoreo.
@@ -208,10 +212,6 @@ class ReporteEstado:
     return trama.get('bits_alarma', dict())
 
 
-  def __data_validator(self, key, trama):
-    return trama.get(key, dict()).get("est", dict()).get("val")
-
-
   def __setAlertasBitsDeAlarmas(self, trama):
     """Remuevo los indices que no evalúo
     """
@@ -310,13 +310,13 @@ class ReporteEstado:
       else:
         est = False
 
-      if int(est['AP']['est']['val']) == 1:
+      if self.__data_validator("AP", data) == 1:
         est = 7  # Negro / apagado
-      elif int(est['TIT']['est']['val']) == 1:
+      elif self.__data_validator("TIT", data) == 1:
         est = 4  # Amarillo / titilante
-      elif int(est['C']['est']['val']) == 1:
+      elif self.__data_validator("C", data) == 1:
         est = 6  # Azul / Comunicado
-      elif int(est['C']['est']['val']) == 0:
+      elif self.__data_validator("C", data) == 0:
         est = 13  # Azul con raya / Local
       else:
         est = 5  # local / Color naranja
@@ -334,8 +334,11 @@ if __name__ == "__main__":
 
   trama = "FF 17 00 00 C9 00 10 31 05 0C 00 D0 00 00 00 E8"
   trama1 = "00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 95"
-
-  t = resp.obtenerRespuesta(trama1)
+  trama2 = """FF 00 00 01 C5 00 56 6D 0B BD 00 14 00 20 00 11 00 00 00 00 00 00 00
+          21 11 23 08 36 00 03 00 00 00 02 0F 00 00 00 48 00 3D 00 00 00 78 00
+          00 00 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+          00 00 00 00 00 00 00 20 1E 00 00 00 00 00 00 00 C5"""
+  t = resp.obtenerRespuesta(trama2)
 
   reporte_estado = ReporteEstado()
   reporte_validado = reporte_estado.validar(t)
