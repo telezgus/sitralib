@@ -67,10 +67,6 @@ class ReporteEstado:
     return dict()
 
 
-  def __data_validator(self, key, trama):
-    return trama.get(key, dict()).get("est", dict()).get("val")
-
-
   def __vector(self, bitsDeStatusI):
     """Retorna el estado/color con el que se debe representar el vector
     en la pantalla de monitoreo.
@@ -212,6 +208,10 @@ class ReporteEstado:
     return trama.get('bits_alarma', dict())
 
 
+  def __data_validator(self, key, trama):
+    return trama.get(key, dict()).get("est", dict()).get("val")
+
+
   def __setAlertasBitsDeAlarmas(self, trama):
     """Remuevo los indices que no evalúo
     """
@@ -310,13 +310,13 @@ class ReporteEstado:
       else:
         est = False
 
-      if self.__data_validator("AP", data) == 1:
+      if self.__data_validator("AP", est) == 1:
         est = 7  # Negro / apagado
-      elif self.__data_validator("TIT", data) == 1:
+      elif self.__data_validator("TIT", est) == 1:
         est = 4  # Amarillo / titilante
-      elif self.__data_validator("C", data) == 1:
+      elif self.__data_validator("C", est)  == 1:
         est = 6  # Azul / Comunicado
-      elif self.__data_validator("C", data) == 0:
+      elif self.__data_validator("C", est)  == 0:
         est = 13  # Azul con raya / Local
       else:
         est = 5  # local / Color naranja
