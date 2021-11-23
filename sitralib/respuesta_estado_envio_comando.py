@@ -219,7 +219,7 @@ class RespuestaEstadoEnvioComando:
                                     prefix="FFV",
                                     start=9))
 
-      fusible = dict()        
+      fusible = dict()
       for i in ['fusible_rojo', 'fusible_amarillo', 'fusible_verde']:
         n = self.get_falla(i, byte_fusible)
         if n:
@@ -300,13 +300,12 @@ if __name__ == "__main__":
   # Falta de Fusible Verde 16
   trama7 = '00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 05'
 
-  bcc = Bcc()
-  # b = bcc.isValidBcc(trama)
-  # print(b)
-  # print(bcc.consolidate(trama))
-  # print(bcc.isValidBcc(trama))
+  # trama 8. envio cal cruce 3005
+  trama8 = "FF 00 00 01 C5 00 56 6D 0B BD 00 14 00 20 00 11 00 00 00 00 00 00 00 21 11 23 09 22 09 03 00 00 00 02 19 00 00 00 48 00 46 00 00 00 78 00 00 00 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 20 1E 00 00 00 00 00 00 00 B4"
 
-  obj     = RespuestaEstadoEnvioComando()
-  retorno = obj.get(bcc.consolidate(trama1))
+  bcc = Bcc()
+
+  obj = RespuestaEstadoEnvioComando()
+  retorno = obj.get(bcc.consolidate(trama8))
   pp.pprint(retorno)
 
