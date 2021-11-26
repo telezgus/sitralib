@@ -25,7 +25,7 @@ class BitsFalta:
       byte_eval = int(byte.binaryReversed[counter])
       bit = counter + 1
       estado.append({
-          '{prefix}{id}'.format(prefix=prefix, id=idx) : {
+          '{prefix}{id}'.format(prefix=prefix, id=bit) : {
             'des': '{label}, id {id}'.format(label=label, id=bit),
             'bit': bit,
             'est':{
