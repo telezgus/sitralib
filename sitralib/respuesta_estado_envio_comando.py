@@ -34,11 +34,10 @@ class RespuestaEstadoEnvioComando:
   def get_falla(self, selector, data):
 
     falla = {}
-    for i in range(1,3):
-      for falta in data.get('{0}_{1}'.format(selector, i)):
-        for x in falta:
-          if falta[x]['est']['val'] == 1:
-            return falta
+    for falta in data.get(selector, dict()):
+      for x in falta:
+        if falta[x]['est']['val'] == 1:
+          return falta
 
     return falla
 
@@ -113,118 +112,121 @@ class RespuestaEstadoEnvioComando:
       res.update({'duracion_paso': self.helpers.hexToDec(trm[43])})
       res.update({'duracion_ciclo': self._joinNibblesCuad(trm[48], trm[49])})
 
+
+
       byte_falta = {}
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[58], name="falta_rojo_1",
-                                    label="Falta de rojo", prefix="FR",
+                                    label="Falta de rojo", prefix="FR01",
                                     start=1))
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[59], name="falta_rojo_2",
-                                    label="Falta de rojo", prefix="FR",
-                                    start=9))
+                                    label="Falta de rojo", prefix="FR02",
+                                    start=9)
+      )
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[60], name="falta_amarillo_1",
-                                    label="Falta de amarillo", prefix="FA",
+                                    label="Falta de amarillo", prefix="FA01",
                                     start=1))
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[61], name="falta_amarillo_2",
-                                    label="Falta de amarillo", prefix="FA",
+                                    label="Falta de amarillo", prefix="FA02",
                                     start=9))
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[62], name="falta_verde_1",
-                                    label="Falta de verde", prefix="FV",
+                                    label="Falta de verde", prefix="FV01",
                                     start=1))
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[63], name="falta_verde_2",
-                                    label="Falta de verde", prefix="FV",
+                                    label="Falta de verde", prefix="FV02",
                                     start=9))
 
-      falla = dict()       
-      for i in ['falta_rojo', 'falta_amarillo', 'falta_verde']:
+      falla = dict()
+      for i in ['falta_rojo_1', 'falta_rojo_2', 'falta_amarillo_1', 
+                'falta_amarillo_2', 'falta_verde_1', 'falta_verde_2']:
         n = self.get_falla(i, byte_falta)
         if n:
-          falla = n
-          break
+          falla.update(n)
 
 
       byte_conflicto = dict()
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[64], name="conflicto_rojo_1",
                                     label="Conflicto de rojo",
-                                    prefix="CR",
+                                    prefix="CR01",
                                     start=1))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[65], name="conflicto_rojo_2",
                                     label="Conflicto de rojo",
-                                    prefix="CR",
+                                    prefix="CR02",
                                     start=9))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[66], name="conflicto_amarillo_1",
                                     label="Conflicto de amarillo",
-                                    prefix="CA",
+                                    prefix="CA01",
                                     start=1))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[67], name="conflicto_amarillo_2",
                                     label="Conflicto de amarillo",
-                                    prefix="CA",
+                                    prefix="CA02",
                                     start=9))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[68], name="conflicto_verde_1",
                                     label="Conflicto de verde",
-                                    prefix="CV",
+                                    prefix="CV01",
                                     start=1))
       byte_conflicto.update(
           self.bits_falta.bitsFalta(trm[69], name="conflicto_verde_2",
                                     label="Conflicto de verde",
-                                    prefix="CV",
+                                    prefix="CV02",
                                     start=9))
 
       conflicto = dict()
-      for i in ['conflicto_rojo', 'conflicto_amarillo', 'conflicto_verde']:
+      for i in ['conflicto_rojo_1', 'conflicto_amarillo_1', 'conflicto_verde_1',
+                'conflicto_rojo_2', 'conflicto_amarillo_2', 'conflicto_verde_2']:
         n = self.get_falla(i, byte_conflicto)
         if n:
-          conflicto = n
-          break
+          conflicto.update(n)
 
 
       byte_fusible = dict()
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[70], name="fusible_rojo_1",
                                     label="Falta de fusible de rojo",
-                                    prefix="FFR",
+                                    prefix="FFR01",
                                     start=1))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[71], name="fusible_rojo_2",
                                     label="Falta de fusible de rojo",
-                                    prefix="FFR",
+                                    prefix="FFR02",
                                     start=9))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[72], name="fusible_amarillo_1",
                                     label="Falta de fusible de amarillo",
-                                    prefix="FFA",
+                                    prefix="FFA01",
                                     start=1))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[73], name="fusible_amarillo_2",
                                     label="Falta de fusible de amarillo",
-                                    prefix="FFA",
+                                    prefix="FFA02",
                                     start=9))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[74], name="fusible_verde_1",
                                     label="Falta de fusible de verde",
-                                    prefix="FFV",
+                                    prefix="FFV01",
                                     start=1))
       byte_fusible.update(
           self.bits_falta.bitsFalta(trm[75], name="fusible_verde_2",
                                     label="Falta de fusible de verde",
-                                    prefix="FFV",
+                                    prefix="FFV02",
                                     start=9))
 
       fusible = dict()
-      for i in ['fusible_rojo', 'fusible_amarillo', 'fusible_verde']:
+      for i in ['fusible_rojo_1', 'fusible_amarillo_1', 'fusible_verde_1',
+                'fusible_rojo_2', 'fusible_amarillo_2', 'fusible_verde_2']:
         n = self.get_falla(i, byte_fusible)
         if n:
-          fusible = n
-          break
+          fusible.update(n)
 
 
       byte_detector = dict()
@@ -287,6 +289,7 @@ if __name__ == "__main__":
 
   # Falta de rojo 5
   trama1 = "00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 95"
+  trama11 = "00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 10 10 bb 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 95"
   # Falta de amarillo 2
   trama2 = "00 00 00 00 FF 00 00 01 C5 00 56 6D 0B B8 00 14 00 00 00 EE EE EE EE EE EE 1E 00 19 07 10 12 50 11 04 00 00 00 08 01 00 00 00 05 00 29 00 00 00 2D 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 87"
   # Falta de fusible rojo 1
@@ -318,10 +321,15 @@ if __name__ == "__main__":
           00 00 2B 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
           00 00 00 00 00 00 00 1E 1F 00 00 00 00 00 00 00 D8"""
 
+  _trama = """FF 00 00 01 C5 00 56 6D 0B BD 00 94 00 20 00 44 00 00 00 00 00 00 00
+21 11 29 13 53 01 02 00 00 00 00 02 00 00 00 2B 00 02 00 00 00 78 00
+00 00 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 00 00
+00 00 00 00 00 00 00 1C 1D 00 00 00 00 00 00 00 0C"""
+
 
   bcc = Bcc()
 
   obj = RespuestaEstadoEnvioComando()
-  retorno = obj.get(bcc.consolidate(trama5))
+  retorno = obj.get(bcc.consolidate(trama11))
   pp.pprint(retorno)
 

@@ -20,13 +20,14 @@ class BitsFalta:
 
     counter = 0
     for i in range(start, start+8):
+
       idx = i if autoincrement else ''
 
       byte_eval = int(byte.binaryReversed[counter])
       bit = counter + 1
       estado.append({
-          '{prefix}{id}'.format(prefix=prefix, id=bit) : {
-            'des': '{label}, id {id}'.format(label=label, id=bit),
+          '{prefix}{id}'.format(prefix=prefix, id=str(i).zfill(2)) : {
+            'des': '{label}, id {id}'.format(label=label, id=i),
             'bit': bit,
             'est':{
               'val': byte_eval,
