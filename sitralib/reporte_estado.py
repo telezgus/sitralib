@@ -267,8 +267,6 @@ class ReporteEstado:
                     'PPPC': {'des': 'Programacion por PC',
                              'est': {'des': 'Normal', 'val': 0}}},
     """
-
-
     if self.__data_validator("CLAG", trama) == 0:
       trama.pop('CLAG', None)
 
@@ -288,9 +286,6 @@ class ReporteEstado:
       trama.pop('MMEX', None)
 
     if self.__data_validator("PMMX", trama) == 0:
-      trama.pop('PMMX', None)
-
-    if self.__data_validator("PMMX", trama)== 1:
       trama.pop('PMMX', None)
 
     elif self.__data_validator("PPPC", trama) == 0:
