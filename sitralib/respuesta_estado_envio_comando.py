@@ -33,11 +33,12 @@ class RespuestaEstadoEnvioComando:
 
   def get_falla(self, selector, data):
 
-    falla = {}
+    falla = dict()
+
     for falta in data.get(selector, dict()):
       for x in falta:
         if falta[x]['est']['val'] == 1:
-          return falta
+          falla.update(falta)
 
     return falla
 
@@ -142,7 +143,7 @@ class RespuestaEstadoEnvioComando:
                                     start=9))
 
       falla = dict()
-      for i in ['falta_rojo_1', 'falta_rojo_2', 'falta_amarillo_1', 
+      for i in ['falta_rojo_1', 'falta_rojo_2', 'falta_amarillo_1',
                 'falta_amarillo_2', 'falta_verde_1', 'falta_verde_2']:
         n = self.get_falla(i, byte_falta)
         if n:
@@ -220,6 +221,7 @@ class RespuestaEstadoEnvioComando:
                                     label="Falta de fusible de verde",
                                     prefix="FFV02",
                                     start=9))
+
 
       fusible = dict()
       for i in ['fusible_rojo_1', 'fusible_amarillo_1', 'fusible_verde_1',
@@ -321,15 +323,24 @@ if __name__ == "__main__":
           00 00 2B 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
           00 00 00 00 00 00 00 1E 1F 00 00 00 00 00 00 00 D8"""
 
-  _trama = """FF 00 00 01 C5 00 56 6D 0B BD 00 94 00 20 00 44 00 00 00 00 00 00 00
-21 11 29 13 53 01 02 00 00 00 00 02 00 00 00 2B 00 02 00 00 00 78 00
-00 00 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 00 00
-00 00 00 00 00 00 00 1C 1D 00 00 00 00 00 00 00 0C"""
+  trama = """FF 00 00 01 C5 00 56 6D 0B BD 00 94 00 20 00 44 00 00 00 00 00 00 00
+          21 11 29 13 53 01 02 00 00 00 00 02 00 00 00 2B 00 02 00 00 00 78 00
+          00 00 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 00 00
+          00 00 00 00 00 00 00 1C 1D 00 00 00 00 00 00 00 0C"""
 
+  trama = """FF 00 00 01 C5 00 56 6D 0B BD 00 14 00 21 00 11 00 00 00 00 00 00 00
+          21 11 30 07 04 05 03 00 00 00 02 13 00 00 00 48 00 41 00 00 00 78 00
+          00 00 2B 00 00 00 00 00 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+          00 00 00 00 00 00 00 1C 1C 00 00 00 00 00 00 00 B5"""
+
+  trama = """FF 00 00 01 C5 00 56 6D 0B BD 00 14 00 20 00 11 00 00 00 00 00 00 00
+          21 11 30 14 00 27 03 00 00 00 02 29 00 00 00 48 00 57 00 00 00 78 00
+          00 00 2B 00 00 00 00 00 00 00 00 E0 00 00 00 00 00 00 00 00 00 00 1C
+          00 00 00 00 00 00 00 1D 1C 00 00 00 00 00 00 00 54"""
 
   bcc = Bcc()
 
   obj = RespuestaEstadoEnvioComando()
-  retorno = obj.get(bcc.consolidate(trama11))
+  retorno = obj.get(bcc.consolidate(trama))
   pp.pprint(retorno)
 

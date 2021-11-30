@@ -21,31 +21,31 @@ class BitsAlarmaII:
 
     estado = {
       "ERTC": {
-        "des": "Error Seg RTC",
+        "des": "Error de segundero RTC",
         "est": evaluacion[int(byte.binaryReversed[0])]
       },
       "MEEX": {
-        "des": "Modo Emergencia Externo",
+        "des": "Modo emergencia externo",
         "est": evaluacion[int(byte.binaryReversed[1])]
       },
       "MMEX": {
-        "des": "Modo Manual Externo",
+        "des": "Modo manual externo",
         "est": evaluacion[int(byte.binaryReversed[2])]
       },
       "PMMX": {
-        "des": "Pulso del Modo Manual Externo",
+        "des": "Pulso del modo manual externo",
         "est": evaluacion[int(byte.binaryReversed[3])]
       },
       "CLCO": {
-        "des": "Cambio Local Configuracion",
+        "des": "Cambio local configuracion",
         "est": evaluacion[int(byte.binaryReversed[4])]
       },
       "CLAG": {
-        "des": "Cambio Local Agendas",
+        "des": "Cambio local agendas",
         "est": evaluacion[int(byte.binaryReversed[5])]
       },
       "CLPR": {
-        "des": "Cambio Local Programas",
+        "des": "Cambio local programas",
         "est": evaluacion[int(byte.binaryReversed[6])]
       },
       "PPPC": {
@@ -63,5 +63,5 @@ if __name__ == "__main__":
   import pprint as pp
 
   a = BitsAlarmaII()
-  b = a.bitsAlarmaII("10")
+  b = a.bitsAlarmaII("ff")
   pp.pprint(b)

@@ -16,7 +16,7 @@ class BitsStatusII:
     estado = {}
 
     estado = {
-        'AIS': {'des': 'EC aislado de grupo (No acepta comandos grupales)'}
+        'AIS': {'des': 'Equipo controlador aislado de grupo (No acepta comandos grupales)'}
     }
     if int(byte.binaryReversed[0]) == 1:
       estado['AIS'].update({'est': {'val': 1, 'des': 'Aislado'}})
@@ -24,7 +24,7 @@ class BitsStatusII:
       estado['AIS'].update({'est': {'val': 0, 'des': 'Normal'}})
 
     estado.update({
-        'SI': {'des': 'EC en secuencia de inicio (intervalos A [34] y B [35])'}
+        'SI': {'des': 'Equipo controlador en secuencia de inicio (intervalos A [34] y B [35])'}
     })
     if int(byte.binaryReversed[6]) == 1:
       estado['SI'].update({'est': {'val': 1, 'des': 'Secuencia de inicio'}})
