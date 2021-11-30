@@ -129,8 +129,7 @@ class ReporteEstado:
         'bits_status_ii',
         'bits_status_iii',
         'object',
-        'bits_alarma'
-        
+        'bits_alarma',
         'byte_falta_fusible',
         'byte_conflicto',
         'byte_falta',
@@ -338,7 +337,11 @@ if __name__ == "__main__":
           21 11 23 08 36 00 03 00 00 00 02 0F 00 00 00 48 00 3D 00 00 00 78 00
           00 00 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
           00 00 00 00 00 00 00 20 1E 00 00 00 00 00 00 00 C5"""
-  t = resp.obtenerRespuesta(trama2)
+  trama = """FF 00 00 01 C5 00 56 6D 0B BD 00 94 00 60 00 44 00 00 00 00 00 00 00
+        21 11 30 08 13 10 03 00 00 00 00 0B 00 00 00 2B 00 0B 00 00 00 78 00
+        00 00 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+        00 02 00 00 00 00 00 1A 1C 00 00 00 00 00 00 00 1F"""
+  t = resp.obtenerRespuesta(trama)
 
   reporte_estado = ReporteEstado()
   reporte_validado = reporte_estado.validar(t)
