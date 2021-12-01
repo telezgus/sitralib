@@ -61,7 +61,11 @@ class BitsAlarma:
 
 if __name__ == "__main__":
   import pprint as pp
-
+  byte = '21'
   a = BitsAlarma()
-  b = a.bitsAlarma("10")
+  b = a.bitsAlarma(byte)
+  print('='*79)
+  print(byte)
+  print('-'*79)
   pp.pprint(b)
+  print('='*79)
