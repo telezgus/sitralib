@@ -42,7 +42,6 @@ class ReporteEstado:
         'bits_alarma_ii': self.__setAlertasBitsDeAlarmasII(bitsDeAlarmasII)
       })
 
-
       alertas.update({
         'byte_falta': byteFalta
       })
@@ -57,7 +56,6 @@ class ReporteEstado:
 
       # Incluyo las alertas en el diccionario de retorno
       t['alertas'] = alertas
-            
       # Si la trama contempla propiedades de evaluación del
       # estado extendido
       if 'byte_lamparas' in trama:
@@ -133,7 +131,7 @@ class ReporteEstado:
         'byte_falta_fusible',
         'byte_conflicto',
         'byte_falta',
-        'byte_detector'
+        'byte_detector',
     ]
 
     for i in remove_list:
