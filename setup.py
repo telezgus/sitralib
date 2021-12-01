@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
   name='sitralib',
-  version='1.1.71',
+  version='1.1.72',
   py_modules=[
     'sitralib.captura',
     'sitralib.grabacion',

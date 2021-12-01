@@ -286,7 +286,7 @@ class ReporteEstado:
     if self.__data_validator("PMMX", trama) == 0:
       trama.pop('PMMX', None)
 
-    elif self.__data_validator("PPPC", trama) == 0:
+    if self.__data_validator("PPPC", trama) == 0:
       trama.pop('PPPC', None)
 
     return trama
