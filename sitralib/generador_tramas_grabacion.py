@@ -26,8 +26,8 @@ class GeneradorTramasGrabacion:
 
   def create(self):
     a = self.__estructuras()
-    b = self.__matriz_conflictos()
-    c = self.__envio_funciones()
+    # b = self.__matriz_conflictos()
+    # c = self.__envio_funciones()
     d = self.__envio_tiempos()
     e = self.__agendas_diarias()
     f = self.__agendas_anuales_semanas()
@@ -35,7 +35,7 @@ class GeneradorTramasGrabacion:
     h = self.__preajustes()
     i = self.__eeprom()
 
-    return a + b + c + d + e + f + g + h + i
+    return a + d + e + f + g + h + i
 
   def __estructuras(self):
     estructuras = list()
