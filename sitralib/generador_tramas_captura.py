@@ -16,15 +16,15 @@ class GeneradorTramasCaptura:
 
   def create(self):
     a = self.__get_estructuras()
-    b = self.__get_consulta_catriz_conflicto()
-    c = self.__get_consulta_funciones()
+    # b = self.__get_consulta_catriz_conflicto()
+    # c = self.__get_consulta_funciones()
     d = self.__get_consulta_programa_tiempos()
     e = self.__get_consulta_agenda_diaria()
     f = self.__get_consulta_agenda_anual_semanal()
     g = self.__get_consulta_agenda_feriados_especial()
     h = self.__get_consulta_preajustes()
 
-    return a + b + c + d + e + f + g + h
+    return a +  d + e + f + g + h
 
 
   def __get_estructuras(self):
