@@ -70,7 +70,7 @@ class GeneradorTramasGrabacion:
       grp_id_num=self.grp_id_num,
       **self.movimientos[0]
     )
-    return [trama for i in range(18)]
+    return [trama for i in range(3)]
 
   def __matriz_conflictos(self):
     trama = CompilaEnvioMatrizConflictos().create(
