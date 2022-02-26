@@ -285,6 +285,10 @@ MENSAJES = {
     'tipo' : 'advertencia',
     'mensaje': "El numero de cruce recibido no coincide con el esperado",
   },
+  13 : {
+    'tipo': 'exito',
+    'mensaje': 'La comunicación se efectuó correctamente'
+  }
 }
 
 
