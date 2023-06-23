@@ -307,11 +307,11 @@ class ReporteEstado:
       elif self.__data_validator("TIT", est) == 1:
         est = 4  # Amarillo / titilante
       elif self.__data_validator("C", est)  == 1:
-        est = 5  # Azul / Comunicado
+        est = 6  # Azul / Comunicado
       elif self.__data_validator("C", est)  == 0:
         est = 13  # Azul con raya / Local
       else:
-        est = 6  # local / Color naranja
+        est = 5  # local / Color naranja
 
       return est
 
