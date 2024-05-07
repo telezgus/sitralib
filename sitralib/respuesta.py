@@ -23,6 +23,12 @@ from sitralib.respuesta_funciones import *
 from sitralib.respuesta_matriz_conflictos import *
 from sitralib.respuesta_preajustes import *
 from sitralib.respuesta_programa_tiempos import *
+from sitralib.unem_respuesta_forzadura_ciclo import *
+from sitralib.unem_respuesta_forzadura_desfazaje import *
+from sitralib.unem_respuesta_forzadura_fases import *
+from sitralib.unev_respuesta_forzadura_ciclo import *
+from sitralib.unev_respuesta_forzadura_desfazaje import *
+from sitralib.unev_respuesta_forzadura_fases import *
 
 
 class Respuesta:
@@ -40,31 +46,39 @@ class Respuesta:
         dec = self.helpers.hexToDec(trm.get(9))
 
         dispatch = {
-            201 : RespuestaEnvioComando().get,
-            200 : RespuestaConsultaGrupoExtendido().get,
-            197 : RespuestaEstadoEnvioComando().get,
-            224 : RespuestaConsultaPuestoConteo().get,
-            226 : GrabacionEeprom().grabar,
-            212 : RespuestaPreajustes().get,
-            216 : RespuestaAgendaFeriadosEspecial().get,
-            218 : RespuestaAgendAnual().get,
-            220 : RespuestaAgendaDiaria().get,
-            214 : RespuestaProgramaTiempos().get,
-            210 : RespuestaFunciones().get,
-            208 : RespuestaMatrizConflictos().get,
-            206 : RespuestaEstrucutraParteBaja().get,
-            205 : RespuestaEstrucutraParteAlta().get,
-            203 : RespuestaConsultaEstructuraParteAlta().get,
-            204 : RespuestaConsultaEstructuraParteBaja().get,
-            207 : RespuestaConsultaMatrizConflictos().get,
-            209 : RespuestaConsultaFunciones().get,
-            213 : RespuestaEnvioProgramaTiempos().get,
-            219 : RespuestaConsultaAgendaDiaria().get,
-            217 : RespuestaConsultaAgendaAnualSemanal().get,
-            215 : RespuestaConsultaAgendaFeriadosEspecial().get,
-            211 : RespuestaConsultaPreajustes().get,
+            201: RespuestaEnvioComando().get,
+            200: RespuestaConsultaGrupoExtendido().get,
+            197: RespuestaEstadoEnvioComando().get,
+            224: RespuestaConsultaPuestoConteo().get,
+            226: GrabacionEeprom().grabar,
+            212: RespuestaPreajustes().get,
+            216: RespuestaAgendaFeriadosEspecial().get,
+            218: RespuestaAgendAnual().get,
+            220: RespuestaAgendaDiaria().get,
+            214: RespuestaProgramaTiempos().get,
+            210: RespuestaFunciones().get,
+            208: RespuestaMatrizConflictos().get,
+            206: RespuestaEstrucutraParteBaja().get,
+            205: RespuestaEstrucutraParteAlta().get,
+            203: RespuestaConsultaEstructuraParteAlta().get,
+            204: RespuestaConsultaEstructuraParteBaja().get,
+            207: RespuestaConsultaMatrizConflictos().get,
+            209: RespuestaConsultaFunciones().get,
+            213: RespuestaEnvioProgramaTiempos().get,
+            219: RespuestaConsultaAgendaDiaria().get,
+            217: RespuestaConsultaAgendaAnualSemanal().get,
+            215: RespuestaConsultaAgendaFeriadosEspecial().get,
+            211: RespuestaConsultaPreajustes().get,
+            # UNE M
+            183: UnemRespuestaForzaduraCiclo().get,
+            181: UnemRespuestaForzaduraDesfazaje().get,
+            182: UnemRespuestaForzaduraFases().get,
+            # UNE V
+            179: UnevRespuestaForzaduraCiclo().get,
+            177: UnevRespuestaForzaduraDesfazaje().get,
+            178: UnevRespuestaForzaduraFases().get,
         }
-
+        
         respuesta = dispatch[dec](trm)
       except KeyError:
         pass
@@ -77,6 +91,7 @@ class Respuesta:
 
 if __name__ == "__main__":
   import pprint as pp
+
   # RespuestaFunciones
   trama = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D2', 10: '00', 11: '10',
        12: '3C', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
@@ -103,5 +118,8 @@ if __name__ == "__main__":
   trama_8 = None
 
   rta = Respuesta()
-  resultado = rta.obtenerRespuesta(trama_8)
+  resultado = rta.obtenerRespuesta(trama5)
   pp.pprint(resultado)
+
+
+
