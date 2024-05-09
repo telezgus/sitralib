@@ -10,7 +10,7 @@ setup(
         'sitralib.validators.bcc',
         'sitralib.helpers.fecha',
         'sitralib.helpers.byte',
-        'sitralib.helpers.funciones',
+        'sitralib.helpers.funciones'
         'sitralib.helpers.ordenar_trama',
         'sitralib.unev_respuesta_forzadura_fases', 
         'sitralib.bits_alarma_ii', 
