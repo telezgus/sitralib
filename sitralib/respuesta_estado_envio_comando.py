@@ -113,8 +113,6 @@ class RespuestaEstadoEnvioComando:
       res.update({'duracion_paso': self.helpers.hexToDec(trm[43])})
       res.update({'duracion_ciclo': self._joinNibblesCuad(trm[48], trm[49])})
 
-
-
       byte_falta = {}
       byte_falta.update(
           self.bits_falta.bitsFalta(trm[58], name="falta_rojo_1",
@@ -343,4 +341,3 @@ if __name__ == "__main__":
   obj = RespuestaEstadoEnvioComando()
   retorno = obj.get(bcc.consolidate(trama))
   pp.pprint(retorno)
-

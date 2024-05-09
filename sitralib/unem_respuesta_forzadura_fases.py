@@ -14,7 +14,7 @@ class UnemRespuestaForzaduraFases:
 
         if self.validateBcc.isValidBcc(trm):
             res = {'numero_cruce': self.helpers.hexToDec(trm[13] + trm[14])}
-            res.update({'object': 'UnemRespuestaForzaduraFases'})
+            res.update({'object': 'UnemRespuestaForzaduraFases', 'code': 'B6'})
 
         return res or None
 

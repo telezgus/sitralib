@@ -6,7 +6,7 @@ from sitralib.validators.bcc import Bcc
 class UnemConsultaForzaduraDesfazaje:
     """
     Forzadura de ciclo
-    0x4D — Consulta del SITRA al módulo UNE M
+    0x4B — Consulta del SITRA al módulo UNE M
     """
     def __init__(self):
         self.helpers = Helpers()
