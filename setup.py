@@ -3,14 +3,14 @@ from distutils.core import setup
 
 setup(
     name='sitralib',
-    version='1.1.81',
+    version='1.1.82',
     py_modules=[
         'sitralib.server.os_fecha_hora',
         'sitralib.server.ntp',
         'sitralib.validators.bcc',
         'sitralib.helpers.fecha',
         'sitralib.helpers.byte',
-        'sitralib.helpers.funciones',
+        'sitralib.helpers.funciones'
         'sitralib.helpers.ordenar_trama',
         'sitralib.unev_respuesta_forzadura_fases', 
         'sitralib.bits_alarma_ii', 

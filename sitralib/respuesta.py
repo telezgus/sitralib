@@ -95,7 +95,7 @@ class Respuesta:
 
 if __name__ == "__main__":
     import pprint as pp
-
+    from sitralib.helpers.ordenar_trama import OrdenarTrama
     # RespuestaFunciones
     trama = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D2', 10: '00', 11: '10',
         12: '3C', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
@@ -120,10 +120,11 @@ if __name__ == "__main__":
     trama_6 = []
     trama_7 = {}
     trama_8 = None
-
+    trama_9 = ['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xb6', '0x0', '0xb', '0x43', '0xc', '0x1c', '0x53']
     rta = Respuesta()
-    resultado = rta.obtenerRespuesta(trama3)
+    resultado = rta.obtenerRespuesta(trama_9)
     pp.pprint(resultado)
 
-
-
+    ot = OrdenarTrama()
+    o = ot.ordenarTrama(trama_9)
+    print(o)

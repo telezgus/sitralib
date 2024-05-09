@@ -12,7 +12,7 @@ from sitralib.helpers.byte import *
 from sitralib.helpers.fecha import *
 from sitralib.helpers.funciones import *
 from sitralib.validators.bcc import *
-
+from sitralib.une_bits_forzadura import *
 
 class UnemRespuestaEstadoEnvioComando:
     def __init__(self):
@@ -28,6 +28,7 @@ class UnemRespuestaEstadoEnvioComando:
         self.fecha = Fecha()
         self.bytFun = ByteFuncion()
         self.bits_falta = BitsFalta()
+        self.une_bits_forzadura = UneBitsForzadura()
 
 
     def get_falla(self, selector, data):
@@ -270,6 +271,9 @@ class UnemRespuestaEstadoEnvioComando:
         res.update({'byte_falta_fusible': fusible})
         res.update({'byte_detector': byte_detector})
         res.update(self.bytFun.get(trm[54]))
+        
+        res.update(self.une_bits_forzadura.bitsForzadura(trm[90]))
+        
         res.update({'object': 'UnemRespuestaEstadoEnvioComando'})
 
         return res
