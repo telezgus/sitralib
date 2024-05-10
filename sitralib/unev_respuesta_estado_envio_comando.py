@@ -272,7 +272,7 @@ class UnevRespuestaEstadoEnvioComando:
         res.update({'byte_detector': byte_detector})
         res.update(self.bytFun.get(trm[54]))
         
-        res.update(self.une_bits_forzadura.bitsForzadura(trm[90])) 
+        res.update(self.une_bits_forzadura.bitsForzadura(trm[89])) 
         
         res.update({'object': 'UnevRespuestaEstadoEnvioComando'})
 

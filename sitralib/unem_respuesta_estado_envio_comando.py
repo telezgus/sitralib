@@ -272,7 +272,7 @@ class UnemRespuestaEstadoEnvioComando:
         res.update({'byte_detector': byte_detector})
         res.update(self.bytFun.get(trm[54]))
         
-        res.update(self.une_bits_forzadura.bitsForzadura(trm[90]))
+        res.update(self.une_bits_forzadura.bitsForzadura(trm[89]))
         
         res.update({'object': 'UnemRespuestaEstadoEnvioComando'})
 
@@ -293,10 +293,9 @@ class UnemRespuestaEstadoEnvioComando:
 
 if __name__ == "__main__":
     import pprint as pp
-    trama = """FF 00 00 01 C5 00 56 6D 0B BD 00 14 00 20 00 11 00 00 00 00 00 00 00
-            21 11 30 14 00 27 03 00 00 00 02 29 00 00 00 48 00 57 00 00 00 78 00
-            00 00 2B 00 00 00 00 00 00 00 00 E0 00 00 00 00 00 00 00 00 00 00 1C
-            00 00 00 00 00 00 00 1D 1C 00 00 00 00 00 00 00 54"""
+    trama = """FF 00 00 01 B9 00 60 27 0C 1C 02 94 00 31 00 14 00 00 00 00 00 00 00 24 05 10 09 22 28 06 01 02 02 00 00 00 00 02 00 00 0B 00 96 00 4B 00 00 00 07 00 00 00 00 03 00 01 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 62"""
+
+
 
     bcc = Bcc()
     obj = UnemRespuestaEstadoEnvioComando()
