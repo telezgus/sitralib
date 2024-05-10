@@ -93,38 +93,38 @@ class Respuesta:
 
 
 
-if __name__ == "__main__":
-    import pprint as pp
-    from sitralib.helpers.ordenar_trama import OrdenarTrama
-    # RespuestaFunciones
-    trama = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D2', 10: '00', 11: '10',
-        12: '3C', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
-        18: '20', 19: '00', 20: 'FF'}
+# if __name__ == "__main__":
+#     import pprint as pp
+#     from sitralib.helpers.ordenar_trama import OrdenarTrama
+#     # RespuestaFunciones
+#     trama = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D2', 10: '00', 11: '10',
+#         12: '3C', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
+#         18: '20', 19: '00', 20: 'FF'}
 
-    # Grabacion EEPROM
-    trama33 = {5: 'FF', 6: '00', 7: '00', 8: '01', 99: 'E2', 10: '00', 11: '16',
-            12: '0A', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
-            18: '20', 19: '00', 20: '03', 21: '00', 22: '10', 23: '00',
-            24: '10', 25: 'EA', 26: '20'}
+#     # Grabacion EEPROM
+#     trama33 = {5: 'FF', 6: '00', 7: '00', 8: '01', 99: 'E2', 10: '00', 11: '16',
+#             12: '0A', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
+#             18: '20', 19: '00', 20: '03', 21: '00', 22: '10', 23: '00',
+#             24: '10', 25: 'EA', 26: '20'}
 
-    # RespuestaPreajustes
-    trama3 = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D4', 10: '00', 11: '10',
-            12: '3A', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
-            18: '20', 19: '00', 20: 'F9'}
+#     # RespuestaPreajustes
+#     trama3 = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D4', 10: '00', 11: '10',
+#             12: '3A', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
+#             18: '20', 19: '00', 20: 'F9'}
 
-    # RespuestaAgendaFeriadosEspecial
-    trama5 = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D8', 10: '00', 11: '10',
-            12: '36', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
-            18: '20', 19: '00', 20: 'F5'}
+#     # RespuestaAgendaFeriadosEspecial
+#     trama5 = {5: 'FF', 6: '00', 7: '00', 8: '01', 9: 'D8', 10: '00', 11: '10',
+#             12: '36', 13: '0B', 14: 'B8', 15: '00', 16: '10', 17: '40',
+#             18: '20', 19: '00', 20: 'F5'}
 
-    trama_6 = []
-    trama_7 = {}
-    trama_8 = None
-    trama_9 = ['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xb6', '0x0', '0xb', '0x43', '0xc', '0x1c', '0x53']
-    rta = Respuesta()
-    resultado = rta.obtenerRespuesta(trama_9)
-    pp.pprint(resultado)
+#     trama_6 = []
+#     trama_7 = {}
+#     trama_8 = None
+#     trama_9 = ['0x0', '0x0', '0x0', '0x0', '0xff', '0x0', '0x0', '0x1', '0xb6', '0x0', '0xb', '0x43', '0xc', '0x1c', '0x53']
+#     rta = Respuesta()
+#     resultado = rta.obtenerRespuesta(trama_9)
+#     pp.pprint(resultado)
 
-    ot = OrdenarTrama()
-    o = ot.ordenarTrama(trama_9)
-    print(o)
+#     ot = OrdenarTrama()
+#     o = ot.ordenarTrama(trama_9)
+#     print(o)
