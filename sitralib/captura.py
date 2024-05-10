@@ -8,8 +8,8 @@ from pymongo import MongoClient
 from termcolor import colored
 
 import sitralib.referencias as ref
-from sitralib.helpers.ordenar_trama import *
-from sitralib.validators.bcc import *
+from sitralib.helpers.ordenar_trama import OrdenarTrama
+from sitralib.validators.bcc import Bcc
 
 
 class Captura:
