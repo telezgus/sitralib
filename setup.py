@@ -87,6 +87,7 @@ setup(
         'sitralib.respuesta_preajustes', 
         'sitralib.respuesta_programa_tiempos', 
         'sitralib.respuesta', 
+        'sitralib.une_bits_forzadura', 
         'sitralib.unem_consulta_forzadura_ciclo', 
         'sitralib.unem_consulta_forzadura_desfazaje', 
         'sitralib.unem_consulta_forzadura_fases', 
