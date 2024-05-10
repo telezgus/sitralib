@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from collections import *
 
-from sitralib.helpers.funciones import *
+from sitralib.helpers.funciones import Helpers
 
 
 class CompilaRespuestaAgendasFeriadosEspecial:

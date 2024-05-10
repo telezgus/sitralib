@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 import time
 from collections import *
 from datetime import datetime
 
-from sitralib.helpers.funciones import *
-from sitralib.validators.bcc import *
+from sitralib.helpers.funciones import Helpers
+from sitralib.validators.bcc import Bcc
 
 ASE_DEFAULT = {
   'domingo'   : '00',

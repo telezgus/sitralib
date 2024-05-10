@@ -3,8 +3,8 @@ import datetime
 import time
 from collections import *
 
-from sitralib.helpers.funciones import *
-from sitralib.validators.bcc import *
+from sitralib.helpers.funciones import Helpers
+from sitralib.validators.bcc import Bcc
 
 DIA_ANULADO, MES_ANULADO, ADI_DEFAULT = '7F', 'FF', '00'
 
