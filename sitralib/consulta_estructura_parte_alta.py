@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from sitralib.helpers.funciones import *
-from sitralib.validators.bcc import *
+from sitralib.helpers.funciones import Helpers
+from sitralib.validators.bcc import Bcc
 
 
 class ConsultaEstructuraParteAlta:
