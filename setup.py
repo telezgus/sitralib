@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='sitralib',
-    version='1.1.82',
+    version='1.1.83',
     packages=find_packages( exclude=['test'] ),
     author='Agustin Bouillet',
     author_email='agustin.bouillet@gmail.com',
