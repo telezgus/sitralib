@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import time
 
-from sitralib.validators.bcc import *
-
+from sitralib.validators.bcc import Bcc
+from sitralib.helpers.funciones import Helpers
 
 class ImposicionFechaHora:
   """

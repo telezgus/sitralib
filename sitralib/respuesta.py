@@ -90,4 +90,3 @@ class Respuesta:
                 print("Se produjo un error en la libreria SITRALIB / Respuesta")
 
             return respuesta
-
