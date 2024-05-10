@@ -1,5 +1,5 @@
-from sitralib.helpers.byte import *
-from sitralib.helpers.funciones import *
+from sitralib.helpers.byte import Byte
+from sitralib.helpers.funciones import Helpers
 
 
 class UneBitsForzadura:

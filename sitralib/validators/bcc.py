@@ -8,8 +8,8 @@ resultado el valor expresado en la posición 12.
 Y la suma desde la posición a la ante-ultima debe dar el resultado 
 expresado en el valor final.
 """
-from sitralib.helpers.funciones import *
-from sitralib.helpers.ordenar_trama import *
+from sitralib.helpers.funciones import Helpers
+from sitralib.helpers.ordenar_trama import OrdenarTrama
 
 
 class Bcc:
