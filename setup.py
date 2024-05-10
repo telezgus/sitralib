@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 setup(
     name='sitralib',
     version='1.1.82',
-    packages=find_packages('sitralib', exclude=['test']),
+    packages=find_packages( exclude=['test']),
     # py_modules=[
     #     'sitralib.server.os_fecha_hora',
     #     'sitralib.server.ntp',
