@@ -113,7 +113,7 @@ class Helpers:
     for val in dict_original:
       if kwargs['min'] <= val <= kwargs['max']:
         slice.update({val: dict_original[val]})
-    return slice;
+    return slice
 
 
   def tramas_by_codigo(self, **kwargs):
